@@ -1,0 +1,310 @@
+{
+  "resolvedId": "D:/CODE/blog/myNuxt/resGro/components/home/timeline.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<script lang=\"ts\" setup name=\"TimelineSection\">\r\n  import {\r\n    Linear,\r\n    gsap\r\n  } from 'gsap'\r\n  import {\r\n    ScrollTrigger\r\n  } from 'gsap/dist/ScrollTrigger'\r\n  import {\r\n    Branch,\r\n    type BranchNode,\r\n    type CheckpointNode,\r\n    type IDesktop,\r\n    ItemSize,\r\n    MENULINKS,\r\n    NodeTypes,\r\n    TIMELINE,\r\n    type TimelineNodeV2,\r\n    isSmallScreen,\r\n  } from '~/store/constants'\r\n\r\n  const props = defineProps < IDesktop > ()\r\n  const svgColor = '#9CA3AF'\r\n  const animColor = '#FCD34D'\r\n  const separation = 450\r\n  const strokeWidth = 2\r\n  const leftBranchX = 13\r\n  const curveLength = 150\r\n  const dotSize = 26\r\n  const timelineSvg: Ref < SVGSVGElement | undefined > = ref(undefined)\r\n  const svgContainer: Ref < HTMLDivElement | undefined > = ref(undefined)\r\n  const screenContainer: Ref < HTMLDivElement | undefined > = ref(undefined)\r\n\r\n  const svgWidth = ref(400)\r\n  let rightBranchX = 109\r\n\r\n  function addNodeRefsToItems(timeline: Array < TimelineNodeV2 > ): Array < LinkedTimelineNode > {\r\n    return timeline.map((node, idx) => ({\r\n      ...node,\r\n      next: timeline[idx + 1],\r\n      prev: timeline[idx - 1],\r\n    }))\r\n  }\r\n\r\n  function generateTimelineSvg(timeline: Array < TimelineNodeV2 > ): string {\r\n    let index = 1\r\n    let y = dotSize / 2\r\n    const timelineStyle = `<style>.str, .dot{stroke-width: ${strokeWidth}px}.anim-branch{stroke-dasharray: 186}</style>`\r\n    let isDiverged = false\r\n\r\n    const timelineSvg = addNodeRefsToItems(timeline).reduce((svg: string, node: LinkedTimelineNode) => {\r\n      const {\r\n        type,\r\n        next\r\n      } = node\r\n      let lineY = y\r\n      let dotY = y + separation / 2\r\n\r\n      switch (type) {\r\n        case NodeTypes.CHECKPOINT: {\r\n          const {\r\n            shouldDrawLine\r\n          } = node\r\n\r\n          // special handling for last checkpoint\r\n          if (!next)\r\n            lineY = y - separation / 2\r\n\r\n          // special handling for dot without line\r\n          if (!shouldDrawLine)\r\n            dotY = y\r\n\r\n          if (shouldDrawLine) {\r\n            // TO DO fix syntax\r\n            svg = shouldDrawLine ? `${drawLine(node, lineY, index, isDiverged)}${svg}` : svg\r\n            y = y + separation\r\n            index++\r\n          }\r\n\r\n          svg = svg.concat(drawDot(node, dotY, isDiverged))\r\n        }\r\n        break\r\n      case NodeTypes.DIVERGE:\r\n        isDiverged = true\r\n        svg = `${drawBranch(node, y, index)}${svg}`\r\n        break\r\n      case NodeTypes.CONVERGE:\r\n        isDiverged = false\r\n        // Drawing CONVERGE branch with previous line and index\r\n        svg = `${drawBranch(node, y - separation, index - 1)}${svg}`\r\n        break\r\n      }\r\n\r\n      return svg\r\n    }, timelineStyle)\r\n\r\n    return timelineSvg\r\n  }\r\n\r\n  function getDotString(x: number, y: number) {\r\n    return `<rect class='dot' width=${dotSize} height=${dotSize} fill='#111827' x=${x - dotSize / 2} y=${\r\n    y - dotSize / 2\r\n  } ></rect><circle cx=${x} cy=${y} r='7' stroke=${svgColor} class='dot' ></circle>`\r\n  }\r\n\r\n  function drawDot(timelineNode: LinkedCheckpointNode, y: number, isDiverged: boolean) {\r\n    const {\r\n      next,\r\n      alignment\r\n    } = timelineNode as LinkedCheckpointNode\r\n\r\n    // Diverging\r\n    if (next && next.type === NodeTypes.DIVERGE)\r\n      y = y - curveLength + 6 * dotSize\r\n\r\n    // Converging\r\n    if (next && next.type === NodeTypes.CONVERGE)\r\n      y = y + curveLength - 6 * dotSize\r\n\r\n    const dotString = getDotString(alignment === Branch.LEFT ? leftBranchX : rightBranchX, y)\r\n    const textString = addText(timelineNode, y, isDiverged)\r\n    return `${textString}${dotString}`\r\n  }\r\n\r\n  function addText(timelineNode: LinkedCheckpointNode, y: number, isDiverged: boolean) {\r\n    const {\r\n      title,\r\n      subtitle,\r\n      size,\r\n      image\r\n    } = timelineNode\r\n\r\n    const offset = isDiverged ? rightBranchX : 10\r\n    const foreignObjectX = dotSize / 2 + 10 + offset\r\n    const foreignObjectY = y - dotSize / 2\r\n    const foreignObjectWidth = svgWidth.value - (dotSize / 2 + 10 + offset)\r\n\r\n    const titleSizeClass = size === ItemSize.LARGE ? 'text-6xl' : 'text-2xl'\r\n    const logoString = image ?\r\n      `<img src='${image}' class='h-8 mb-2' loading='lazy' width='100' height='32' alt='${image}' />` : ''\r\n    const subtitleString = subtitle ?\r\n      `<p class='text-xl mt-2 text-gray-200 font-medium tracking-wide'>${subtitle}</p>` : ''\r\n\r\n    return `<foreignObject x=${foreignObjectX} y=${foreignObjectY} width=${foreignObjectWidth} \r\n        height=${separation}>${logoString}<p class='${titleSizeClass}'>${title}</p>${subtitleString}</foreignObject>`\r\n  }\r\n\r\n  function drawLine(timelineNode: LinkedCheckpointNode, y: number, i: number, isDiverged: boolean) {\r\n    const {\r\n      alignment,\r\n      prev,\r\n      next\r\n    } = timelineNode as LinkedCheckpointNode\r\n\r\n    const isPrevDiverge = prev && prev.type === NodeTypes.DIVERGE\r\n    const isNextConverge = next && next.type === NodeTypes.CONVERGE\r\n\r\n    const lineY = Math.abs(y + separation)\r\n\r\n    // Smaller line for Diverging\r\n    if (isPrevDiverge)\r\n      return `<line class='str' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${animColor} />`\r\n\r\n    // Smaller line for Converging\r\n    if (isNextConverge)\r\n      return `<line class='str' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${animColor} />`\r\n\r\n    const lineX = alignment === Branch.LEFT ? leftBranchX : rightBranchX\r\n\r\n    let str =\r\n      `<line class='str' x1=${lineX} y1=${y} x2=${lineX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${lineX} y1=${y} x2=${lineX} y2=${lineY} stroke=${animColor} />`\r\n\r\n    // If already diverged, draw parallel line to the existing line\r\n    if (isDiverged) {\r\n      const divergedLineX = alignment === Branch.LEFT ? rightBranchX : leftBranchX\r\n      str = str.concat(\r\n        `<line class='str' x1=${divergedLineX} y1=${y} x2=${divergedLineX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${divergedLineX} y1=${y} x2=${divergedLineX} y2=${lineY} stroke=${animColor} />`,\r\n      )\r\n    }\r\n    return str\r\n  }\r\n\r\n  function drawBranch(timelineNode: LinkedBranchNode, y: number, i: number) {\r\n    const {\r\n      type\r\n    } = timelineNode\r\n    switch (type) {\r\n      case NodeTypes.DIVERGE:\r\n        return `<path class='str' d='M ${leftBranchX} ${y} C ${leftBranchX} ${y + curveLength / 2} ${rightBranchX} ${\r\n        y + curveLength / 2\r\n      } ${rightBranchX} ${y + curveLength}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${\r\n        y + curveLength\r\n      } x2=${rightBranchX} y2=${\r\n        y + separation\r\n      } stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${leftBranchX} ${y} C ${leftBranchX} ${\r\n        y + curveLength / 2\r\n      } ${rightBranchX} ${y + curveLength / 2} ${rightBranchX} ${\r\n        y + curveLength\r\n      }' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y + curveLength} x2=${rightBranchX} y2=${\r\n        y + separation\r\n      } stroke=${animColor} />`\r\n      case NodeTypes.CONVERGE:\r\n        return `<path class='str' d='M ${rightBranchX} ${y + separation - curveLength} C ${rightBranchX} ${\r\n        y + separation - curveLength + curveLength / 2\r\n      } ${leftBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${\r\n        y + separation\r\n      }' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(\r\n        y + separation - curveLength,\r\n      )} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${rightBranchX} ${\r\n        y + separation - curveLength\r\n      } C ${rightBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${\r\n        y + separation - curveLength + curveLength / 2\r\n      } ${leftBranchX} ${\r\n        y + separation\r\n      }' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(\r\n        y + separation - curveLength,\r\n      )} stroke=${animColor} />`\r\n      default:\r\n        return ''\r\n    }\r\n  }\r\n\r\n  function addLineSvgAnimation(timeline: GSAPTimeline, duration: number, index: number): GSAPTimeline {\r\n    const startTime = `start+=${duration * index}`\r\n\r\n    timeline.from(svgContainer.value!.querySelectorAll(`.line-${index + 1}`), {\r\n      scaleY: 0,\r\n      duration\r\n    }, startTime)\r\n\r\n    return timeline\r\n  }\r\n\r\n  function addDivergingBranchLineAnimation(timeline: GSAPTimeline, duration: number, index: number): GSAPTimeline {\r\n    timeline\r\n      .from(svgContainer.value!.querySelector(`.line-${index + 1}`), {\r\n        scaleY: 0,\r\n        duration\r\n      }, `start+=${duration * index}`)\r\n      .from(\r\n        svgContainer.value!.querySelector(`.branch-${index + 1}`), {\r\n          strokeDashoffset: 186,\r\n          duration: duration - 2\r\n        },\r\n        `start+=${duration * index}`,\r\n      )\r\n      .from(\r\n        svgContainer.value!.querySelector(`.branch-line-${index + 1}`), {\r\n          scaleY: 0,\r\n          duration: duration - 1\r\n        },\r\n        `start+=${duration * (index + 1) - 2}`,\r\n      )\r\n\r\n    return timeline\r\n  }\r\n\r\n  function addConvergingBranchLineAnimation(timeline: GSAPTimeline, duration: number, index: number): GSAPTimeline {\r\n    timeline\r\n      .from(svgContainer.value!.querySelector(`.line-${index + 1}`), {\r\n        scaleY: 0,\r\n        duration\r\n      }, `start+=${duration * index}`)\r\n      .from(\r\n        svgContainer.value!.querySelector(`.branch-line-${index + 1}`), {\r\n          scaleY: 0,\r\n          duration: duration - 1\r\n        },\r\n        `start+=${duration * index}`,\r\n      )\r\n      .from(\r\n        svgContainer.value!.querySelector(`.branch-${index + 1}`), {\r\n          strokeDashoffset: 186,\r\n          duration: duration - 2\r\n        },\r\n        `start+=${duration * (index + 1) - 1}`,\r\n      )\r\n\r\n    return timeline\r\n  }\r\n\r\n  function animateTimeline(timeline: GSAPTimeline, duration: number): void {\r\n    let index = 0\r\n\r\n    addNodeRefsToItems(TIMELINE).forEach((item) => {\r\n      const {\r\n        type\r\n      } = item\r\n\r\n      if (type === NodeTypes.CHECKPOINT && item.shouldDrawLine) {\r\n        const {\r\n          next,\r\n          prev\r\n        } = item\r\n\r\n        if (prev && prev.type === NodeTypes.DIVERGE)\r\n          addDivergingBranchLineAnimation(timeline, duration, index)\r\n        else if (next && next.type === NodeTypes.CONVERGE)\r\n          addConvergingBranchLineAnimation(timeline, duration, index)\r\n        else\r\n          addLineSvgAnimation(timeline, duration, index)\r\n\r\n        index++\r\n      }\r\n    })\r\n  }\r\n\r\n  function setTimelineSvg(svgContainer: Ref < HTMLElement | undefined > , timelineSvg: Ref < SVGSVGElement | undefined >\r\n    ) {\r\n    const containerWidth = svgContainer.value!.clientWidth\r\n    svgWidth.value = containerWidth\r\n\r\n    const resultSvgString = generateTimelineSvg(TIMELINE)\r\n    timelineSvg.value!.innerHTML = resultSvgString\r\n\r\n    if (isSmallScreen())\r\n      rightBranchX = 70\r\n  }\r\n //slideImg 动画\r\n  function setSlidesAnimation(timeline: GSAPTimeline): void {\r\n    svgCheckpointItems.forEach((_, index) => {\r\n      // all except the first slide\r\n      if (index !== 0)\r\n        timeline.fromTo(screenContainer.value!.querySelector(`.slide-${index + 1}`), {\r\n          opacity: 0\r\n        }, {\r\n          opacity: 1\r\n        })\r\n\r\n      // all except the last slide\r\n      if (index !== svgCheckpointItems.length - 1) {\r\n        timeline.to(screenContainer.value!.querySelector(`.slide-${index + 1}`), {\r\n          opacity: 0,\r\n          delay: 2.35,\r\n        })\r\n      }\r\n    })\r\n  }\r\n\r\n  function initScrollTrigger(): {\r\n    timeline: GSAPTimeline\r\n    duration: number\r\n  } {\r\n    const timeline = gsap.timeline({\r\n      defaults: {\r\n        ease: Linear.easeNone,\r\n        duration: 0.44\r\n      }\r\n    }).addLabel('start')\r\n    let duration: number\r\n    let trigger: HTMLDivElement\r\n    let start: string\r\n    let end: string\r\n    let additionalConfig = {}\r\n\r\n    // Slide as a trigger for Desktop\r\n    if (props.isDesktop && !isSmallScreen()) {\r\n      // Animation for right side slides\r\n      setSlidesAnimation(timeline)\r\n\r\n      const platformHeight = screenContainer.value!.getBoundingClientRect().height\r\n\r\n      trigger = screenContainer.value!\r\n        start = `top ${(window.innerHeight - platformHeight) / 2}`\r\n      end = `+=${svgLength - platformHeight}`\r\n      additionalConfig = {\r\n        pin: true,\r\n        pinSpacing: true,\r\n      }\r\n      duration = timeline.totalDuration() / 15 //TODO 会影响图片展示的间隔\r\n    } else {\r\n      // Clearing out the right side on mobile devices\r\n      screenContainer.value!.innerHTML = ''\r\n\r\n      trigger = svgContainer.value!\r\n        start = 'top center'\r\n      end = `+=${svgLength}`\r\n      duration = 3\r\n    }\r\n\r\n    ScrollTrigger.create({\r\n      ...additionalConfig,\r\n      trigger,\r\n      start,\r\n      end,\r\n      scrub: 0,\r\n      animation: timeline,\r\n    })\r\n    return {\r\n      timeline,\r\n      duration\r\n    }\r\n  }\r\n\r\n  const svgCheckpointItems = TIMELINE.filter(item => item.type === NodeTypes.CHECKPOINT && item.shouldDrawLine)\r\n  // const svgLength = svgCheckpointItems ? .length * separation\r\n  const svgLength = svgCheckpointItems && svgCheckpointItems.length * separation;\r\n  onMounted(() => {\r\n    // Generate and set the timeline svg\r\n    setTimelineSvg(svgContainer, timelineSvg)\r\n\r\n    const {\r\n      timeline,\r\n      duration\r\n    }: {\r\n      timeline: GSAPTimeline,\r\n      duration: number\r\n    } = initScrollTrigger()\r\n\r\n    // Animation for Timeline SVG\r\n    animateTimeline(timeline, duration)\r\n  })\r\n\r\n  interface LinkNode {\r\n    next ? : LinkedTimelineNode\r\n    prev ? : LinkedTimelineNode\r\n  }\r\n\r\n  type LinkedTimelineNode = LinkedCheckpointNode | LinkedBranchNode\r\n\r\n  type LinkedCheckpointNode = LinkNode & CheckpointNode\r\n\r\n  type LinkedBranchNode = LinkNode & BranchNode\r\n</script>\r\n\r\n<template>\r\n  <section :id=\"MENULINKS[3].ref\"\r\n    class=\"section-container relative min-h-screen w-full flex flex-col select-none justify-center py-8\">\r\n    <div class=\"flex flex-col\">\r\n      <p class=\"section-title-sm seq\">\r\n        MILESTONES\r\n      </p>\r\n      <h1 class=\"section-heading seq mt-2\">\r\n        时间线\r\n      </h1>\r\n      <h2 class=\"seq mt-2 w-full text-2xl md:max-w-2xl\">\r\n        隐藏着什么呢？\r\n      </h2>\r\n    </div>\r\n    <div class=\"grid grid-cols-12 mt-20 gap-4\">\r\n      <div ref=\"svgContainer\" class=\"line-svg col-span-12 md:col-span-6\">\r\n        <svg ref=\"timelineSvg\" :width=\"svgWidth\" :height=\"svgLength\" :viewBox=\"`0 0 ${svgWidth} ${svgLength}`\"\r\n          fill=\"none\" />\r\n      </div>\r\n      <div class=\"col-span-12 hidden md:col-span-6 md:flex\">\r\n        <div ref=\"screenContainer\" class=\"h-96  max-w-full overflow-hidden  bg-transparent w-200 \">\r\n          <div class=\"relative h-full w-full \">\r\n            <div class=\"absolute left-0 top-0 h-full w-full\">\r\n              <img v-for=\"(item, idx) in svgCheckpointItems\" :key=\"`${item.title}-${idx}`\" alt=\"Timeline\" layout=\"fill\"\r\n                :class=\"`w-full absolute top-0 object-cover slide-${idx + 1}`\" :src=\"`${item.slideImage}`\">\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </section>\r\n</template>",
+      "start": 1715597154116,
+      "end": 1715597154211,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1715597154211,
+      "end": 1715597154211,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1715597154211,
+      "end": 1715597154211,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1715597154211,
+      "end": 1715597154211,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1715597154211,
+      "end": 1715597154212,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1715597154212,
+      "end": 1715597154212,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1715597154212,
+      "end": 1715597154212,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1715597154212,
+      "end": 1715597154212,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1715597154212,
+      "end": 1715597154212,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1715597154212,
+      "end": 1715597154212,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1715597154212,
+      "end": 1715597154212,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1715597154212,
+      "end": 1715597154212,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1715597154212,
+      "end": 1715597154212,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1715597154212,
+      "end": 1715597154212,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"D:/CODE/blog/myNuxt/resGro/components/home/timeline.vue?vue&type=script&setup=true&name=TimelineSection&lang.ts\";\nexport * from \"D:/CODE/blog/myNuxt/resGro/components/home/timeline.vue?vue&type=script&setup=true&name=TimelineSection&lang.ts\";\nimport { useSSRContext as __vite_useSSRContext } from \"vue\";\nconst _sfc_setup = _sfc_main.setup;\n_sfc_main.setup = (props, ctx) => {\n  const ssrContext = __vite_useSSRContext();\n  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add(\"components/home/timeline.vue\");\n  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;\n};\nexport default _sfc_main;\n",
+      "start": 1715597154212,
+      "end": 1715597154247,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:undefined",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:undefined",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1715597154247,
+      "end": 1715597154248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "post"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1715597154248,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1715597154248,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1715597154249,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1715597154249,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1715597154249,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1715597154249,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1715597154249,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1715597154249,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1715597154249,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1715597154249,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1715597154249,
+      "end": 1715597154250,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1715597154250,
+      "end": 1715597154250,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "resolvedId": "D:/CODE/blog/myNuxt/resGro/layouts/default.vue?vue&type=script&setup=true&name=BasicLayoutPage&lang.ts",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { ssrRenderSlot as _ssrRenderSlot } from \"vue/server-renderer\"\n\nimport 'virtual:uno.css'\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'default',\n  __ssrInlineRender: true,\n  setup(__props) {\n\r\n\nreturn (_ctx: any,_push: any,_parent: any,_attrs: any) => {\n  _ssrRenderSlot(_ctx.$slots, \"default\", {}, null, _push, _parent)\n}\n}\n\n})",
+      "start": 1715597155347,
+      "end": 1715597155347,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "D:/CODE/blog/myNuxt/resGro/layouts/default.vue"
+        ],
+        "sourcesContent": [
+          "<script lang=\"ts\" setup name=\"BasicLayoutPage\">\r\nimport 'virtual:uno.css'\r\n</script>\r\n\r\n<template>\r\n  <slot />\r\n</template>\r\n\r\n<style lang=\"scss\">\r\n@import '~/assets/styles/globals.scss';\r\n@import '/font/iconfont.css';\r\n#__nuxt {\r\n  width: 100%;\r\n  font-family: 'Google Sans', Avenir, ui-sans-serif, 'system-ui', '-apple-system', 'BlinkMacSystemFont', '\"Segoe UI\"', 'Roboto',\r\n    '\"Helvetica Neue\"', 'Arial', '\"Noto Sans\"', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji',\r\n    Helvetica, Arial, sans-serif;\r\n}\r\n</style>\r\n"
+        ],
+        "names": [],
+        "mappings": ";;;AACA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;;;;;;AADsB,CAAC;;;;;;;"
+      }
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1715597155347,
+      "end": 1715597155347,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1715597155347,
+      "end": 1715597155347,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1715597155347,
+      "end": 1715597155348,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1715597155347,
+      "end": 1715597155348,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1715597155348,
+      "end": 1715597155348,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1715597155348,
+      "end": 1715597155348,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1715597155348,
+      "end": 1715597155348,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1715597155348,
+      "end": 1715597155348,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1715597155348,
+      "end": 1715597155348,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1715597155348,
+      "end": 1715597155348,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { ssrRenderSlot as _ssrRenderSlot } from \"vue/server-renderer\";\nimport \"virtual:uno.css\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"default\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    return (_ctx, _push, _parent, _attrs) => {\n      _ssrRenderSlot(_ctx.$slots, \"default\", {}, null, _push, _parent);\n    };\n  }\n});\n",
+      "start": 1715597155348,
+      "end": 1715597155383,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "D:/CODE/blog/myNuxt/resGro/layouts/default.vue?vue&type=script&setup=true&name=BasicLayoutPage&lang.ts"
+        ],
+        "sourcesContent": [
+          "import { defineComponent as _defineComponent } from 'vue'\nimport { ssrRenderSlot as _ssrRenderSlot } from \"vue/server-renderer\"\n\nimport 'virtual:uno.css'\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'default',\n  __ssrInlineRender: true,\n  setup(__props) {\n\r\n\nreturn (_ctx: any,_push: any,_parent: any,_attrs: any) => {\n  _ssrRenderSlot(_ctx.$slots, \"default\", {}, null, _push, _parent)\n}\n}\n\n})"
+        ],
+        "mappings": "AAAA,SAAS,mBAAmB,wBAAwB;AACpD,SAAS,iBAAiB,sBAAsB;AAEhD,OAAO;AAEP,eAA4B,iCAAiB;AAAA,EAC3C,QAAQ;AAAA,EACR,mBAAmB;AAAA,EACnB,MAAM,SAAS;AAGjB,WAAO,CAAC,MAAU,OAAW,SAAa,WAAgB;AACxD,qBAAe,KAAK,QAAQ,WAAW,CAAC,GAAG,MAAM,OAAO,OAAO;AAAA,IACjE;AAAA,EACA;AAEA,CAAC;",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:undefined",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:undefined",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "post"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1715597155383,
+      "end": 1715597155383,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1715597155383,
+      "end": 1715597155385,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1715597155383,
+      "end": 1715597155385,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1715597155385,
+      "end": 1715597155385,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1715597155385,
+      "end": 1715597155385,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1715597155385,
+      "end": 1715597155385,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1715597155385,
+      "end": 1715597155385,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1715597155385,
+      "end": 1715597155385,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1715597155385,
+      "end": 1715597155385,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1715597155385,
+      "end": 1715597155385,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1715597155385,
+      "end": 1715597155385,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1715597155385,
+      "end": 1715597155385,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1715597155385,
+      "end": 1715597155385,
+      "order": "normal"
+    }
+  ]
+}

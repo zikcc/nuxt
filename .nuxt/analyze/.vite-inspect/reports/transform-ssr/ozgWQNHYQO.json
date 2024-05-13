@@ -1,0 +1,310 @@
+{
+  "resolvedId": "D:/CODE/blog/myNuxt/resGro/components/home/hero.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<script setup name=\"LandingHero\" lang=\"ts\">\r\n  import {\r\n    Linear,\r\n    gsap\r\n  } from 'gsap'\r\n  import Typed from 'typed.js'\r\n  import Button, {\r\n    ButtonTypes\r\n  } from '../common/button.vue'\r\n  import HeroImage from './hero-image'\r\n  import {\r\n    MENULINKS,\r\n    SOCIAL_LINKS,\r\n    TYPED_STRINGS,\r\n    INFODATA\r\n  } from '~/store/constants'\r\n\r\n  let typed: Typed\r\n  const HERO_STYLES = {\r\n    SECTION: 'w-full flex md:items-center py-8 section-container min-h-screen relative mb-24',\r\n    CONTENT: 'font-medium flex flex-col pt-32 md:pt-0 select-none',\r\n    SOCIAL_LINK: 'link hover:opacity-80 duration-300 md:mr-4 mr-2',\r\n    BG_WRAPPER: 'absolute hero-bg right-0 md:bottom-0 bottom-8 md:w-3/4 w-full scale-125 sm:scale-100 flex items-end',\r\n    TYPED_SPAN: 'text-xl sm:text-2xl md:text-4xl seq',\r\n  }\r\n\r\n  const typedSpanElement: Ref < HTMLElement | undefined > = ref(undefined)\r\n  const targetSection: Ref < HTMLElement | undefined > = ref(undefined)\r\n\r\n  function initTypeAnimation(typedSpanElement: Ref < HTMLElement | undefined > ): Typed {\r\n    return new Typed(typedSpanElement.value, {\r\n      strings: TYPED_STRINGS,\r\n      typeSpeed: 100,\r\n      backSpeed: 100,\r\n      backDelay: 3000,\r\n      loop: true,\r\n    })\r\n  }\r\n\r\n  function initRevealAnimation(targetSection: Ref < HTMLElement | undefined > ): GSAPTimeline {\r\n    const revealTl = gsap.timeline({\r\n      defaults: {\r\n        ease: Linear.easeNone\r\n      }\r\n    })\r\n    revealTl\r\n      .to(targetSection.value!, {\r\n        opacity: 1,\r\n        duration: 2\r\n      })\r\n      .from(targetSection.value!.querySelectorAll('.seq'), {\r\n        opacity: 0,\r\n        duration: 0.5,\r\n        stagger: 0.5\r\n      }, '<')\r\n    return revealTl\r\n  }\r\n  onMounted(() => {\r\n    typed = initTypeAnimation(typedSpanElement)\r\n    initRevealAnimation(targetSection)\r\n  })\r\n\r\n  onUnmounted(() => {\r\n    typed.destroy()\r\n  })\r\n\r\n  const {\r\n    ref: heroSectionRef\r\n  } = MENULINKS[0]\r\n</script>\r\n\r\n<template>\r\n  <div>\r\n    <section :id=\"heroSectionRef\" ref=\"targetSection\" :class=\"HERO_STYLES.SECTION\" style=\"opacity: 100\">\r\n      <div :class=\"HERO_STYLES.CONTENT\" style=\"z-index: 2;\">\r\n        <div class=\"mb-2 md:mb-4\">\r\n          <!-- <h2 class=\"seq text-4xl\">\r\n             👋🏻 👋🏻 👋🏻\r\n          </h2> -->\r\n          <br />\r\n          <h1 class=\"seq text-3xl\">\r\n            这里是。。。\r\n          </h1>\r\n        </div>\r\n        <p class=\"mb-4\">\r\n          <span ref=\"typedSpanElement\" :class=\"HERO_STYLES.TYPED_SPAN\" />\r\n        </p>\r\n        <!-- 媒体连接 -->\r\n        <!-- <div class=\"seq mb-5 flex\">\r\n          <a v-for=\"(item, key) in SOCIAL_LINKS\" :key=\"item\" :href=\"SOCIAL_LINKS[item]\" :class=\"HERO_STYLES.SOCIAL_LINK\"\r\n            rel=\"noreferrer\" target=\"_blank\">\r\n            <img :src=\"`/social/${key}.svg`\" :alt=\"key\" width=\"40\" height=\"40\">\r\n          </a>\r\n        </div> -->\r\n        <div class=\"seq flex\">\r\n          <Button classes=\"mr-3\" :type=\"ButtonTypes.OUTLINE\" name=\"详细信息\" target=\"_blank\" rel=\"noreferrer\"\r\n            :href=\"INFODATA.pdfUrl\" />\r\n          <Button classes=\"ml-3\" :type=\"ButtonTypes.PRIMARY\" name=\"联系我们\" :href=\"INFODATA.siteUrl\" target=\"_blank\"\r\n            rel=\"noreferrer\" />\r\n        </div>\r\n      </div>\r\n      <div :class=\"HERO_STYLES.BG_WRAPPER\" style=\"maxheight: '650px'\">\r\n        <HeroImage />\r\n      </div>\r\n    </section>\r\n  </div>\r\n</template>",
+      "start": 1715597154108,
+      "end": 1715597154193,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1715597154193,
+      "end": 1715597154193,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1715597154193,
+      "end": 1715597154193,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1715597154193,
+      "end": 1715597154194,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1715597154193,
+      "end": 1715597154194,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1715597154194,
+      "end": 1715597154194,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1715597154194,
+      "end": 1715597154194,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1715597154194,
+      "end": 1715597154194,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1715597154194,
+      "end": 1715597154194,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1715597154194,
+      "end": 1715597154194,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1715597154194,
+      "end": 1715597154194,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1715597154194,
+      "end": 1715597154194,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1715597154194,
+      "end": 1715597154194,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1715597154194,
+      "end": 1715597154194,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"D:/CODE/blog/myNuxt/resGro/components/home/hero.vue?vue&type=script&setup=true&name=LandingHero&lang.ts\";\nexport * from \"D:/CODE/blog/myNuxt/resGro/components/home/hero.vue?vue&type=script&setup=true&name=LandingHero&lang.ts\";\nimport { useSSRContext as __vite_useSSRContext } from \"vue\";\nconst _sfc_setup = _sfc_main.setup;\n_sfc_main.setup = (props, ctx) => {\n  const ssrContext = __vite_useSSRContext();\n  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add(\"components/home/hero.vue\");\n  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;\n};\nexport default _sfc_main;\n",
+      "start": 1715597154194,
+      "end": 1715597154247,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:undefined",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:undefined",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1715597154247,
+      "end": 1715597154247,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1715597154247,
+      "end": 1715597154248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "post"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1715597154248,
+      "end": 1715597154248,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1715597154248,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1715597154248,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1715597154249,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1715597154249,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1715597154249,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1715597154249,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1715597154249,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1715597154249,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1715597154249,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1715597154249,
+      "end": 1715597154249,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1715597154249,
+      "end": 1715597154250,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1715597154250,
+      "end": 1715597154250,
+      "order": "normal"
+    }
+  ]
+}

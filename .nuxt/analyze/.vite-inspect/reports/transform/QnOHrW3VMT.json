@@ -1,0 +1,244 @@
+{
+  "resolvedId": "D:/CODE/blog/myNuxt/resGro/pages/index.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<script lang=\"ts\" setup name=\"HomePage\">\r\n  import {\r\n    gsap\r\n  } from 'gsap'\r\n  import {\r\n    ScrollTrigger\r\n  } from 'gsap/dist/ScrollTrigger'\r\n\r\n  import QuoteSection from '~/components/home/quote.vue'\r\n  import MembersSection from '~/components/home/members.vue'\r\n  import AboutSection from '~/components/home/about.vue'\r\n  import HeroSection from '~/components/home/hero.vue'\r\n  import ProjectsSection from '~/components/home/projects.vue'\r\n  import TimelineSection from '~/components/home/timeline.vue'\r\n  import CollaborationSection from '~/components/home/collaboration.vue'\r\n  // import Footer from '~/components/footer.vue'\r\n\r\n  useSeoMeta({\r\n    // 网站标题\r\n    title: '标题',\r\n    // 网站描述\r\n    description: '描述',\r\n    // 搜索关键词\r\n    keywords: '倪渊之,课题组,车联网'\r\n  })\r\n\r\n\r\n  export interface IDesktop {\r\n    isDesktop: boolean\r\n  }\r\n\r\n  gsap.registerPlugin(ScrollTrigger)\r\n  gsap.config({\r\n    nullTargetWarn: false\r\n  })\r\n\r\n  const isDesktop = ref(true)\r\n  let timer: NodeJS.Timeout | null = null\r\n  const DEBOUNCE_TIME = 100\r\n\r\n  function debouncedDimensionCalculator() {\r\n    clearTimeout(timer!)\r\n    timer = setTimeout(() => {\r\n      const isDesktopResult = typeof window.matchMedia('(orientation: portrait)').matches === 'undefined' && !\r\n        navigator.userAgent.includes('IEMobile')\r\n\r\n      window.history.scrollRestoration = 'manual'\r\n      isDesktop.value = isDesktopResult\r\n    }, DEBOUNCE_TIME)\r\n  }\r\n\r\n  onMounted(() => {\r\n    debouncedDimensionCalculator()\r\n    window.addEventListener('resize', debouncedDimensionCalculator)\r\n    onUnmounted(() => {\r\n      window.removeEventListener('resize', debouncedDimensionCalculator)\r\n    })\r\n  })\r\n</script>\r\n\r\n<template>\r\n  <Layout />\r\n  <Header />\r\n  <ProgressIndicator />\r\n  <Cursor :is-desktop=\"isDesktop\" />\r\n  <main class=\"flex flex-col\">\r\n    <div class=\"fixed left-0 top-0 h-full w-full bg-gray-900 -z-1\" />\r\n    <HeroSection />\r\n    <AboutSection />\r\n    <ProjectsSection :is-desktop=\"isDesktop\" />\r\n    <QuoteSection />\r\n    <MembersSection />\r\n    <TimelineSection :is-desktop=\"isDesktop\" />\r\n    <CollaborationSection />\r\n\r\n  </main>\r\n  <Footer />\r\n</template>",
+      "start": 1715597137491,
+      "end": 1715597137784,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1715597137785,
+      "end": 1715597137785,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1715597137785,
+      "end": 1715597137785,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1715597137785,
+      "end": 1715597137785,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1715597137785,
+      "end": 1715597137785,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1715597137785,
+      "end": 1715597137785,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1715597137785,
+      "end": 1715597137785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1715597137785,
+      "end": 1715597137785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1715597137785,
+      "end": 1715597137785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1715597137785,
+      "end": 1715597137785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"D:/CODE/blog/myNuxt/resGro/pages/index.vue?vue&type=script&setup=true&name=HomePage&lang.ts\";\nexport * from \"D:/CODE/blog/myNuxt/resGro/pages/index.vue?vue&type=script&setup=true&name=HomePage&lang.ts\";\nexport default _sfc_main;\n",
+      "start": 1715597137785,
+      "end": 1715597138108,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1715597138108,
+      "end": 1715597138108,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:undefined",
+      "start": 1715597138108,
+      "end": 1715597138108,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715597138108,
+      "end": 1715597138108,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1715597138108,
+      "end": 1715597138108,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1715597138108,
+      "end": 1715597138108,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1715597138108,
+      "end": 1715597138109,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715597138109,
+      "end": 1715597138109,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1715597138109,
+      "end": 1715597138109,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1715597138109,
+      "end": 1715597138109,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1715597138109,
+      "end": 1715597138109,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1715597138109,
+      "end": 1715597138109,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1715597138109,
+      "end": 1715597138109,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1715597138109,
+      "end": 1715597138109,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1715597138109,
+      "end": 1715597138109,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1715597138109,
+      "end": 1715597138109,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1715597138109,
+      "end": 1715597138109,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1715597138109,
+      "end": 1715597138109,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1715597138109,
+      "end": 1715597138109,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1715597138109,
+      "end": 1715597138110,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1715597138110,
+      "end": 1715597138110,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1715597138111,
+      "end": 1715597138111,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1715597138111,
+      "end": 1715597138111,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1715597138111,
+      "end": 1715597138112,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1715597138112,
+      "end": 1715597138112,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1715597138112,
+      "end": 1715597138112,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1715597138112,
+      "end": 1715597138112,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1715597138112,
+      "end": 1715597138112,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1715597138112,
+      "end": 1715597138112,
+      "order": "normal"
+    }
+  ]
+}
