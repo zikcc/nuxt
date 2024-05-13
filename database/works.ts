@@ -1,0 +1,48 @@
+import type { IProject } from "~/store/constants"
+export const WORKS: IProject[] = [
+  {
+    name: 'keywords: 任务卸载，资源管理',
+    image: 'https://pics.latexstudio.net/uploads/20201230/5feb59092cadf/latexc__images/3.png',
+    author: '/projects/blur/figgen-blur.jpg',
+    description: '描述信息',
+    gradient: ['#1F6582', '#1ABCFE'],
+    url: '#',
+    data: '2024-5-11',
+  },
+  {
+    name: 'keywords: 任务卸载，资源管理',
+    image: 'https://pics.latexstudio.net/uploads/20201230/5feb59092cadf/latexc__images/3.png',
+    author: '/projects/blur/myokr-blur.jpg',
+    description: '描述信息',
+    gradient: ['#153BB9', '#0E2C8B'],
+    url: '#',
+    data: '2024-5-11',
+  },
+  {
+    name: 'keywords: 任务卸载，资源管理',
+    image: 'https://pics.latexstudio.net/uploads/20201230/5feb59092cadf/latexc__images/3.png',
+    author: '/projects/blur/dlt-website-blur.jpg',
+    description: '描述信息',
+    gradient: ['#245B57', '#004741'],
+    url: '#',
+    data: '2024-5-11',
+  },
+  {
+    name: 'keywords: 任务卸载，资源管理',
+    image: 'https://pics.latexstudio.net/uploads/20201230/5feb59092cadf/latexc__images/3.png',
+    author: '/projects/blur/dl-unify-blur.jpg',
+    description: '描述信息',
+    gradient: ['#003052', '#167187'],
+    url: '#',
+    data: '2024-5-11',
+  },
+  {
+    name: 'keywords: 任务卸载，资源管理',
+    image: 'https://pics.latexstudio.net/uploads/20201230/5feb59092cadf/latexc__images/3.png',
+    author: '/projects/blur/ngx-quill-upload-blur.jpg',
+    description: '描述信息',
+    gradient: ['#3A0000', '#771E1E'],
+    url: '#',
+    data: '2024-5-11',
+  },
+]

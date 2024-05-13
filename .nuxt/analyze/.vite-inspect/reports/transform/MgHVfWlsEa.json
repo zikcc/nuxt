@@ -1,0 +1,260 @@
+{
+  "resolvedId": "D:/CODE/Blog/nuxt-main/components/common/ProjectTile.module.scss?used",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": ".ProjectTile {\n  height: 22rem;\n  width: 38rem;\n  background: black;\n  transform-style: preserve-3d;\n  transform: perspective(1000px);\n\n  @media (min-width: 768px) {\n    height: 26rem;\n  }\n\n  img {\n    object-fit: cover;\n  }\n}\n\n.ProjectImg {\n  @apply absolute top-0 rounded-xl shadow-xl;\n\n  width: 16.8rem !important;\n  transform: rotate(-22.5deg);\n  height: unset !important;\n  min-width: unset !important;\n  max-height: unset !important;\n  object-fit: contain !important;\n  left: unset !important;\n  right: 2rem !important;\n  bottom: unset !important;\n}\n\n.techIcons {\n  transform: rotate(-22.5deg) translateZ(2rem);\n}\n",
+      "start": 1715588495027,
+      "end": 1715588495166,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1715588495166,
+      "end": 1715588495166,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1715588495166,
+      "end": 1715588495166,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1715588495166,
+      "end": 1715588495166,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1715588495166,
+      "end": 1715588495166,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1715588495166,
+      "end": 1715588495166,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": ":root {\n  --el-color-primary: #fff;\n  --el-bg-color-overlay:transparent;\n}\n\n._ProjectTile_nd4de_6 {\n  background: #000;\n  height: 22rem;\n  transform: perspective(1000px);\n  transform-style: preserve-3d;\n  width: 38rem;\n}\n@media (min-width:768px) {\n  ._ProjectTile_nd4de_6 {\n    height: 26rem;\n  }\n}\n._ProjectTile_nd4de_6 img {\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n\n._ProjectImg_nd4de_22 {\n  @apply absolute top-0 rounded-xl shadow-xl;\n  bottom: unset !important;\n  height: unset !important;\n  left: unset !important;\n  max-height: unset !important;\n  min-width: unset !important;\n  -o-object-fit: contain !important;\n     object-fit: contain !important;\n  right: 2rem !important;\n  transform: rotate(-22.5deg);\n  width: 16.8rem !important;\n}\n\n._techIcons_nd4de_35 {\n  transform: rotate(-22.5deg) translateZ(2rem);\n}",
+      "start": 1715588495166,
+      "end": 1715588495642,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1715588495642,
+      "end": 1715588495642,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1715588495642,
+      "end": 1715588495642,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1715588495642,
+      "end": 1715588495642,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1715588495642,
+      "end": 1715588495642,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1715588495642,
+      "end": 1715588495642,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:undefined",
+      "result": ":root {\n  --el-color-primary: #fff;\n  --el-bg-color-overlay:transparent;\n}\n\n._ProjectTile_nd4de_6 {\n  background: #000;\n  height: 22rem;\n  transform: perspective(1000px);\n  transform-style: preserve-3d;\n  width: 38rem;\n}\n@media (min-width:768px) {\n  ._ProjectTile_nd4de_6 {\n    height: 26rem;\n  }\n}\n._ProjectTile_nd4de_6 img {\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n\n._ProjectImg_nd4de_22 {\n  position:absolute;top:0;border-radius:0.75rem;--un-shadow:var(--un-shadow-inset) 0 20px 25px -5px var(--un-shadow-color, rgb(0 0 0 / 0.1)),var(--un-shadow-inset) 0 8px 10px -6px var(--un-shadow-color, rgb(0 0 0 / 0.1));box-shadow:var(--un-ring-offset-shadow), var(--un-ring-shadow), var(--un-shadow);\n  bottom: unset !important;\n  height: unset !important;\n  left: unset !important;\n  max-height: unset !important;\n  min-width: unset !important;\n  -o-object-fit: contain !important;\n     object-fit: contain !important;\n  right: 2rem !important;\n  transform: rotate(-22.5deg);\n  width: 16.8rem !important;\n}\n\n._techIcons_nd4de_35 {\n  transform: rotate(-22.5deg) translateZ(2rem);\n}",
+      "start": 1715588495642,
+      "end": 1715588495644,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "mappings": "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",
+        "names": [],
+        "sources": [
+          "D:/CODE/Blog/nuxt-main/components/common/ProjectTile.module.scss?used"
+        ],
+        "sourcesContent": [
+          null
+        ]
+      }
+    },
+    {
+      "name": "replace",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "export const ProjectTile = \"_ProjectTile_nd4de_6\";\nexport const ProjectImg = \"_ProjectImg_nd4de_22\";\nexport const techIcons = \"_techIcons_nd4de_35\";\nexport default {\n\tProjectTile: ProjectTile,\n\tProjectImg: ProjectImg,\n\ttechIcons: techIcons\n};\n",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1715588495645,
+      "end": 1715588495645,
+      "order": "normal"
+    }
+  ]
+}

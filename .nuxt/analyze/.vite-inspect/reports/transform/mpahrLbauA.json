@@ -1,0 +1,251 @@
+{
+  "resolvedId": "D:/CODE/Blog/nuxt-main/components/home/projects.vue?vue&type=style&index=1&lang.css",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\n  .mycollapse .el-collapse {\n    border: 0px;\n    transition: 1s linear;\n    padding: 5px;\n    --el-collapse-border: 0 px;\n    --el-collapse-header-text-color: #fff;\n    --el-collapse-header-font-size: 1.5rem;\n    --el-collapse-content-bg-color: Transparent;\n    --el-collapse-content-font-size: 1rem;\n    --el-collapse-content-text-color: #fff\n  }\n\n\n  .mycollapse .el-collapse-item__header,\n  .mycollapse .el-collapse-item__wrap {\n    border-bottom: 0;\n  }\n\n  .mycollapse .el-collapse-item__content {\n\n    padding-bottom: 0px;\n  }\n\n  .mycollapse .el-collapse-item:last-child {\n    margin-bottom: 1px;\n  }\n\n  .mycollapse .el-table {\n\n    --el-table-border-color: Transparent;\n    /* --el-table-border-color: var(--el-border-color-lighter); */\n    --el-table-border: 1px solid var(--el-table-border-color);\n    --el-table-text-color: #fff;\n    --el-table-header-text-color: var(--el-text-color-secondary);\n    --el-table-row-hover-bg-color: #3f4450;\n    --el-table-current-row-bg-color: var(--el-color-primary-light-9);\n    --el-table-header-bg-color: rgba(255, 255, 255, 0);\n    --el-table-fixed-box-shadow: var(--el-box-shadow-light);\n    --el-table-bg-color: rgba(255, 255, 255, 0);\n    --el-table-tr-bg-color: rgba(255, 255, 255, 0);\n    --el-table-expanded-cell-bg-color: var(--el-fill-color-blank);\n    --el-table-fixed-left-column: inset 10px 0 10px -10px rgba(0, 0, 0, 0.15);\n    --el-table-fixed-right-column: inset -10px 0 10px -10px rgba(0, 0, 0, 0.15);\n    --el-table-index: var(--el-index-normal);\n    box-sizing: border-box;\n    color: var(--el-table-text-color);\n    font-size: 1rem;\n    height: -moz-fit-content;\n    height: fit-content;\n    max-width: 100%;\n    overflow: hidden;\n    position: relative;\n    width: 100%;\n  }\n\n  .el-pager li.is-active {\n    color: #57b9e3;\n    cursor: default;\n    font-weight: bold;\n  }\n\n  .el-pager li:hover {\n    color: #57b9e3;\n  }\n\n  .pagination-block {\n    display: flex;\n    align-items: center;\n    /* 垂直居中 */\n    justify-content: center;\n    /* 水平居中 */\n  }\n  .pagination-block {\n    width: 100%;\n  }\n  .el-pagination {\n\n    margin-top: 10px;\n    --el-pagination-font-size: 1rem;\n    --el-pagination-bg-color: rgba(0, 0, 0, 0);\n    --el-pagination-text-color: #fff;\n    --el-pagination-border-radius: 0px;\n    --el-pagination-button-color: #fff;\n    --el-pagination-button-width: 32px;\n    --el-pagination-button-height: 32px;\n    --el-pagination-button-disabled-color: var(--el-text-color-placeholder);\n    --el-pagination-button-disabled-bg-color: Transparent;\n    --el-pagination-button-bg-color: #ffffff;\n    --el-pagination-hover-color: #57b9e3;\n    --el-pagination-font-size-small: 12px;\n    --el-pagination-button-width-small: 24px;\n    --el-pagination-button-height-small: 24px;\n    --el-pagination-item-gap: 16px;\n    align-items: center;\n    color: rgb(255, 255, 255);\n    display: flex;\n    font-size: var(--el-pagination-font-size);\n    font-weight: normal;\n    white-space: nowrap;\n  }\n",
+      "start": 1715588493037,
+      "end": 1715588493037
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1715588493037,
+      "end": 1715588493037,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1715588493037,
+      "end": 1715588493037,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1715588493037,
+      "end": 1715588493037,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1715588493037,
+      "end": 1715588493037,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1715588493037,
+      "end": 1715588493037,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": "\n  .mycollapse .el-collapse {\n    border: 0;\n    padding: 5px;\n    transition: 1s linear;\n    --el-collapse-border: 0 px;\n    --el-collapse-header-text-color: #fff;\n    --el-collapse-header-font-size: 1.5rem;\n    --el-collapse-content-bg-color: transparent;\n    --el-collapse-content-font-size: 1rem;\n    --el-collapse-content-text-color: #fff\n  }\n\n\n  .mycollapse .el-collapse-item__header,.mycollapse .el-collapse-item__wrap {\n    border-bottom: 0;\n  }\n\n  .mycollapse .el-collapse-item__content {\n\n    padding-bottom: 0;\n  }\n\n  .mycollapse .el-collapse-item:last-child {\n    margin-bottom: 1px;\n  }\n\n  .mycollapse .el-table {\n\n    --el-table-border-color: transparent;\n    /* --el-table-border-color: var(--el-border-color-lighter); */\n    --el-table-border: 1px solid var(--el-table-border-color);\n    --el-table-text-color: #fff;\n    --el-table-header-text-color: var(--el-text-color-secondary);\n    --el-table-row-hover-bg-color: #3f4450;\n    --el-table-current-row-bg-color: var(--el-color-primary-light-9);\n    --el-table-header-bg-color: hsla(0,0%,100%,0);\n    --el-table-fixed-box-shadow: var(--el-box-shadow-light);\n    --el-table-bg-color: hsla(0,0%,100%,0);\n    --el-table-tr-bg-color: hsla(0,0%,100%,0);\n    --el-table-expanded-cell-bg-color: var(--el-fill-color-blank);\n    --el-table-fixed-left-column: inset 10px 0 10px -10px rgba(0,0,0,.15);\n    --el-table-fixed-right-column: inset -10px 0 10px -10px rgba(0,0,0,.15);\n    --el-table-index: var(--el-index-normal);\n    box-sizing: border-box;\n    color: var(--el-table-text-color);\n    font-size: 1rem;\n    height: -moz-fit-content;\n    height: fit-content;\n    max-width: 100%;\n    overflow: hidden;\n    position: relative;\n    width: 100%;\n  }\n\n  .el-pager li.is-active {\n    color: #57b9e3;\n    cursor: default;\n    font-weight: 700;\n  }\n\n  .el-pager li:hover {\n    color: #57b9e3;\n  }\n\n  .pagination-block {\n    align-items: center;\n    display: flex;\n    /* 垂直居中 */\n    justify-content: center;\n    /* 水平居中 */\n  }\n  .pagination-block {\n    width: 100%;\n  }\n  .el-pagination {\n\n    margin-top: 10px;\n    --el-pagination-font-size: 1rem;\n    --el-pagination-bg-color: transparent;\n    --el-pagination-text-color: #fff;\n    --el-pagination-border-radius: 0px;\n    --el-pagination-button-color: #fff;\n    --el-pagination-button-width: 32px;\n    --el-pagination-button-height: 32px;\n    --el-pagination-button-disabled-color: var(--el-text-color-placeholder);\n    --el-pagination-button-disabled-bg-color: transparent;\n    --el-pagination-button-bg-color: #fff;\n    --el-pagination-hover-color: #57b9e3;\n    --el-pagination-font-size-small: 12px;\n    --el-pagination-button-width-small: 24px;\n    --el-pagination-button-height-small: 24px;\n    --el-pagination-item-gap: 16px;\n    align-items: center;\n    color: #fff;\n    display: flex;\n    font-size: var(--el-pagination-font-size);\n    font-weight: 400;\n    white-space: nowrap;\n  }\n",
+      "start": 1715588493037,
+      "end": 1715588493046,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1715588493046,
+      "end": 1715588493046,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1715588493046,
+      "end": 1715588493046,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1715588493046,
+      "end": 1715588493046,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "\n.mycollapse .el-collapse {\n    border: 0;\n    padding: 5px;\n    transition: 1s linear;\n    --el-collapse-border: 0 px;\n    --el-collapse-header-text-color: #fff;\n    --el-collapse-header-font-size: 1.5rem;\n    --el-collapse-content-bg-color: transparent;\n    --el-collapse-content-font-size: 1rem;\n    --el-collapse-content-text-color: #fff\n  }\n.mycollapse .el-collapse-item__header,.mycollapse .el-collapse-item__wrap {\n    border-bottom: 0;\n}\n.mycollapse .el-collapse-item__content {\n\n    padding-bottom: 0;\n}\n.mycollapse .el-collapse-item:last-child {\n    margin-bottom: 1px;\n}\n.mycollapse .el-table {\n\n    --el-table-border-color: transparent;\n    /* --el-table-border-color: var(--el-border-color-lighter); */\n    --el-table-border: 1px solid var(--el-table-border-color);\n    --el-table-text-color: #fff;\n    --el-table-header-text-color: var(--el-text-color-secondary);\n    --el-table-row-hover-bg-color: #3f4450;\n    --el-table-current-row-bg-color: var(--el-color-primary-light-9);\n    --el-table-header-bg-color: hsla(0,0%,100%,0);\n    --el-table-fixed-box-shadow: var(--el-box-shadow-light);\n    --el-table-bg-color: hsla(0,0%,100%,0);\n    --el-table-tr-bg-color: hsla(0,0%,100%,0);\n    --el-table-expanded-cell-bg-color: var(--el-fill-color-blank);\n    --el-table-fixed-left-column: inset 10px 0 10px -10px rgba(0,0,0,.15);\n    --el-table-fixed-right-column: inset -10px 0 10px -10px rgba(0,0,0,.15);\n    --el-table-index: var(--el-index-normal);\n    box-sizing: border-box;\n    color: var(--el-table-text-color);\n    font-size: 1rem;\n    height: -moz-fit-content;\n    height: fit-content;\n    max-width: 100%;\n    overflow: hidden;\n    position: relative;\n    width: 100%;\n}\n.el-pager li.is-active {\n    color: #57b9e3;\n    cursor: default;\n    font-weight: 700;\n}\n.el-pager li:hover {\n    color: #57b9e3;\n}\n.pagination-block {\n    align-items: center;\n    display: flex;\n    /* 垂直居中 */\n    justify-content: center;\n    /* 水平居中 */\n}\n.pagination-block {\n    width: 100%;\n}\n.el-pagination {\n\n    margin-top: 10px;\n    --el-pagination-font-size: 1rem;\n    --el-pagination-bg-color: transparent;\n    --el-pagination-text-color: #fff;\n    --el-pagination-border-radius: 0px;\n    --el-pagination-button-color: #fff;\n    --el-pagination-button-width: 32px;\n    --el-pagination-button-height: 32px;\n    --el-pagination-button-disabled-color: var(--el-text-color-placeholder);\n    --el-pagination-button-disabled-bg-color: transparent;\n    --el-pagination-button-bg-color: #fff;\n    --el-pagination-hover-color: #57b9e3;\n    --el-pagination-font-size-small: 12px;\n    --el-pagination-button-width-small: 24px;\n    --el-pagination-button-height-small: 24px;\n    --el-pagination-item-gap: 16px;\n    align-items: center;\n    color: #fff;\n    display: flex;\n    font-size: var(--el-pagination-font-size);\n    font-weight: 400;\n    white-space: nowrap;\n}\n",
+      "start": 1715588493046,
+      "end": 1715588493047,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:undefined",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "export default ''",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1715588493047,
+      "end": 1715588493047,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1715588493048,
+      "end": 1715588493048,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1715588493048,
+      "end": 1715588493048,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1715588493048,
+      "end": 1715588493048,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1715588493048,
+      "end": 1715588493048,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1715588493048,
+      "end": 1715588493048,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1715588493048,
+      "end": 1715588493048,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1715588493048,
+      "end": 1715588493048,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1715588493048,
+      "end": 1715588493048,
+      "order": "normal"
+    }
+  ]
+}

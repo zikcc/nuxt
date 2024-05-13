@@ -1,0 +1,310 @@
+{
+  "resolvedId": "D:/CODE/Blog/nuxt-main/components/home/collaboration.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<script lang=\"ts\" setup name=\"CollaborationSection\">\nimport { Linear, gsap } from 'gsap'\nimport { ScrollTrigger } from 'gsap/dist/ScrollTrigger'\nimport { NO_MOTION_PREFERENCE_QUERY, isSmallScreen } from '~/store/constants'\n\nconst COLLABORATION_STYLE = {\n  SLIDING_TEXT: 'opacity-20 text-4xl md:text-5xl font-bold whitespace-nowrap',\n  SECTION: 'w-full relative select-none tall:py-36 py-48 section-container flex flex-col',\n  TITLE: 'mt-6 md:mt-8 font-medium text-4xl md:text-5xl text-center',\n}\n\nconst quoteRef: Ref<HTMLElement | undefined> = ref(undefined)\nconst targetSection: Ref<HTMLElement | undefined> = ref(undefined)\n\nconst willChange = ref(false)\n\nfunction initTextGradientAnimation(targetSection: Ref<HTMLElement | undefined>): ScrollTrigger {\n  const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } })\n  timeline.from(quoteRef.value!, { opacity: 0, duration: 2 }).to(quoteRef.value!.querySelector('.text-strong'), {\n    backgroundPositionX: '100%',\n    duration: 1,\n  })\n\n  return ScrollTrigger.create({\n    trigger: targetSection.value!,\n    start: 'center bottom',\n    end: 'center center',\n    scrub: 0,\n    animation: timeline,\n    onToggle: self => willChange.value = self.isActive,\n  })\n}\n\nfunction initSlidingTextAnimation(targetSection: Ref<HTMLElement | undefined>) {\n  const slidingTl = gsap.timeline({ defaults: { ease: Linear.easeNone } })\n\n  slidingTl\n    .to(targetSection.value!.querySelector('.ui-left'), {\n      xPercent: isSmallScreen() ? -500 : -300,\n    })\n    .from(targetSection.value!.querySelector('.ui-right'), { xPercent: isSmallScreen() ? -500 : -300 }, '<')\n\n  return ScrollTrigger.create({\n    trigger: targetSection.value!,\n    start: 'top bottom',\n    end: 'bottom top',\n    scrub: 0,\n    animation: slidingTl,\n  })\n}\n\nonMounted(() => {\n  const textBgAnimation = initTextGradientAnimation(targetSection)\n  let slidingAnimation: ScrollTrigger | undefined\n\n  const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY)\n\n  if (matches)\n    slidingAnimation = initSlidingTextAnimation(targetSection)\n\n  return () => {\n    textBgAnimation.kill()\n    slidingAnimation?.kill()\n  }\n})\n</script>\n\n<template>\n  <section ref=\"targetSection\" :class=\"COLLABORATION_STYLE.SECTION\">\n    <p :class=\"`ui-left ${COLLABORATION_STYLE.SLIDING_TEXT}`\">\n      {{\n        Array.from({ length: 15 })\n          .fill(' 学而不思则罔 ')\n          .reduce((str, el) => str.concat(el), '')\n      }}\n    </p>\n    <h1 ref=\"quoteRef\" :class=\"`${COLLABORATION_STYLE.TITLE} ${willChange && 'will-change-opacity'}`\">\n      努力请从 <span class=\"text-strong font-bold\">今日</span> 始\n    </h1>\n\n    <p :class=\"`mt-6 md:mt-8 ui-right ${COLLABORATION_STYLE.SLIDING_TEXT}`\">\n      {{\n        Array.from({ length: 15 })\n          .fill(' 思而不学则殆')\n          .reduce((str, el) => str.concat(el), '')\n      }}\n    </p>\n  </section>\n</template>\n",
+      "start": 1715588506924,
+      "end": 1715588507117,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1715588507117,
+      "end": 1715588507117,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1715588507117,
+      "end": 1715588507117,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1715588507117,
+      "end": 1715588507117,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1715588507117,
+      "end": 1715588507117,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1715588507117,
+      "end": 1715588507117,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1715588507117,
+      "end": 1715588507117,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1715588507118,
+      "end": 1715588507118,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1715588507118,
+      "end": 1715588507118,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1715588507118,
+      "end": 1715588507118,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1715588507118,
+      "end": 1715588507118,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1715588507118,
+      "end": 1715588507118,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1715588507118,
+      "end": 1715588507118,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1715588507118,
+      "end": 1715588507118,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"D:/CODE/Blog/nuxt-main/components/home/collaboration.vue?vue&type=script&setup=true&name=CollaborationSection&lang.ts\";\nexport * from \"D:/CODE/Blog/nuxt-main/components/home/collaboration.vue?vue&type=script&setup=true&name=CollaborationSection&lang.ts\";\nimport { useSSRContext as __vite_useSSRContext } from \"vue\";\nconst _sfc_setup = _sfc_main.setup;\n_sfc_main.setup = (props, ctx) => {\n  const ssrContext = __vite_useSSRContext();\n  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add(\"components/home/collaboration.vue\");\n  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;\n};\nexport default _sfc_main;\n",
+      "start": 1715588507118,
+      "end": 1715588507160,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1715588507160,
+      "end": 1715588507160,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:undefined",
+      "start": 1715588507160,
+      "end": 1715588507160,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:undefined",
+      "start": 1715588507160,
+      "end": 1715588507160,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715588507161,
+      "end": 1715588507161,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715588507161,
+      "end": 1715588507161,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1715588507161,
+      "end": 1715588507161,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1715588507161,
+      "end": 1715588507161,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715588507161,
+      "end": 1715588507161,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1715588507161,
+      "end": 1715588507161,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715588507161,
+      "end": 1715588507161,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1715588507161,
+      "end": 1715588507161,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1715588507161,
+      "end": 1715588507161,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1715588507161,
+      "end": 1715588507161,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1715588507161,
+      "end": 1715588507161,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1715588507161,
+      "end": 1715588507161,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1715588507161,
+      "end": 1715588507161,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1715588507161,
+      "end": 1715588507161,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1715588507162,
+      "end": 1715588507162,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1715588507162,
+      "end": 1715588507162,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1715588507162,
+      "end": 1715588507162,
+      "order": "post"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1715588507162,
+      "end": 1715588507162,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1715588507162,
+      "end": 1715588507162,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1715588507162,
+      "end": 1715588507162,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1715588507162,
+      "end": 1715588507180,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1715588507162,
+      "end": 1715588507180,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1715588507180,
+      "end": 1715588507180,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1715588507180,
+      "end": 1715588507180,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1715588507180,
+      "end": 1715588507180,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1715588507180,
+      "end": 1715588507180,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1715588507180,
+      "end": 1715588507180,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1715588507180,
+      "end": 1715588507180,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1715588507180,
+      "end": 1715588507180,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1715588507180,
+      "end": 1715588507180,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1715588507180,
+      "end": 1715588507181,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1715588507181,
+      "end": 1715588507181,
+      "order": "normal"
+    }
+  ]
+}
