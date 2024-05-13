@@ -4,8 +4,8 @@
     {
       "name": "vite:vue",
       "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\"\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderComponent as _ssrRenderComponent, ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\"\nimport _imports_0 from '/pattern-r.svg'\nimport _imports_1 from '/pattern-l.svg'\n\n\nimport {\r\n    Linear,\r\n    gsap\r\n  } from 'gsap'\r\n  import {\r\n    ScrollTrigger\r\n  } from 'gsap/dist/ScrollTrigger'\r\n  import renderMemberColumn from './render-member-column.vue'\r\n  import {\r\n    MENULINKS,\r\n    FORMER_MEMBERS,\r\n    NOW_MEMBERS\r\n  } from '~/store/constants'\r\n\r\n  \nexport default /*#__PURE__*/_defineComponent({\n  __name: 'members',\n  __ssrInlineRender: true,\n  setup(__props) {\n\r\n  const willChange = ref(false)\r\n  // 透明显现动画\r\n  function initRevealAnimation(targetSection: Ref < HTMLElement | undefined > ): ScrollTrigger {\r\n    const revealTl = gsap.timeline({\r\n      defaults: {\r\n        ease: Linear.easeNone\r\n      }\r\n    })\r\n    revealTl.from(targetSection.value!.querySelectorAll('.seq'), {\r\n      opacity: 0,\r\n      duration: 0.5,\r\n      stagger: 0.5\r\n    }, '<')\r\n    return ScrollTrigger.create({\r\n      trigger: targetSection.value!.querySelector('.members-wrapper'),\r\n      start: '100px bottom',\r\n      end: `center center`,\r\n      animation: revealTl,\r\n      scrub: 0,\r\n      onToggle: self => (willChange.value = self.isActive),\r\n    })\r\n  }\r\n\r\n  const targetSection: Ref < HTMLElement | undefined > = ref(undefined)\r\n\r\n  onMounted(() => {\r\n    const revealAnimationRef = initRevealAnimation(targetSection)\r\n    onUnmounted(() => {\r\n      return revealAnimationRef.kill\r\n    })\r\n  })\r\n\nreturn (_ctx: any,_push: any,_parent: any,_attrs: any) => {\n  _push(`<section${\n    _ssrRenderAttrs(_mergeProps({ class: \"relative\" }, _attrs))\n  }><div class=\"absolute right-0 hidden max-w-xs w-1/5 justify-end -bottom-1/3 md:flex\"><img${\n    _ssrRenderAttr(\"src\", _imports_0)\n  } loading=\"lazy\" height=\"700\" width=\"320\" alt=\"pattern\"></div><div class=\"absolute left-0 hidden max-w-xs w-1/12 -bottom-3.5 md:block\"><img${\n    _ssrRenderAttr(\"src\", _imports_1)\n  } loading=\"lazy\" height=\"335\" width=\"140\" alt=\"pattern\"></div><div${\n    _ssrRenderAttr(\"id\", _unref(MENULINKS)[2].ref)\n  } class=\"section-container relative mb-24 w-full flex flex-col select-none justify-center py-12\"><div class=\"members-wrapper flex flex-col\"><div class=\"flex flex-col\"><p class=\"section-title-sm seq\"> MEMBERS </p><h1 class=\"section-heading seq mt-2\"> 课题组成员 </h1><h2 class=\"seq mt-2 w-full text-2xl md:max-w-2xl\"> 想个句子填充一下吧~ </h2></div><div class=\"mt-10\">`)\n  _push(_ssrRenderComponent(renderMemberColumn, {\n    members: _unref(FORMER_MEMBERS),\n    \"will-change\": _unref(willChange),\n    title: \"已毕业\"\n  }, null, _parent))\n  _push(`</div><div class=\"mt-10\">`)\n  _push(_ssrRenderComponent(renderMemberColumn, {\n    members: _unref(NOW_MEMBERS),\n    \"will-change\": _unref(willChange),\n    title: \"在读\"\n  }, null, _parent))\n  _push(`</div></div></div></section>`)\n}\n}\n\n})",
-      "start": 1715597154929,
-      "end": 1715597154929,
+      "start": 1715603891224,
+      "end": 1715603891224,
       "sourcemaps": {
         "version": 3,
         "sources": [
@@ -20,69 +20,69 @@
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597154930,
-      "end": 1715597154930,
+      "start": 1715603891224,
+      "end": 1715603891224,
       "order": "pre"
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597154930,
-      "end": 1715597154930,
+      "start": 1715603891224,
+      "end": 1715603891224,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597154930,
-      "end": 1715597154930,
+      "start": 1715603891224,
+      "end": 1715603891225,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597154930,
-      "end": 1715597154930,
+      "start": 1715603891224,
+      "end": 1715603891225,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597154930,
-      "end": 1715597154930,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597154930,
-      "end": 1715597154930,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597154930,
-      "end": 1715597154930,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597154930,
-      "end": 1715597154930,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1715597154930,
-      "end": 1715597154930,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1715597154931,
-      "end": 1715597154931,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderComponent as _ssrRenderComponent, ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\";\nimport _imports_0 from \"/pattern-r.svg\";\nimport _imports_1 from \"/pattern-l.svg\";\nimport {\n  Linear,\n  gsap\n} from \"gsap\";\nimport {\n  ScrollTrigger\n} from \"gsap/dist/ScrollTrigger\";\nimport renderMemberColumn from \"./render-member-column.vue\";\nimport {\n  MENULINKS,\n  FORMER_MEMBERS,\n  NOW_MEMBERS\n} from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"members\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const willChange = ref(false);\n    function initRevealAnimation(targetSection2) {\n      const revealTl = gsap.timeline({\n        defaults: {\n          ease: Linear.easeNone\n        }\n      });\n      revealTl.from(targetSection2.value.querySelectorAll(\".seq\"), {\n        opacity: 0,\n        duration: 0.5,\n        stagger: 0.5\n      }, \"<\");\n      return ScrollTrigger.create({\n        trigger: targetSection2.value.querySelector(\".members-wrapper\"),\n        start: \"100px bottom\",\n        end: `center center`,\n        animation: revealTl,\n        scrub: 0,\n        onToggle: (self) => willChange.value = self.isActive\n      });\n    }\n    const targetSection = ref(void 0);\n    onMounted(() => {\n      const revealAnimationRef = initRevealAnimation(targetSection);\n      onUnmounted(() => {\n        return revealAnimationRef.kill;\n      });\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<section${_ssrRenderAttrs(_mergeProps({ class: \"relative\" }, _attrs))}><div class=\"absolute right-0 hidden max-w-xs w-1/5 justify-end -bottom-1/3 md:flex\"><img${_ssrRenderAttr(\"src\", _imports_0)} loading=\"lazy\" height=\"700\" width=\"320\" alt=\"pattern\"></div><div class=\"absolute left-0 hidden max-w-xs w-1/12 -bottom-3.5 md:block\"><img${_ssrRenderAttr(\"src\", _imports_1)} loading=\"lazy\" height=\"335\" width=\"140\" alt=\"pattern\"></div><div${_ssrRenderAttr(\"id\", _unref(MENULINKS)[2].ref)} class=\"section-container relative mb-24 w-full flex flex-col select-none justify-center py-12\"><div class=\"members-wrapper flex flex-col\"><div class=\"flex flex-col\"><p class=\"section-title-sm seq\"> MEMBERS </p><h1 class=\"section-heading seq mt-2\"> 课题组成员 </h1><h2 class=\"seq mt-2 w-full text-2xl md:max-w-2xl\"> 想个句子填充一下吧~ </h2></div><div class=\"mt-10\">`);\n      _push(_ssrRenderComponent(renderMemberColumn, {\n        members: _unref(FORMER_MEMBERS),\n        \"will-change\": _unref(willChange),\n        title: \"已毕业\"\n      }, null, _parent));\n      _push(`</div><div class=\"mt-10\">`);\n      _push(_ssrRenderComponent(renderMemberColumn, {\n        members: _unref(NOW_MEMBERS),\n        \"will-change\": _unref(willChange),\n        title: \"在读\"\n      }, null, _parent));\n      _push(`</div></div></div></section>`);\n    };\n  }\n});\n",
-      "start": 1715597154931,
-      "end": 1715597155011,
+      "start": 1715603891225,
+      "end": 1715603891416,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -100,165 +100,165 @@
     },
     {
       "name": "vite:json",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891416,
+      "end": 1715603891416,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891416,
+      "end": 1715603891416,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891416,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "ssr-styles",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "post"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
       "result": "import { ref, onMounted, onUnmounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderComponent as _ssrRenderComponent, ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\";\nimport _imports_0 from \"/pattern-r.svg\";\nimport _imports_1 from \"/pattern-l.svg\";\nimport {\n  Linear,\n  gsap\n} from \"gsap\";\nimport {\n  ScrollTrigger\n} from \"gsap/dist/ScrollTrigger\";\nimport renderMemberColumn from \"./render-member-column.vue\";\nimport {\n  MENULINKS,\n  FORMER_MEMBERS,\n  NOW_MEMBERS\n} from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"members\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const willChange = ref(false);\n    function initRevealAnimation(targetSection2) {\n      const revealTl = gsap.timeline({\n        defaults: {\n          ease: Linear.easeNone\n        }\n      });\n      revealTl.from(targetSection2.value.querySelectorAll(\".seq\"), {\n        opacity: 0,\n        duration: 0.5,\n        stagger: 0.5\n      }, \"<\");\n      return ScrollTrigger.create({\n        trigger: targetSection2.value.querySelector(\".members-wrapper\"),\n        start: \"100px bottom\",\n        end: `center center`,\n        animation: revealTl,\n        scrub: 0,\n        onToggle: (self) => willChange.value = self.isActive\n      });\n    }\n    const targetSection = ref(void 0);\n    onMounted(() => {\n      const revealAnimationRef = initRevealAnimation(targetSection);\n      onUnmounted(() => {\n        return revealAnimationRef.kill;\n      });\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<section${_ssrRenderAttrs(_mergeProps({ class: \"relative\" }, _attrs))}><div class=\"absolute right-0 hidden max-w-xs w-1/5 justify-end -bottom-1/3 md:flex\"><img${_ssrRenderAttr(\"src\", _imports_0)} loading=\"lazy\" height=\"700\" width=\"320\" alt=\"pattern\"></div><div class=\"absolute left-0 hidden max-w-xs w-1/12 -bottom-3.5 md:block\"><img${_ssrRenderAttr(\"src\", _imports_1)} loading=\"lazy\" height=\"335\" width=\"140\" alt=\"pattern\"></div><div${_ssrRenderAttr(\"id\", _unref(MENULINKS)[2].ref)} class=\"section-container relative mb-24 w-full flex flex-col select-none justify-center py-12\"><div class=\"members-wrapper flex flex-col\"><div class=\"flex flex-col\"><p class=\"section-title-sm seq\"> MEMBERS </p><h1 class=\"section-heading seq mt-2\"> 课题组成员 </h1><h2 class=\"seq mt-2 w-full text-2xl md:max-w-2xl\"> 想个句子填充一下吧~ </h2></div><div class=\"mt-10\">`);\n      _push(_ssrRenderComponent(renderMemberColumn, {\n        members: _unref(FORMER_MEMBERS),\n        \"will-change\": _unref(willChange),\n        title: \"已毕业\"\n      }, null, _parent));\n      _push(`</div><div class=\"mt-10\">`);\n      _push(_ssrRenderComponent(renderMemberColumn, {\n        members: _unref(NOW_MEMBERS),\n        \"will-change\": _unref(willChange),\n        title: \"在读\"\n      }, null, _parent));\n      _push(`</div></div></div></section>`);\n    };\n  }\n});\n",
-      "start": 1715597155014,
-      "end": 1715597155018,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -272,8 +272,8 @@
     {
       "name": "nuxt:imports-transform",
       "result": "import { ref, onMounted, onUnmounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderComponent as _ssrRenderComponent, ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\";\nimport _imports_0 from \"/pattern-r.svg\";\nimport _imports_1 from \"/pattern-l.svg\";\nimport {\n  Linear,\n  gsap\n} from \"gsap\";\nimport {\n  ScrollTrigger\n} from \"gsap/dist/ScrollTrigger\";\nimport renderMemberColumn from \"./render-member-column.vue\";\nimport {\n  MENULINKS,\n  FORMER_MEMBERS,\n  NOW_MEMBERS\n} from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"members\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const willChange = ref(false);\n    function initRevealAnimation(targetSection2) {\n      const revealTl = gsap.timeline({\n        defaults: {\n          ease: Linear.easeNone\n        }\n      });\n      revealTl.from(targetSection2.value.querySelectorAll(\".seq\"), {\n        opacity: 0,\n        duration: 0.5,\n        stagger: 0.5\n      }, \"<\");\n      return ScrollTrigger.create({\n        trigger: targetSection2.value.querySelector(\".members-wrapper\"),\n        start: \"100px bottom\",\n        end: `center center`,\n        animation: revealTl,\n        scrub: 0,\n        onToggle: (self) => willChange.value = self.isActive\n      });\n    }\n    const targetSection = ref(void 0);\n    onMounted(() => {\n      const revealAnimationRef = initRevealAnimation(targetSection);\n      onUnmounted(() => {\n        return revealAnimationRef.kill;\n      });\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<section${_ssrRenderAttrs(_mergeProps({ class: \"relative\" }, _attrs))}><div class=\"absolute right-0 hidden max-w-xs w-1/5 justify-end -bottom-1/3 md:flex\"><img${_ssrRenderAttr(\"src\", _imports_0)} loading=\"lazy\" height=\"700\" width=\"320\" alt=\"pattern\"></div><div class=\"absolute left-0 hidden max-w-xs w-1/12 -bottom-3.5 md:block\"><img${_ssrRenderAttr(\"src\", _imports_1)} loading=\"lazy\" height=\"335\" width=\"140\" alt=\"pattern\"></div><div${_ssrRenderAttr(\"id\", _unref(MENULINKS)[2].ref)} class=\"section-container relative mb-24 w-full flex flex-col select-none justify-center py-12\"><div class=\"members-wrapper flex flex-col\"><div class=\"flex flex-col\"><p class=\"section-title-sm seq\"> MEMBERS </p><h1 class=\"section-heading seq mt-2\"> 课题组成员 </h1><h2 class=\"seq mt-2 w-full text-2xl md:max-w-2xl\"> 想个句子填充一下吧~ </h2></div><div class=\"mt-10\">`);\n      _push(_ssrRenderComponent(renderMemberColumn, {\n        members: _unref(FORMER_MEMBERS),\n        \"will-change\": _unref(willChange),\n        title: \"已毕业\"\n      }, null, _parent));\n      _push(`</div><div class=\"mt-10\">`);\n      _push(_ssrRenderComponent(renderMemberColumn, {\n        members: _unref(NOW_MEMBERS),\n        \"will-change\": _unref(willChange),\n        title: \"在读\"\n      }, null, _parent));\n      _push(`</div></div></div></section>`);\n    };\n  }\n});\n",
-      "start": 1715597155014,
-      "end": 1715597155018,
+      "start": 1715603891417,
+      "end": 1715603891417,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -286,51 +286,51 @@
     },
     {
       "name": "unctx:transform",
-      "start": 1715597155018,
-      "end": 1715597155018,
+      "start": 1715603891418,
+      "end": 1715603891418,
       "order": "post"
     },
     {
       "name": "unctx:transform",
-      "start": 1715597155018,
-      "end": 1715597155018,
+      "start": 1715603891418,
+      "end": 1715603891418,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597155019,
-      "end": 1715597155019,
+      "start": 1715603891418,
+      "end": 1715603891418,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597155019,
-      "end": 1715597155019,
+      "start": 1715603891418,
+      "end": 1715603891418,
       "order": "post"
     },
     {
       "name": "element-plus:transform",
-      "start": 1715597155020,
-      "end": 1715597155020,
+      "start": 1715603891418,
+      "end": 1715603891418,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-template",
-      "start": 1715597155020,
-      "end": 1715597155020,
+      "start": 1715603891418,
+      "end": 1715603891418,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
-      "start": 1715597155025,
-      "end": 1715597155025,
+      "start": 1715603891418,
+      "end": 1715603891418,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-composables:transform",
       "result": "import { ref, onMounted, onUnmounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderComponent as _ssrRenderComponent, ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\";\nimport _imports_0 from \"/pattern-r.svg\";\nimport _imports_1 from \"/pattern-l.svg\";\nimport {\n  Linear,\n  gsap\n} from \"gsap\";\nimport {\n  ScrollTrigger\n} from \"gsap/dist/ScrollTrigger\";\nimport renderMemberColumn from \"./render-member-column.vue\";\nimport {\n  MENULINKS,\n  FORMER_MEMBERS,\n  NOW_MEMBERS\n} from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"members\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const willChange = ref(false);\n    function initRevealAnimation(targetSection2) {\n      const revealTl = gsap.timeline({\n        defaults: {\n          ease: Linear.easeNone\n        }\n      });\n      revealTl.from(targetSection2.value.querySelectorAll(\".seq\"), {\n        opacity: 0,\n        duration: 0.5,\n        stagger: 0.5\n      }, \"<\");\n      return ScrollTrigger.create({\n        trigger: targetSection2.value.querySelector(\".members-wrapper\"),\n        start: \"100px bottom\",\n        end: `center center`,\n        animation: revealTl,\n        scrub: 0,\n        onToggle: (self) => willChange.value = self.isActive\n      });\n    }\n    const targetSection = ref(void 0);\n     /*#__PURE__*/ false && onMounted(() => {\n      const revealAnimationRef = initRevealAnimation(targetSection);\n      onUnmounted(() => {\n        return revealAnimationRef.kill;\n      });\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<section${_ssrRenderAttrs(_mergeProps({ class: \"relative\" }, _attrs))}><div class=\"absolute right-0 hidden max-w-xs w-1/5 justify-end -bottom-1/3 md:flex\"><img${_ssrRenderAttr(\"src\", _imports_0)} loading=\"lazy\" height=\"700\" width=\"320\" alt=\"pattern\"></div><div class=\"absolute left-0 hidden max-w-xs w-1/12 -bottom-3.5 md:block\"><img${_ssrRenderAttr(\"src\", _imports_1)} loading=\"lazy\" height=\"335\" width=\"140\" alt=\"pattern\"></div><div${_ssrRenderAttr(\"id\", _unref(MENULINKS)[2].ref)} class=\"section-container relative mb-24 w-full flex flex-col select-none justify-center py-12\"><div class=\"members-wrapper flex flex-col\"><div class=\"flex flex-col\"><p class=\"section-title-sm seq\"> MEMBERS </p><h1 class=\"section-heading seq mt-2\"> 课题组成员 </h1><h2 class=\"seq mt-2 w-full text-2xl md:max-w-2xl\"> 想个句子填充一下吧~ </h2></div><div class=\"mt-10\">`);\n      _push(_ssrRenderComponent(renderMemberColumn, {\n        members: _unref(FORMER_MEMBERS),\n        \"will-change\": _unref(willChange),\n        title: \"已毕业\"\n      }, null, _parent));\n      _push(`</div><div class=\"mt-10\">`);\n      _push(_ssrRenderComponent(renderMemberColumn, {\n        members: _unref(NOW_MEMBERS),\n        \"will-change\": _unref(willChange),\n        title: \"在读\"\n      }, null, _parent));\n      _push(`</div></div></div></section>`);\n    };\n  }\n});\n",
-      "start": 1715597155026,
-      "end": 1715597155026,
+      "start": 1715603891418,
+      "end": 1715603891418,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -343,14 +343,14 @@
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1715597155026,
-      "end": 1715597155027,
+      "start": 1715603891418,
+      "end": 1715603891418,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1715597155027,
-      "end": 1715597155027,
+      "start": 1715603891418,
+      "end": 1715603891418,
       "order": "normal"
     }
   ]

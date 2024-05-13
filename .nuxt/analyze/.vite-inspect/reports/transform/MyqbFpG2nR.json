@@ -4,69 +4,69 @@
     {
       "name": "vite:load-fallback",
       "result": "<script setup lang=\"ts\" name=\"ProjectsSection\">\r\n  import {\r\n    Linear,\r\n    gsap\r\n  } from 'gsap'\r\n  import {\r\n    ScrollTrigger\r\n  } from 'gsap/dist/ScrollTrigger'\r\n  import ProjectTile from '../common/project-tile.vue'\r\n  import {\r\n    type IDesktop,\r\n    MENULINKS,\r\n    NO_MOTION_PREFERENCE_QUERY,\r\n    PROJECTS\r\n  } from '~/store/constants'\r\n\r\n  const props = defineProps < IDesktop > ()\r\n  const targetSectionRef: Ref < HTMLElement | undefined > = ref(undefined)\r\n  const sectionTitleElementRef: Ref < HTMLElement | undefined > = ref(undefined)\r\n  const sectionCollapseElementRef: Ref < HTMLElement | undefined > = ref(undefined)\r\n\r\n  const willChange = ref(false)\r\n  const horizontalAnimationEnabled = ref(false)\r\n\r\n  // 从透明浮现效果\r\n  function initRevealAnimation(targetSectionRef: Ref < HTMLElement | undefined > ): [GSAPTimeline, ScrollTrigger] {\r\n    const revealTl = gsap.timeline({\r\n      defaults: {\r\n        ease: Linear.easeNone\r\n      }\r\n    })\r\n    revealTl.from(targetSectionRef.value!.querySelectorAll('.seq'), {\r\n      opacity: 0,\r\n      duration: 0.5,\r\n      stagger: 0.5\r\n    }, '<')\r\n\r\n    const scrollTrigger = ScrollTrigger.create({\r\n      trigger: targetSectionRef.value,\r\n      start: 'top bottom',\r\n      end: 'bottom bottom',\r\n      scrub: 0,\r\n      animation: revealTl,\r\n    })\r\n\r\n    return [revealTl, scrollTrigger]\r\n  }\r\n\r\n  // 轮播图动画效果\r\n  function initProjectsAnimation(\r\n    targetSectionRef: Ref < HTMLElement | undefined > ,\r\n    sectionTitleElementRef: Ref < HTMLElement | undefined > ,\r\n    sectionCollapseElementRef: Ref < HTMLElement | undefined >\r\n  ): [GSAPTimeline, ScrollTrigger] {\r\n    const timeline = gsap.timeline({\r\n      defaults: {\r\n        ease: Linear.easeNone\r\n      }\r\n    })\r\n    const sidePadding = document.body.clientWidth - targetSectionRef.value!.querySelector('.inner-container') !\r\n      .clientWidth\r\n    const elementWidth = sidePadding + targetSectionRef.value!.querySelector('.project-wrapper') !.clientWidth\r\n    targetSectionRef.value!.style.width = `${elementWidth}px`\r\n    const width = window.innerWidth - elementWidth\r\n    /* TODO 动画持续效果原理还未知 */\r\n    // const duration = `${(elementWidth / window.innerHeight) * 50}%`   \r\n    const duration = `100%`\r\n    timeline.to(targetSectionRef.value!, {\r\n      x: width\r\n    }).to(sectionTitleElementRef.value!, {\r\n      x: -width\r\n    }, '<').to(sectionCollapseElementRef.value!, {\r\n      x: -width\r\n    }, '<')\r\n\r\n    const scrollTrigger = ScrollTrigger.create({\r\n      trigger: targetSectionRef.value,\r\n      start: 'top top',\r\n      end: duration,\r\n      scrub: 0,\r\n      pin: true,\r\n      animation: timeline,\r\n      pinSpacing: 'margin',\r\n      onToggle: self => (willChange.value = self.isActive),\r\n    })\r\n    return [timeline, scrollTrigger]\r\n  }\r\n  // 初始化\r\n  onMounted(() => {\r\n    let projectsScrollTrigger: ScrollTrigger | undefined\r\n    let projectsTimeline: GSAPTimeline | undefined\r\n    const {\r\n      matches\r\n    } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY)\r\n    horizontalAnimationEnabled.value = props.isDesktop && matches\r\n    if (props.isDesktop && matches) {\r\n      [projectsTimeline, projectsScrollTrigger] = initProjectsAnimation(targetSectionRef, sectionTitleElementRef,\r\n        sectionCollapseElementRef)\r\n    } else {\r\n      const projectWrapper = targetSectionRef.value!.querySelector('.project-wrapper') as HTMLDivElement\r\n      const parentPadding = window.getComputedStyle(targetSectionRef.value!).getPropertyValue('padding-left')\r\n\r\n      targetSectionRef.value!.style.setProperty('width', '100%')\r\n      projectWrapper.classList.add('overflow-x-auto')\r\n      projectWrapper.style.setProperty('width', `calc(100vw)`)\r\n      projectWrapper.style.setProperty('padding', `0 ${parentPadding}`)\r\n      projectWrapper.style.setProperty('transform', `translateX(-${parentPadding})`)\r\n    }\r\n    const [revealTimeline, revealScrollTrigger] = initRevealAnimation(targetSectionRef)\r\n\r\n    onUnmounted(() => {\r\n      projectsScrollTrigger && projectsScrollTrigger.kill()\r\n      projectsTimeline && projectsTimeline.kill()\r\n      revealScrollTrigger && revealScrollTrigger.kill()\r\n      revealTimeline && revealTimeline.progress(1)\r\n    })\r\n  })\r\n\r\n  const {\r\n    ref: projectsSectionRef\r\n  } = MENULINKS[1]\r\n\r\n  /* --------------------添加内容区----------------- */\r\n  // element-ui\r\n  import {\r\n    ref\r\n  } from 'vue'\r\n\r\n  const activeNames = ref(['0'])\r\n  const handleChange = (val: string[]) => {\r\n    // 折叠面板的状态改变了\r\n    // console.log(val)\r\n\r\n  }\r\n  // TODO totalData 使用axios接收\r\n  const totalData = [{\r\n      date: '2016-05-03',\r\n      author: 'Tom',\r\n      paper: 'No. 189, Grove St, Los Angeles',\r\n    },\r\n    {\r\n      date: '2016-05-02',\r\n      author: 'Tom',\r\n      paper: 'No. 189, Grove St, Los Angeles',\r\n    },\r\n    {\r\n      date: '2016-05-04',\r\n      author: 'Tom',\r\n      paper: 'No. 189, Grove St, Los Angeles',\r\n    },\r\n    {\r\n      date: '2016-05-01',\r\n      author: 'Tom',\r\n      paper: 'No. 189, Grove St, Los Angeles',\r\n    },\r\n    {\r\n      date: '2016-05-01',\r\n      author: 'Tom',\r\n      paper: 'No. 189, Grove St, Los Angeles',\r\n    }, {\r\n      date: '2016-05-03',\r\n      author: 'T',\r\n      paper: 'No. 189, Grove St, Los Angeles',\r\n    },\r\n    {\r\n      date: '2016-05-02',\r\n      author: 'T',\r\n      paper: 'No. 189, Grove St, Los Angeles',\r\n    },\r\n    {\r\n      date: '2016-05-04',\r\n      author: 'T',\r\n      paper: 'No. 189, Grove St, Los Angeles',\r\n    },\r\n    {\r\n      date: '2016-05-01',\r\n      author: 'T',\r\n      paper: 'No. 189, Grove St, Los Angeles',\r\n    },\r\n    {\r\n      date: '2016-05-01',\r\n      author: 'T',\r\n      paper: 'No. 189, Grove St, Los Angeles',\r\n    },\r\n  ]\r\n  const pageSize = ref(5)\r\n  const tableData = ref(totalData.slice(0, 5))\r\n  const paperTotal = ref(totalData.length)\r\n  const currentPage = ref(1)\r\n  const handleCurrentChange = () => {\r\n    //更新tableData\r\n    tableData.value = totalData.slice((currentPage.value - 1) * pageSize.value, currentPage.value * pageSize.value)\r\n    // console.log(currentPage.value)\r\n  }\r\n</script>\r\n\r\n<template>\r\n  <section :id=\"projectsSectionRef\" ref=\"targetSectionRef\"\r\n    :class=\"`${isDesktop && 'min-h-scree'} w-full relative select-none section-container flex-col flex  py-18 justify-center`\">\r\n    <!-- <ProjectT /> -->\r\n    <div ref=\"sectionTitleElementRef\"\r\n      :class=\"`flex flex-col inner-container  ${willChange && 'will-change-transform'}`\">\r\n      <p class=\"seq section-title-sm\">\r\n        WORKS\r\n      </p>\r\n      <h1 class=\"seq section-heading mt-2\">\r\n        研究成果\r\n      </h1>\r\n      <h2 class=\"seq mt-2 max-w-sm w-full text-2xl md:max-w-3xl\">\r\n        车联网、边缘计算、空天地协同\r\n      </h2>\r\n    </div>\r\n    <div\r\n      class=\"seq gaodu project-wrapper grid auto-cols-max grid-flow-col w-fit snap-x snap-mandatory scroll-pl-6 gap-6 md:gap-10\">\r\n      <ProjectTile v-for=\"(item, _) in PROJECTS\" :key=\"item.name\" :project=\"item\"\r\n        :animation-enabled=\"horizontalAnimationEnabled\" />\r\n    </div>\r\n    <!-- 折叠面板 -->\r\n    <div class=\"mycollapse mt-6 Transparent  line-height-normal mb-20\" ref=\"sectionCollapseElementRef\">\r\n      <el-collapse v-model=\"activeNames\" @change=\"handleChange\">\r\n        <el-collapse-item title=\" 查看全部\" name=\"1\" class=\"seq\">\r\n          <!-- 表格 -->\r\n          <el-table v-model:data=\"tableData\" style=\"width: 100%\" class=\"bg-op-10\">\r\n            <el-table-column prop=\"date\" label=\"Date\" width=\"180\" />\r\n            <el-table-column prop=\"author\" label=\"Author\" width=\"180\" />\r\n            <el-table-column prop=\"paper\" label=\"Paper\" />\r\n          </el-table>\r\n          <div class=\"pagination-block\">\r\n            <el-pagination layout=\"prev, pager, next\" :total=\"paperTotal\" v-model:page-size=\"pageSize\"\r\n              v-model:current-page=\"currentPage\" @current-change=\"handleCurrentChange\" />\r\n          </div>\r\n        </el-collapse-item>\r\n      </el-collapse>\r\n\r\n    </div>\r\n  </section>\r\n</template>\r\n\r\n<style lang=\"scss\" scoped>\r\n  .gaodu {\r\n    @apply mt-6;\r\n  }\r\n\r\n  @media screen and (min-height: 800px) {\r\n    .gaodu {\r\n      @apply mt-12;\r\n    }\r\n  }\r\n\r\n  .mycollapse {\r\n    transition: padding-left 1.5s, padding-right 1.5s;\r\n  }\r\n\r\n  .mycollapse:hover {\r\n    // transition-duration: 1.5s;\r\n    padding-left: 2rem;\r\n    padding-right: 2rem;\r\n\r\n  }\r\n</style>\r\n\r\n<!-- 重写elementui组件的样式 -->\r\n<style>\r\n  .mycollapse .el-collapse {\r\n    border: 0px;\r\n    transition: 1s linear;\r\n    padding: 5px;\r\n    --el-collapse-border: 0 px;\r\n    --el-collapse-header-text-color: #fff;\r\n    --el-collapse-header-font-size: 1.5rem;\r\n    --el-collapse-content-bg-color: Transparent;\r\n    --el-collapse-content-font-size: 1rem;\r\n    --el-collapse-content-text-color: #fff\r\n  }\r\n\r\n\r\n  .mycollapse .el-collapse-item__header,\r\n  .mycollapse .el-collapse-item__wrap {\r\n    border-bottom: 0;\r\n  }\r\n\r\n  .mycollapse .el-collapse-item__content {\r\n\r\n    padding-bottom: 0px;\r\n  }\r\n\r\n  .mycollapse .el-collapse-item:last-child {\r\n    margin-bottom: 1px;\r\n  }\r\n\r\n  .mycollapse .el-table {\r\n\r\n    --el-table-border-color: Transparent;\r\n    /* --el-table-border-color: var(--el-border-color-lighter); */\r\n    --el-table-border: 1px solid var(--el-table-border-color);\r\n    --el-table-text-color: #fff;\r\n    --el-table-header-text-color: var(--el-text-color-secondary);\r\n    --el-table-row-hover-bg-color: #3f4450;\r\n    --el-table-current-row-bg-color: var(--el-color-primary-light-9);\r\n    --el-table-header-bg-color: rgba(255, 255, 255, 0);\r\n    --el-table-fixed-box-shadow: var(--el-box-shadow-light);\r\n    --el-table-bg-color: rgba(255, 255, 255, 0);\r\n    --el-table-tr-bg-color: rgba(255, 255, 255, 0);\r\n    --el-table-expanded-cell-bg-color: var(--el-fill-color-blank);\r\n    --el-table-fixed-left-column: inset 10px 0 10px -10px rgba(0, 0, 0, 0.15);\r\n    --el-table-fixed-right-column: inset -10px 0 10px -10px rgba(0, 0, 0, 0.15);\r\n    --el-table-index: var(--el-index-normal);\r\n    box-sizing: border-box;\r\n    color: var(--el-table-text-color);\r\n    font-size: 1rem;\r\n    height: -moz-fit-content;\r\n    height: fit-content;\r\n    max-width: 100%;\r\n    overflow: hidden;\r\n    position: relative;\r\n    width: 100%;\r\n  }\r\n\r\n  .el-pager li.is-active {\r\n    color: #57b9e3;\r\n    cursor: default;\r\n    font-weight: bold;\r\n  }\r\n\r\n  .el-pager li:hover {\r\n    color: #57b9e3;\r\n  }\r\n\r\n  .pagination-block {\r\n    display: flex;\r\n    align-items: center;\r\n    /* 垂直居中 */\r\n    justify-content: center;\r\n    /* 水平居中 */\r\n  }\r\n  .pagination-block {\r\n    width: 100%;\r\n  }\r\n  .el-pagination {\r\n\r\n    margin-top: 10px;\r\n    --el-pagination-font-size: 1rem;\r\n    --el-pagination-bg-color: rgba(0, 0, 0, 0);\r\n    --el-pagination-text-color: #fff;\r\n    --el-pagination-border-radius: 0px;\r\n    --el-pagination-button-color: #fff;\r\n    --el-pagination-button-width: 32px;\r\n    --el-pagination-button-height: 32px;\r\n    --el-pagination-button-disabled-color: var(--el-text-color-placeholder);\r\n    --el-pagination-button-disabled-bg-color: Transparent;\r\n    --el-pagination-button-bg-color: #ffffff;\r\n    --el-pagination-hover-color: #57b9e3;\r\n    --el-pagination-font-size-small: 12px;\r\n    --el-pagination-button-width-small: 24px;\r\n    --el-pagination-button-height-small: 24px;\r\n    --el-pagination-item-gap: 16px;\r\n    align-items: center;\r\n    color: rgb(255, 255, 255);\r\n    display: flex;\r\n    font-size: var(--el-pagination-font-size);\r\n    font-weight: normal;\r\n    white-space: nowrap;\r\n  }\r\n</style>",
-      "start": 1715597140196,
-      "end": 1715597140432,
+      "start": 1715603877831,
+      "end": 1715603878194,
       "sourcemaps": null
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597140432,
-      "end": 1715597140432,
+      "start": 1715603878194,
+      "end": 1715603878194,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597140432,
-      "end": 1715597140433,
+      "start": 1715603878194,
+      "end": 1715603878195,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597140433,
-      "end": 1715597140433,
+      "start": 1715603878195,
+      "end": 1715603878195,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597140433,
-      "end": 1715597140433,
+      "start": 1715603878195,
+      "end": 1715603878195,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1715597140433,
-      "end": 1715597140433,
+      "start": 1715603878195,
+      "end": 1715603878195,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1715597140433,
-      "end": 1715597140433,
+      "start": 1715603878195,
+      "end": 1715603878195,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1715597140433,
-      "end": 1715597140433,
+      "start": 1715603878195,
+      "end": 1715603878195,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1715597140433,
-      "end": 1715597140433,
+      "start": 1715603878195,
+      "end": 1715603878195,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1715597140433,
-      "end": 1715597140433,
+      "start": 1715603878195,
+      "end": 1715603878195,
       "order": "normal"
     },
     {
       "name": "vite:vue",
       "result": "import _sfc_main from \"D:/CODE/blog/myNuxt/resGro/components/home/projects.vue?vue&type=script&setup=true&name=ProjectsSection&lang.ts\";\nexport * from \"D:/CODE/blog/myNuxt/resGro/components/home/projects.vue?vue&type=script&setup=true&name=ProjectsSection&lang.ts\";\nimport \"D:/CODE/blog/myNuxt/resGro/components/home/projects.vue?vue&type=style&index=0&scoped=a84e5cdd&lang.scss\";\nimport \"D:/CODE/blog/myNuxt/resGro/components/home/projects.vue?vue&type=style&index=1&lang.css\";\nimport _export_sfc from \"\\0plugin-vue:export-helper\";\nexport default /* @__PURE__ */ _export_sfc(_sfc_main, [[\"__scopeId\", \"data-v-a84e5cdd\"]]);\n",
-      "start": 1715597140433,
-      "end": 1715597140640,
+      "start": 1715603878195,
+      "end": 1715603878256,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -74,170 +74,170 @@
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1715597140640,
-      "end": 1715597140640,
+      "start": 1715603878256,
+      "end": 1715603878256,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597140640,
-      "end": 1715597140640,
+      "start": 1715603878256,
+      "end": 1715603878256,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597140641,
-      "end": 1715597140641,
+      "start": 1715603878256,
+      "end": 1715603878256,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597140641,
-      "end": 1715597140641,
+      "start": 1715603878256,
+      "end": 1715603878256,
       "order": "normal"
     },
     {
       "name": "nuxt:chunk-error",
-      "start": 1715597140641,
-      "end": 1715597140641,
+      "start": 1715603878256,
+      "end": 1715603878256,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1715597140641,
-      "end": 1715597140641,
+      "start": 1715603878256,
+      "end": 1715603878256,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597140641,
-      "end": 1715597140641,
+      "start": 1715603878256,
+      "end": 1715603878256,
       "order": "normal"
     },
     {
       "name": "ssr-styles",
-      "start": 1715597140642,
-      "end": 1715597140642,
+      "start": 1715603878256,
+      "end": 1715603878256,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1715597140645,
-      "end": 1715597140645,
+      "start": 1715603878256,
+      "end": 1715603878256,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1715597140645,
-      "end": 1715597140645,
+      "start": 1715603878256,
+      "end": 1715603878256,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1715597140646,
-      "end": 1715597140646,
+      "start": 1715603878256,
+      "end": 1715603878256,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1715597140646,
-      "end": 1715597140646,
+      "start": 1715603878256,
+      "end": 1715603878256,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1715597140646,
-      "end": 1715597140646,
+      "start": 1715603878256,
+      "end": 1715603878256,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1715597140646,
-      "end": 1715597140646,
+      "start": 1715603878257,
+      "end": 1715603878257,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1715597140646,
-      "end": 1715597140646,
+      "start": 1715603878257,
+      "end": 1715603878257,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1715597140646,
-      "end": 1715597140646,
+      "start": 1715603878257,
+      "end": 1715603878257,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597140646,
-      "end": 1715597140646,
+      "start": 1715603878257,
+      "end": 1715603878257,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597140646,
-      "end": 1715597140646,
+      "start": 1715603878257,
+      "end": 1715603878257,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
-      "start": 1715597140646,
-      "end": 1715597140648,
+      "start": 1715603878257,
+      "end": 1715603878258,
       "order": "post"
     },
     {
       "name": "unctx:transform",
-      "start": 1715597140648,
-      "end": 1715597140648,
+      "start": 1715603878258,
+      "end": 1715603878258,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597140648,
-      "end": 1715597140648,
+      "start": 1715603878258,
+      "end": 1715603878258,
       "order": "post"
     },
     {
       "name": "nuxt:runtime-paths-dep",
-      "start": 1715597140648,
-      "end": 1715597140648,
+      "start": 1715603878258,
+      "end": 1715603878258,
       "order": "post"
     },
     {
       "name": "element-plus:transform",
-      "start": 1715597140648,
-      "end": 1715597140648,
+      "start": 1715603878258,
+      "end": 1715603878258,
       "order": "post"
     },
     {
       "name": "nuxt:route-injection-plugin",
-      "start": 1715597140649,
-      "end": 1715597140649,
+      "start": 1715603878258,
+      "end": 1715603878258,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
-      "start": 1715597140649,
-      "end": 1715597140649,
+      "start": 1715603878258,
+      "end": 1715603878258,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-composables:transform",
-      "start": 1715597140649,
-      "end": 1715597140649,
+      "start": 1715603878258,
+      "end": 1715603878258,
       "order": "post"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1715597140649,
-      "end": 1715597140649,
+      "start": 1715603878258,
+      "end": 1715603878258,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1715597140649,
-      "end": 1715597140649,
+      "start": 1715603878258,
+      "end": 1715603878258,
       "order": "normal"
     }
   ]

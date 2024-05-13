@@ -15,8 +15,3 @@ This one is based on nuxt3(vue3) + vite + unocss + sass + viewport adapt + axios
 自用
 
 
-# nuxt3 打包部署（generate方式）
-## 1、把项目打包
- > npm run generate
-## 2、新建github仓库，并把代码上传到github上
-![alt text](image.png)![alt text](image-1.png)![alt text](image-2.png)![alt text](image-3.png)填入仓库地址，例如：https://github.com/zikcc/resGro.git，后回车，然后vscode会让对此远程仓库起个别称，输入起别称就可以。

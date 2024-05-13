@@ -4,50 +4,50 @@
     {
       "name": "vite:vue",
       "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { unref as _unref, createElementVNode as _createElementVNode, normalizeClass as _normalizeClass, normalizeStyle as _normalizeStyle, toDisplayString as _toDisplayString, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\"\nimport _imports_0 from '/project-bg.svg'\n\n\nconst _hoisted_1 = [\"href\"]\nconst _hoisted_2 = /*#__PURE__*/_createElementVNode(\"img\", {\n  src: _imports_0,\n  alt: \"Project\",\n  layout: \"fill\",\n  class: \"absolute left-0 top-0 h-full w-full opacity-20\"\n}, null, -1)\nconst _hoisted_3 = [\"src\", \"alt\"]\nconst _hoisted_4 = {\n  class: \"z-10 pl-2 text-2xl sm:text-3xl\",\n  style: {\"transform\":\"translateZ(3rem)\"}\n}\nconst _hoisted_5 = {\n  class: \"z-10 text-lg font-medium tracking-wide\",\n  style: {\"transform\":\"translateZ(0.8rem)\"}\n}\n\nimport VanillaTilt from 'vanilla-tilt'\r\n  import styles from './ProjectTile.module.scss'\r\n  import type {\r\n    IProject\r\n  } from '~/store/constants'\r\n\r\n  interface MyProp {\r\n    project: IProject\r\n    animationEnabled: boolean\r\n  }\r\n  \nexport default /*#__PURE__*/_defineComponent({\n  __name: 'project-tile',\n  props: {\n    project: {},\n    animationEnabled: { type: Boolean }\n  },\n  setup(__props: any) {\n\r\n  const props = __props\r\n\r\n  const projectCard: Ref < HTMLElement | undefined > = ref(undefined)\r\n\r\n  const {\r\n    name,\r\n    data,\r\n    image,\r\n    author,\r\n    description,\r\n    gradient: [stop1, stop2],\r\n  } = props.project\r\n\r\n  onMounted(() => {\r\n    VanillaTilt.init(projectCard.value!, {\r\n      'max': 5,\r\n      'speed': 400,\r\n      'glare': true,\r\n      'max-glare': 0.2,\r\n      'gyroscope': false,\r\n    })\r\n  })\r\n\nreturn (_ctx: any,_cache: any) => {\n  return (_openBlock(), _createElementBlock(\"a\", {\n    href: _ctx.project.url,\n    target: \"_blank\",\n    rel: \"noreferrer\",\n    class: \"link snap-start overflow-hidden rounded-3xl\",\n    style: _normalizeStyle(`maxWidth:${\r\n      _ctx.animationEnabled ? 'calc(100vw - 2rem)' : 'calc(100vw - 4rem)'\r\n    }, flex: '1 0 auto',WebkitMaskImage: '-webkit-radial-gradient(white, black)'`)\n  }, [\n    _createElementVNode(\"div\", {\n      ref_key: \"projectCard\",\n      ref: projectCard,\n      class: _normalizeClass(`${_unref(styles).ProjectTile} rounded-3xl relative p-6 flex-col flex justify-between max-w-full`),\n      style: _normalizeStyle(`background: linear-gradient(90deg, ${_unref(stop1)} 0%, ${_unref(stop2)} 100%)`)\n    }, [\n      _hoisted_2,\n      _createElementVNode(\"img\", {\n        placeholder: \"blur\",\n        src: _unref(image),\n        alt: _unref(name),\n        layout: \"fill\",\n        class: _normalizeClass(`${_unref(styles).ProjectImg} z-0`)\n      }, null, 10, _hoisted_3),\n      _createElementVNode(\"div\", {\n        class: \"absolute left-0 top-0 h-20 w-full\",\n        style: _normalizeStyle(`background: linear-gradient(180deg, ${_unref(stop1)} 0%, rgba(0,0,0,0) 100%)`)\n      }, null, 4),\n      _createElementVNode(\"div\", {\n        class: \"absolute bottom-0 left-0 h-32 w-full\",\n        style: _normalizeStyle(`background: linear-gradient(0deg, ${_unref(stop1)} 10%, rgba(0,0,0,0) 100%)`)\n      }, null, 4),\n      _createElementVNode(\"h1\", _hoisted_4, _toDisplayString(_unref(name)), 1),\n      _createElementVNode(\"h2\", _hoisted_5, _toDisplayString(_unref(description)), 1)\n    ], 6)\n  ], 12, _hoisted_1))\n}\n}\n\n})",
-      "start": 1715597143938,
-      "end": 1715597143938
+      "start": 1715603880366,
+      "end": 1715603880366
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597143939,
-      "end": 1715597143939,
+      "start": 1715603880366,
+      "end": 1715603880366,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597143939,
-      "end": 1715597143939,
+      "start": 1715603880366,
+      "end": 1715603880367,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597143940,
-      "end": 1715597143940,
+      "start": 1715603880367,
+      "end": 1715603880367,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597143940,
-      "end": 1715597143940,
+      "start": 1715603880367,
+      "end": 1715603880367,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1715597143940,
-      "end": 1715597143940,
+      "start": 1715603880367,
+      "end": 1715603880367,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1715597143940,
-      "end": 1715597143940,
+      "start": 1715603880367,
+      "end": 1715603880367,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, createElementVNode as _createElementVNode, normalizeClass as _normalizeClass, normalizeStyle as _normalizeStyle, toDisplayString as _toDisplayString, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\";\nimport _imports_0 from \"/project-bg.svg\";\nconst _hoisted_1 = [\"href\"];\nconst _hoisted_2 = /* @__PURE__ */ _createElementVNode(\"img\", {\n  src: _imports_0,\n  alt: \"Project\",\n  layout: \"fill\",\n  class: \"absolute left-0 top-0 h-full w-full opacity-20\"\n}, null, -1);\nconst _hoisted_3 = [\"src\", \"alt\"];\nconst _hoisted_4 = {\n  class: \"z-10 pl-2 text-2xl sm:text-3xl\",\n  style: { \"transform\": \"translateZ(3rem)\" }\n};\nconst _hoisted_5 = {\n  class: \"z-10 text-lg font-medium tracking-wide\",\n  style: { \"transform\": \"translateZ(0.8rem)\" }\n};\nimport VanillaTilt from \"vanilla-tilt\";\nimport styles from \"./ProjectTile.module.scss\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"project-tile\",\n  props: {\n    project: {},\n    animationEnabled: { type: Boolean }\n  },\n  setup(__props) {\n    const props = __props;\n    const projectCard = ref(void 0);\n    const {\n      name,\n      data,\n      image,\n      author,\n      description,\n      gradient: [stop1, stop2]\n    } = props.project;\n    onMounted(() => {\n      VanillaTilt.init(projectCard.value, {\n        \"max\": 5,\n        \"speed\": 400,\n        \"glare\": true,\n        \"max-glare\": 0.2,\n        \"gyroscope\": false\n      });\n    });\n    return (_ctx, _cache) => {\n      return _openBlock(), _createElementBlock(\"a\", {\n        href: _ctx.project.url,\n        target: \"_blank\",\n        rel: \"noreferrer\",\n        class: \"link snap-start overflow-hidden rounded-3xl\",\n        style: _normalizeStyle(`maxWidth:${_ctx.animationEnabled ? \"calc(100vw - 2rem)\" : \"calc(100vw - 4rem)\"}, flex: '1 0 auto',WebkitMaskImage: '-webkit-radial-gradient(white, black)'`)\n      }, [\n        _createElementVNode(\"div\", {\n          ref_key: \"projectCard\",\n          ref: projectCard,\n          class: _normalizeClass(`${_unref(styles).ProjectTile} rounded-3xl relative p-6 flex-col flex justify-between max-w-full`),\n          style: _normalizeStyle(`background: linear-gradient(90deg, ${_unref(stop1)} 0%, ${_unref(stop2)} 100%)`)\n        }, [\n          _hoisted_2,\n          _createElementVNode(\"img\", {\n            placeholder: \"blur\",\n            src: _unref(image),\n            alt: _unref(name),\n            layout: \"fill\",\n            class: _normalizeClass(`${_unref(styles).ProjectImg} z-0`)\n          }, null, 10, _hoisted_3),\n          _createElementVNode(\"div\", {\n            class: \"absolute left-0 top-0 h-20 w-full\",\n            style: _normalizeStyle(`background: linear-gradient(180deg, ${_unref(stop1)} 0%, rgba(0,0,0,0) 100%)`)\n          }, null, 4),\n          _createElementVNode(\"div\", {\n            class: \"absolute bottom-0 left-0 h-32 w-full\",\n            style: _normalizeStyle(`background: linear-gradient(0deg, ${_unref(stop1)} 10%, rgba(0,0,0,0) 100%)`)\n          }, null, 4),\n          _createElementVNode(\"h1\", _hoisted_4, _toDisplayString(_unref(name)), 1),\n          _createElementVNode(\"h2\", _hoisted_5, _toDisplayString(_unref(description)), 1)\n        ], 6)\n      ], 12, _hoisted_1);\n    };\n  }\n});\n",
-      "start": 1715597143940,
-      "end": 1715597143986,
+      "start": 1715603880367,
+      "end": 1715603880430,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -63,135 +63,135 @@
     },
     {
       "name": "vite:json",
-      "start": 1715597143986,
-      "end": 1715597143986,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1715597143986,
-      "end": 1715597143986,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1715597143986,
-      "end": 1715597143986,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1715597143986,
-      "end": 1715597143986,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "nuxt:chunk-error",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "ssr-styles",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597143987,
-      "end": 1715597143987,
+      "start": 1715603880431,
+      "end": 1715603880431,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
       "result": "import { ref, onMounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, createElementVNode as _createElementVNode, normalizeClass as _normalizeClass, normalizeStyle as _normalizeStyle, toDisplayString as _toDisplayString, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\";\nimport _imports_0 from \"/project-bg.svg\";\nconst _hoisted_1 = [\"href\"];\nconst _hoisted_2 = /* @__PURE__ */ _createElementVNode(\"img\", {\n  src: _imports_0,\n  alt: \"Project\",\n  layout: \"fill\",\n  class: \"absolute left-0 top-0 h-full w-full opacity-20\"\n}, null, -1);\nconst _hoisted_3 = [\"src\", \"alt\"];\nconst _hoisted_4 = {\n  class: \"z-10 pl-2 text-2xl sm:text-3xl\",\n  style: { \"transform\": \"translateZ(3rem)\" }\n};\nconst _hoisted_5 = {\n  class: \"z-10 text-lg font-medium tracking-wide\",\n  style: { \"transform\": \"translateZ(0.8rem)\" }\n};\nimport VanillaTilt from \"vanilla-tilt\";\nimport styles from \"./ProjectTile.module.scss\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"project-tile\",\n  props: {\n    project: {},\n    animationEnabled: { type: Boolean }\n  },\n  setup(__props) {\n    const props = __props;\n    const projectCard = ref(void 0);\n    const {\n      name,\n      data,\n      image,\n      author,\n      description,\n      gradient: [stop1, stop2]\n    } = props.project;\n    onMounted(() => {\n      VanillaTilt.init(projectCard.value, {\n        \"max\": 5,\n        \"speed\": 400,\n        \"glare\": true,\n        \"max-glare\": 0.2,\n        \"gyroscope\": false\n      });\n    });\n    return (_ctx, _cache) => {\n      return _openBlock(), _createElementBlock(\"a\", {\n        href: _ctx.project.url,\n        target: \"_blank\",\n        rel: \"noreferrer\",\n        class: \"link snap-start overflow-hidden rounded-3xl\",\n        style: _normalizeStyle(`maxWidth:${_ctx.animationEnabled ? \"calc(100vw - 2rem)\" : \"calc(100vw - 4rem)\"}, flex: '1 0 auto',WebkitMaskImage: '-webkit-radial-gradient(white, black)'`)\n      }, [\n        _createElementVNode(\"div\", {\n          ref_key: \"projectCard\",\n          ref: projectCard,\n          class: _normalizeClass(`${_unref(styles).ProjectTile} rounded-3xl relative p-6 flex-col flex justify-between max-w-full`),\n          style: _normalizeStyle(`background: linear-gradient(90deg, ${_unref(stop1)} 0%, ${_unref(stop2)} 100%)`)\n        }, [\n          _hoisted_2,\n          _createElementVNode(\"img\", {\n            placeholder: \"blur\",\n            src: _unref(image),\n            alt: _unref(name),\n            layout: \"fill\",\n            class: _normalizeClass(`${_unref(styles).ProjectImg} z-0`)\n          }, null, 10, _hoisted_3),\n          _createElementVNode(\"div\", {\n            class: \"absolute left-0 top-0 h-20 w-full\",\n            style: _normalizeStyle(`background: linear-gradient(180deg, ${_unref(stop1)} 0%, rgba(0,0,0,0) 100%)`)\n          }, null, 4),\n          _createElementVNode(\"div\", {\n            class: \"absolute bottom-0 left-0 h-32 w-full\",\n            style: _normalizeStyle(`background: linear-gradient(0deg, ${_unref(stop1)} 10%, rgba(0,0,0,0) 100%)`)\n          }, null, 4),\n          _createElementVNode(\"h1\", _hoisted_4, _toDisplayString(_unref(name)), 1),\n          _createElementVNode(\"h2\", _hoisted_5, _toDisplayString(_unref(description)), 1)\n        ], 6)\n      ], 12, _hoisted_1);\n    };\n  }\n});\n",
-      "start": 1715597143987,
-      "end": 1715597143989,
+      "start": 1715603880432,
+      "end": 1715603880434,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -204,58 +204,58 @@
     },
     {
       "name": "unctx:transform",
-      "start": 1715597143989,
-      "end": 1715597143989,
+      "start": 1715603880434,
+      "end": 1715603880434,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597143989,
-      "end": 1715597143989,
+      "start": 1715603880434,
+      "end": 1715603880434,
       "order": "post"
     },
     {
       "name": "nuxt:runtime-paths-dep",
-      "start": 1715597143989,
-      "end": 1715597143989,
+      "start": 1715603880434,
+      "end": 1715603880434,
       "order": "post"
     },
     {
       "name": "element-plus:transform",
-      "start": 1715597143989,
-      "end": 1715597143989,
+      "start": 1715603880434,
+      "end": 1715603880434,
       "order": "post"
     },
     {
       "name": "nuxt:route-injection-plugin",
-      "start": 1715597143989,
-      "end": 1715597143989,
+      "start": 1715603880434,
+      "end": 1715603880434,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
-      "start": 1715597143989,
-      "end": 1715597143989,
+      "start": 1715603880434,
+      "end": 1715603880434,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-composables:transform",
-      "start": 1715597143989,
-      "end": 1715597143989,
+      "start": 1715603880434,
+      "end": 1715603880434,
       "order": "post"
     },
     {
       "name": "vite:build-import-analysis",
       "result": "import { ref, onMounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, createElementVNode as _createElementVNode, normalizeClass as _normalizeClass, normalizeStyle as _normalizeStyle, toDisplayString as _toDisplayString, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\";\nimport _imports_0 from \"/project-bg.svg\";\nconst _hoisted_1 = [\"href\"];\nconst _hoisted_2 = /* @__PURE__ */ _createElementVNode(\"img\", {\n  src: _imports_0,\n  alt: \"Project\",\n  layout: \"fill\",\n  class: \"absolute left-0 top-0 h-full w-full opacity-20\"\n}, null, -1);\nconst _hoisted_3 = [\"src\", \"alt\"];\nconst _hoisted_4 = {\n  class: \"z-10 pl-2 text-2xl sm:text-3xl\",\n  style: { \"transform\": \"translateZ(3rem)\" }\n};\nconst _hoisted_5 = {\n  class: \"z-10 text-lg font-medium tracking-wide\",\n  style: { \"transform\": \"translateZ(0.8rem)\" }\n};\nimport VanillaTilt from \"vanilla-tilt\";\nimport styles from \"./ProjectTile.module.scss?used\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"project-tile\",\n  props: {\n    project: {},\n    animationEnabled: { type: Boolean }\n  },\n  setup(__props) {\n    const props = __props;\n    const projectCard = ref(void 0);\n    const {\n      name,\n      data,\n      image,\n      author,\n      description,\n      gradient: [stop1, stop2]\n    } = props.project;\n    onMounted(() => {\n      VanillaTilt.init(projectCard.value, {\n        \"max\": 5,\n        \"speed\": 400,\n        \"glare\": true,\n        \"max-glare\": 0.2,\n        \"gyroscope\": false\n      });\n    });\n    return (_ctx, _cache) => {\n      return _openBlock(), _createElementBlock(\"a\", {\n        href: _ctx.project.url,\n        target: \"_blank\",\n        rel: \"noreferrer\",\n        class: \"link snap-start overflow-hidden rounded-3xl\",\n        style: _normalizeStyle(`maxWidth:${_ctx.animationEnabled ? \"calc(100vw - 2rem)\" : \"calc(100vw - 4rem)\"}, flex: '1 0 auto',WebkitMaskImage: '-webkit-radial-gradient(white, black)'`)\n      }, [\n        _createElementVNode(\"div\", {\n          ref_key: \"projectCard\",\n          ref: projectCard,\n          class: _normalizeClass(`${_unref(styles).ProjectTile} rounded-3xl relative p-6 flex-col flex justify-between max-w-full`),\n          style: _normalizeStyle(`background: linear-gradient(90deg, ${_unref(stop1)} 0%, ${_unref(stop2)} 100%)`)\n        }, [\n          _hoisted_2,\n          _createElementVNode(\"img\", {\n            placeholder: \"blur\",\n            src: _unref(image),\n            alt: _unref(name),\n            layout: \"fill\",\n            class: _normalizeClass(`${_unref(styles).ProjectImg} z-0`)\n          }, null, 10, _hoisted_3),\n          _createElementVNode(\"div\", {\n            class: \"absolute left-0 top-0 h-20 w-full\",\n            style: _normalizeStyle(`background: linear-gradient(180deg, ${_unref(stop1)} 0%, rgba(0,0,0,0) 100%)`)\n          }, null, 4),\n          _createElementVNode(\"div\", {\n            class: \"absolute bottom-0 left-0 h-32 w-full\",\n            style: _normalizeStyle(`background: linear-gradient(0deg, ${_unref(stop1)} 10%, rgba(0,0,0,0) 100%)`)\n          }, null, 4),\n          _createElementVNode(\"h1\", _hoisted_4, _toDisplayString(_unref(name)), 1),\n          _createElementVNode(\"h2\", _hoisted_5, _toDisplayString(_unref(description)), 1)\n        ], 6)\n      ], 12, _hoisted_1);\n    };\n  }\n});\n",
-      "start": 1715597143990,
-      "end": 1715597143990,
+      "start": 1715603880434,
+      "end": 1715603880435,
       "order": "normal",
       "sourcemaps": null
     },
     {
       "name": "vite:reporter",
-      "start": 1715597143990,
-      "end": 1715597143990,
+      "start": 1715603880435,
+      "end": 1715603880435,
       "order": "normal"
     }
   ]

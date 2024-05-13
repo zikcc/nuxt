@@ -4,236 +4,236 @@
     {
       "name": "vite:load-fallback",
       "result": "import { defineComponent, ref, reactive, computed, watch, openBlock, createElementBlock, unref, normalizeClass, createElementVNode, normalizeStyle, Fragment, renderList, renderSlot, createTextVNode, toDisplayString } from 'vue';\nimport { useActiveElement, useResizeObserver } from '@vueuse/core';\nimport '../../../hooks/index.mjs';\nimport '../../form/index.mjs';\nimport '../../../utils/index.mjs';\nimport '../../../constants/index.mjs';\nimport { segmentedProps, segmentedEmits } from './segmented.mjs';\nimport _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';\nimport { useNamespace } from '../../../hooks/use-namespace/index.mjs';\nimport { useId } from '../../../hooks/use-id/index.mjs';\nimport { useFormSize, useFormDisabled } from '../../form/src/hooks/use-form-common-props.mjs';\nimport { useFormItem, useFormItemInputId } from '../../form/src/hooks/use-form-item.mjs';\nimport { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../../constants/event.mjs';\nimport { isObject } from '@vue/shared';\nimport { debugWarn } from '../../../utils/error.mjs';\n\nconst _hoisted_1 = [\"id\", \"aria-label\", \"aria-labelledby\"];\nconst _hoisted_2 = [\"name\", \"disabled\", \"checked\", \"onChange\"];\nconst __default__ = defineComponent({\n  name: \"ElSegmented\"\n});\nconst _sfc_main = /* @__PURE__ */ defineComponent({\n  ...__default__,\n  props: segmentedProps,\n  emits: segmentedEmits,\n  setup(__props, { emit }) {\n    const props = __props;\n    const ns = useNamespace(\"segmented\");\n    const segmentedId = useId();\n    const segmentedSize = useFormSize();\n    const _disabled = useFormDisabled();\n    const { formItem } = useFormItem();\n    const { inputId, isLabeledByFormItem } = useFormItemInputId(props, {\n      formItemContext: formItem\n    });\n    const segmentedRef = ref(null);\n    const activeElement = useActiveElement();\n    const state = reactive({\n      isInit: false,\n      width: 0,\n      translateX: 0,\n      disabled: false,\n      focusVisible: false\n    });\n    const handleChange = (item) => {\n      const value = getValue(item);\n      emit(UPDATE_MODEL_EVENT, value);\n      emit(CHANGE_EVENT, value);\n    };\n    const getValue = (item) => {\n      return isObject(item) ? item.value : item;\n    };\n    const getLabel = (item) => {\n      return isObject(item) ? item.label : item;\n    };\n    const getDisabled = (item) => {\n      return !!(_disabled.value || (isObject(item) ? item.disabled : false));\n    };\n    const getSelected = (item) => {\n      return props.modelValue === getValue(item);\n    };\n    const getOption = (value) => {\n      return props.options.find((item) => getValue(item) === value);\n    };\n    const getItemCls = (item) => {\n      return [\n        ns.e(\"item\"),\n        ns.is(\"selected\", getSelected(item)),\n        ns.is(\"disabled\", getDisabled(item))\n      ];\n    };\n    const updateSelect = () => {\n      if (!segmentedRef.value)\n        return;\n      const selectedItem = segmentedRef.value.querySelector(\".is-selected\");\n      const selectedItemInput = segmentedRef.value.querySelector(\".is-selected input\");\n      if (!selectedItem || !selectedItemInput) {\n        state.width = 0;\n        state.translateX = 0;\n        state.disabled = false;\n        state.focusVisible = false;\n        return;\n      }\n      const rect = selectedItem.getBoundingClientRect();\n      state.isInit = true;\n      state.width = rect.width;\n      state.translateX = selectedItem.offsetLeft;\n      state.disabled = getDisabled(getOption(props.modelValue));\n      try {\n        state.focusVisible = selectedItemInput.matches(\":focus-visible\");\n      } catch (e) {\n      }\n    };\n    const segmentedCls = computed(() => [\n      ns.b(),\n      ns.m(segmentedSize.value),\n      ns.is(\"block\", props.block)\n    ]);\n    const selectedStyle = computed(() => ({\n      width: `${state.width}px`,\n      transform: `translateX(${state.translateX}px)`,\n      display: state.isInit ? \"block\" : \"none\"\n    }));\n    const selectedCls = computed(() => [\n      ns.e(\"item-selected\"),\n      ns.is(\"disabled\", state.disabled),\n      ns.is(\"focus-visible\", state.focusVisible)\n    ]);\n    const name = computed(() => {\n      return props.name || segmentedId.value;\n    });\n    useResizeObserver(segmentedRef, updateSelect);\n    watch(activeElement, updateSelect);\n    watch(() => props.modelValue, () => {\n      var _a;\n      updateSelect();\n      if (props.validateEvent) {\n        (_a = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a.call(formItem, \"change\").catch((err) => debugWarn(err));\n      }\n    }, {\n      flush: \"post\"\n    });\n    return (_ctx, _cache) => {\n      return openBlock(), createElementBlock(\"div\", {\n        id: unref(inputId),\n        ref_key: \"segmentedRef\",\n        ref: segmentedRef,\n        class: normalizeClass(unref(segmentedCls)),\n        role: \"radiogroup\",\n        \"aria-label\": !unref(isLabeledByFormItem) ? _ctx.ariaLabel || \"segmented\" : void 0,\n        \"aria-labelledby\": unref(isLabeledByFormItem) ? unref(formItem).labelId : void 0\n      }, [\n        createElementVNode(\"div\", {\n          class: normalizeClass(unref(ns).e(\"group\"))\n        }, [\n          createElementVNode(\"div\", {\n            style: normalizeStyle(unref(selectedStyle)),\n            class: normalizeClass(unref(selectedCls))\n          }, null, 6),\n          (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.options, (item, index) => {\n            return openBlock(), createElementBlock(\"label\", {\n              key: index,\n              class: normalizeClass(getItemCls(item))\n            }, [\n              createElementVNode(\"input\", {\n                class: normalizeClass(unref(ns).e(\"item-input\")),\n                type: \"radio\",\n                name: unref(name),\n                disabled: getDisabled(item),\n                checked: getSelected(item),\n                onChange: ($event) => handleChange(item)\n              }, null, 42, _hoisted_2),\n              createElementVNode(\"div\", {\n                class: normalizeClass(unref(ns).e(\"item-label\"))\n              }, [\n                renderSlot(_ctx.$slots, \"default\", { item }, () => [\n                  createTextVNode(toDisplayString(getLabel(item)), 1)\n                ])\n              ], 2)\n            ], 2);\n          }), 128))\n        ], 2)\n      ], 10, _hoisted_1);\n    };\n  }\n});\nvar Segmented = /* @__PURE__ */ _export_sfc(_sfc_main, [[\"__file\", \"segmented.vue\"]]);\n\nexport { Segmented as default };\n//# sourceMappingURL=segmented2.mjs.map\n",
-      "start": 1715597139814,
-      "end": 1715597139896,
+      "start": 1715603877400,
+      "end": 1715603877494,
       "sourcemaps": null
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597139896,
-      "end": 1715597139896,
+      "start": 1715603877494,
+      "end": 1715603877494,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597139896,
-      "end": 1715597139896,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597139896,
-      "end": 1715597139896,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597139896,
-      "end": 1715597139896,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1715597139896,
-      "end": 1715597139896,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1715597139896,
-      "end": 1715597139896,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1715597139896,
-      "end": 1715597139896,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1715597139896,
-      "end": 1715597139896,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1715597139896,
-      "end": 1715597139896,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1715597139896,
-      "end": 1715597139896,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1715597139896,
-      "end": 1715597139896,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597139896,
-      "end": 1715597139896,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597139896,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "nuxt:chunk-error",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "ssr-styles",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "post"
     },
     {
       "name": "unctx:transform",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "post"
     },
     {
       "name": "nuxt:runtime-paths-dep",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "post"
     },
     {
       "name": "element-plus:transform",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "post"
     },
     {
       "name": "nuxt:route-injection-plugin",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-composables:transform",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "post"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1715597139897,
-      "end": 1715597139897,
+      "start": 1715603877495,
+      "end": 1715603877495,
       "order": "normal"
     }
   ]

@@ -4,69 +4,69 @@
     {
       "name": "vite:load-fallback",
       "result": "<script lang=\"ts\" setup name=\"CollaborationSection\">\r\nimport { Linear, gsap } from 'gsap'\r\nimport { ScrollTrigger } from 'gsap/dist/ScrollTrigger'\r\nimport { NO_MOTION_PREFERENCE_QUERY, isSmallScreen } from '~/store/constants'\r\n\r\nconst COLLABORATION_STYLE = {\r\n  SLIDING_TEXT: 'opacity-20 text-4xl md:text-5xl font-bold whitespace-nowrap',\r\n  SECTION: 'w-full relative select-none tall:py-36 py-48 section-container flex flex-col',\r\n  TITLE: 'mt-6 md:mt-8 font-medium text-4xl md:text-5xl text-center',\r\n}\r\n\r\nconst quoteRef: Ref<HTMLElement | undefined> = ref(undefined)\r\nconst targetSection: Ref<HTMLElement | undefined> = ref(undefined)\r\n\r\nconst willChange = ref(false)\r\n\r\nfunction initTextGradientAnimation(targetSection: Ref<HTMLElement | undefined>): ScrollTrigger {\r\n  const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } })\r\n  timeline.from(quoteRef.value!, { opacity: 0, duration: 2 }).to(quoteRef.value!.querySelector('.text-strong'), {\r\n    backgroundPositionX: '100%',\r\n    duration: 1,\r\n  })\r\n\r\n  return ScrollTrigger.create({\r\n    trigger: targetSection.value!,\r\n    start: 'center bottom',\r\n    end: 'center center',\r\n    scrub: 0,\r\n    animation: timeline,\r\n    onToggle: self => willChange.value = self.isActive,\r\n  })\r\n}\r\n\r\nfunction initSlidingTextAnimation(targetSection: Ref<HTMLElement | undefined>) {\r\n  const slidingTl = gsap.timeline({ defaults: { ease: Linear.easeNone } })\r\n\r\n  slidingTl\r\n    .to(targetSection.value!.querySelector('.ui-left'), {\r\n      xPercent: isSmallScreen() ? -500 : -300,\r\n    })\r\n    .from(targetSection.value!.querySelector('.ui-right'), { xPercent: isSmallScreen() ? -500 : -300 }, '<')\r\n\r\n  return ScrollTrigger.create({\r\n    trigger: targetSection.value!,\r\n    start: 'top bottom',\r\n    end: 'bottom top',\r\n    scrub: 0,\r\n    animation: slidingTl,\r\n  })\r\n}\r\n\r\nonMounted(() => {\r\n  const textBgAnimation = initTextGradientAnimation(targetSection)\r\n  let slidingAnimation: ScrollTrigger | undefined\r\n\r\n  const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY)\r\n\r\n  if (matches)\r\n    slidingAnimation = initSlidingTextAnimation(targetSection)\r\n\r\n  return () => {\r\n    textBgAnimation.kill()\r\n    slidingAnimation?.kill()\r\n  }\r\n})\r\n</script>\r\n\r\n<template>\r\n  <section ref=\"targetSection\" :class=\"COLLABORATION_STYLE.SECTION\">\r\n    <p :class=\"`ui-left ${COLLABORATION_STYLE.SLIDING_TEXT}`\">\r\n      {{\r\n        Array.from({ length: 15 })\r\n          .fill(' 学而不思则罔 ')\r\n          .reduce((str, el) => str.concat(el), '')\r\n      }}\r\n    </p>\r\n    <h1 ref=\"quoteRef\" :class=\"`${COLLABORATION_STYLE.TITLE} ${willChange && 'will-change-opacity'}`\">\r\n      努力请从 <span class=\"text-strong font-bold\">今日</span> 始\r\n    </h1>\r\n\r\n    <p :class=\"`mt-6 md:mt-8 ui-right ${COLLABORATION_STYLE.SLIDING_TEXT}`\">\r\n      {{\r\n        Array.from({ length: 15 })\r\n          .fill(' 思而不学则殆')\r\n          .reduce((str, el) => str.concat(el), '')\r\n      }}\r\n    </p>\r\n  </section>\r\n</template>\r\n",
-      "start": 1715597140209,
-      "end": 1715597140595,
+      "start": 1715603877837,
+      "end": 1715603878219,
       "sourcemaps": null
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597140595,
-      "end": 1715597140595,
+      "start": 1715603878219,
+      "end": 1715603878219,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597140595,
-      "end": 1715597140595,
+      "start": 1715603878219,
+      "end": 1715603878219,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597140595,
-      "end": 1715597140595,
+      "start": 1715603878219,
+      "end": 1715603878219,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597140595,
-      "end": 1715597140595,
+      "start": 1715603878219,
+      "end": 1715603878219,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1715597140595,
-      "end": 1715597140595,
+      "start": 1715603878219,
+      "end": 1715603878219,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1715597140595,
-      "end": 1715597140595,
+      "start": 1715603878219,
+      "end": 1715603878219,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1715597140595,
-      "end": 1715597140595,
+      "start": 1715603878219,
+      "end": 1715603878219,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1715597140595,
-      "end": 1715597140595,
+      "start": 1715603878219,
+      "end": 1715603878219,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1715597140595,
-      "end": 1715597140595,
+      "start": 1715603878219,
+      "end": 1715603878219,
       "order": "normal"
     },
     {
       "name": "vite:vue",
       "result": "import _sfc_main from \"D:/CODE/blog/myNuxt/resGro/components/home/collaboration.vue?vue&type=script&setup=true&name=CollaborationSection&lang.ts\";\nexport * from \"D:/CODE/blog/myNuxt/resGro/components/home/collaboration.vue?vue&type=script&setup=true&name=CollaborationSection&lang.ts\";\nexport default _sfc_main;\n",
-      "start": 1715597140595,
-      "end": 1715597140640,
+      "start": 1715603878219,
+      "end": 1715603878268,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -74,170 +74,170 @@
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1715597140640,
-      "end": 1715597140640,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597140640,
-      "end": 1715597140640,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597140641,
-      "end": 1715597140641,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597140641,
-      "end": 1715597140641,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "normal"
     },
     {
       "name": "nuxt:chunk-error",
-      "start": 1715597140641,
-      "end": 1715597140641,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1715597140641,
-      "end": 1715597140641,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597140641,
-      "end": 1715597140641,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "normal"
     },
     {
       "name": "ssr-styles",
-      "start": 1715597140642,
-      "end": 1715597140642,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1715597140645,
-      "end": 1715597140645,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1715597140645,
-      "end": 1715597140645,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1715597140646,
-      "end": 1715597140646,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1715597140646,
-      "end": 1715597140646,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1715597140646,
-      "end": 1715597140646,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1715597140646,
-      "end": 1715597140646,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1715597140646,
-      "end": 1715597140646,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1715597140646,
-      "end": 1715597140646,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597140646,
-      "end": 1715597140646,
+      "start": 1715603878268,
+      "end": 1715603878268,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597140646,
-      "end": 1715597140646,
+      "start": 1715603878268,
+      "end": 1715603878269,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
-      "start": 1715597140646,
-      "end": 1715597140648,
+      "start": 1715603878269,
+      "end": 1715603878269,
       "order": "post"
     },
     {
       "name": "unctx:transform",
-      "start": 1715597140648,
-      "end": 1715597140648,
+      "start": 1715603878269,
+      "end": 1715603878269,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597140648,
-      "end": 1715597140648,
+      "start": 1715603878269,
+      "end": 1715603878269,
       "order": "post"
     },
     {
       "name": "nuxt:runtime-paths-dep",
-      "start": 1715597140648,
-      "end": 1715597140648,
+      "start": 1715603878269,
+      "end": 1715603878269,
       "order": "post"
     },
     {
       "name": "element-plus:transform",
-      "start": 1715597140648,
-      "end": 1715597140648,
+      "start": 1715603878269,
+      "end": 1715603878269,
       "order": "post"
     },
     {
       "name": "nuxt:route-injection-plugin",
-      "start": 1715597140649,
-      "end": 1715597140649,
+      "start": 1715603878269,
+      "end": 1715603878269,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
-      "start": 1715597140649,
-      "end": 1715597140649,
+      "start": 1715603878269,
+      "end": 1715603878269,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-composables:transform",
-      "start": 1715597140649,
-      "end": 1715597140649,
+      "start": 1715603878269,
+      "end": 1715603878269,
       "order": "post"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1715597140649,
-      "end": 1715597140649,
+      "start": 1715603878269,
+      "end": 1715603878270,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1715597140649,
-      "end": 1715597140649,
+      "start": 1715603878270,
+      "end": 1715603878270,
       "order": "normal"
     }
   ]

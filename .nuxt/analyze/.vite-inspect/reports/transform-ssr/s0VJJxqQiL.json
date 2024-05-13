@@ -4,8 +4,8 @@
     {
       "name": "vite:vue",
       "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { unref as _unref, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createBlock as _createBlock, mergeProps as _mergeProps } from \"vue\"\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderComponent as _ssrRenderComponent, ssrRenderAttrs as _ssrRenderAttrs, ssrRenderList as _ssrRenderList } from \"vue/server-renderer\"\nimport _imports_0 from '/footer-curve.svg'\n\n\nimport Button, {\r\n    ButtonTypes\r\n  } from './common/button.vue'\r\n  import {\r\n    MENULINKS,\r\n    SOCIAL_LINKS,\r\n    INFODATA\r\n  } from '~/store/constants'\r\n\r\n  \nexport default /*#__PURE__*/_defineComponent({\n  __name: 'footer',\n  __ssrInlineRender: true,\n  setup(__props) {\n\r\n  const {\r\n    ref: footerRef\r\n  } = MENULINKS[4]\r\n\r\n  const otherProp = reactive({\r\n    target: '_blank',\r\n    rel: 'noreferrer',\r\n  })\r\n\nreturn (_ctx: any,_push: any,_parent: any,_attrs: any) => {\n  const _component_el_row = _resolveComponent(\"el-row\")!\n  const _component_el_col = _resolveComponent(\"el-col\")!\n\n  _push(`<footer${\n    _ssrRenderAttrs(_mergeProps({\n      id: _unref(footerRef),\n      class: \"relative w-full flex flex-col select-none items-stretch bg-cover\"\n    }, _attrs))\n  }><img${\n    _ssrRenderAttr(\"src\", _imports_0)\n  } alt=\"Footer\" class=\"w-full\" height=\"290\" role=\"presentation\" width=\"1440\"><div class=\"h-full w-full\"><div class=\"section-container z-10 h-full flex flex-col items-center justify-end py-12\">`)\n  _push(_ssrRenderComponent(_component_el_row, { gutter: 20 }, {\n    default: _withCtx((_, _push, _parent, _scopeId) => {\n      if (_push) {\n        _push(_ssrRenderComponent(_component_el_col, { span: 12 }, {\n          default: _withCtx((_, _push, _parent, _scopeId) => {\n            if (_push) {\n              _push(`<h1 class=\"text-center text-3xl font-medium md:text-4xl\"${\n                _scopeId\n              }> 联系我们 </h1><div class=\"mt-8 flex items-center justify-center\"${\n                _scopeId\n              }>`)\n              _push(_ssrRenderComponent(Button, {\n                classes: \"mr-3\",\n                type: _unref(ButtonTypes).OUTLINE,\n                name: _unref(INFODATA).pdfBtnName,\n                \"other-props\": _unref(otherProp),\n                href: _unref(INFODATA).pdfUrl\n              }, null, _parent, _scopeId))\n              _push(_ssrRenderComponent(Button, {\n                classes: \"ml-3\",\n                type: _unref(ButtonTypes).WHITE,\n                name: _unref(INFODATA).siteBtnName,\n                href: _unref(INFODATA).siteUrl,\n                \"other-props\": _unref(otherProp)\n              }, null, _parent, _scopeId))\n              _push(`</div>`)\n            } else {\n              return [\n                _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 联系我们 \"),\n                _createVNode(\"div\", { class: \"mt-8 flex items-center justify-center\" }, [\n                  _createVNode(Button, {\n                    classes: \"mr-3\",\n                    type: _unref(ButtonTypes).OUTLINE,\n                    name: _unref(INFODATA).pdfBtnName,\n                    \"other-props\": _unref(otherProp),\n                    href: _unref(INFODATA).pdfUrl\n                  }, null, 8, [\"type\", \"name\", \"other-props\", \"href\"]),\n                  _createVNode(Button, {\n                    classes: \"ml-3\",\n                    type: _unref(ButtonTypes).WHITE,\n                    name: _unref(INFODATA).siteBtnName,\n                    href: _unref(INFODATA).siteUrl,\n                    \"other-props\": _unref(otherProp)\n                  }, null, 8, [\"type\", \"name\", \"href\", \"other-props\"])\n                ])\n              ]\n            }\n          }),\n          _: 1\n        }, _parent, _scopeId))\n        _push(_ssrRenderComponent(_component_el_col, { span: 12 }, {\n          default: _withCtx((_, _push, _parent, _scopeId) => {\n            if (_push) {\n              _push(`<h1 class=\"text-center text-3xl font-medium md:text-4xl\"${\n                _scopeId\n              }> 相关链接 </h1><div class=\"flex content-center\"${\n                _scopeId\n              }><!--[-->`)\n              _ssrRenderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                _push(`<a${\n                  _ssrRenderAttr(\"href\", _unref(SOCIAL_LINKS)[el])\n                } class=\"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\" rel=\"noreferrer\" target=\"_blank\"${\n                  _scopeId\n                }><img${\n                  _ssrRenderAttr(\"src\", `/social/${el}.png`)\n                } alt=\"{el}\"${\n                  _scopeId\n                }></a>`)\n              })\n              _push(`<!--]--></div>`)\n            } else {\n              return [\n                _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 相关链接 \"),\n                _createVNode(\"div\", { class: \"flex content-center\" }, [\n                  (_openBlock(true), _createBlock(_Fragment, null, _renderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                    return (_openBlock(), _createBlock(\"a\", {\n                      key: el,\n                      href: _unref(SOCIAL_LINKS)[el],\n                      class: \"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\",\n                      rel: \"noreferrer\",\n                      target: \"_blank\"\n                    }, [\n                      _createVNode(\"img\", {\n                        src: `/social/${el}.png`,\n                        alt: \"{el}\"\n                      }, null, 8, [\"src\"])\n                    ], 8, [\"href\"]))\n                  }), 128))\n                ])\n              ]\n            }\n          }),\n          _: 1\n        }, _parent, _scopeId))\n      } else {\n        return [\n          _createVNode(_component_el_col, { span: 12 }, {\n            default: _withCtx(() => [\n              _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 联系我们 \"),\n              _createVNode(\"div\", { class: \"mt-8 flex items-center justify-center\" }, [\n                _createVNode(Button, {\n                  classes: \"mr-3\",\n                  type: _unref(ButtonTypes).OUTLINE,\n                  name: _unref(INFODATA).pdfBtnName,\n                  \"other-props\": _unref(otherProp),\n                  href: _unref(INFODATA).pdfUrl\n                }, null, 8, [\"type\", \"name\", \"other-props\", \"href\"]),\n                _createVNode(Button, {\n                  classes: \"ml-3\",\n                  type: _unref(ButtonTypes).WHITE,\n                  name: _unref(INFODATA).siteBtnName,\n                  href: _unref(INFODATA).siteUrl,\n                  \"other-props\": _unref(otherProp)\n                }, null, 8, [\"type\", \"name\", \"href\", \"other-props\"])\n              ])\n            ]),\n            _: 1\n          }),\n          _createVNode(_component_el_col, { span: 12 }, {\n            default: _withCtx(() => [\n              _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 相关链接 \"),\n              _createVNode(\"div\", { class: \"flex content-center\" }, [\n                (_openBlock(true), _createBlock(_Fragment, null, _renderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                  return (_openBlock(), _createBlock(\"a\", {\n                    key: el,\n                    href: _unref(SOCIAL_LINKS)[el],\n                    class: \"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\",\n                    rel: \"noreferrer\",\n                    target: \"_blank\"\n                  }, [\n                    _createVNode(\"img\", {\n                      src: `/social/${el}.png`,\n                      alt: \"{el}\"\n                    }, null, 8, [\"src\"])\n                  ], 8, [\"href\"]))\n                }), 128))\n              ])\n            ]),\n            _: 1\n          })\n        ]\n      }\n    }),\n    _: 1\n  }, _parent))\n  _push(`<h2 class=\"mt-8 text-center text-sm sm:text-base\"> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx </h2></div></div></footer>`)\n}\n}\n\n})",
-      "start": 1715597154924,
-      "end": 1715597154924,
+      "start": 1715603891223,
+      "end": 1715603891223,
       "sourcemaps": {
         "version": 3,
         "sources": [
@@ -20,69 +20,69 @@
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597154924,
-      "end": 1715597154924,
+      "start": 1715603891223,
+      "end": 1715603891224,
       "order": "pre"
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597154924,
-      "end": 1715597154924,
+      "start": 1715603891223,
+      "end": 1715603891224,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597154924,
-      "end": 1715597154924,
+      "start": 1715603891224,
+      "end": 1715603891224,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597154924,
-      "end": 1715597154924,
+      "start": 1715603891224,
+      "end": 1715603891224,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597154925,
-      "end": 1715597154925,
+      "start": 1715603891224,
+      "end": 1715603891224,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597154925,
-      "end": 1715597154925,
+      "start": 1715603891224,
+      "end": 1715603891224,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597154925,
-      "end": 1715597154925,
+      "start": 1715603891224,
+      "end": 1715603891224,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597154925,
-      "end": 1715597154925,
+      "start": 1715603891224,
+      "end": 1715603891224,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1715597154926,
-      "end": 1715597154926,
+      "start": 1715603891224,
+      "end": 1715603891224,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1715597154926,
-      "end": 1715597154926,
+      "start": 1715603891224,
+      "end": 1715603891224,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createBlock as _createBlock, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderComponent as _ssrRenderComponent, ssrRenderAttrs as _ssrRenderAttrs, ssrRenderList as _ssrRenderList } from \"vue/server-renderer\";\nimport _imports_0 from \"/footer-curve.svg\";\nimport Button, {\n  ButtonTypes\n} from \"./common/button.vue\";\nimport {\n  MENULINKS,\n  SOCIAL_LINKS,\n  INFODATA\n} from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"footer\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const {\n      ref: footerRef\n    } = MENULINKS[4];\n    const otherProp = reactive({\n      target: \"_blank\",\n      rel: \"noreferrer\"\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      const _component_el_row = _resolveComponent(\"el-row\");\n      const _component_el_col = _resolveComponent(\"el-col\");\n      _push(`<footer${_ssrRenderAttrs(_mergeProps({\n        id: _unref(footerRef),\n        class: \"relative w-full flex flex-col select-none items-stretch bg-cover\"\n      }, _attrs))}><img${_ssrRenderAttr(\"src\", _imports_0)} alt=\"Footer\" class=\"w-full\" height=\"290\" role=\"presentation\" width=\"1440\"><div class=\"h-full w-full\"><div class=\"section-container z-10 h-full flex flex-col items-center justify-end py-12\">`);\n      _push(_ssrRenderComponent(_component_el_row, { gutter: 20 }, {\n        default: _withCtx((_, _push2, _parent2, _scopeId) => {\n          if (_push2) {\n            _push2(_ssrRenderComponent(_component_el_col, { span: 12 }, {\n              default: _withCtx((_2, _push3, _parent3, _scopeId2) => {\n                if (_push3) {\n                  _push3(`<h1 class=\"text-center text-3xl font-medium md:text-4xl\"${_scopeId2}> 联系我们 </h1><div class=\"mt-8 flex items-center justify-center\"${_scopeId2}>`);\n                  _push3(_ssrRenderComponent(Button, {\n                    classes: \"mr-3\",\n                    type: _unref(ButtonTypes).OUTLINE,\n                    name: _unref(INFODATA).pdfBtnName,\n                    \"other-props\": _unref(otherProp),\n                    href: _unref(INFODATA).pdfUrl\n                  }, null, _parent3, _scopeId2));\n                  _push3(_ssrRenderComponent(Button, {\n                    classes: \"ml-3\",\n                    type: _unref(ButtonTypes).WHITE,\n                    name: _unref(INFODATA).siteBtnName,\n                    href: _unref(INFODATA).siteUrl,\n                    \"other-props\": _unref(otherProp)\n                  }, null, _parent3, _scopeId2));\n                  _push3(`</div>`);\n                } else {\n                  return [\n                    _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 联系我们 \"),\n                    _createVNode(\"div\", { class: \"mt-8 flex items-center justify-center\" }, [\n                      _createVNode(Button, {\n                        classes: \"mr-3\",\n                        type: _unref(ButtonTypes).OUTLINE,\n                        name: _unref(INFODATA).pdfBtnName,\n                        \"other-props\": _unref(otherProp),\n                        href: _unref(INFODATA).pdfUrl\n                      }, null, 8, [\"type\", \"name\", \"other-props\", \"href\"]),\n                      _createVNode(Button, {\n                        classes: \"ml-3\",\n                        type: _unref(ButtonTypes).WHITE,\n                        name: _unref(INFODATA).siteBtnName,\n                        href: _unref(INFODATA).siteUrl,\n                        \"other-props\": _unref(otherProp)\n                      }, null, 8, [\"type\", \"name\", \"href\", \"other-props\"])\n                    ])\n                  ];\n                }\n              }),\n              _: 1\n            }, _parent2, _scopeId));\n            _push2(_ssrRenderComponent(_component_el_col, { span: 12 }, {\n              default: _withCtx((_2, _push3, _parent3, _scopeId2) => {\n                if (_push3) {\n                  _push3(`<h1 class=\"text-center text-3xl font-medium md:text-4xl\"${_scopeId2}> 相关链接 </h1><div class=\"flex content-center\"${_scopeId2}><!--[-->`);\n                  _ssrRenderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                    _push3(`<a${_ssrRenderAttr(\"href\", _unref(SOCIAL_LINKS)[el])} class=\"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\" rel=\"noreferrer\" target=\"_blank\"${_scopeId2}><img${_ssrRenderAttr(\"src\", `/social/${el}.png`)} alt=\"{el}\"${_scopeId2}></a>`);\n                  });\n                  _push3(`<!--]--></div>`);\n                } else {\n                  return [\n                    _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 相关链接 \"),\n                    _createVNode(\"div\", { class: \"flex content-center\" }, [\n                      (_openBlock(true), _createBlock(_Fragment, null, _renderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                        return _openBlock(), _createBlock(\"a\", {\n                          key: el,\n                          href: _unref(SOCIAL_LINKS)[el],\n                          class: \"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\",\n                          rel: \"noreferrer\",\n                          target: \"_blank\"\n                        }, [\n                          _createVNode(\"img\", {\n                            src: `/social/${el}.png`,\n                            alt: \"{el}\"\n                          }, null, 8, [\"src\"])\n                        ], 8, [\"href\"]);\n                      }), 128))\n                    ])\n                  ];\n                }\n              }),\n              _: 1\n            }, _parent2, _scopeId));\n          } else {\n            return [\n              _createVNode(_component_el_col, { span: 12 }, {\n                default: _withCtx(() => [\n                  _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 联系我们 \"),\n                  _createVNode(\"div\", { class: \"mt-8 flex items-center justify-center\" }, [\n                    _createVNode(Button, {\n                      classes: \"mr-3\",\n                      type: _unref(ButtonTypes).OUTLINE,\n                      name: _unref(INFODATA).pdfBtnName,\n                      \"other-props\": _unref(otherProp),\n                      href: _unref(INFODATA).pdfUrl\n                    }, null, 8, [\"type\", \"name\", \"other-props\", \"href\"]),\n                    _createVNode(Button, {\n                      classes: \"ml-3\",\n                      type: _unref(ButtonTypes).WHITE,\n                      name: _unref(INFODATA).siteBtnName,\n                      href: _unref(INFODATA).siteUrl,\n                      \"other-props\": _unref(otherProp)\n                    }, null, 8, [\"type\", \"name\", \"href\", \"other-props\"])\n                  ])\n                ]),\n                _: 1\n              }),\n              _createVNode(_component_el_col, { span: 12 }, {\n                default: _withCtx(() => [\n                  _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 相关链接 \"),\n                  _createVNode(\"div\", { class: \"flex content-center\" }, [\n                    (_openBlock(true), _createBlock(_Fragment, null, _renderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                      return _openBlock(), _createBlock(\"a\", {\n                        key: el,\n                        href: _unref(SOCIAL_LINKS)[el],\n                        class: \"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\",\n                        rel: \"noreferrer\",\n                        target: \"_blank\"\n                      }, [\n                        _createVNode(\"img\", {\n                          src: `/social/${el}.png`,\n                          alt: \"{el}\"\n                        }, null, 8, [\"src\"])\n                      ], 8, [\"href\"]);\n                    }), 128))\n                  ])\n                ]),\n                _: 1\n              })\n            ];\n          }\n        }),\n        _: 1\n      }, _parent));\n      _push(`<h2 class=\"mt-8 text-center text-sm sm:text-base\"> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx </h2></div></div></footer>`);\n    };\n  }\n});\n",
-      "start": 1715597154926,
-      "end": 1715597155011,
+      "start": 1715603891224,
+      "end": 1715603891305,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -103,165 +103,165 @@
     },
     {
       "name": "vite:json",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "ssr-styles",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "post"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
       "result": "import { reactive } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createBlock as _createBlock, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderComponent as _ssrRenderComponent, ssrRenderAttrs as _ssrRenderAttrs, ssrRenderList as _ssrRenderList } from \"vue/server-renderer\";\nimport _imports_0 from \"/footer-curve.svg\";\nimport Button, {\n  ButtonTypes\n} from \"./common/button.vue\";\nimport {\n  MENULINKS,\n  SOCIAL_LINKS,\n  INFODATA\n} from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"footer\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const {\n      ref: footerRef\n    } = MENULINKS[4];\n    const otherProp = reactive({\n      target: \"_blank\",\n      rel: \"noreferrer\"\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      const _component_el_row = _resolveComponent(\"el-row\");\n      const _component_el_col = _resolveComponent(\"el-col\");\n      _push(`<footer${_ssrRenderAttrs(_mergeProps({\n        id: _unref(footerRef),\n        class: \"relative w-full flex flex-col select-none items-stretch bg-cover\"\n      }, _attrs))}><img${_ssrRenderAttr(\"src\", _imports_0)} alt=\"Footer\" class=\"w-full\" height=\"290\" role=\"presentation\" width=\"1440\"><div class=\"h-full w-full\"><div class=\"section-container z-10 h-full flex flex-col items-center justify-end py-12\">`);\n      _push(_ssrRenderComponent(_component_el_row, { gutter: 20 }, {\n        default: _withCtx((_, _push2, _parent2, _scopeId) => {\n          if (_push2) {\n            _push2(_ssrRenderComponent(_component_el_col, { span: 12 }, {\n              default: _withCtx((_2, _push3, _parent3, _scopeId2) => {\n                if (_push3) {\n                  _push3(`<h1 class=\"text-center text-3xl font-medium md:text-4xl\"${_scopeId2}> 联系我们 </h1><div class=\"mt-8 flex items-center justify-center\"${_scopeId2}>`);\n                  _push3(_ssrRenderComponent(Button, {\n                    classes: \"mr-3\",\n                    type: _unref(ButtonTypes).OUTLINE,\n                    name: _unref(INFODATA).pdfBtnName,\n                    \"other-props\": _unref(otherProp),\n                    href: _unref(INFODATA).pdfUrl\n                  }, null, _parent3, _scopeId2));\n                  _push3(_ssrRenderComponent(Button, {\n                    classes: \"ml-3\",\n                    type: _unref(ButtonTypes).WHITE,\n                    name: _unref(INFODATA).siteBtnName,\n                    href: _unref(INFODATA).siteUrl,\n                    \"other-props\": _unref(otherProp)\n                  }, null, _parent3, _scopeId2));\n                  _push3(`</div>`);\n                } else {\n                  return [\n                    _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 联系我们 \"),\n                    _createVNode(\"div\", { class: \"mt-8 flex items-center justify-center\" }, [\n                      _createVNode(Button, {\n                        classes: \"mr-3\",\n                        type: _unref(ButtonTypes).OUTLINE,\n                        name: _unref(INFODATA).pdfBtnName,\n                        \"other-props\": _unref(otherProp),\n                        href: _unref(INFODATA).pdfUrl\n                      }, null, 8, [\"type\", \"name\", \"other-props\", \"href\"]),\n                      _createVNode(Button, {\n                        classes: \"ml-3\",\n                        type: _unref(ButtonTypes).WHITE,\n                        name: _unref(INFODATA).siteBtnName,\n                        href: _unref(INFODATA).siteUrl,\n                        \"other-props\": _unref(otherProp)\n                      }, null, 8, [\"type\", \"name\", \"href\", \"other-props\"])\n                    ])\n                  ];\n                }\n              }),\n              _: 1\n            }, _parent2, _scopeId));\n            _push2(_ssrRenderComponent(_component_el_col, { span: 12 }, {\n              default: _withCtx((_2, _push3, _parent3, _scopeId2) => {\n                if (_push3) {\n                  _push3(`<h1 class=\"text-center text-3xl font-medium md:text-4xl\"${_scopeId2}> 相关链接 </h1><div class=\"flex content-center\"${_scopeId2}><!--[-->`);\n                  _ssrRenderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                    _push3(`<a${_ssrRenderAttr(\"href\", _unref(SOCIAL_LINKS)[el])} class=\"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\" rel=\"noreferrer\" target=\"_blank\"${_scopeId2}><img${_ssrRenderAttr(\"src\", `/social/${el}.png`)} alt=\"{el}\"${_scopeId2}></a>`);\n                  });\n                  _push3(`<!--]--></div>`);\n                } else {\n                  return [\n                    _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 相关链接 \"),\n                    _createVNode(\"div\", { class: \"flex content-center\" }, [\n                      (_openBlock(true), _createBlock(_Fragment, null, _renderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                        return _openBlock(), _createBlock(\"a\", {\n                          key: el,\n                          href: _unref(SOCIAL_LINKS)[el],\n                          class: \"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\",\n                          rel: \"noreferrer\",\n                          target: \"_blank\"\n                        }, [\n                          _createVNode(\"img\", {\n                            src: `/social/${el}.png`,\n                            alt: \"{el}\"\n                          }, null, 8, [\"src\"])\n                        ], 8, [\"href\"]);\n                      }), 128))\n                    ])\n                  ];\n                }\n              }),\n              _: 1\n            }, _parent2, _scopeId));\n          } else {\n            return [\n              _createVNode(_component_el_col, { span: 12 }, {\n                default: _withCtx(() => [\n                  _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 联系我们 \"),\n                  _createVNode(\"div\", { class: \"mt-8 flex items-center justify-center\" }, [\n                    _createVNode(Button, {\n                      classes: \"mr-3\",\n                      type: _unref(ButtonTypes).OUTLINE,\n                      name: _unref(INFODATA).pdfBtnName,\n                      \"other-props\": _unref(otherProp),\n                      href: _unref(INFODATA).pdfUrl\n                    }, null, 8, [\"type\", \"name\", \"other-props\", \"href\"]),\n                    _createVNode(Button, {\n                      classes: \"ml-3\",\n                      type: _unref(ButtonTypes).WHITE,\n                      name: _unref(INFODATA).siteBtnName,\n                      href: _unref(INFODATA).siteUrl,\n                      \"other-props\": _unref(otherProp)\n                    }, null, 8, [\"type\", \"name\", \"href\", \"other-props\"])\n                  ])\n                ]),\n                _: 1\n              }),\n              _createVNode(_component_el_col, { span: 12 }, {\n                default: _withCtx(() => [\n                  _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 相关链接 \"),\n                  _createVNode(\"div\", { class: \"flex content-center\" }, [\n                    (_openBlock(true), _createBlock(_Fragment, null, _renderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                      return _openBlock(), _createBlock(\"a\", {\n                        key: el,\n                        href: _unref(SOCIAL_LINKS)[el],\n                        class: \"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\",\n                        rel: \"noreferrer\",\n                        target: \"_blank\"\n                      }, [\n                        _createVNode(\"img\", {\n                          src: `/social/${el}.png`,\n                          alt: \"{el}\"\n                        }, null, 8, [\"src\"])\n                      ], 8, [\"href\"]);\n                    }), 128))\n                  ])\n                ]),\n                _: 1\n              })\n            ];\n          }\n        }),\n        _: 1\n      }, _parent));\n      _push(`<h2 class=\"mt-8 text-center text-sm sm:text-base\"> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx </h2></div></div></footer>`);\n    };\n  }\n});\n",
-      "start": 1715597155014,
-      "end": 1715597155018,
+      "start": 1715603891306,
+      "end": 1715603891311,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -275,8 +275,8 @@
     {
       "name": "nuxt:imports-transform",
       "result": "import { reactive } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createBlock as _createBlock, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderComponent as _ssrRenderComponent, ssrRenderAttrs as _ssrRenderAttrs, ssrRenderList as _ssrRenderList } from \"vue/server-renderer\";\nimport _imports_0 from \"/footer-curve.svg\";\nimport Button, {\n  ButtonTypes\n} from \"./common/button.vue\";\nimport {\n  MENULINKS,\n  SOCIAL_LINKS,\n  INFODATA\n} from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"footer\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const {\n      ref: footerRef\n    } = MENULINKS[4];\n    const otherProp = reactive({\n      target: \"_blank\",\n      rel: \"noreferrer\"\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      const _component_el_row = _resolveComponent(\"el-row\");\n      const _component_el_col = _resolveComponent(\"el-col\");\n      _push(`<footer${_ssrRenderAttrs(_mergeProps({\n        id: _unref(footerRef),\n        class: \"relative w-full flex flex-col select-none items-stretch bg-cover\"\n      }, _attrs))}><img${_ssrRenderAttr(\"src\", _imports_0)} alt=\"Footer\" class=\"w-full\" height=\"290\" role=\"presentation\" width=\"1440\"><div class=\"h-full w-full\"><div class=\"section-container z-10 h-full flex flex-col items-center justify-end py-12\">`);\n      _push(_ssrRenderComponent(_component_el_row, { gutter: 20 }, {\n        default: _withCtx((_, _push2, _parent2, _scopeId) => {\n          if (_push2) {\n            _push2(_ssrRenderComponent(_component_el_col, { span: 12 }, {\n              default: _withCtx((_2, _push3, _parent3, _scopeId2) => {\n                if (_push3) {\n                  _push3(`<h1 class=\"text-center text-3xl font-medium md:text-4xl\"${_scopeId2}> 联系我们 </h1><div class=\"mt-8 flex items-center justify-center\"${_scopeId2}>`);\n                  _push3(_ssrRenderComponent(Button, {\n                    classes: \"mr-3\",\n                    type: _unref(ButtonTypes).OUTLINE,\n                    name: _unref(INFODATA).pdfBtnName,\n                    \"other-props\": _unref(otherProp),\n                    href: _unref(INFODATA).pdfUrl\n                  }, null, _parent3, _scopeId2));\n                  _push3(_ssrRenderComponent(Button, {\n                    classes: \"ml-3\",\n                    type: _unref(ButtonTypes).WHITE,\n                    name: _unref(INFODATA).siteBtnName,\n                    href: _unref(INFODATA).siteUrl,\n                    \"other-props\": _unref(otherProp)\n                  }, null, _parent3, _scopeId2));\n                  _push3(`</div>`);\n                } else {\n                  return [\n                    _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 联系我们 \"),\n                    _createVNode(\"div\", { class: \"mt-8 flex items-center justify-center\" }, [\n                      _createVNode(Button, {\n                        classes: \"mr-3\",\n                        type: _unref(ButtonTypes).OUTLINE,\n                        name: _unref(INFODATA).pdfBtnName,\n                        \"other-props\": _unref(otherProp),\n                        href: _unref(INFODATA).pdfUrl\n                      }, null, 8, [\"type\", \"name\", \"other-props\", \"href\"]),\n                      _createVNode(Button, {\n                        classes: \"ml-3\",\n                        type: _unref(ButtonTypes).WHITE,\n                        name: _unref(INFODATA).siteBtnName,\n                        href: _unref(INFODATA).siteUrl,\n                        \"other-props\": _unref(otherProp)\n                      }, null, 8, [\"type\", \"name\", \"href\", \"other-props\"])\n                    ])\n                  ];\n                }\n              }),\n              _: 1\n            }, _parent2, _scopeId));\n            _push2(_ssrRenderComponent(_component_el_col, { span: 12 }, {\n              default: _withCtx((_2, _push3, _parent3, _scopeId2) => {\n                if (_push3) {\n                  _push3(`<h1 class=\"text-center text-3xl font-medium md:text-4xl\"${_scopeId2}> 相关链接 </h1><div class=\"flex content-center\"${_scopeId2}><!--[-->`);\n                  _ssrRenderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                    _push3(`<a${_ssrRenderAttr(\"href\", _unref(SOCIAL_LINKS)[el])} class=\"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\" rel=\"noreferrer\" target=\"_blank\"${_scopeId2}><img${_ssrRenderAttr(\"src\", `/social/${el}.png`)} alt=\"{el}\"${_scopeId2}></a>`);\n                  });\n                  _push3(`<!--]--></div>`);\n                } else {\n                  return [\n                    _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 相关链接 \"),\n                    _createVNode(\"div\", { class: \"flex content-center\" }, [\n                      (_openBlock(true), _createBlock(_Fragment, null, _renderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                        return _openBlock(), _createBlock(\"a\", {\n                          key: el,\n                          href: _unref(SOCIAL_LINKS)[el],\n                          class: \"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\",\n                          rel: \"noreferrer\",\n                          target: \"_blank\"\n                        }, [\n                          _createVNode(\"img\", {\n                            src: `/social/${el}.png`,\n                            alt: \"{el}\"\n                          }, null, 8, [\"src\"])\n                        ], 8, [\"href\"]);\n                      }), 128))\n                    ])\n                  ];\n                }\n              }),\n              _: 1\n            }, _parent2, _scopeId));\n          } else {\n            return [\n              _createVNode(_component_el_col, { span: 12 }, {\n                default: _withCtx(() => [\n                  _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 联系我们 \"),\n                  _createVNode(\"div\", { class: \"mt-8 flex items-center justify-center\" }, [\n                    _createVNode(Button, {\n                      classes: \"mr-3\",\n                      type: _unref(ButtonTypes).OUTLINE,\n                      name: _unref(INFODATA).pdfBtnName,\n                      \"other-props\": _unref(otherProp),\n                      href: _unref(INFODATA).pdfUrl\n                    }, null, 8, [\"type\", \"name\", \"other-props\", \"href\"]),\n                    _createVNode(Button, {\n                      classes: \"ml-3\",\n                      type: _unref(ButtonTypes).WHITE,\n                      name: _unref(INFODATA).siteBtnName,\n                      href: _unref(INFODATA).siteUrl,\n                      \"other-props\": _unref(otherProp)\n                    }, null, 8, [\"type\", \"name\", \"href\", \"other-props\"])\n                  ])\n                ]),\n                _: 1\n              }),\n              _createVNode(_component_el_col, { span: 12 }, {\n                default: _withCtx(() => [\n                  _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 相关链接 \"),\n                  _createVNode(\"div\", { class: \"flex content-center\" }, [\n                    (_openBlock(true), _createBlock(_Fragment, null, _renderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                      return _openBlock(), _createBlock(\"a\", {\n                        key: el,\n                        href: _unref(SOCIAL_LINKS)[el],\n                        class: \"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\",\n                        rel: \"noreferrer\",\n                        target: \"_blank\"\n                      }, [\n                        _createVNode(\"img\", {\n                          src: `/social/${el}.png`,\n                          alt: \"{el}\"\n                        }, null, 8, [\"src\"])\n                      ], 8, [\"href\"]);\n                    }), 128))\n                  ])\n                ]),\n                _: 1\n              })\n            ];\n          }\n        }),\n        _: 1\n      }, _parent));\n      _push(`<h2 class=\"mt-8 text-center text-sm sm:text-base\"> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx </h2></div></div></footer>`);\n    };\n  }\n});\n",
-      "start": 1715597155014,
-      "end": 1715597155018,
+      "start": 1715603891306,
+      "end": 1715603891311,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -289,33 +289,33 @@
     },
     {
       "name": "unctx:transform",
-      "start": 1715597155018,
-      "end": 1715597155018,
+      "start": 1715603891311,
+      "end": 1715603891311,
       "order": "post"
     },
     {
       "name": "unctx:transform",
-      "start": 1715597155018,
-      "end": 1715597155018,
+      "start": 1715603891311,
+      "end": 1715603891311,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597155018,
-      "end": 1715597155019,
+      "start": 1715603891311,
+      "end": 1715603891311,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597155018,
-      "end": 1715597155019,
+      "start": 1715603891311,
+      "end": 1715603891311,
       "order": "post"
     },
     {
       "name": "element-plus:transform",
       "result": "import 'element-plus/es/components/row/style/index';\nimport 'element-plus/es/components/col/style/index';\nimport { reactive } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createBlock as _createBlock, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderComponent as _ssrRenderComponent, ssrRenderAttrs as _ssrRenderAttrs, ssrRenderList as _ssrRenderList } from \"vue/server-renderer\";\nimport _imports_0 from \"/footer-curve.svg\";\nimport Button, {\n  ButtonTypes\n} from \"./common/button.vue\";\nimport {\n  MENULINKS,\n  SOCIAL_LINKS,\n  INFODATA\n} from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"footer\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const {\n      ref: footerRef\n    } = MENULINKS[4];\n    const otherProp = reactive({\n      target: \"_blank\",\n      rel: \"noreferrer\"\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      const _component_el_row = _resolveComponent(\"el-row\");\n      const _component_el_col = _resolveComponent(\"el-col\");\n      _push(`<footer${_ssrRenderAttrs(_mergeProps({\n        id: _unref(footerRef),\n        class: \"relative w-full flex flex-col select-none items-stretch bg-cover\"\n      }, _attrs))}><img${_ssrRenderAttr(\"src\", _imports_0)} alt=\"Footer\" class=\"w-full\" height=\"290\" role=\"presentation\" width=\"1440\"><div class=\"h-full w-full\"><div class=\"section-container z-10 h-full flex flex-col items-center justify-end py-12\">`);\n      _push(_ssrRenderComponent(_component_el_row, { gutter: 20 }, {\n        default: _withCtx((_, _push2, _parent2, _scopeId) => {\n          if (_push2) {\n            _push2(_ssrRenderComponent(_component_el_col, { span: 12 }, {\n              default: _withCtx((_2, _push3, _parent3, _scopeId2) => {\n                if (_push3) {\n                  _push3(`<h1 class=\"text-center text-3xl font-medium md:text-4xl\"${_scopeId2}> 联系我们 </h1><div class=\"mt-8 flex items-center justify-center\"${_scopeId2}>`);\n                  _push3(_ssrRenderComponent(Button, {\n                    classes: \"mr-3\",\n                    type: _unref(ButtonTypes).OUTLINE,\n                    name: _unref(INFODATA).pdfBtnName,\n                    \"other-props\": _unref(otherProp),\n                    href: _unref(INFODATA).pdfUrl\n                  }, null, _parent3, _scopeId2));\n                  _push3(_ssrRenderComponent(Button, {\n                    classes: \"ml-3\",\n                    type: _unref(ButtonTypes).WHITE,\n                    name: _unref(INFODATA).siteBtnName,\n                    href: _unref(INFODATA).siteUrl,\n                    \"other-props\": _unref(otherProp)\n                  }, null, _parent3, _scopeId2));\n                  _push3(`</div>`);\n                } else {\n                  return [\n                    _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 联系我们 \"),\n                    _createVNode(\"div\", { class: \"mt-8 flex items-center justify-center\" }, [\n                      _createVNode(Button, {\n                        classes: \"mr-3\",\n                        type: _unref(ButtonTypes).OUTLINE,\n                        name: _unref(INFODATA).pdfBtnName,\n                        \"other-props\": _unref(otherProp),\n                        href: _unref(INFODATA).pdfUrl\n                      }, null, 8, [\"type\", \"name\", \"other-props\", \"href\"]),\n                      _createVNode(Button, {\n                        classes: \"ml-3\",\n                        type: _unref(ButtonTypes).WHITE,\n                        name: _unref(INFODATA).siteBtnName,\n                        href: _unref(INFODATA).siteUrl,\n                        \"other-props\": _unref(otherProp)\n                      }, null, 8, [\"type\", \"name\", \"href\", \"other-props\"])\n                    ])\n                  ];\n                }\n              }),\n              _: 1\n            }, _parent2, _scopeId));\n            _push2(_ssrRenderComponent(_component_el_col, { span: 12 }, {\n              default: _withCtx((_2, _push3, _parent3, _scopeId2) => {\n                if (_push3) {\n                  _push3(`<h1 class=\"text-center text-3xl font-medium md:text-4xl\"${_scopeId2}> 相关链接 </h1><div class=\"flex content-center\"${_scopeId2}><!--[-->`);\n                  _ssrRenderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                    _push3(`<a${_ssrRenderAttr(\"href\", _unref(SOCIAL_LINKS)[el])} class=\"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\" rel=\"noreferrer\" target=\"_blank\"${_scopeId2}><img${_ssrRenderAttr(\"src\", `/social/${el}.png`)} alt=\"{el}\"${_scopeId2}></a>`);\n                  });\n                  _push3(`<!--]--></div>`);\n                } else {\n                  return [\n                    _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 相关链接 \"),\n                    _createVNode(\"div\", { class: \"flex content-center\" }, [\n                      (_openBlock(true), _createBlock(_Fragment, null, _renderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                        return _openBlock(), _createBlock(\"a\", {\n                          key: el,\n                          href: _unref(SOCIAL_LINKS)[el],\n                          class: \"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\",\n                          rel: \"noreferrer\",\n                          target: \"_blank\"\n                        }, [\n                          _createVNode(\"img\", {\n                            src: `/social/${el}.png`,\n                            alt: \"{el}\"\n                          }, null, 8, [\"src\"])\n                        ], 8, [\"href\"]);\n                      }), 128))\n                    ])\n                  ];\n                }\n              }),\n              _: 1\n            }, _parent2, _scopeId));\n          } else {\n            return [\n              _createVNode(_component_el_col, { span: 12 }, {\n                default: _withCtx(() => [\n                  _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 联系我们 \"),\n                  _createVNode(\"div\", { class: \"mt-8 flex items-center justify-center\" }, [\n                    _createVNode(Button, {\n                      classes: \"mr-3\",\n                      type: _unref(ButtonTypes).OUTLINE,\n                      name: _unref(INFODATA).pdfBtnName,\n                      \"other-props\": _unref(otherProp),\n                      href: _unref(INFODATA).pdfUrl\n                    }, null, 8, [\"type\", \"name\", \"other-props\", \"href\"]),\n                    _createVNode(Button, {\n                      classes: \"ml-3\",\n                      type: _unref(ButtonTypes).WHITE,\n                      name: _unref(INFODATA).siteBtnName,\n                      href: _unref(INFODATA).siteUrl,\n                      \"other-props\": _unref(otherProp)\n                    }, null, 8, [\"type\", \"name\", \"href\", \"other-props\"])\n                  ])\n                ]),\n                _: 1\n              }),\n              _createVNode(_component_el_col, { span: 12 }, {\n                default: _withCtx(() => [\n                  _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 相关链接 \"),\n                  _createVNode(\"div\", { class: \"flex content-center\" }, [\n                    (_openBlock(true), _createBlock(_Fragment, null, _renderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                      return _openBlock(), _createBlock(\"a\", {\n                        key: el,\n                        href: _unref(SOCIAL_LINKS)[el],\n                        class: \"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\",\n                        rel: \"noreferrer\",\n                        target: \"_blank\"\n                      }, [\n                        _createVNode(\"img\", {\n                          src: `/social/${el}.png`,\n                          alt: \"{el}\"\n                        }, null, 8, [\"src\"])\n                      ], 8, [\"href\"]);\n                    }), 128))\n                  ])\n                ]),\n                _: 1\n              })\n            ];\n          }\n        }),\n        _: 1\n      }, _parent));\n      _push(`<h2 class=\"mt-8 text-center text-sm sm:text-base\"> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx </h2></div></div></footer>`);\n    };\n  }\n});\n",
-      "start": 1715597155019,
-      "end": 1715597155020,
+      "start": 1715603891311,
+      "end": 1715603891312,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -332,15 +332,15 @@
     },
     {
       "name": "nuxt:tree-shake-template",
-      "start": 1715597155020,
-      "end": 1715597155020,
+      "start": 1715603891312,
+      "end": 1715603891312,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
       "result": "import { ElRow as __nuxt_component_0 } from \"element-plus/es/components/row/index\";\nimport { ElCol as __nuxt_component_1 } from \"element-plus/es/components/col/index\";\nimport 'element-plus/es/components/row/style/index';\nimport 'element-plus/es/components/col/style/index';\nimport { reactive } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createBlock as _createBlock, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderComponent as _ssrRenderComponent, ssrRenderAttrs as _ssrRenderAttrs, ssrRenderList as _ssrRenderList } from \"vue/server-renderer\";\nimport _imports_0 from \"/footer-curve.svg\";\nimport Button, {\n  ButtonTypes\n} from \"./common/button.vue\";\nimport {\n  MENULINKS,\n  SOCIAL_LINKS,\n  INFODATA\n} from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"footer\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const {\n      ref: footerRef\n    } = MENULINKS[4];\n    const otherProp = reactive({\n      target: \"_blank\",\n      rel: \"noreferrer\"\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      const _component_el_row = __nuxt_component_0;\n      const _component_el_col = __nuxt_component_1;\n      _push(`<footer${_ssrRenderAttrs(_mergeProps({\n        id: _unref(footerRef),\n        class: \"relative w-full flex flex-col select-none items-stretch bg-cover\"\n      }, _attrs))}><img${_ssrRenderAttr(\"src\", _imports_0)} alt=\"Footer\" class=\"w-full\" height=\"290\" role=\"presentation\" width=\"1440\"><div class=\"h-full w-full\"><div class=\"section-container z-10 h-full flex flex-col items-center justify-end py-12\">`);\n      _push(_ssrRenderComponent(_component_el_row, { gutter: 20 }, {\n        default: _withCtx((_, _push2, _parent2, _scopeId) => {\n          if (_push2) {\n            _push2(_ssrRenderComponent(_component_el_col, { span: 12 }, {\n              default: _withCtx((_2, _push3, _parent3, _scopeId2) => {\n                if (_push3) {\n                  _push3(`<h1 class=\"text-center text-3xl font-medium md:text-4xl\"${_scopeId2}> 联系我们 </h1><div class=\"mt-8 flex items-center justify-center\"${_scopeId2}>`);\n                  _push3(_ssrRenderComponent(Button, {\n                    classes: \"mr-3\",\n                    type: _unref(ButtonTypes).OUTLINE,\n                    name: _unref(INFODATA).pdfBtnName,\n                    \"other-props\": _unref(otherProp),\n                    href: _unref(INFODATA).pdfUrl\n                  }, null, _parent3, _scopeId2));\n                  _push3(_ssrRenderComponent(Button, {\n                    classes: \"ml-3\",\n                    type: _unref(ButtonTypes).WHITE,\n                    name: _unref(INFODATA).siteBtnName,\n                    href: _unref(INFODATA).siteUrl,\n                    \"other-props\": _unref(otherProp)\n                  }, null, _parent3, _scopeId2));\n                  _push3(`</div>`);\n                } else {\n                  return [\n                    _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 联系我们 \"),\n                    _createVNode(\"div\", { class: \"mt-8 flex items-center justify-center\" }, [\n                      _createVNode(Button, {\n                        classes: \"mr-3\",\n                        type: _unref(ButtonTypes).OUTLINE,\n                        name: _unref(INFODATA).pdfBtnName,\n                        \"other-props\": _unref(otherProp),\n                        href: _unref(INFODATA).pdfUrl\n                      }, null, 8, [\"type\", \"name\", \"other-props\", \"href\"]),\n                      _createVNode(Button, {\n                        classes: \"ml-3\",\n                        type: _unref(ButtonTypes).WHITE,\n                        name: _unref(INFODATA).siteBtnName,\n                        href: _unref(INFODATA).siteUrl,\n                        \"other-props\": _unref(otherProp)\n                      }, null, 8, [\"type\", \"name\", \"href\", \"other-props\"])\n                    ])\n                  ];\n                }\n              }),\n              _: 1\n            }, _parent2, _scopeId));\n            _push2(_ssrRenderComponent(_component_el_col, { span: 12 }, {\n              default: _withCtx((_2, _push3, _parent3, _scopeId2) => {\n                if (_push3) {\n                  _push3(`<h1 class=\"text-center text-3xl font-medium md:text-4xl\"${_scopeId2}> 相关链接 </h1><div class=\"flex content-center\"${_scopeId2}><!--[-->`);\n                  _ssrRenderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                    _push3(`<a${_ssrRenderAttr(\"href\", _unref(SOCIAL_LINKS)[el])} class=\"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\" rel=\"noreferrer\" target=\"_blank\"${_scopeId2}><img${_ssrRenderAttr(\"src\", `/social/${el}.png`)} alt=\"{el}\"${_scopeId2}></a>`);\n                  });\n                  _push3(`<!--]--></div>`);\n                } else {\n                  return [\n                    _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 相关链接 \"),\n                    _createVNode(\"div\", { class: \"flex content-center\" }, [\n                      (_openBlock(true), _createBlock(_Fragment, null, _renderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                        return _openBlock(), _createBlock(\"a\", {\n                          key: el,\n                          href: _unref(SOCIAL_LINKS)[el],\n                          class: \"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\",\n                          rel: \"noreferrer\",\n                          target: \"_blank\"\n                        }, [\n                          _createVNode(\"img\", {\n                            src: `/social/${el}.png`,\n                            alt: \"{el}\"\n                          }, null, 8, [\"src\"])\n                        ], 8, [\"href\"]);\n                      }), 128))\n                    ])\n                  ];\n                }\n              }),\n              _: 1\n            }, _parent2, _scopeId));\n          } else {\n            return [\n              _createVNode(_component_el_col, { span: 12 }, {\n                default: _withCtx(() => [\n                  _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 联系我们 \"),\n                  _createVNode(\"div\", { class: \"mt-8 flex items-center justify-center\" }, [\n                    _createVNode(Button, {\n                      classes: \"mr-3\",\n                      type: _unref(ButtonTypes).OUTLINE,\n                      name: _unref(INFODATA).pdfBtnName,\n                      \"other-props\": _unref(otherProp),\n                      href: _unref(INFODATA).pdfUrl\n                    }, null, 8, [\"type\", \"name\", \"other-props\", \"href\"]),\n                    _createVNode(Button, {\n                      classes: \"ml-3\",\n                      type: _unref(ButtonTypes).WHITE,\n                      name: _unref(INFODATA).siteBtnName,\n                      href: _unref(INFODATA).siteUrl,\n                      \"other-props\": _unref(otherProp)\n                    }, null, 8, [\"type\", \"name\", \"href\", \"other-props\"])\n                  ])\n                ]),\n                _: 1\n              }),\n              _createVNode(_component_el_col, { span: 12 }, {\n                default: _withCtx(() => [\n                  _createVNode(\"h1\", { class: \"text-center text-3xl font-medium md:text-4xl\" }, \" 相关链接 \"),\n                  _createVNode(\"div\", { class: \"flex content-center\" }, [\n                    (_openBlock(true), _createBlock(_Fragment, null, _renderList(Object.keys(_unref(SOCIAL_LINKS)), (el) => {\n                      return _openBlock(), _createBlock(\"a\", {\n                        key: el,\n                        href: _unref(SOCIAL_LINKS)[el],\n                        class: \"link px-1 duration-300 md:px-2 hover:opacity-80 content-center\",\n                        rel: \"noreferrer\",\n                        target: \"_blank\"\n                      }, [\n                        _createVNode(\"img\", {\n                          src: `/social/${el}.png`,\n                          alt: \"{el}\"\n                        }, null, 8, [\"src\"])\n                      ], 8, [\"href\"]);\n                    }), 128))\n                  ])\n                ]),\n                _: 1\n              })\n            ];\n          }\n        }),\n        _: 1\n      }, _parent));\n      _push(`<h2 class=\"mt-8 text-center text-sm sm:text-base\"> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx </h2></div></div></footer>`);\n    };\n  }\n});\n",
-      "start": 1715597155020,
-      "end": 1715597155025,
+      "start": 1715603891312,
+      "end": 1715603891313,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -353,20 +353,20 @@
     },
     {
       "name": "nuxt:tree-shake-composables:transform",
-      "start": 1715597155025,
-      "end": 1715597155026,
+      "start": 1715603891317,
+      "end": 1715603891318,
       "order": "post"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1715597155026,
-      "end": 1715597155027,
+      "start": 1715603891318,
+      "end": 1715603891318,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1715597155027,
-      "end": 1715597155027,
+      "start": 1715603891318,
+      "end": 1715603891318,
       "order": "normal"
     }
   ]

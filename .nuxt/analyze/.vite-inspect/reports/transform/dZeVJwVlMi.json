@@ -4,51 +4,51 @@
     {
       "name": "vite:load-fallback",
       "result": "// Copyright Ayush Singh 2021,2022. All Rights Reserved.\r\n// Project: folio\r\n// Author contact: https://www.linkedin.com/in/alphaayush/\r\n// This file is licensed under the MIT License.\r\n// License text available at https://opensource.org/licenses/MIT\r\n\r\nexport interface IDesktop {\r\n  isDesktop: boolean\r\n}\r\n\r\nexport const isSmallScreen = (): boolean => document.body.clientWidth < 767\r\n\r\nexport const NO_MOTION_PREFERENCE_QUERY = '(prefers-reduced-motion: no-preference)'\r\n\r\n// 网页<mate>标签信息\r\nexport const METADATA = {\r\n  title: '标题',\r\n  description:\r\n    '描述',\r\n  siteUrl: 'https://iot.jiangnan.edu.cn/info/1142/3569.htm',\r\n}\r\nexport const INFODATA = {\r\n  pdfBtnName:'详细信息',\r\n  siteBtnName:'联系我们',\r\n  pdfUrl:'http://www.cztouch.com/upfiles/soft/testpdf.pdf',\r\n  siteUrl: 'https://iot.jiangnan.edu.cn/info/1142/3569.htm',\r\n}\r\nexport const MENULINKS = [\r\n  {\r\n    name: '首页',\r\n    ref: 'home',\r\n  },\r\n  {\r\n    name: '成果',\r\n    ref: 'works',\r\n  },\r\n  {\r\n    name: '成员',\r\n    ref: 'members',\r\n  },\r\n  {\r\n    name: '时间线',\r\n    ref: 'timeline',\r\n  },\r\n  {\r\n    name: '联系我们',\r\n    ref: 'contact',\r\n  },\r\n]\r\n\r\nexport const TYPED_STRINGS = [\r\n  '我们在江南大学',\r\n  '测试文本',\r\n  '测试句句子',\r\n  '占位占位位位位位',\r\n]\r\n\r\nexport const EMAIL = 'niyuanzhi@jiangnan.edu.cn'\r\n\r\nexport const SOCIAL_LINKS = {\r\n  jnu: 'https://www.jiangnan.edu.cn/',\r\n  jnuIot: 'https://iot.jiangnan.edu.cn/',\r\n} as Record<string, string>\r\n\r\nexport interface IProject {\r\n  name: string\r\n  image: string\r\n  author: string\r\n  description: string\r\n  gradient: [string, string]\r\n  url: string\r\n  data: string\r\n}\r\n\r\nexport const PROJECTS: IProject[] = [\r\n  {\r\n    name: 'keywords: 任务卸载，资源管理',\r\n    image: 'https://pics.latexstudio.net/uploads/20201230/5feb59092cadf/latexc__images/3.png',\r\n    author: '/projects/blur/figgen-blur.jpg',\r\n    description: '描述信息',\r\n    gradient: ['#1F6582', '#1ABCFE'],\r\n    url: '#',\r\n    data: '2024-5-11',\r\n  },\r\n  {\r\n    name: 'keywords: 任务卸载，资源管理',\r\n    image: 'https://pics.latexstudio.net/uploads/20201230/5feb59092cadf/latexc__images/3.png',\r\n    author: '/projects/blur/myokr-blur.jpg',\r\n    description: '描述信息',\r\n    gradient: ['#153BB9', '#0E2C8B'],\r\n    url: '#',\r\n    data: '2024-5-11',\r\n  },\r\n  {\r\n    name: 'keywords: 任务卸载，资源管理',\r\n    image: 'https://pics.latexstudio.net/uploads/20201230/5feb59092cadf/latexc__images/3.png',\r\n    author: '/projects/blur/dlt-website-blur.jpg',\r\n    description: '描述信息',\r\n    gradient: ['#245B57', '#004741'],\r\n    url: '#',\r\n    data: '2024-5-11',\r\n  },\r\n  {\r\n    name: 'keywords: 任务卸载，资源管理',\r\n    image: 'https://pics.latexstudio.net/uploads/20201230/5feb59092cadf/latexc__images/3.png',\r\n    author: '/projects/blur/dl-unify-blur.jpg',\r\n    description: '描述信息',\r\n    gradient: ['#003052', '#167187'],\r\n    url: '#',\r\n    data: '2024-5-11',\r\n  },\r\n  {\r\n    name: 'keywords: 任务卸载，资源管理',\r\n    image: 'https://pics.latexstudio.net/uploads/20201230/5feb59092cadf/latexc__images/3.png',\r\n    author: '/projects/blur/ngx-quill-upload-blur.jpg',\r\n    description: '描述信息',\r\n    gradient: ['#3A0000', '#771E1E'],\r\n    url: '#',\r\n    data: '2024-5-11',\r\n  },\r\n]\r\nexport interface MEMBER {\r\n  name: string\r\n  city: string\r\n  grade: string\r\n  interest: string\r\n  status: string\r\n  url: string\r\n\r\n}\r\n\r\nexport const FORMER_MEMBERS: MEMBER[] = [\r\n  {\r\n    name: \"姓名\",\r\n    city: \"哪里人\",\r\n    grade: \"年级\",\r\n    interest: \"研究兴趣\",\r\n    status: \"现状\",\r\n    url: \"#\",\r\n  },\r\n  {\r\n    name: \"姓名\",\r\n    city: \"哪里人\",\r\n    grade: \"年级\",\r\n    interest: \"研究兴趣\",\r\n    status: \"现状\",\r\n    url: \"#\",\r\n  },\r\n  {\r\n    name: \"姓名\",\r\n    city: \"哪里人\",\r\n    grade: \"年级\",\r\n    interest: \"研究兴趣\",\r\n    status: \"现状\",\r\n    url: \"#\",\r\n  },\r\n  {\r\n    name: \"姓名\",\r\n    city: \"哪里人\",\r\n    grade: \"年级\",\r\n    interest: \"研究兴趣\",\r\n    status: \"现状\",\r\n    url: \"#\",\r\n  },\r\n  {\r\n    name: \"姓名\",\r\n    city: \"哪里人\",\r\n    grade: \"年级\",\r\n    interest: \"研究兴趣\",\r\n    status: \"现状\",\r\n    url: \"#\",\r\n  },\r\n]\r\nexport const NOW_MEMBERS: MEMBER[] = [\r\n  {\r\n    name: \"姓名\",\r\n    city: \"哪里人\",\r\n    grade: \"年级\",\r\n    interest: \"研究兴趣\",\r\n    status: \"现状\",\r\n    url: \"#\",\r\n  },\r\n  {\r\n    name: \"姓名\",\r\n    city: \"哪里人\",\r\n    grade: \"年级\",\r\n    interest: \"研究兴趣\",\r\n    status: \"现状\",\r\n    url: \"#\",\r\n  },\r\n  {\r\n    name: \"姓名\",\r\n    city: \"哪里人\",\r\n    grade: \"年级\",\r\n    interest: \"研究兴趣\",\r\n    status: \"现状\",\r\n    url: \"#\",\r\n  },\r\n  {\r\n    name: \"姓名\",\r\n    city: \"哪里人\",\r\n    grade: \"年级\",\r\n    interest: \"研究兴趣\",\r\n    status: \"现状\",\r\n    url: \"#\",\r\n  },\r\n  {\r\n    name: \"姓名\",\r\n    city: \"哪里人\",\r\n    grade: \"年级\",\r\n    interest: \"研究兴趣\",\r\n    status: \"现状\",\r\n    url: \"#\",\r\n  },\r\n]\r\nexport enum Branch {\r\n  LEFT = 'leftSide',\r\n  RIGHT = 'rightSide',\r\n}\r\n\r\nexport enum NodeTypes {\r\n  CONVERGE = 'converge',\r\n  DIVERGE = 'diverge',\r\n  CHECKPOINT = 'checkpoint',\r\n}\r\n\r\nexport enum ItemSize {\r\n  SMALL = 'small',\r\n  LARGE = 'large',\r\n}\r\n\r\nexport const TIMELINE: Array<TimelineNodeV2> = [\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '2026',\r\n    size: ItemSize.LARGE,\r\n    shouldDrawLine: false,\r\n    alignment: Branch.LEFT, //左支\r\n  },\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '内容标题1',\r\n    size: ItemSize.SMALL,\r\n    subtitle: '介绍一下吧',\r\n    // image: '/timeline/subtitleImage.svg',\r\n    slideImage: 'https://ts1.cn.mm.bing.net/th/id/R-C.748160bf925a7acb3ba1c9514bbc60db?rik=AYY%2bJ9WcXYIMgw&riu=http%3a%2f%2fseopic.699pic.com%2fphoto%2f50017%2f0822.jpg_wh1200.jpg&ehk=CMVcdZMU6xxsjVjafO70cFcmJvD62suFC1ytk8UuAUk%3d&risl=&pid=ImgRaw&r=0',\r\n    shouldDrawLine: true,\r\n    alignment: Branch.LEFT,\r\n  },\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '2025',\r\n    size: ItemSize.LARGE,\r\n    shouldDrawLine: false,\r\n    alignment: Branch.LEFT,\r\n  },\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '内容标题2',\r\n    size: ItemSize.SMALL,\r\n    subtitle: '介绍一下吧',\r\n    // image: '/timeline/flipkart.svg',\r\n    slideImage: 'https://uploadfile.bizhizu.cn/2017/0701/20170701031430776.jpg',\r\n    shouldDrawLine: true,\r\n    alignment: Branch.LEFT,\r\n  },\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '2024',\r\n    size: ItemSize.LARGE,\r\n    shouldDrawLine: false,\r\n    alignment: Branch.LEFT,\r\n  },\r\n  {\r\n    type: NodeTypes.DIVERGE, //向右分一支\r\n  },\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '内容标题3',\r\n    size: ItemSize.SMALL,\r\n    subtitle: '介绍一下吧',\r\n    // image: '/timeline/huminos.svg',\r\n    slideImage: 'https://ts1.cn.mm.bing.net/th/id/R-C.6b9074faed6dae2a0457e690c2aa3a03?rik=6V%2fv2rXhPCf7Pg&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn20115%2f534%2fw1280h854%2f20190221%2f9461-htknpmf9890147.jpg&ehk=RyGDdQrMiIWbz7Uxa%2fLSPOz2iXvM8JpbkBIZgttQkWc%3d&risl=&pid=ImgRaw&r=0',\r\n    shouldDrawLine: true,\r\n    alignment: Branch.RIGHT,\r\n  },\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '内容标题4',\r\n    size: ItemSize.SMALL,\r\n    subtitle: '介绍一下吧',\r\n    // image: '/timeline/octanner.svg',\r\n    slideImage: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.GC_ugX-TzPVR26SSxI1kZwHaE9?rs=1&pid=ImgDetMain',\r\n    shouldDrawLine: true,\r\n    alignment: Branch.LEFT,\r\n  },\r\n  {\r\n    type: NodeTypes.CONVERGE, //右支向左合并\r\n  },\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '2023',\r\n    size: ItemSize.LARGE,\r\n    shouldDrawLine: false,\r\n    alignment: Branch.LEFT,\r\n  },\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '内容标题5',\r\n    size: ItemSize.SMALL,\r\n    subtitle: '介绍一下吧',\r\n    // image: '/timeline/dltlabs.svg',\r\n    slideImage: 'https://sjbz-fd.zol-img.com.cn/t_s1080x1920c/g5/M00/00/02/ChMkJ1fJVFOIV8kdAC3oDpyfq8YAAU9wQN1ivcALegm011.jpg',\r\n    shouldDrawLine: true,\r\n    alignment: Branch.LEFT,\r\n  },\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '内容标题6',\r\n    size: ItemSize.SMALL,\r\n    subtitle: '介绍一下吧',\r\n    // image: '/timeline/huminos.svg',\r\n    slideImage: 'https://www.keaitupian.cn/cjpic/frombd/2/253/2107631312/3178897554.jpg',\r\n    shouldDrawLine: true,\r\n    alignment: Branch.LEFT,\r\n  },\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '内容标题7',\r\n    size: ItemSize.SMALL,\r\n    subtitle: '介绍一下吧',\r\n    // image: '/timeline/akgec.svg',\r\n    slideImage: 'https://media.giphy.com/media/3osxYpRxjzvPOtwfF6/giphy.gif',\r\n    shouldDrawLine: true,\r\n    alignment: Branch.LEFT,\r\n  },\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '2022',\r\n    size: ItemSize.LARGE,\r\n    shouldDrawLine: false,\r\n    alignment: Branch.LEFT,\r\n  },\r\n  {\r\n    type: NodeTypes.DIVERGE,\r\n  },\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '内容标题8',\r\n    size: ItemSize.SMALL,\r\n    subtitle: '介绍一下吧',\r\n    slideImage: 'https://media.giphy.com/media/xTiTnu6aRsOuB41UNG/giphy.gif',\r\n    shouldDrawLine: true,\r\n    alignment: Branch.RIGHT,\r\n  },\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '内容标题9',\r\n    size: ItemSize.SMALL,\r\n    subtitle: '介绍一下吧',\r\n    slideImage: 'https://ts1.cn.mm.bing.net/th/id/R-C.ccd320596cb9b0499c2d9e89079c7990?rik=bo30tkANeNk4Aw&riu=http%3a%2f%2fwww.finebornchina.cn%2fuploads%2fallimg%2f140430%2f1-140430150445413.jpg&ehk=Hjpp13uPkWtPTUVLZH%2f7V3MKAnXYJJNjmjRq1TE136k%3d&risl=&pid=ImgRaw&r=0',\r\n    shouldDrawLine: true,\r\n    alignment: Branch.LEFT,\r\n  },\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '内容标题10',\r\n    size: ItemSize.SMALL,\r\n    subtitle: '介绍一下吧',\r\n    slideImage: 'https://ts1.cn.mm.bing.net/th/id/R-C.69fb9755a2385fa76560f5112f37c14d?rik=03yms%2faFfn79tQ&riu=http%3a%2f%2fi02.cztv.com%2f2013%2f08%2f1375411511_07024700.jpg&ehk=7smYXj9OTiRmibyzPiS7sWIAk1rhDYKcQq%2fC3MvGxc8%3d&risl=&pid=ImgRaw&r=0',\r\n    shouldDrawLine: true,\r\n    alignment: Branch.RIGHT,\r\n  },\r\n\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '内容标题11',\r\n    size: ItemSize.SMALL,\r\n    subtitle: '介绍一下吧',\r\n    slideImage: 'https://youimg1.c-ctrip.com/target/0102a120004fhqcagB7E5_D_10000_1200.jpg?proc=autoorient',\r\n    shouldDrawLine: true,\r\n    alignment: Branch.LEFT,\r\n  },\r\n  {\r\n    type: NodeTypes.CONVERGE,\r\n  },\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '2021',\r\n    size: ItemSize.LARGE,\r\n    shouldDrawLine: false,\r\n    alignment: Branch.LEFT,\r\n  },\r\n  {\r\n    type: NodeTypes.CHECKPOINT,\r\n    title: '内容标题12',\r\n    size: ItemSize.SMALL,\r\n    subtitle: '介绍一下吧',\r\n    slideImage: 'https://ts1.cn.mm.bing.net/th/id/R-C.633901d07a3d18cdf6d58a0ccc74078d?rik=8evNNQvJj91%2bjg&riu=http%3a%2f%2fimg.hkwb.net%2fatt%2fsite2%2f20120308%2f633901d07a3d18cdf6d58a0ccc74078d.jpg&ehk=mupUGFlfxfEilMIkHoDFPVYnfR%2bSaF86fmgOkvvU8YM%3d&risl=&pid=ImgRaw&r=0',\r\n    shouldDrawLine: true,\r\n    alignment: Branch.LEFT,\r\n  },\r\n  \r\n]\r\n\r\nexport type TimelineNodeV2 = CheckpointNode | BranchNode\r\n\r\nexport interface CheckpointNode {\r\n  type: NodeTypes.CHECKPOINT\r\n  title: string\r\n  subtitle?: string\r\n  size: ItemSize\r\n  image?: string\r\n  slideImage?: string\r\n  shouldDrawLine: boolean\r\n  alignment: Branch\r\n}\r\n\r\nexport interface BranchNode {\r\n  type: NodeTypes.CONVERGE | NodeTypes.DIVERGE\r\n}\r\n\r\nexport const GTAG = 'UA-163844688-1'\r\n",
-      "start": 1715597142255,
-      "end": 1715597142294,
+      "start": 1715603879817,
+      "end": 1715603879846,
       "sourcemaps": null
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597142295,
-      "end": 1715597142295,
+      "start": 1715603879846,
+      "end": 1715603879846,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597142295,
-      "end": 1715597142295,
+      "start": 1715603879846,
+      "end": 1715603879846,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597142295,
-      "end": 1715597142295,
+      "start": 1715603879846,
+      "end": 1715603879846,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597142295,
-      "end": 1715597142295,
+      "start": 1715603879846,
+      "end": 1715603879846,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1715597142295,
-      "end": 1715597142295,
+      "start": 1715603879846,
+      "end": 1715603879846,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1715597142295,
-      "end": 1715597142295,
+      "start": 1715603879846,
+      "end": 1715603879846,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "export const isSmallScreen = () => document.body.clientWidth < 767;\nexport const NO_MOTION_PREFERENCE_QUERY = \"(prefers-reduced-motion: no-preference)\";\nexport const METADATA = {\n  title: \"标题\",\n  description: \"描述\",\n  siteUrl: \"https://iot.jiangnan.edu.cn/info/1142/3569.htm\"\n};\nexport const INFODATA = {\n  pdfBtnName: \"详细信息\",\n  siteBtnName: \"联系我们\",\n  pdfUrl: \"http://www.cztouch.com/upfiles/soft/testpdf.pdf\",\n  siteUrl: \"https://iot.jiangnan.edu.cn/info/1142/3569.htm\"\n};\nexport const MENULINKS = [\n  {\n    name: \"首页\",\n    ref: \"home\"\n  },\n  {\n    name: \"成果\",\n    ref: \"works\"\n  },\n  {\n    name: \"成员\",\n    ref: \"members\"\n  },\n  {\n    name: \"时间线\",\n    ref: \"timeline\"\n  },\n  {\n    name: \"联系我们\",\n    ref: \"contact\"\n  }\n];\nexport const TYPED_STRINGS = [\n  \"我们在江南大学\",\n  \"测试文本\",\n  \"测试句句子\",\n  \"占位占位位位位位\"\n];\nexport const EMAIL = \"niyuanzhi@jiangnan.edu.cn\";\nexport const SOCIAL_LINKS = {\n  jnu: \"https://www.jiangnan.edu.cn/\",\n  jnuIot: \"https://iot.jiangnan.edu.cn/\"\n};\nexport const PROJECTS = [\n  {\n    name: \"keywords: 任务卸载，资源管理\",\n    image: \"https://pics.latexstudio.net/uploads/20201230/5feb59092cadf/latexc__images/3.png\",\n    author: \"/projects/blur/figgen-blur.jpg\",\n    description: \"描述信息\",\n    gradient: [\"#1F6582\", \"#1ABCFE\"],\n    url: \"#\",\n    data: \"2024-5-11\"\n  },\n  {\n    name: \"keywords: 任务卸载，资源管理\",\n    image: \"https://pics.latexstudio.net/uploads/20201230/5feb59092cadf/latexc__images/3.png\",\n    author: \"/projects/blur/myokr-blur.jpg\",\n    description: \"描述信息\",\n    gradient: [\"#153BB9\", \"#0E2C8B\"],\n    url: \"#\",\n    data: \"2024-5-11\"\n  },\n  {\n    name: \"keywords: 任务卸载，资源管理\",\n    image: \"https://pics.latexstudio.net/uploads/20201230/5feb59092cadf/latexc__images/3.png\",\n    author: \"/projects/blur/dlt-website-blur.jpg\",\n    description: \"描述信息\",\n    gradient: [\"#245B57\", \"#004741\"],\n    url: \"#\",\n    data: \"2024-5-11\"\n  },\n  {\n    name: \"keywords: 任务卸载，资源管理\",\n    image: \"https://pics.latexstudio.net/uploads/20201230/5feb59092cadf/latexc__images/3.png\",\n    author: \"/projects/blur/dl-unify-blur.jpg\",\n    description: \"描述信息\",\n    gradient: [\"#003052\", \"#167187\"],\n    url: \"#\",\n    data: \"2024-5-11\"\n  },\n  {\n    name: \"keywords: 任务卸载，资源管理\",\n    image: \"https://pics.latexstudio.net/uploads/20201230/5feb59092cadf/latexc__images/3.png\",\n    author: \"/projects/blur/ngx-quill-upload-blur.jpg\",\n    description: \"描述信息\",\n    gradient: [\"#3A0000\", \"#771E1E\"],\n    url: \"#\",\n    data: \"2024-5-11\"\n  }\n];\nexport const FORMER_MEMBERS = [\n  {\n    name: \"姓名\",\n    city: \"哪里人\",\n    grade: \"年级\",\n    interest: \"研究兴趣\",\n    status: \"现状\",\n    url: \"#\"\n  },\n  {\n    name: \"姓名\",\n    city: \"哪里人\",\n    grade: \"年级\",\n    interest: \"研究兴趣\",\n    status: \"现状\",\n    url: \"#\"\n  },\n  {\n    name: \"姓名\",\n    city: \"哪里人\",\n    grade: \"年级\",\n    interest: \"研究兴趣\",\n    status: \"现状\",\n    url: \"#\"\n  },\n  {\n    name: \"姓名\",\n    city: \"哪里人\",\n    grade: \"年级\",\n    interest: \"研究兴趣\",\n    status: \"现状\",\n    url: \"#\"\n  },\n  {\n    name: \"姓名\",\n    city: \"哪里人\",\n    grade: \"年级\",\n    interest: \"研究兴趣\",\n    status: \"现状\",\n    url: \"#\"\n  }\n];\nexport const NOW_MEMBERS = [\n  {\n    name: \"姓名\",\n    city: \"哪里人\",\n    grade: \"年级\",\n    interest: \"研究兴趣\",\n    status: \"现状\",\n    url: \"#\"\n  },\n  {\n    name: \"姓名\",\n    city: \"哪里人\",\n    grade: \"年级\",\n    interest: \"研究兴趣\",\n    status: \"现状\",\n    url: \"#\"\n  },\n  {\n    name: \"姓名\",\n    city: \"哪里人\",\n    grade: \"年级\",\n    interest: \"研究兴趣\",\n    status: \"现状\",\n    url: \"#\"\n  },\n  {\n    name: \"姓名\",\n    city: \"哪里人\",\n    grade: \"年级\",\n    interest: \"研究兴趣\",\n    status: \"现状\",\n    url: \"#\"\n  },\n  {\n    name: \"姓名\",\n    city: \"哪里人\",\n    grade: \"年级\",\n    interest: \"研究兴趣\",\n    status: \"现状\",\n    url: \"#\"\n  }\n];\nexport var Branch = /* @__PURE__ */ ((Branch2) => {\n  Branch2[\"LEFT\"] = \"leftSide\";\n  Branch2[\"RIGHT\"] = \"rightSide\";\n  return Branch2;\n})(Branch || {});\nexport var NodeTypes = /* @__PURE__ */ ((NodeTypes2) => {\n  NodeTypes2[\"CONVERGE\"] = \"converge\";\n  NodeTypes2[\"DIVERGE\"] = \"diverge\";\n  NodeTypes2[\"CHECKPOINT\"] = \"checkpoint\";\n  return NodeTypes2;\n})(NodeTypes || {});\nexport var ItemSize = /* @__PURE__ */ ((ItemSize2) => {\n  ItemSize2[\"SMALL\"] = \"small\";\n  ItemSize2[\"LARGE\"] = \"large\";\n  return ItemSize2;\n})(ItemSize || {});\nexport const TIMELINE = [\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"2026\",\n    size: \"large\" /* LARGE */,\n    shouldDrawLine: false,\n    alignment: \"leftSide\" /* LEFT */\n    //左支\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"内容标题1\",\n    size: \"small\" /* SMALL */,\n    subtitle: \"介绍一下吧\",\n    // image: '/timeline/subtitleImage.svg',\n    slideImage: \"https://ts1.cn.mm.bing.net/th/id/R-C.748160bf925a7acb3ba1c9514bbc60db?rik=AYY%2bJ9WcXYIMgw&riu=http%3a%2f%2fseopic.699pic.com%2fphoto%2f50017%2f0822.jpg_wh1200.jpg&ehk=CMVcdZMU6xxsjVjafO70cFcmJvD62suFC1ytk8UuAUk%3d&risl=&pid=ImgRaw&r=0\",\n    shouldDrawLine: true,\n    alignment: \"leftSide\" /* LEFT */\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"2025\",\n    size: \"large\" /* LARGE */,\n    shouldDrawLine: false,\n    alignment: \"leftSide\" /* LEFT */\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"内容标题2\",\n    size: \"small\" /* SMALL */,\n    subtitle: \"介绍一下吧\",\n    // image: '/timeline/flipkart.svg',\n    slideImage: \"https://uploadfile.bizhizu.cn/2017/0701/20170701031430776.jpg\",\n    shouldDrawLine: true,\n    alignment: \"leftSide\" /* LEFT */\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"2024\",\n    size: \"large\" /* LARGE */,\n    shouldDrawLine: false,\n    alignment: \"leftSide\" /* LEFT */\n  },\n  {\n    type: \"diverge\" /* DIVERGE */\n    //向右分一支\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"内容标题3\",\n    size: \"small\" /* SMALL */,\n    subtitle: \"介绍一下吧\",\n    // image: '/timeline/huminos.svg',\n    slideImage: \"https://ts1.cn.mm.bing.net/th/id/R-C.6b9074faed6dae2a0457e690c2aa3a03?rik=6V%2fv2rXhPCf7Pg&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn20115%2f534%2fw1280h854%2f20190221%2f9461-htknpmf9890147.jpg&ehk=RyGDdQrMiIWbz7Uxa%2fLSPOz2iXvM8JpbkBIZgttQkWc%3d&risl=&pid=ImgRaw&r=0\",\n    shouldDrawLine: true,\n    alignment: \"rightSide\" /* RIGHT */\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"内容标题4\",\n    size: \"small\" /* SMALL */,\n    subtitle: \"介绍一下吧\",\n    // image: '/timeline/octanner.svg',\n    slideImage: \"https://tse1-mm.cn.bing.net/th/id/OIP-C.GC_ugX-TzPVR26SSxI1kZwHaE9?rs=1&pid=ImgDetMain\",\n    shouldDrawLine: true,\n    alignment: \"leftSide\" /* LEFT */\n  },\n  {\n    type: \"converge\" /* CONVERGE */\n    //右支向左合并\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"2023\",\n    size: \"large\" /* LARGE */,\n    shouldDrawLine: false,\n    alignment: \"leftSide\" /* LEFT */\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"内容标题5\",\n    size: \"small\" /* SMALL */,\n    subtitle: \"介绍一下吧\",\n    // image: '/timeline/dltlabs.svg',\n    slideImage: \"https://sjbz-fd.zol-img.com.cn/t_s1080x1920c/g5/M00/00/02/ChMkJ1fJVFOIV8kdAC3oDpyfq8YAAU9wQN1ivcALegm011.jpg\",\n    shouldDrawLine: true,\n    alignment: \"leftSide\" /* LEFT */\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"内容标题6\",\n    size: \"small\" /* SMALL */,\n    subtitle: \"介绍一下吧\",\n    // image: '/timeline/huminos.svg',\n    slideImage: \"https://www.keaitupian.cn/cjpic/frombd/2/253/2107631312/3178897554.jpg\",\n    shouldDrawLine: true,\n    alignment: \"leftSide\" /* LEFT */\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"内容标题7\",\n    size: \"small\" /* SMALL */,\n    subtitle: \"介绍一下吧\",\n    // image: '/timeline/akgec.svg',\n    slideImage: \"https://media.giphy.com/media/3osxYpRxjzvPOtwfF6/giphy.gif\",\n    shouldDrawLine: true,\n    alignment: \"leftSide\" /* LEFT */\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"2022\",\n    size: \"large\" /* LARGE */,\n    shouldDrawLine: false,\n    alignment: \"leftSide\" /* LEFT */\n  },\n  {\n    type: \"diverge\" /* DIVERGE */\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"内容标题8\",\n    size: \"small\" /* SMALL */,\n    subtitle: \"介绍一下吧\",\n    slideImage: \"https://media.giphy.com/media/xTiTnu6aRsOuB41UNG/giphy.gif\",\n    shouldDrawLine: true,\n    alignment: \"rightSide\" /* RIGHT */\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"内容标题9\",\n    size: \"small\" /* SMALL */,\n    subtitle: \"介绍一下吧\",\n    slideImage: \"https://ts1.cn.mm.bing.net/th/id/R-C.ccd320596cb9b0499c2d9e89079c7990?rik=bo30tkANeNk4Aw&riu=http%3a%2f%2fwww.finebornchina.cn%2fuploads%2fallimg%2f140430%2f1-140430150445413.jpg&ehk=Hjpp13uPkWtPTUVLZH%2f7V3MKAnXYJJNjmjRq1TE136k%3d&risl=&pid=ImgRaw&r=0\",\n    shouldDrawLine: true,\n    alignment: \"leftSide\" /* LEFT */\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"内容标题10\",\n    size: \"small\" /* SMALL */,\n    subtitle: \"介绍一下吧\",\n    slideImage: \"https://ts1.cn.mm.bing.net/th/id/R-C.69fb9755a2385fa76560f5112f37c14d?rik=03yms%2faFfn79tQ&riu=http%3a%2f%2fi02.cztv.com%2f2013%2f08%2f1375411511_07024700.jpg&ehk=7smYXj9OTiRmibyzPiS7sWIAk1rhDYKcQq%2fC3MvGxc8%3d&risl=&pid=ImgRaw&r=0\",\n    shouldDrawLine: true,\n    alignment: \"rightSide\" /* RIGHT */\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"内容标题11\",\n    size: \"small\" /* SMALL */,\n    subtitle: \"介绍一下吧\",\n    slideImage: \"https://youimg1.c-ctrip.com/target/0102a120004fhqcagB7E5_D_10000_1200.jpg?proc=autoorient\",\n    shouldDrawLine: true,\n    alignment: \"leftSide\" /* LEFT */\n  },\n  {\n    type: \"converge\" /* CONVERGE */\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"2021\",\n    size: \"large\" /* LARGE */,\n    shouldDrawLine: false,\n    alignment: \"leftSide\" /* LEFT */\n  },\n  {\n    type: \"checkpoint\" /* CHECKPOINT */,\n    title: \"内容标题12\",\n    size: \"small\" /* SMALL */,\n    subtitle: \"介绍一下吧\",\n    slideImage: \"https://ts1.cn.mm.bing.net/th/id/R-C.633901d07a3d18cdf6d58a0ccc74078d?rik=8evNNQvJj91%2bjg&riu=http%3a%2f%2fimg.hkwb.net%2fatt%2fsite2%2f20120308%2f633901d07a3d18cdf6d58a0ccc74078d.jpg&ehk=mupUGFlfxfEilMIkHoDFPVYnfR%2bSaF86fmgOkvvU8YM%3d&risl=&pid=ImgRaw&r=0\",\n    shouldDrawLine: true,\n    alignment: \"leftSide\" /* LEFT */\n  }\n];\nexport const GTAG = \"UA-163844688-1\";\n",
-      "start": 1715597142295,
-      "end": 1715597142298,
+      "start": 1715603879846,
+      "end": 1715603880041,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -68,188 +68,188 @@
     },
     {
       "name": "vite:json",
-      "start": 1715597142298,
-      "end": 1715597142298,
+      "start": 1715603880041,
+      "end": 1715603880041,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1715597142298,
-      "end": 1715597142298,
+      "start": 1715603880041,
+      "end": 1715603880041,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1715597142298,
-      "end": 1715597142298,
+      "start": 1715603880041,
+      "end": 1715603880041,
       "order": "normal"
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1715597142298,
-      "end": 1715597142298,
+      "start": 1715603880041,
+      "end": 1715603880041,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597142298,
-      "end": 1715597142298,
+      "start": 1715603880041,
+      "end": 1715603880041,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597142298,
-      "end": 1715597142298,
+      "start": 1715603880041,
+      "end": 1715603880041,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597142298,
-      "end": 1715597142298,
+      "start": 1715603880041,
+      "end": 1715603880041,
       "order": "normal"
     },
     {
       "name": "nuxt:chunk-error",
-      "start": 1715597142298,
-      "end": 1715597142298,
+      "start": 1715603880041,
+      "end": 1715603880041,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1715597142298,
-      "end": 1715597142298,
+      "start": 1715603880041,
+      "end": 1715603880041,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597142298,
-      "end": 1715597142298,
+      "start": 1715603880041,
+      "end": 1715603880041,
       "order": "normal"
     },
     {
       "name": "ssr-styles",
-      "start": 1715597142298,
-      "end": 1715597142298,
+      "start": 1715603880041,
+      "end": 1715603880041,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1715597142298,
-      "end": 1715597142299,
+      "start": 1715603880041,
+      "end": 1715603880041,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1715597142299,
-      "end": 1715597142299,
+      "start": 1715603880041,
+      "end": 1715603880041,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1715597142299,
-      "end": 1715597142299,
+      "start": 1715603880042,
+      "end": 1715603880042,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1715597142299,
-      "end": 1715597142299,
+      "start": 1715603880042,
+      "end": 1715603880042,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1715597142299,
-      "end": 1715597142299,
+      "start": 1715603880042,
+      "end": 1715603880042,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1715597142299,
-      "end": 1715597142299,
+      "start": 1715603880042,
+      "end": 1715603880042,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1715597142299,
-      "end": 1715597142299,
+      "start": 1715603880042,
+      "end": 1715603880042,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1715597142299,
-      "end": 1715597142299,
+      "start": 1715603880042,
+      "end": 1715603880042,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597142299,
-      "end": 1715597142299,
+      "start": 1715603880042,
+      "end": 1715603880042,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597142299,
-      "end": 1715597142299,
+      "start": 1715603880042,
+      "end": 1715603880042,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
-      "start": 1715597142299,
-      "end": 1715597142300,
+      "start": 1715603880042,
+      "end": 1715603880043,
       "order": "post"
     },
     {
       "name": "unctx:transform",
-      "start": 1715597142300,
-      "end": 1715597142300,
+      "start": 1715603880043,
+      "end": 1715603880043,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597142300,
-      "end": 1715597142300,
+      "start": 1715603880043,
+      "end": 1715603880043,
       "order": "post"
     },
     {
       "name": "nuxt:runtime-paths-dep",
-      "start": 1715597142300,
-      "end": 1715597142300,
+      "start": 1715603880043,
+      "end": 1715603880043,
       "order": "post"
     },
     {
       "name": "element-plus:transform",
-      "start": 1715597142300,
-      "end": 1715597142300,
+      "start": 1715603880043,
+      "end": 1715603880043,
       "order": "post"
     },
     {
       "name": "nuxt:route-injection-plugin",
-      "start": 1715597142300,
-      "end": 1715597142300,
+      "start": 1715603880043,
+      "end": 1715603880043,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
-      "start": 1715597142300,
-      "end": 1715597142300,
+      "start": 1715603880043,
+      "end": 1715603880043,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-composables:transform",
-      "start": 1715597142300,
-      "end": 1715597142300,
+      "start": 1715603880043,
+      "end": 1715603880043,
       "order": "post"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1715597142300,
-      "end": 1715597142300,
+      "start": 1715603880043,
+      "end": 1715603880043,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1715597142300,
-      "end": 1715597142300,
+      "start": 1715603880043,
+      "end": 1715603880043,
       "order": "normal"
     }
   ]

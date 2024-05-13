@@ -4,8 +4,8 @@
     {
       "name": "vite:vue",
       "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\"\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderComponent as _ssrRenderComponent, ssrRenderClass as _ssrRenderClass, ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\"\nimport _imports_0 from '/internet.svg'\n\n\nimport Menu from '~/components/common/menu.vue'\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'Header',\n  __ssrInlineRender: true,\n  setup(__props) {\n\r\nconst menuVisible = ref(false)\r\n\r\nfunction setmenuVisible(val: boolean) {\r\n  menuVisible.value = val\r\n}\r\n\nreturn (_ctx: any,_push: any,_parent: any,_attrs: any) => {\n  _push(`<header${\n    _ssrRenderAttrs(_mergeProps({ class: \"fixed top-0 z-50 w-full select-none from-gray-900 to-transparent bg-gradient-to-b py-8\" }, _attrs))\n  }><div class=\"section-container flex justify-between\"><a href=\"#home\" class=\"link\"><img${\n    _ssrRenderAttr(\"src\", _imports_0)\n  } alt=\"Logo - Ayush Singh\" width=\"32\" height=\"32\"></a><nav class=\"${\n    _ssrRenderClass(`outer-menu ${_unref(menuVisible) && 'menu-visible'}`)\n  }\"><button class=\"link hamburger relative h-6 w-6 flex items-center justify-center\"><div class=\"relative w-full flex flex-none items-center justify-center bg-white duration-300\"></div></button>`)\n  _push(_ssrRenderComponent(Menu, { \"setmenu-visible\": setmenuVisible }, null, _parent))\n  _push(`</nav></div></header>`)\n}\n}\n\n})",
-      "start": 1715597154921,
-      "end": 1715597154921,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "sourcemaps": {
         "version": 3,
         "sources": [
@@ -20,69 +20,69 @@
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597154922,
-      "end": 1715597154922,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "order": "pre"
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597154922,
-      "end": 1715597154922,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597154922,
-      "end": 1715597154922,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597154922,
-      "end": 1715597154922,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597154922,
-      "end": 1715597154922,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597154922,
-      "end": 1715597154922,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597154922,
-      "end": 1715597154922,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597154922,
-      "end": 1715597154922,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1715597154922,
-      "end": 1715597154922,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1715597154922,
-      "end": 1715597154922,
+      "start": 1715603891225,
+      "end": 1715603891225,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderComponent as _ssrRenderComponent, ssrRenderClass as _ssrRenderClass, ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\";\nimport _imports_0 from \"/internet.svg\";\nimport Menu from \"~/components/common/menu.vue\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"Header\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const menuVisible = ref(false);\n    function setmenuVisible(val) {\n      menuVisible.value = val;\n    }\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<header${_ssrRenderAttrs(_mergeProps({ class: \"fixed top-0 z-50 w-full select-none from-gray-900 to-transparent bg-gradient-to-b py-8\" }, _attrs))}><div class=\"section-container flex justify-between\"><a href=\"#home\" class=\"link\"><img${_ssrRenderAttr(\"src\", _imports_0)} alt=\"Logo - Ayush Singh\" width=\"32\" height=\"32\"></a><nav class=\"${_ssrRenderClass(`outer-menu ${_unref(menuVisible) && \"menu-visible\"}`)}\"><button class=\"link hamburger relative h-6 w-6 flex items-center justify-center\"><div class=\"relative w-full flex flex-none items-center justify-center bg-white duration-300\"></div></button>`);\n      _push(_ssrRenderComponent(Menu, { \"setmenu-visible\": setmenuVisible }, null, _parent));\n      _push(`</nav></div></header>`);\n    };\n  }\n});\n",
-      "start": 1715597154922,
-      "end": 1715597155011,
+      "start": 1715603891225,
+      "end": 1715603891352,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -98,165 +98,165 @@
     },
     {
       "name": "vite:json",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891352,
+      "end": 1715603891352,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891352,
+      "end": 1715603891352,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891352,
+      "end": 1715603891352,
       "order": "normal"
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891352,
+      "end": 1715603891352,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "ssr-styles",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891354,
+      "end": 1715603891354,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891354,
+      "end": 1715603891354,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891354,
+      "end": 1715603891354,
       "order": "post"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891354,
+      "end": 1715603891354,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891354,
+      "end": 1715603891354,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891354,
+      "end": 1715603891354,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
       "result": "import { ref } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderComponent as _ssrRenderComponent, ssrRenderClass as _ssrRenderClass, ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\";\nimport _imports_0 from \"/internet.svg\";\nimport Menu from \"~/components/common/menu.vue\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"Header\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const menuVisible = ref(false);\n    function setmenuVisible(val) {\n      menuVisible.value = val;\n    }\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<header${_ssrRenderAttrs(_mergeProps({ class: \"fixed top-0 z-50 w-full select-none from-gray-900 to-transparent bg-gradient-to-b py-8\" }, _attrs))}><div class=\"section-container flex justify-between\"><a href=\"#home\" class=\"link\"><img${_ssrRenderAttr(\"src\", _imports_0)} alt=\"Logo - Ayush Singh\" width=\"32\" height=\"32\"></a><nav class=\"${_ssrRenderClass(`outer-menu ${_unref(menuVisible) && \"menu-visible\"}`)}\"><button class=\"link hamburger relative h-6 w-6 flex items-center justify-center\"><div class=\"relative w-full flex flex-none items-center justify-center bg-white duration-300\"></div></button>`);\n      _push(_ssrRenderComponent(Menu, { \"setmenu-visible\": setmenuVisible }, null, _parent));\n      _push(`</nav></div></header>`);\n    };\n  }\n});\n",
-      "start": 1715597155014,
-      "end": 1715597155018,
+      "start": 1715603891354,
+      "end": 1715603891362,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -270,8 +270,8 @@
     {
       "name": "nuxt:imports-transform",
       "result": "import { ref } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderComponent as _ssrRenderComponent, ssrRenderClass as _ssrRenderClass, ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\";\nimport _imports_0 from \"/internet.svg\";\nimport Menu from \"~/components/common/menu.vue\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"Header\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const menuVisible = ref(false);\n    function setmenuVisible(val) {\n      menuVisible.value = val;\n    }\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<header${_ssrRenderAttrs(_mergeProps({ class: \"fixed top-0 z-50 w-full select-none from-gray-900 to-transparent bg-gradient-to-b py-8\" }, _attrs))}><div class=\"section-container flex justify-between\"><a href=\"#home\" class=\"link\"><img${_ssrRenderAttr(\"src\", _imports_0)} alt=\"Logo - Ayush Singh\" width=\"32\" height=\"32\"></a><nav class=\"${_ssrRenderClass(`outer-menu ${_unref(menuVisible) && \"menu-visible\"}`)}\"><button class=\"link hamburger relative h-6 w-6 flex items-center justify-center\"><div class=\"relative w-full flex flex-none items-center justify-center bg-white duration-300\"></div></button>`);\n      _push(_ssrRenderComponent(Menu, { \"setmenu-visible\": setmenuVisible }, null, _parent));\n      _push(`</nav></div></header>`);\n    };\n  }\n});\n",
-      "start": 1715597155014,
-      "end": 1715597155018,
+      "start": 1715603891354,
+      "end": 1715603891362,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -284,62 +284,62 @@
     },
     {
       "name": "unctx:transform",
-      "start": 1715597155018,
-      "end": 1715597155018,
+      "start": 1715603891363,
+      "end": 1715603891363,
       "order": "post"
     },
     {
       "name": "unctx:transform",
-      "start": 1715597155018,
-      "end": 1715597155018,
+      "start": 1715603891363,
+      "end": 1715603891363,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597155019,
-      "end": 1715597155019,
+      "start": 1715603891363,
+      "end": 1715603891363,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597155019,
-      "end": 1715597155019,
+      "start": 1715603891363,
+      "end": 1715603891363,
       "order": "post"
     },
     {
       "name": "element-plus:transform",
-      "start": 1715597155020,
-      "end": 1715597155020,
+      "start": 1715603891363,
+      "end": 1715603891363,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-template",
-      "start": 1715597155020,
-      "end": 1715597155020,
+      "start": 1715603891363,
+      "end": 1715603891363,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
-      "start": 1715597155024,
-      "end": 1715597155025,
+      "start": 1715603891364,
+      "end": 1715603891364,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-composables:transform",
-      "start": 1715597155025,
-      "end": 1715597155026,
+      "start": 1715603891365,
+      "end": 1715603891366,
       "order": "post"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1715597155026,
-      "end": 1715597155027,
+      "start": 1715603891367,
+      "end": 1715603891368,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1715597155027,
-      "end": 1715597155027,
+      "start": 1715603891368,
+      "end": 1715603891368,
       "order": "normal"
     }
   ]

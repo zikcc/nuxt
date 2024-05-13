@@ -4,50 +4,50 @@
     {
       "name": "vite:vue",
       "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { createElementVNode as _createElementVNode, unref as _unref, createVNode as _createVNode, normalizeClass as _normalizeClass, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\"\nimport _imports_0 from '/internet.svg'\n\n\nconst _hoisted_1 = { class: \"fixed top-0 z-50 w-full select-none from-gray-900 to-transparent bg-gradient-to-b py-8\" }\nconst _hoisted_2 = { class: \"section-container flex justify-between\" }\nconst _hoisted_3 = /*#__PURE__*/_createElementVNode(\"a\", {\n  href: \"#home\",\n  class: \"link\"\n}, [\n  /*#__PURE__*/_createElementVNode(\"img\", {\n    src: _imports_0,\n    alt: \"Logo - Ayush Singh\",\n    width: \"32\",\n    height: \"32\"\n  })\n], -1)\nconst _hoisted_4 = /*#__PURE__*/_createElementVNode(\"div\", { class: \"relative w-full flex flex-none items-center justify-center bg-white duration-300\" }, null, -1)\nconst _hoisted_5 = [\n  _hoisted_4\n]\n\nimport Menu from '~/components/common/menu.vue'\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'Header',\n  setup(__props) {\n\r\nconst menuVisible = ref(false)\r\n\r\nfunction setmenuVisible(val: boolean) {\r\n  menuVisible.value = val\r\n}\r\n\nreturn (_ctx: any,_cache: any) => {\n  return (_openBlock(), _createElementBlock(\"header\", _hoisted_1, [\n    _createElementVNode(\"div\", _hoisted_2, [\n      _hoisted_3,\n      _createElementVNode(\"nav\", {\n        class: _normalizeClass(`outer-menu ${_unref(menuVisible) && 'menu-visible'}`)\n      }, [\n        _createElementVNode(\"button\", {\n          class: \"link hamburger relative h-6 w-6 flex items-center justify-center\",\n          onClick: _cache[0] || (_cache[0] = ($event: any) => (setmenuVisible(!_unref(menuVisible))))\n        }, _hoisted_5),\n        _createVNode(Menu, { \"setmenu-visible\": setmenuVisible })\n      ], 2)\n    ])\n  ]))\n}\n}\n\n})",
-      "start": 1715597141690,
-      "end": 1715597141690
+      "start": 1715603879256,
+      "end": 1715603879257
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597141690,
-      "end": 1715597141690,
+      "start": 1715603879257,
+      "end": 1715603879257,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597141690,
-      "end": 1715597141690,
+      "start": 1715603879257,
+      "end": 1715603879257,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597141691,
-      "end": 1715597141691,
+      "start": 1715603879257,
+      "end": 1715603879257,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597141691,
-      "end": 1715597141691,
+      "start": 1715603879257,
+      "end": 1715603879257,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1715597141691,
-      "end": 1715597141691,
+      "start": 1715603879257,
+      "end": 1715603879257,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1715597141691,
-      "end": 1715597141691,
+      "start": 1715603879257,
+      "end": 1715603879257,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { createElementVNode as _createElementVNode, unref as _unref, createVNode as _createVNode, normalizeClass as _normalizeClass, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\";\nimport _imports_0 from \"/internet.svg\";\nconst _hoisted_1 = { class: \"fixed top-0 z-50 w-full select-none from-gray-900 to-transparent bg-gradient-to-b py-8\" };\nconst _hoisted_2 = { class: \"section-container flex justify-between\" };\nconst _hoisted_3 = /* @__PURE__ */ _createElementVNode(\"a\", {\n  href: \"#home\",\n  class: \"link\"\n}, [\n  /* @__PURE__ */ _createElementVNode(\"img\", {\n    src: _imports_0,\n    alt: \"Logo - Ayush Singh\",\n    width: \"32\",\n    height: \"32\"\n  })\n], -1);\nconst _hoisted_4 = /* @__PURE__ */ _createElementVNode(\"div\", { class: \"relative w-full flex flex-none items-center justify-center bg-white duration-300\" }, null, -1);\nconst _hoisted_5 = [\n  _hoisted_4\n];\nimport Menu from \"~/components/common/menu.vue\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"Header\",\n  setup(__props) {\n    const menuVisible = ref(false);\n    function setmenuVisible(val) {\n      menuVisible.value = val;\n    }\n    return (_ctx, _cache) => {\n      return _openBlock(), _createElementBlock(\"header\", _hoisted_1, [\n        _createElementVNode(\"div\", _hoisted_2, [\n          _hoisted_3,\n          _createElementVNode(\"nav\", {\n            class: _normalizeClass(`outer-menu ${_unref(menuVisible) && \"menu-visible\"}`)\n          }, [\n            _createElementVNode(\"button\", {\n              class: \"link hamburger relative h-6 w-6 flex items-center justify-center\",\n              onClick: _cache[0] || (_cache[0] = ($event) => setmenuVisible(!_unref(menuVisible)))\n            }, _hoisted_5),\n            _createVNode(Menu, { \"setmenu-visible\": setmenuVisible })\n          ], 2)\n        ])\n      ]);\n    };\n  }\n});\n",
-      "start": 1715597141691,
-      "end": 1715597141758,
+      "start": 1715603879257,
+      "end": 1715603879316,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -63,135 +63,135 @@
     },
     {
       "name": "vite:json",
-      "start": 1715597141758,
-      "end": 1715597141758,
+      "start": 1715603879316,
+      "end": 1715603879316,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1715597141758,
-      "end": 1715597141758,
+      "start": 1715603879316,
+      "end": 1715603879316,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1715597141758,
-      "end": 1715597141758,
+      "start": 1715603879316,
+      "end": 1715603879316,
       "order": "normal"
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1715597141758,
-      "end": 1715597141758,
+      "start": 1715603879316,
+      "end": 1715603879316,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597141758,
-      "end": 1715597141758,
+      "start": 1715603879316,
+      "end": 1715603879316,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597141758,
-      "end": 1715597141758,
+      "start": 1715603879316,
+      "end": 1715603879316,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597141758,
-      "end": 1715597141758,
+      "start": 1715603879316,
+      "end": 1715603879316,
       "order": "normal"
     },
     {
       "name": "nuxt:chunk-error",
-      "start": 1715597141758,
-      "end": 1715597141758,
+      "start": 1715603879316,
+      "end": 1715603879316,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1715597141758,
-      "end": 1715597141758,
+      "start": 1715603879316,
+      "end": 1715603879317,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597141759,
-      "end": 1715597141759,
+      "start": 1715603879317,
+      "end": 1715603879317,
       "order": "normal"
     },
     {
       "name": "ssr-styles",
-      "start": 1715597141759,
-      "end": 1715597141759,
+      "start": 1715603879317,
+      "end": 1715603879317,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1715597141759,
-      "end": 1715597141759,
+      "start": 1715603879317,
+      "end": 1715603879317,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1715597141759,
-      "end": 1715597141759,
+      "start": 1715603879317,
+      "end": 1715603879317,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1715597141759,
-      "end": 1715597141759,
+      "start": 1715603879317,
+      "end": 1715603879317,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1715597141759,
-      "end": 1715597141759,
+      "start": 1715603879317,
+      "end": 1715603879317,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1715597141759,
-      "end": 1715597141759,
+      "start": 1715603879317,
+      "end": 1715603879317,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1715597141759,
-      "end": 1715597141759,
+      "start": 1715603879317,
+      "end": 1715603879317,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1715597141759,
-      "end": 1715597141759,
+      "start": 1715603879317,
+      "end": 1715603879317,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1715597141759,
-      "end": 1715597141759,
+      "start": 1715603879317,
+      "end": 1715603879317,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597141759,
-      "end": 1715597141759,
+      "start": 1715603879317,
+      "end": 1715603879317,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597141759,
-      "end": 1715597141759,
+      "start": 1715603879317,
+      "end": 1715603879318,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
       "result": "import { ref } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { createElementVNode as _createElementVNode, unref as _unref, createVNode as _createVNode, normalizeClass as _normalizeClass, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\";\nimport _imports_0 from \"/internet.svg\";\nconst _hoisted_1 = { class: \"fixed top-0 z-50 w-full select-none from-gray-900 to-transparent bg-gradient-to-b py-8\" };\nconst _hoisted_2 = { class: \"section-container flex justify-between\" };\nconst _hoisted_3 = /* @__PURE__ */ _createElementVNode(\"a\", {\n  href: \"#home\",\n  class: \"link\"\n}, [\n  /* @__PURE__ */ _createElementVNode(\"img\", {\n    src: _imports_0,\n    alt: \"Logo - Ayush Singh\",\n    width: \"32\",\n    height: \"32\"\n  })\n], -1);\nconst _hoisted_4 = /* @__PURE__ */ _createElementVNode(\"div\", { class: \"relative w-full flex flex-none items-center justify-center bg-white duration-300\" }, null, -1);\nconst _hoisted_5 = [\n  _hoisted_4\n];\nimport Menu from \"~/components/common/menu.vue\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"Header\",\n  setup(__props) {\n    const menuVisible = ref(false);\n    function setmenuVisible(val) {\n      menuVisible.value = val;\n    }\n    return (_ctx, _cache) => {\n      return _openBlock(), _createElementBlock(\"header\", _hoisted_1, [\n        _createElementVNode(\"div\", _hoisted_2, [\n          _hoisted_3,\n          _createElementVNode(\"nav\", {\n            class: _normalizeClass(`outer-menu ${_unref(menuVisible) && \"menu-visible\"}`)\n          }, [\n            _createElementVNode(\"button\", {\n              class: \"link hamburger relative h-6 w-6 flex items-center justify-center\",\n              onClick: _cache[0] || (_cache[0] = ($event) => setmenuVisible(!_unref(menuVisible)))\n            }, _hoisted_5),\n            _createVNode(Menu, { \"setmenu-visible\": setmenuVisible })\n          ], 2)\n        ])\n      ]);\n    };\n  }\n});\n",
-      "start": 1715597141759,
-      "end": 1715597141765,
+      "start": 1715603879318,
+      "end": 1715603879324,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -204,56 +204,56 @@
     },
     {
       "name": "unctx:transform",
-      "start": 1715597141765,
-      "end": 1715597141765,
+      "start": 1715603879324,
+      "end": 1715603879324,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597141766,
-      "end": 1715597141766,
+      "start": 1715603879324,
+      "end": 1715603879324,
       "order": "post"
     },
     {
       "name": "nuxt:runtime-paths-dep",
-      "start": 1715597141766,
-      "end": 1715597141766,
+      "start": 1715603879324,
+      "end": 1715603879324,
       "order": "post"
     },
     {
       "name": "element-plus:transform",
-      "start": 1715597141766,
-      "end": 1715597141766,
+      "start": 1715603879324,
+      "end": 1715603879325,
       "order": "post"
     },
     {
       "name": "nuxt:route-injection-plugin",
-      "start": 1715597141766,
-      "end": 1715597141766,
+      "start": 1715603879325,
+      "end": 1715603879325,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
-      "start": 1715597141766,
-      "end": 1715597141767,
+      "start": 1715603879325,
+      "end": 1715603879325,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-composables:transform",
-      "start": 1715597141767,
-      "end": 1715597141767,
+      "start": 1715603879326,
+      "end": 1715603879326,
       "order": "post"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1715597141767,
-      "end": 1715597141767,
+      "start": 1715603879326,
+      "end": 1715603879326,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1715597141767,
-      "end": 1715597141767,
+      "start": 1715603879326,
+      "end": 1715603879326,
       "order": "normal"
     }
   ]

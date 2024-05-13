@@ -4,8 +4,8 @@
     {
       "name": "vite:vue",
       "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\"\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderClass as _ssrRenderClass, ssrRenderStyle as _ssrRenderStyle, ssrRenderAttrs as _ssrRenderAttrs, ssrInterpolate as _ssrInterpolate } from \"vue/server-renderer\"\nimport _imports_0 from '/project-bg.svg'\n\n\nimport VanillaTilt from 'vanilla-tilt'\r\n  import styles from './ProjectTile.module.scss'\r\n  import type {\r\n    IProject\r\n  } from '~/store/constants'\r\n\r\n  interface MyProp {\r\n    project: IProject\r\n    animationEnabled: boolean\r\n  }\r\n  \nexport default /*#__PURE__*/_defineComponent({\n  __name: 'project-tile',\n  __ssrInlineRender: true,\n  props: {\n    project: {},\n    animationEnabled: { type: Boolean }\n  },\n  setup(__props: any) {\n\r\n  const props = __props\r\n\r\n  const projectCard: Ref < HTMLElement | undefined > = ref(undefined)\r\n\r\n  const {\r\n    name,\r\n    data,\r\n    image,\r\n    author,\r\n    description,\r\n    gradient: [stop1, stop2],\r\n  } = props.project\r\n\r\n  onMounted(() => {\r\n    VanillaTilt.init(projectCard.value!, {\r\n      'max': 5,\r\n      'speed': 400,\r\n      'glare': true,\r\n      'max-glare': 0.2,\r\n      'gyroscope': false,\r\n    })\r\n  })\r\n\nreturn (_ctx: any,_push: any,_parent: any,_attrs: any) => {\n  _push(`<a${\n    _ssrRenderAttrs(_mergeProps({\n      href: _ctx.project.url,\n      target: \"_blank\",\n      rel: \"noreferrer\",\n      class: \"link snap-start overflow-hidden rounded-3xl\",\n      style: `maxWidth:${\r\n      _ctx.animationEnabled ? 'calc(100vw - 2rem)' : 'calc(100vw - 4rem)'\r\n    }, flex: '1 0 auto',WebkitMaskImage: '-webkit-radial-gradient(white, black)'`\n    }, _attrs))\n  }><div class=\"${\n    _ssrRenderClass(`${_unref(styles).ProjectTile} rounded-3xl relative p-6 flex-col flex justify-between max-w-full`)\n  }\" style=\"${\n    _ssrRenderStyle(`background: linear-gradient(90deg, ${_unref(stop1)} 0%, ${_unref(stop2)} 100%)`)\n  }\"><img${\n    _ssrRenderAttr(\"src\", _imports_0)\n  } alt=\"Project\" layout=\"fill\" class=\"absolute left-0 top-0 h-full w-full opacity-20\"><img placeholder=\"blur\"${\n    _ssrRenderAttr(\"src\", _unref(image))\n  }${\n    _ssrRenderAttr(\"alt\", _unref(name))\n  } layout=\"fill\" class=\"${\n    _ssrRenderClass(`${_unref(styles).ProjectImg} z-0`)\n  }\"><div class=\"absolute left-0 top-0 h-20 w-full\" style=\"${\n    _ssrRenderStyle(`background: linear-gradient(180deg, ${_unref(stop1)} 0%, rgba(0,0,0,0) 100%)`)\n  }\"></div><div class=\"absolute bottom-0 left-0 h-32 w-full\" style=\"${\n    _ssrRenderStyle(`background: linear-gradient(0deg, ${_unref(stop1)} 10%, rgba(0,0,0,0) 100%)`)\n  }\"></div><h1 class=\"z-10 pl-2 text-2xl sm:text-3xl\" style=\"${\n    _ssrRenderStyle({\"transform\":\"translateZ(3rem)\"})\n  }\">${\n    _ssrInterpolate(_unref(name))\n  }</h1><h2 class=\"z-10 text-lg font-medium tracking-wide\" style=\"${\n    _ssrRenderStyle({\"transform\":\"translateZ(0.8rem)\"})\n  }\">${\n    _ssrInterpolate(_unref(description))\n  }</h2></div></a>`)\n}\n}\n\n})",
-      "start": 1715597155777,
-      "end": 1715597155777,
+      "start": 1715603892022,
+      "end": 1715603892022,
       "sourcemaps": {
         "version": 3,
         "sources": [
@@ -20,69 +20,69 @@
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597155777,
-      "end": 1715597155777,
+      "start": 1715603892022,
+      "end": 1715603892022,
       "order": "pre"
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597155777,
-      "end": 1715597155777,
+      "start": 1715603892022,
+      "end": 1715603892022,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597155777,
-      "end": 1715597155777,
+      "start": 1715603892022,
+      "end": 1715603892022,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597155777,
-      "end": 1715597155777,
+      "start": 1715603892022,
+      "end": 1715603892024,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597155778,
-      "end": 1715597155778,
+      "start": 1715603892024,
+      "end": 1715603892024,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597155778,
-      "end": 1715597155778,
+      "start": 1715603892024,
+      "end": 1715603892024,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597155778,
-      "end": 1715597155778,
+      "start": 1715603892024,
+      "end": 1715603892024,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597155778,
-      "end": 1715597155778,
+      "start": 1715603892024,
+      "end": 1715603892024,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1715597155778,
-      "end": 1715597155778,
+      "start": 1715603892024,
+      "end": 1715603892024,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1715597155778,
-      "end": 1715597155778,
+      "start": 1715603892024,
+      "end": 1715603892024,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderClass as _ssrRenderClass, ssrRenderStyle as _ssrRenderStyle, ssrRenderAttrs as _ssrRenderAttrs, ssrInterpolate as _ssrInterpolate } from \"vue/server-renderer\";\nimport _imports_0 from \"/project-bg.svg\";\nimport VanillaTilt from \"vanilla-tilt\";\nimport styles from \"./ProjectTile.module.scss\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"project-tile\",\n  __ssrInlineRender: true,\n  props: {\n    project: {},\n    animationEnabled: { type: Boolean }\n  },\n  setup(__props) {\n    const props = __props;\n    const projectCard = ref(void 0);\n    const {\n      name,\n      data,\n      image,\n      author,\n      description,\n      gradient: [stop1, stop2]\n    } = props.project;\n    onMounted(() => {\n      VanillaTilt.init(projectCard.value, {\n        \"max\": 5,\n        \"speed\": 400,\n        \"glare\": true,\n        \"max-glare\": 0.2,\n        \"gyroscope\": false\n      });\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<a${_ssrRenderAttrs(_mergeProps({\n        href: _ctx.project.url,\n        target: \"_blank\",\n        rel: \"noreferrer\",\n        class: \"link snap-start overflow-hidden rounded-3xl\",\n        style: `maxWidth:${_ctx.animationEnabled ? \"calc(100vw - 2rem)\" : \"calc(100vw - 4rem)\"}, flex: '1 0 auto',WebkitMaskImage: '-webkit-radial-gradient(white, black)'`\n      }, _attrs))}><div class=\"${_ssrRenderClass(`${_unref(styles).ProjectTile} rounded-3xl relative p-6 flex-col flex justify-between max-w-full`)}\" style=\"${_ssrRenderStyle(`background: linear-gradient(90deg, ${_unref(stop1)} 0%, ${_unref(stop2)} 100%)`)}\"><img${_ssrRenderAttr(\"src\", _imports_0)} alt=\"Project\" layout=\"fill\" class=\"absolute left-0 top-0 h-full w-full opacity-20\"><img placeholder=\"blur\"${_ssrRenderAttr(\"src\", _unref(image))}${_ssrRenderAttr(\"alt\", _unref(name))} layout=\"fill\" class=\"${_ssrRenderClass(`${_unref(styles).ProjectImg} z-0`)}\"><div class=\"absolute left-0 top-0 h-20 w-full\" style=\"${_ssrRenderStyle(`background: linear-gradient(180deg, ${_unref(stop1)} 0%, rgba(0,0,0,0) 100%)`)}\"></div><div class=\"absolute bottom-0 left-0 h-32 w-full\" style=\"${_ssrRenderStyle(`background: linear-gradient(0deg, ${_unref(stop1)} 10%, rgba(0,0,0,0) 100%)`)}\"></div><h1 class=\"z-10 pl-2 text-2xl sm:text-3xl\" style=\"${_ssrRenderStyle({ \"transform\": \"translateZ(3rem)\" })}\">${_ssrInterpolate(_unref(name))}</h1><h2 class=\"z-10 text-lg font-medium tracking-wide\" style=\"${_ssrRenderStyle({ \"transform\": \"translateZ(0.8rem)\" })}\">${_ssrInterpolate(_unref(description))}</h2></div></a>`);\n    };\n  }\n});\n",
-      "start": 1715597155778,
-      "end": 1715597155818,
+      "start": 1715603892024,
+      "end": 1715603892117,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -98,165 +98,165 @@
     },
     {
       "name": "vite:json",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892117,
+      "end": 1715603892117,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892117,
+      "end": 1715603892117,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892117,
+      "end": 1715603892117,
       "order": "normal"
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892117,
+      "end": 1715603892117,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892117,
+      "end": 1715603892117,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892117,
+      "end": 1715603892117,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892117,
+      "end": 1715603892117,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892117,
+      "end": 1715603892117,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892117,
+      "end": 1715603892117,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892117,
+      "end": 1715603892117,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892117,
+      "end": 1715603892117,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892117,
+      "end": 1715603892117,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892117,
+      "end": 1715603892117,
       "order": "normal"
     },
     {
       "name": "ssr-styles",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892118,
+      "end": 1715603892118,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892118,
+      "end": 1715603892118,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892118,
+      "end": 1715603892118,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892118,
+      "end": 1715603892118,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892118,
+      "end": 1715603892118,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892118,
+      "end": 1715603892118,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892118,
+      "end": 1715603892118,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892118,
+      "end": 1715603892118,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892118,
+      "end": 1715603892118,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892118,
+      "end": 1715603892118,
       "order": "post"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892118,
+      "end": 1715603892118,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892118,
+      "end": 1715603892118,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597155819,
-      "end": 1715597155819,
+      "start": 1715603892118,
+      "end": 1715603892118,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
       "result": "import { ref, onMounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderClass as _ssrRenderClass, ssrRenderStyle as _ssrRenderStyle, ssrRenderAttrs as _ssrRenderAttrs, ssrInterpolate as _ssrInterpolate } from \"vue/server-renderer\";\nimport _imports_0 from \"/project-bg.svg\";\nimport VanillaTilt from \"vanilla-tilt\";\nimport styles from \"./ProjectTile.module.scss\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"project-tile\",\n  __ssrInlineRender: true,\n  props: {\n    project: {},\n    animationEnabled: { type: Boolean }\n  },\n  setup(__props) {\n    const props = __props;\n    const projectCard = ref(void 0);\n    const {\n      name,\n      data,\n      image,\n      author,\n      description,\n      gradient: [stop1, stop2]\n    } = props.project;\n    onMounted(() => {\n      VanillaTilt.init(projectCard.value, {\n        \"max\": 5,\n        \"speed\": 400,\n        \"glare\": true,\n        \"max-glare\": 0.2,\n        \"gyroscope\": false\n      });\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<a${_ssrRenderAttrs(_mergeProps({\n        href: _ctx.project.url,\n        target: \"_blank\",\n        rel: \"noreferrer\",\n        class: \"link snap-start overflow-hidden rounded-3xl\",\n        style: `maxWidth:${_ctx.animationEnabled ? \"calc(100vw - 2rem)\" : \"calc(100vw - 4rem)\"}, flex: '1 0 auto',WebkitMaskImage: '-webkit-radial-gradient(white, black)'`\n      }, _attrs))}><div class=\"${_ssrRenderClass(`${_unref(styles).ProjectTile} rounded-3xl relative p-6 flex-col flex justify-between max-w-full`)}\" style=\"${_ssrRenderStyle(`background: linear-gradient(90deg, ${_unref(stop1)} 0%, ${_unref(stop2)} 100%)`)}\"><img${_ssrRenderAttr(\"src\", _imports_0)} alt=\"Project\" layout=\"fill\" class=\"absolute left-0 top-0 h-full w-full opacity-20\"><img placeholder=\"blur\"${_ssrRenderAttr(\"src\", _unref(image))}${_ssrRenderAttr(\"alt\", _unref(name))} layout=\"fill\" class=\"${_ssrRenderClass(`${_unref(styles).ProjectImg} z-0`)}\"><div class=\"absolute left-0 top-0 h-20 w-full\" style=\"${_ssrRenderStyle(`background: linear-gradient(180deg, ${_unref(stop1)} 0%, rgba(0,0,0,0) 100%)`)}\"></div><div class=\"absolute bottom-0 left-0 h-32 w-full\" style=\"${_ssrRenderStyle(`background: linear-gradient(0deg, ${_unref(stop1)} 10%, rgba(0,0,0,0) 100%)`)}\"></div><h1 class=\"z-10 pl-2 text-2xl sm:text-3xl\" style=\"${_ssrRenderStyle({ \"transform\": \"translateZ(3rem)\" })}\">${_ssrInterpolate(_unref(name))}</h1><h2 class=\"z-10 text-lg font-medium tracking-wide\" style=\"${_ssrRenderStyle({ \"transform\": \"translateZ(0.8rem)\" })}\">${_ssrInterpolate(_unref(description))}</h2></div></a>`);\n    };\n  }\n});\n",
-      "start": 1715597155819,
-      "end": 1715597155821,
+      "start": 1715603892118,
+      "end": 1715603892123,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -270,8 +270,8 @@
     {
       "name": "nuxt:imports-transform",
       "result": "import { ref, onMounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderClass as _ssrRenderClass, ssrRenderStyle as _ssrRenderStyle, ssrRenderAttrs as _ssrRenderAttrs, ssrInterpolate as _ssrInterpolate } from \"vue/server-renderer\";\nimport _imports_0 from \"/project-bg.svg\";\nimport VanillaTilt from \"vanilla-tilt\";\nimport styles from \"./ProjectTile.module.scss\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"project-tile\",\n  __ssrInlineRender: true,\n  props: {\n    project: {},\n    animationEnabled: { type: Boolean }\n  },\n  setup(__props) {\n    const props = __props;\n    const projectCard = ref(void 0);\n    const {\n      name,\n      data,\n      image,\n      author,\n      description,\n      gradient: [stop1, stop2]\n    } = props.project;\n    onMounted(() => {\n      VanillaTilt.init(projectCard.value, {\n        \"max\": 5,\n        \"speed\": 400,\n        \"glare\": true,\n        \"max-glare\": 0.2,\n        \"gyroscope\": false\n      });\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<a${_ssrRenderAttrs(_mergeProps({\n        href: _ctx.project.url,\n        target: \"_blank\",\n        rel: \"noreferrer\",\n        class: \"link snap-start overflow-hidden rounded-3xl\",\n        style: `maxWidth:${_ctx.animationEnabled ? \"calc(100vw - 2rem)\" : \"calc(100vw - 4rem)\"}, flex: '1 0 auto',WebkitMaskImage: '-webkit-radial-gradient(white, black)'`\n      }, _attrs))}><div class=\"${_ssrRenderClass(`${_unref(styles).ProjectTile} rounded-3xl relative p-6 flex-col flex justify-between max-w-full`)}\" style=\"${_ssrRenderStyle(`background: linear-gradient(90deg, ${_unref(stop1)} 0%, ${_unref(stop2)} 100%)`)}\"><img${_ssrRenderAttr(\"src\", _imports_0)} alt=\"Project\" layout=\"fill\" class=\"absolute left-0 top-0 h-full w-full opacity-20\"><img placeholder=\"blur\"${_ssrRenderAttr(\"src\", _unref(image))}${_ssrRenderAttr(\"alt\", _unref(name))} layout=\"fill\" class=\"${_ssrRenderClass(`${_unref(styles).ProjectImg} z-0`)}\"><div class=\"absolute left-0 top-0 h-20 w-full\" style=\"${_ssrRenderStyle(`background: linear-gradient(180deg, ${_unref(stop1)} 0%, rgba(0,0,0,0) 100%)`)}\"></div><div class=\"absolute bottom-0 left-0 h-32 w-full\" style=\"${_ssrRenderStyle(`background: linear-gradient(0deg, ${_unref(stop1)} 10%, rgba(0,0,0,0) 100%)`)}\"></div><h1 class=\"z-10 pl-2 text-2xl sm:text-3xl\" style=\"${_ssrRenderStyle({ \"transform\": \"translateZ(3rem)\" })}\">${_ssrInterpolate(_unref(name))}</h1><h2 class=\"z-10 text-lg font-medium tracking-wide\" style=\"${_ssrRenderStyle({ \"transform\": \"translateZ(0.8rem)\" })}\">${_ssrInterpolate(_unref(description))}</h2></div></a>`);\n    };\n  }\n});\n",
-      "start": 1715597155819,
-      "end": 1715597155821,
+      "start": 1715603892118,
+      "end": 1715603892123,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -284,51 +284,51 @@
     },
     {
       "name": "unctx:transform",
-      "start": 1715597155821,
-      "end": 1715597155821,
+      "start": 1715603892123,
+      "end": 1715603892123,
       "order": "post"
     },
     {
       "name": "unctx:transform",
-      "start": 1715597155821,
-      "end": 1715597155821,
+      "start": 1715603892123,
+      "end": 1715603892123,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597155821,
-      "end": 1715597155821,
+      "start": 1715603892123,
+      "end": 1715603892123,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597155821,
-      "end": 1715597155821,
+      "start": 1715603892123,
+      "end": 1715603892123,
       "order": "post"
     },
     {
       "name": "element-plus:transform",
-      "start": 1715597155822,
-      "end": 1715597155822,
+      "start": 1715603892124,
+      "end": 1715603892124,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-template",
-      "start": 1715597155822,
-      "end": 1715597155822,
+      "start": 1715603892124,
+      "end": 1715603892124,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
-      "start": 1715597155823,
-      "end": 1715597155823,
+      "start": 1715603892124,
+      "end": 1715603892124,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-composables:transform",
       "result": "import { ref, onMounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderClass as _ssrRenderClass, ssrRenderStyle as _ssrRenderStyle, ssrRenderAttrs as _ssrRenderAttrs, ssrInterpolate as _ssrInterpolate } from \"vue/server-renderer\";\nimport _imports_0 from \"/project-bg.svg\";\nimport VanillaTilt from \"vanilla-tilt\";\nimport styles from \"./ProjectTile.module.scss\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"project-tile\",\n  __ssrInlineRender: true,\n  props: {\n    project: {},\n    animationEnabled: { type: Boolean }\n  },\n  setup(__props) {\n    const props = __props;\n    const projectCard = ref(void 0);\n    const {\n      name,\n      data,\n      image,\n      author,\n      description,\n      gradient: [stop1, stop2]\n    } = props.project;\n     /*#__PURE__*/ false && onMounted(() => {\n      VanillaTilt.init(projectCard.value, {\n        \"max\": 5,\n        \"speed\": 400,\n        \"glare\": true,\n        \"max-glare\": 0.2,\n        \"gyroscope\": false\n      });\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<a${_ssrRenderAttrs(_mergeProps({\n        href: _ctx.project.url,\n        target: \"_blank\",\n        rel: \"noreferrer\",\n        class: \"link snap-start overflow-hidden rounded-3xl\",\n        style: `maxWidth:${_ctx.animationEnabled ? \"calc(100vw - 2rem)\" : \"calc(100vw - 4rem)\"}, flex: '1 0 auto',WebkitMaskImage: '-webkit-radial-gradient(white, black)'`\n      }, _attrs))}><div class=\"${_ssrRenderClass(`${_unref(styles).ProjectTile} rounded-3xl relative p-6 flex-col flex justify-between max-w-full`)}\" style=\"${_ssrRenderStyle(`background: linear-gradient(90deg, ${_unref(stop1)} 0%, ${_unref(stop2)} 100%)`)}\"><img${_ssrRenderAttr(\"src\", _imports_0)} alt=\"Project\" layout=\"fill\" class=\"absolute left-0 top-0 h-full w-full opacity-20\"><img placeholder=\"blur\"${_ssrRenderAttr(\"src\", _unref(image))}${_ssrRenderAttr(\"alt\", _unref(name))} layout=\"fill\" class=\"${_ssrRenderClass(`${_unref(styles).ProjectImg} z-0`)}\"><div class=\"absolute left-0 top-0 h-20 w-full\" style=\"${_ssrRenderStyle(`background: linear-gradient(180deg, ${_unref(stop1)} 0%, rgba(0,0,0,0) 100%)`)}\"></div><div class=\"absolute bottom-0 left-0 h-32 w-full\" style=\"${_ssrRenderStyle(`background: linear-gradient(0deg, ${_unref(stop1)} 10%, rgba(0,0,0,0) 100%)`)}\"></div><h1 class=\"z-10 pl-2 text-2xl sm:text-3xl\" style=\"${_ssrRenderStyle({ \"transform\": \"translateZ(3rem)\" })}\">${_ssrInterpolate(_unref(name))}</h1><h2 class=\"z-10 text-lg font-medium tracking-wide\" style=\"${_ssrRenderStyle({ \"transform\": \"translateZ(0.8rem)\" })}\">${_ssrInterpolate(_unref(description))}</h2></div></a>`);\n    };\n  }\n});\n",
-      "start": 1715597155823,
-      "end": 1715597155823,
+      "start": 1715603892124,
+      "end": 1715603892124,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -342,8 +342,8 @@
     {
       "name": "vite:build-import-analysis",
       "result": "import { ref, onMounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderClass as _ssrRenderClass, ssrRenderStyle as _ssrRenderStyle, ssrRenderAttrs as _ssrRenderAttrs, ssrInterpolate as _ssrInterpolate } from \"vue/server-renderer\";\nimport _imports_0 from \"/project-bg.svg\";\nimport VanillaTilt from \"vanilla-tilt\";\nimport styles from \"./ProjectTile.module.scss?used\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"project-tile\",\n  __ssrInlineRender: true,\n  props: {\n    project: {},\n    animationEnabled: { type: Boolean }\n  },\n  setup(__props) {\n    const props = __props;\n    const projectCard = ref(void 0);\n    const {\n      name,\n      data,\n      image,\n      author,\n      description,\n      gradient: [stop1, stop2]\n    } = props.project;\n     /*#__PURE__*/ false && onMounted(() => {\n      VanillaTilt.init(projectCard.value, {\n        \"max\": 5,\n        \"speed\": 400,\n        \"glare\": true,\n        \"max-glare\": 0.2,\n        \"gyroscope\": false\n      });\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<a${_ssrRenderAttrs(_mergeProps({\n        href: _ctx.project.url,\n        target: \"_blank\",\n        rel: \"noreferrer\",\n        class: \"link snap-start overflow-hidden rounded-3xl\",\n        style: `maxWidth:${_ctx.animationEnabled ? \"calc(100vw - 2rem)\" : \"calc(100vw - 4rem)\"}, flex: '1 0 auto',WebkitMaskImage: '-webkit-radial-gradient(white, black)'`\n      }, _attrs))}><div class=\"${_ssrRenderClass(`${_unref(styles).ProjectTile} rounded-3xl relative p-6 flex-col flex justify-between max-w-full`)}\" style=\"${_ssrRenderStyle(`background: linear-gradient(90deg, ${_unref(stop1)} 0%, ${_unref(stop2)} 100%)`)}\"><img${_ssrRenderAttr(\"src\", _imports_0)} alt=\"Project\" layout=\"fill\" class=\"absolute left-0 top-0 h-full w-full opacity-20\"><img placeholder=\"blur\"${_ssrRenderAttr(\"src\", _unref(image))}${_ssrRenderAttr(\"alt\", _unref(name))} layout=\"fill\" class=\"${_ssrRenderClass(`${_unref(styles).ProjectImg} z-0`)}\"><div class=\"absolute left-0 top-0 h-20 w-full\" style=\"${_ssrRenderStyle(`background: linear-gradient(180deg, ${_unref(stop1)} 0%, rgba(0,0,0,0) 100%)`)}\"></div><div class=\"absolute bottom-0 left-0 h-32 w-full\" style=\"${_ssrRenderStyle(`background: linear-gradient(0deg, ${_unref(stop1)} 10%, rgba(0,0,0,0) 100%)`)}\"></div><h1 class=\"z-10 pl-2 text-2xl sm:text-3xl\" style=\"${_ssrRenderStyle({ \"transform\": \"translateZ(3rem)\" })}\">${_ssrInterpolate(_unref(name))}</h1><h2 class=\"z-10 text-lg font-medium tracking-wide\" style=\"${_ssrRenderStyle({ \"transform\": \"translateZ(0.8rem)\" })}\">${_ssrInterpolate(_unref(description))}</h2></div></a>`);\n    };\n  }\n});\n",
-      "start": 1715597155823,
-      "end": 1715597155823,
+      "start": 1715603892124,
+      "end": 1715603892125,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -356,8 +356,8 @@
     },
     {
       "name": "vite:reporter",
-      "start": 1715597155823,
-      "end": 1715597155823,
+      "start": 1715603892125,
+      "end": 1715603892125,
       "order": "normal"
     }
   ]

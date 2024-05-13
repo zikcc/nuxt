@@ -4,8 +4,8 @@
     {
       "name": "vite:vue",
       "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\"\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderClass as _ssrRenderClass, ssrRenderAttrs as _ssrRenderAttrs, ssrRenderList as _ssrRenderList } from \"vue/server-renderer\"\n\nimport {\r\n    Linear,\r\n    gsap\r\n  } from 'gsap'\r\n  import {\r\n    ScrollTrigger\r\n  } from 'gsap/dist/ScrollTrigger'\r\n  import {\r\n    Branch,\r\n    type BranchNode,\r\n    type CheckpointNode,\r\n    type IDesktop,\r\n    ItemSize,\r\n    MENULINKS,\r\n    NodeTypes,\r\n    TIMELINE,\r\n    type TimelineNodeV2,\r\n    isSmallScreen,\r\n  } from '~/store/constants'\r\n\r\n  const svgColor = '#9CA3AF'\r\n  const animColor = '#FCD34D'\r\n  const separation = 450\r\n  const strokeWidth = 2\r\n  const leftBranchX = 13\r\n  const curveLength = 150\r\n  const dotSize = 26\r\n  interface LinkNode {\r\n    next ? : LinkedTimelineNode\r\n    prev ? : LinkedTimelineNode\r\n  }\r\n\r\n  type LinkedTimelineNode = LinkedCheckpointNode | LinkedBranchNode\r\n\r\n  type LinkedCheckpointNode = LinkNode & CheckpointNode\r\n\r\n  type LinkedBranchNode = LinkNode & BranchNode\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'timeline',\n  __ssrInlineRender: true,\n  props: {\n    isDesktop: { type: Boolean }\n  },\n  setup(__props: any) {\n\r\n  const props = __props\r\n  const timelineSvg: Ref < SVGSVGElement | undefined > = ref(undefined)\r\n  const svgContainer: Ref < HTMLDivElement | undefined > = ref(undefined)\r\n  const screenContainer: Ref < HTMLDivElement | undefined > = ref(undefined)\r\n\r\n  const svgWidth = ref(400)\r\n  let rightBranchX = 109\r\n\r\n  function addNodeRefsToItems(timeline: Array < TimelineNodeV2 > ): Array < LinkedTimelineNode > {\r\n    return timeline.map((node, idx) => ({\r\n      ...node,\r\n      next: timeline[idx + 1],\r\n      prev: timeline[idx - 1],\r\n    }))\r\n  }\r\n\r\n  function generateTimelineSvg(timeline: Array < TimelineNodeV2 > ): string {\r\n    let index = 1\r\n    let y = dotSize / 2\r\n    const timelineStyle = `<style>.str, .dot{stroke-width: ${strokeWidth}px}.anim-branch{stroke-dasharray: 186}</style>`\r\n    let isDiverged = false\r\n\r\n    const timelineSvg = addNodeRefsToItems(timeline).reduce((svg: string, node: LinkedTimelineNode) => {\r\n      const {\r\n        type,\r\n        next\r\n      } = node\r\n      let lineY = y\r\n      let dotY = y + separation / 2\r\n\r\n      switch (type) {\r\n        case NodeTypes.CHECKPOINT: {\r\n          const {\r\n            shouldDrawLine\r\n          } = node\r\n\r\n          // special handling for last checkpoint\r\n          if (!next)\r\n            lineY = y - separation / 2\r\n\r\n          // special handling for dot without line\r\n          if (!shouldDrawLine)\r\n            dotY = y\r\n\r\n          if (shouldDrawLine) {\r\n            // TO DO fix syntax\r\n            svg = shouldDrawLine ? `${drawLine(node, lineY, index, isDiverged)}${svg}` : svg\r\n            y = y + separation\r\n            index++\r\n          }\r\n\r\n          svg = svg.concat(drawDot(node, dotY, isDiverged))\r\n        }\r\n        break\r\n      case NodeTypes.DIVERGE:\r\n        isDiverged = true\r\n        svg = `${drawBranch(node, y, index)}${svg}`\r\n        break\r\n      case NodeTypes.CONVERGE:\r\n        isDiverged = false\r\n        // Drawing CONVERGE branch with previous line and index\r\n        svg = `${drawBranch(node, y - separation, index - 1)}${svg}`\r\n        break\r\n      }\r\n\r\n      return svg\r\n    }, timelineStyle)\r\n\r\n    return timelineSvg\r\n  }\r\n\r\n  function getDotString(x: number, y: number) {\r\n    return `<rect class='dot' width=${dotSize} height=${dotSize} fill='#111827' x=${x - dotSize / 2} y=${\r\n    y - dotSize / 2\r\n  } ></rect><circle cx=${x} cy=${y} r='7' stroke=${svgColor} class='dot' ></circle>`\r\n  }\r\n\r\n  function drawDot(timelineNode: LinkedCheckpointNode, y: number, isDiverged: boolean) {\r\n    const {\r\n      next,\r\n      alignment\r\n    } = timelineNode as LinkedCheckpointNode\r\n\r\n    // Diverging\r\n    if (next && next.type === NodeTypes.DIVERGE)\r\n      y = y - curveLength + 6 * dotSize\r\n\r\n    // Converging\r\n    if (next && next.type === NodeTypes.CONVERGE)\r\n      y = y + curveLength - 6 * dotSize\r\n\r\n    const dotString = getDotString(alignment === Branch.LEFT ? leftBranchX : rightBranchX, y)\r\n    const textString = addText(timelineNode, y, isDiverged)\r\n    return `${textString}${dotString}`\r\n  }\r\n\r\n  function addText(timelineNode: LinkedCheckpointNode, y: number, isDiverged: boolean) {\r\n    const {\r\n      title,\r\n      subtitle,\r\n      size,\r\n      image\r\n    } = timelineNode\r\n\r\n    const offset = isDiverged ? rightBranchX : 10\r\n    const foreignObjectX = dotSize / 2 + 10 + offset\r\n    const foreignObjectY = y - dotSize / 2\r\n    const foreignObjectWidth = svgWidth.value - (dotSize / 2 + 10 + offset)\r\n\r\n    const titleSizeClass = size === ItemSize.LARGE ? 'text-6xl' : 'text-2xl'\r\n    const logoString = image ?\r\n      `<img src='${image}' class='h-8 mb-2' loading='lazy' width='100' height='32' alt='${image}' />` : ''\r\n    const subtitleString = subtitle ?\r\n      `<p class='text-xl mt-2 text-gray-200 font-medium tracking-wide'>${subtitle}</p>` : ''\r\n\r\n    return `<foreignObject x=${foreignObjectX} y=${foreignObjectY} width=${foreignObjectWidth} \r\n        height=${separation}>${logoString}<p class='${titleSizeClass}'>${title}</p>${subtitleString}</foreignObject>`\r\n  }\r\n\r\n  function drawLine(timelineNode: LinkedCheckpointNode, y: number, i: number, isDiverged: boolean) {\r\n    const {\r\n      alignment,\r\n      prev,\r\n      next\r\n    } = timelineNode as LinkedCheckpointNode\r\n\r\n    const isPrevDiverge = prev && prev.type === NodeTypes.DIVERGE\r\n    const isNextConverge = next && next.type === NodeTypes.CONVERGE\r\n\r\n    const lineY = Math.abs(y + separation)\r\n\r\n    // Smaller line for Diverging\r\n    if (isPrevDiverge)\r\n      return `<line class='str' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${animColor} />`\r\n\r\n    // Smaller line for Converging\r\n    if (isNextConverge)\r\n      return `<line class='str' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${animColor} />`\r\n\r\n    const lineX = alignment === Branch.LEFT ? leftBranchX : rightBranchX\r\n\r\n    let str =\r\n      `<line class='str' x1=${lineX} y1=${y} x2=${lineX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${lineX} y1=${y} x2=${lineX} y2=${lineY} stroke=${animColor} />`\r\n\r\n    // If already diverged, draw parallel line to the existing line\r\n    if (isDiverged) {\r\n      const divergedLineX = alignment === Branch.LEFT ? rightBranchX : leftBranchX\r\n      str = str.concat(\r\n        `<line class='str' x1=${divergedLineX} y1=${y} x2=${divergedLineX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${divergedLineX} y1=${y} x2=${divergedLineX} y2=${lineY} stroke=${animColor} />`,\r\n      )\r\n    }\r\n    return str\r\n  }\r\n\r\n  function drawBranch(timelineNode: LinkedBranchNode, y: number, i: number) {\r\n    const {\r\n      type\r\n    } = timelineNode\r\n    switch (type) {\r\n      case NodeTypes.DIVERGE:\r\n        return `<path class='str' d='M ${leftBranchX} ${y} C ${leftBranchX} ${y + curveLength / 2} ${rightBranchX} ${\r\n        y + curveLength / 2\r\n      } ${rightBranchX} ${y + curveLength}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${\r\n        y + curveLength\r\n      } x2=${rightBranchX} y2=${\r\n        y + separation\r\n      } stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${leftBranchX} ${y} C ${leftBranchX} ${\r\n        y + curveLength / 2\r\n      } ${rightBranchX} ${y + curveLength / 2} ${rightBranchX} ${\r\n        y + curveLength\r\n      }' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y + curveLength} x2=${rightBranchX} y2=${\r\n        y + separation\r\n      } stroke=${animColor} />`\r\n      case NodeTypes.CONVERGE:\r\n        return `<path class='str' d='M ${rightBranchX} ${y + separation - curveLength} C ${rightBranchX} ${\r\n        y + separation - curveLength + curveLength / 2\r\n      } ${leftBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${\r\n        y + separation\r\n      }' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(\r\n        y + separation - curveLength,\r\n      )} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${rightBranchX} ${\r\n        y + separation - curveLength\r\n      } C ${rightBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${\r\n        y + separation - curveLength + curveLength / 2\r\n      } ${leftBranchX} ${\r\n        y + separation\r\n      }' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(\r\n        y + separation - curveLength,\r\n      )} stroke=${animColor} />`\r\n      default:\r\n        return ''\r\n    }\r\n  }\r\n\r\n  function addLineSvgAnimation(timeline: GSAPTimeline, duration: number, index: number): GSAPTimeline {\r\n    const startTime = `start+=${duration * index}`\r\n\r\n    timeline.from(svgContainer.value!.querySelectorAll(`.line-${index + 1}`), {\r\n      scaleY: 0,\r\n      duration\r\n    }, startTime)\r\n\r\n    return timeline\r\n  }\r\n\r\n  function addDivergingBranchLineAnimation(timeline: GSAPTimeline, duration: number, index: number): GSAPTimeline {\r\n    timeline\r\n      .from(svgContainer.value!.querySelector(`.line-${index + 1}`), {\r\n        scaleY: 0,\r\n        duration\r\n      }, `start+=${duration * index}`)\r\n      .from(\r\n        svgContainer.value!.querySelector(`.branch-${index + 1}`), {\r\n          strokeDashoffset: 186,\r\n          duration: duration - 2\r\n        },\r\n        `start+=${duration * index}`,\r\n      )\r\n      .from(\r\n        svgContainer.value!.querySelector(`.branch-line-${index + 1}`), {\r\n          scaleY: 0,\r\n          duration: duration - 1\r\n        },\r\n        `start+=${duration * (index + 1) - 2}`,\r\n      )\r\n\r\n    return timeline\r\n  }\r\n\r\n  function addConvergingBranchLineAnimation(timeline: GSAPTimeline, duration: number, index: number): GSAPTimeline {\r\n    timeline\r\n      .from(svgContainer.value!.querySelector(`.line-${index + 1}`), {\r\n        scaleY: 0,\r\n        duration\r\n      }, `start+=${duration * index}`)\r\n      .from(\r\n        svgContainer.value!.querySelector(`.branch-line-${index + 1}`), {\r\n          scaleY: 0,\r\n          duration: duration - 1\r\n        },\r\n        `start+=${duration * index}`,\r\n      )\r\n      .from(\r\n        svgContainer.value!.querySelector(`.branch-${index + 1}`), {\r\n          strokeDashoffset: 186,\r\n          duration: duration - 2\r\n        },\r\n        `start+=${duration * (index + 1) - 1}`,\r\n      )\r\n\r\n    return timeline\r\n  }\r\n\r\n  function animateTimeline(timeline: GSAPTimeline, duration: number): void {\r\n    let index = 0\r\n\r\n    addNodeRefsToItems(TIMELINE).forEach((item) => {\r\n      const {\r\n        type\r\n      } = item\r\n\r\n      if (type === NodeTypes.CHECKPOINT && item.shouldDrawLine) {\r\n        const {\r\n          next,\r\n          prev\r\n        } = item\r\n\r\n        if (prev && prev.type === NodeTypes.DIVERGE)\r\n          addDivergingBranchLineAnimation(timeline, duration, index)\r\n        else if (next && next.type === NodeTypes.CONVERGE)\r\n          addConvergingBranchLineAnimation(timeline, duration, index)\r\n        else\r\n          addLineSvgAnimation(timeline, duration, index)\r\n\r\n        index++\r\n      }\r\n    })\r\n  }\r\n\r\n  function setTimelineSvg(svgContainer: Ref < HTMLElement | undefined > , timelineSvg: Ref < SVGSVGElement | undefined >\r\n    ) {\r\n    const containerWidth = svgContainer.value!.clientWidth\r\n    svgWidth.value = containerWidth\r\n\r\n    const resultSvgString = generateTimelineSvg(TIMELINE)\r\n    timelineSvg.value!.innerHTML = resultSvgString\r\n\r\n    if (isSmallScreen())\r\n      rightBranchX = 70\r\n  }\r\n //slideImg 动画\r\n  function setSlidesAnimation(timeline: GSAPTimeline): void {\r\n    svgCheckpointItems.forEach((_, index) => {\r\n      // all except the first slide\r\n      if (index !== 0)\r\n        timeline.fromTo(screenContainer.value!.querySelector(`.slide-${index + 1}`), {\r\n          opacity: 0\r\n        }, {\r\n          opacity: 1\r\n        })\r\n\r\n      // all except the last slide\r\n      if (index !== svgCheckpointItems.length - 1) {\r\n        timeline.to(screenContainer.value!.querySelector(`.slide-${index + 1}`), {\r\n          opacity: 0,\r\n          delay: 2.35,\r\n        })\r\n      }\r\n    })\r\n  }\r\n\r\n  function initScrollTrigger(): {\r\n    timeline: GSAPTimeline\r\n    duration: number\r\n  } {\r\n    const timeline = gsap.timeline({\r\n      defaults: {\r\n        ease: Linear.easeNone,\r\n        duration: 0.44\r\n      }\r\n    }).addLabel('start')\r\n    let duration: number\r\n    let trigger: HTMLDivElement\r\n    let start: string\r\n    let end: string\r\n    let additionalConfig = {}\r\n\r\n    // Slide as a trigger for Desktop\r\n    if (props.isDesktop && !isSmallScreen()) {\r\n      // Animation for right side slides\r\n      setSlidesAnimation(timeline)\r\n\r\n      const platformHeight = screenContainer.value!.getBoundingClientRect().height\r\n\r\n      trigger = screenContainer.value!\r\n        start = `top ${(window.innerHeight - platformHeight) / 2}`\r\n      end = `+=${svgLength - platformHeight}`\r\n      additionalConfig = {\r\n        pin: true,\r\n        pinSpacing: true,\r\n      }\r\n      duration = timeline.totalDuration() / 15 //TODO 会影响图片展示的间隔\r\n    } else {\r\n      // Clearing out the right side on mobile devices\r\n      screenContainer.value!.innerHTML = ''\r\n\r\n      trigger = svgContainer.value!\r\n        start = 'top center'\r\n      end = `+=${svgLength}`\r\n      duration = 3\r\n    }\r\n\r\n    ScrollTrigger.create({\r\n      ...additionalConfig,\r\n      trigger,\r\n      start,\r\n      end,\r\n      scrub: 0,\r\n      animation: timeline,\r\n    })\r\n    return {\r\n      timeline,\r\n      duration\r\n    }\r\n  }\r\n\r\n  const svgCheckpointItems = TIMELINE.filter(item => item.type === NodeTypes.CHECKPOINT && item.shouldDrawLine)\r\n  // const svgLength = svgCheckpointItems ? .length * separation\r\n  const svgLength = svgCheckpointItems && svgCheckpointItems.length * separation;\r\n  onMounted(() => {\r\n    // Generate and set the timeline svg\r\n    setTimelineSvg(svgContainer, timelineSvg)\r\n\r\n    const {\r\n      timeline,\r\n      duration\r\n    }: {\r\n      timeline: GSAPTimeline,\r\n      duration: number\r\n    } = initScrollTrigger()\r\n\r\n    // Animation for Timeline SVG\r\n    animateTimeline(timeline, duration)\r\n  })\r\n\r\n  \nreturn (_ctx: any,_push: any,_parent: any,_attrs: any) => {\n  _push(`<section${\n    _ssrRenderAttrs(_mergeProps({\n      id: _unref(MENULINKS)[3].ref,\n      class: \"section-container relative min-h-screen w-full flex flex-col select-none justify-center py-8\"\n    }, _attrs))\n  }><div class=\"flex flex-col\"><p class=\"section-title-sm seq\"> MILESTONES </p><h1 class=\"section-heading seq mt-2\"> 时间线 </h1><h2 class=\"seq mt-2 w-full text-2xl md:max-w-2xl\"> 隐藏着什么呢？ </h2></div><div class=\"grid grid-cols-12 mt-20 gap-4\"><div class=\"line-svg col-span-12 md:col-span-6\"><svg${\n    _ssrRenderAttr(\"width\", _unref(svgWidth))\n  }${\n    _ssrRenderAttr(\"height\", _unref(svgLength))\n  }${\n    _ssrRenderAttr(\"viewBox\", `0 0 ${_unref(svgWidth)} ${_unref(svgLength)}`)\n  } fill=\"none\"></svg></div><div class=\"col-span-12 hidden md:col-span-6 md:flex\"><div class=\"h-96 max-w-full overflow-hidden bg-transparent w-200\"><div class=\"relative h-full w-full\"><div class=\"absolute left-0 top-0 h-full w-full\"><!--[-->`)\n  _ssrRenderList(_unref(svgCheckpointItems), (item, idx) => {\n    _push(`<img alt=\"Timeline\" layout=\"fill\" class=\"${\n      _ssrRenderClass(`w-full absolute top-0 object-cover slide-${idx + 1}`)\n    }\"${\n      _ssrRenderAttr(\"src\", `${item.slideImage}`)\n    }>`)\n  })\n  _push(`<!--]--></div></div></div></div></div></section>`)\n}\n}\n\n})",
-      "start": 1715597154928,
-      "end": 1715597154928,
+      "start": 1715603891220,
+      "end": 1715603891220,
       "sourcemaps": {
         "version": 3,
         "sources": [
@@ -20,69 +20,69 @@
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597154928,
-      "end": 1715597154928,
+      "start": 1715603891221,
+      "end": 1715603891221,
       "order": "pre"
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597154928,
-      "end": 1715597154928,
+      "start": 1715603891221,
+      "end": 1715603891221,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597154928,
-      "end": 1715597154929,
+      "start": 1715603891221,
+      "end": 1715603891222,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597154928,
-      "end": 1715597154929,
+      "start": 1715603891221,
+      "end": 1715603891222,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597154929,
-      "end": 1715597154929,
+      "start": 1715603891223,
+      "end": 1715603891223,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597154929,
-      "end": 1715597154929,
+      "start": 1715603891223,
+      "end": 1715603891223,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597154929,
-      "end": 1715597154929,
+      "start": 1715603891223,
+      "end": 1715603891223,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597154929,
-      "end": 1715597154929,
+      "start": 1715603891223,
+      "end": 1715603891223,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1715597154929,
-      "end": 1715597154929,
+      "start": 1715603891223,
+      "end": 1715603891223,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1715597154929,
-      "end": 1715597154929,
+      "start": 1715603891223,
+      "end": 1715603891223,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderClass as _ssrRenderClass, ssrRenderAttrs as _ssrRenderAttrs, ssrRenderList as _ssrRenderList } from \"vue/server-renderer\";\nimport {\n  Linear,\n  gsap\n} from \"gsap\";\nimport {\n  ScrollTrigger\n} from \"gsap/dist/ScrollTrigger\";\nimport {\n  Branch,\n  ItemSize,\n  MENULINKS,\n  NodeTypes,\n  TIMELINE,\n  isSmallScreen\n} from \"~/store/constants\";\nconst svgColor = \"#9CA3AF\";\nconst animColor = \"#FCD34D\";\nconst separation = 450;\nconst strokeWidth = 2;\nconst leftBranchX = 13;\nconst curveLength = 150;\nconst dotSize = 26;\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"timeline\",\n  __ssrInlineRender: true,\n  props: {\n    isDesktop: { type: Boolean }\n  },\n  setup(__props) {\n    const props = __props;\n    const timelineSvg = ref(void 0);\n    const svgContainer = ref(void 0);\n    const screenContainer = ref(void 0);\n    const svgWidth = ref(400);\n    let rightBranchX = 109;\n    function addNodeRefsToItems(timeline) {\n      return timeline.map((node, idx) => ({\n        ...node,\n        next: timeline[idx + 1],\n        prev: timeline[idx - 1]\n      }));\n    }\n    function generateTimelineSvg(timeline) {\n      let index = 1;\n      let y = dotSize / 2;\n      const timelineStyle = `<style>.str, .dot{stroke-width: ${strokeWidth}px}.anim-branch{stroke-dasharray: 186}</style>`;\n      let isDiverged = false;\n      const timelineSvg2 = addNodeRefsToItems(timeline).reduce((svg, node) => {\n        const {\n          type,\n          next\n        } = node;\n        let lineY = y;\n        let dotY = y + separation / 2;\n        switch (type) {\n          case NodeTypes.CHECKPOINT:\n            {\n              const {\n                shouldDrawLine\n              } = node;\n              if (!next)\n                lineY = y - separation / 2;\n              if (!shouldDrawLine)\n                dotY = y;\n              if (shouldDrawLine) {\n                svg = shouldDrawLine ? `${drawLine(node, lineY, index, isDiverged)}${svg}` : svg;\n                y = y + separation;\n                index++;\n              }\n              svg = svg.concat(drawDot(node, dotY, isDiverged));\n            }\n            break;\n          case NodeTypes.DIVERGE:\n            isDiverged = true;\n            svg = `${drawBranch(node, y, index)}${svg}`;\n            break;\n          case NodeTypes.CONVERGE:\n            isDiverged = false;\n            svg = `${drawBranch(node, y - separation, index - 1)}${svg}`;\n            break;\n        }\n        return svg;\n      }, timelineStyle);\n      return timelineSvg2;\n    }\n    function getDotString(x, y) {\n      return `<rect class='dot' width=${dotSize} height=${dotSize} fill='#111827' x=${x - dotSize / 2} y=${y - dotSize / 2} ></rect><circle cx=${x} cy=${y} r='7' stroke=${svgColor} class='dot' ></circle>`;\n    }\n    function drawDot(timelineNode, y, isDiverged) {\n      const {\n        next,\n        alignment\n      } = timelineNode;\n      if (next && next.type === NodeTypes.DIVERGE)\n        y = y - curveLength + 6 * dotSize;\n      if (next && next.type === NodeTypes.CONVERGE)\n        y = y + curveLength - 6 * dotSize;\n      const dotString = getDotString(alignment === Branch.LEFT ? leftBranchX : rightBranchX, y);\n      const textString = addText(timelineNode, y, isDiverged);\n      return `${textString}${dotString}`;\n    }\n    function addText(timelineNode, y, isDiverged) {\n      const {\n        title,\n        subtitle,\n        size,\n        image\n      } = timelineNode;\n      const offset = isDiverged ? rightBranchX : 10;\n      const foreignObjectX = dotSize / 2 + 10 + offset;\n      const foreignObjectY = y - dotSize / 2;\n      const foreignObjectWidth = svgWidth.value - (dotSize / 2 + 10 + offset);\n      const titleSizeClass = size === ItemSize.LARGE ? \"text-6xl\" : \"text-2xl\";\n      const logoString = image ? `<img src='${image}' class='h-8 mb-2' loading='lazy' width='100' height='32' alt='${image}' />` : \"\";\n      const subtitleString = subtitle ? `<p class='text-xl mt-2 text-gray-200 font-medium tracking-wide'>${subtitle}</p>` : \"\";\n      return `<foreignObject x=${foreignObjectX} y=${foreignObjectY} width=${foreignObjectWidth} \n        height=${separation}>${logoString}<p class='${titleSizeClass}'>${title}</p>${subtitleString}</foreignObject>`;\n    }\n    function drawLine(timelineNode, y, i, isDiverged) {\n      const {\n        alignment,\n        prev,\n        next\n      } = timelineNode;\n      const isPrevDiverge = prev && prev.type === NodeTypes.DIVERGE;\n      const isNextConverge = next && next.type === NodeTypes.CONVERGE;\n      const lineY = Math.abs(y + separation);\n      if (isPrevDiverge)\n        return `<line class='str' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${animColor} />`;\n      if (isNextConverge)\n        return `<line class='str' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${animColor} />`;\n      const lineX = alignment === Branch.LEFT ? leftBranchX : rightBranchX;\n      let str = `<line class='str' x1=${lineX} y1=${y} x2=${lineX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${lineX} y1=${y} x2=${lineX} y2=${lineY} stroke=${animColor} />`;\n      if (isDiverged) {\n        const divergedLineX = alignment === Branch.LEFT ? rightBranchX : leftBranchX;\n        str = str.concat(\n          `<line class='str' x1=${divergedLineX} y1=${y} x2=${divergedLineX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${divergedLineX} y1=${y} x2=${divergedLineX} y2=${lineY} stroke=${animColor} />`\n        );\n      }\n      return str;\n    }\n    function drawBranch(timelineNode, y, i) {\n      const {\n        type\n      } = timelineNode;\n      switch (type) {\n        case NodeTypes.DIVERGE:\n          return `<path class='str' d='M ${leftBranchX} ${y} C ${leftBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y + curveLength} x2=${rightBranchX} y2=${y + separation} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${leftBranchX} ${y} C ${leftBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength}' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y + curveLength} x2=${rightBranchX} y2=${y + separation} stroke=${animColor} />`;\n        case NodeTypes.CONVERGE:\n          return `<path class='str' d='M ${rightBranchX} ${y + separation - curveLength} C ${rightBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${y + separation}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(\n            y + separation - curveLength\n          )} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${rightBranchX} ${y + separation - curveLength} C ${rightBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${y + separation}' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(\n            y + separation - curveLength\n          )} stroke=${animColor} />`;\n        default:\n          return \"\";\n      }\n    }\n    function addLineSvgAnimation(timeline, duration, index) {\n      const startTime = `start+=${duration * index}`;\n      timeline.from(svgContainer.value.querySelectorAll(`.line-${index + 1}`), {\n        scaleY: 0,\n        duration\n      }, startTime);\n      return timeline;\n    }\n    function addDivergingBranchLineAnimation(timeline, duration, index) {\n      timeline.from(svgContainer.value.querySelector(`.line-${index + 1}`), {\n        scaleY: 0,\n        duration\n      }, `start+=${duration * index}`).from(\n        svgContainer.value.querySelector(`.branch-${index + 1}`),\n        {\n          strokeDashoffset: 186,\n          duration: duration - 2\n        },\n        `start+=${duration * index}`\n      ).from(\n        svgContainer.value.querySelector(`.branch-line-${index + 1}`),\n        {\n          scaleY: 0,\n          duration: duration - 1\n        },\n        `start+=${duration * (index + 1) - 2}`\n      );\n      return timeline;\n    }\n    function addConvergingBranchLineAnimation(timeline, duration, index) {\n      timeline.from(svgContainer.value.querySelector(`.line-${index + 1}`), {\n        scaleY: 0,\n        duration\n      }, `start+=${duration * index}`).from(\n        svgContainer.value.querySelector(`.branch-line-${index + 1}`),\n        {\n          scaleY: 0,\n          duration: duration - 1\n        },\n        `start+=${duration * index}`\n      ).from(\n        svgContainer.value.querySelector(`.branch-${index + 1}`),\n        {\n          strokeDashoffset: 186,\n          duration: duration - 2\n        },\n        `start+=${duration * (index + 1) - 1}`\n      );\n      return timeline;\n    }\n    function animateTimeline(timeline, duration) {\n      let index = 0;\n      addNodeRefsToItems(TIMELINE).forEach((item) => {\n        const {\n          type\n        } = item;\n        if (type === NodeTypes.CHECKPOINT && item.shouldDrawLine) {\n          const {\n            next,\n            prev\n          } = item;\n          if (prev && prev.type === NodeTypes.DIVERGE)\n            addDivergingBranchLineAnimation(timeline, duration, index);\n          else if (next && next.type === NodeTypes.CONVERGE)\n            addConvergingBranchLineAnimation(timeline, duration, index);\n          else\n            addLineSvgAnimation(timeline, duration, index);\n          index++;\n        }\n      });\n    }\n    function setTimelineSvg(svgContainer2, timelineSvg2) {\n      const containerWidth = svgContainer2.value.clientWidth;\n      svgWidth.value = containerWidth;\n      const resultSvgString = generateTimelineSvg(TIMELINE);\n      timelineSvg2.value.innerHTML = resultSvgString;\n      if (isSmallScreen())\n        rightBranchX = 70;\n    }\n    function setSlidesAnimation(timeline) {\n      svgCheckpointItems.forEach((_, index) => {\n        if (index !== 0)\n          timeline.fromTo(screenContainer.value.querySelector(`.slide-${index + 1}`), {\n            opacity: 0\n          }, {\n            opacity: 1\n          });\n        if (index !== svgCheckpointItems.length - 1) {\n          timeline.to(screenContainer.value.querySelector(`.slide-${index + 1}`), {\n            opacity: 0,\n            delay: 2.35\n          });\n        }\n      });\n    }\n    function initScrollTrigger() {\n      const timeline = gsap.timeline({\n        defaults: {\n          ease: Linear.easeNone,\n          duration: 0.44\n        }\n      }).addLabel(\"start\");\n      let duration;\n      let trigger;\n      let start;\n      let end;\n      let additionalConfig = {};\n      if (props.isDesktop && !isSmallScreen()) {\n        setSlidesAnimation(timeline);\n        const platformHeight = screenContainer.value.getBoundingClientRect().height;\n        trigger = screenContainer.value;\n        start = `top ${(window.innerHeight - platformHeight) / 2}`;\n        end = `+=${svgLength - platformHeight}`;\n        additionalConfig = {\n          pin: true,\n          pinSpacing: true\n        };\n        duration = timeline.totalDuration() / 15;\n      } else {\n        screenContainer.value.innerHTML = \"\";\n        trigger = svgContainer.value;\n        start = \"top center\";\n        end = `+=${svgLength}`;\n        duration = 3;\n      }\n      ScrollTrigger.create({\n        ...additionalConfig,\n        trigger,\n        start,\n        end,\n        scrub: 0,\n        animation: timeline\n      });\n      return {\n        timeline,\n        duration\n      };\n    }\n    const svgCheckpointItems = TIMELINE.filter((item) => item.type === NodeTypes.CHECKPOINT && item.shouldDrawLine);\n    const svgLength = svgCheckpointItems && svgCheckpointItems.length * separation;\n    onMounted(() => {\n      setTimelineSvg(svgContainer, timelineSvg);\n      const {\n        timeline,\n        duration\n      } = initScrollTrigger();\n      animateTimeline(timeline, duration);\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<section${_ssrRenderAttrs(_mergeProps({\n        id: _unref(MENULINKS)[3].ref,\n        class: \"section-container relative min-h-screen w-full flex flex-col select-none justify-center py-8\"\n      }, _attrs))}><div class=\"flex flex-col\"><p class=\"section-title-sm seq\"> MILESTONES </p><h1 class=\"section-heading seq mt-2\"> 时间线 </h1><h2 class=\"seq mt-2 w-full text-2xl md:max-w-2xl\"> 隐藏着什么呢？ </h2></div><div class=\"grid grid-cols-12 mt-20 gap-4\"><div class=\"line-svg col-span-12 md:col-span-6\"><svg${_ssrRenderAttr(\"width\", _unref(svgWidth))}${_ssrRenderAttr(\"height\", _unref(svgLength))}${_ssrRenderAttr(\"viewBox\", `0 0 ${_unref(svgWidth)} ${_unref(svgLength)}`)} fill=\"none\"></svg></div><div class=\"col-span-12 hidden md:col-span-6 md:flex\"><div class=\"h-96 max-w-full overflow-hidden bg-transparent w-200\"><div class=\"relative h-full w-full\"><div class=\"absolute left-0 top-0 h-full w-full\"><!--[-->`);\n      _ssrRenderList(_unref(svgCheckpointItems), (item, idx) => {\n        _push(`<img alt=\"Timeline\" layout=\"fill\" class=\"${_ssrRenderClass(`w-full absolute top-0 object-cover slide-${idx + 1}`)}\"${_ssrRenderAttr(\"src\", `${item.slideImage}`)}>`);\n      });\n      _push(`<!--]--></div></div></div></div></div></section>`);\n    };\n  }\n});\n",
-      "start": 1715597154930,
-      "end": 1715597155064,
+      "start": 1715603891223,
+      "end": 1715603891305,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -101,165 +101,165 @@
     },
     {
       "name": "vite:json",
-      "start": 1715597155064,
-      "end": 1715597155064,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1715597155064,
-      "end": 1715597155064,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1715597155064,
-      "end": 1715597155064,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1715597155064,
-      "end": 1715597155064,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597155064,
-      "end": 1715597155064,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597155064,
-      "end": 1715597155064,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155064,
-      "end": 1715597155064,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155064,
-      "end": 1715597155064,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597155064,
-      "end": 1715597155064,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597155064,
-      "end": 1715597155064,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155064,
-      "end": 1715597155064,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1715597155064,
-      "end": 1715597155064,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155064,
-      "end": 1715597155064,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "ssr-styles",
-      "start": 1715597155064,
-      "end": 1715597155064,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1715597155064,
-      "end": 1715597155065,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1715597155065,
-      "end": 1715597155065,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1715597155065,
-      "end": 1715597155065,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1715597155065,
-      "end": 1715597155065,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1715597155065,
-      "end": 1715597155065,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1715597155065,
-      "end": 1715597155065,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1715597155065,
-      "end": 1715597155065,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1715597155065,
-      "end": 1715597155065,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597155065,
-      "end": 1715597155065,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "post"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597155065,
-      "end": 1715597155065,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597155065,
-      "end": 1715597155065,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597155065,
-      "end": 1715597155065,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
       "result": "import { ref, onMounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderClass as _ssrRenderClass, ssrRenderAttrs as _ssrRenderAttrs, ssrRenderList as _ssrRenderList } from \"vue/server-renderer\";\nimport {\n  Linear,\n  gsap\n} from \"gsap\";\nimport {\n  ScrollTrigger\n} from \"gsap/dist/ScrollTrigger\";\nimport {\n  Branch,\n  ItemSize,\n  MENULINKS,\n  NodeTypes,\n  TIMELINE,\n  isSmallScreen\n} from \"~/store/constants\";\nconst svgColor = \"#9CA3AF\";\nconst animColor = \"#FCD34D\";\nconst separation = 450;\nconst strokeWidth = 2;\nconst leftBranchX = 13;\nconst curveLength = 150;\nconst dotSize = 26;\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"timeline\",\n  __ssrInlineRender: true,\n  props: {\n    isDesktop: { type: Boolean }\n  },\n  setup(__props) {\n    const props = __props;\n    const timelineSvg = ref(void 0);\n    const svgContainer = ref(void 0);\n    const screenContainer = ref(void 0);\n    const svgWidth = ref(400);\n    let rightBranchX = 109;\n    function addNodeRefsToItems(timeline) {\n      return timeline.map((node, idx) => ({\n        ...node,\n        next: timeline[idx + 1],\n        prev: timeline[idx - 1]\n      }));\n    }\n    function generateTimelineSvg(timeline) {\n      let index = 1;\n      let y = dotSize / 2;\n      const timelineStyle = `<style>.str, .dot{stroke-width: ${strokeWidth}px}.anim-branch{stroke-dasharray: 186}</style>`;\n      let isDiverged = false;\n      const timelineSvg2 = addNodeRefsToItems(timeline).reduce((svg, node) => {\n        const {\n          type,\n          next\n        } = node;\n        let lineY = y;\n        let dotY = y + separation / 2;\n        switch (type) {\n          case NodeTypes.CHECKPOINT:\n            {\n              const {\n                shouldDrawLine\n              } = node;\n              if (!next)\n                lineY = y - separation / 2;\n              if (!shouldDrawLine)\n                dotY = y;\n              if (shouldDrawLine) {\n                svg = shouldDrawLine ? `${drawLine(node, lineY, index, isDiverged)}${svg}` : svg;\n                y = y + separation;\n                index++;\n              }\n              svg = svg.concat(drawDot(node, dotY, isDiverged));\n            }\n            break;\n          case NodeTypes.DIVERGE:\n            isDiverged = true;\n            svg = `${drawBranch(node, y, index)}${svg}`;\n            break;\n          case NodeTypes.CONVERGE:\n            isDiverged = false;\n            svg = `${drawBranch(node, y - separation, index - 1)}${svg}`;\n            break;\n        }\n        return svg;\n      }, timelineStyle);\n      return timelineSvg2;\n    }\n    function getDotString(x, y) {\n      return `<rect class='dot' width=${dotSize} height=${dotSize} fill='#111827' x=${x - dotSize / 2} y=${y - dotSize / 2} ></rect><circle cx=${x} cy=${y} r='7' stroke=${svgColor} class='dot' ></circle>`;\n    }\n    function drawDot(timelineNode, y, isDiverged) {\n      const {\n        next,\n        alignment\n      } = timelineNode;\n      if (next && next.type === NodeTypes.DIVERGE)\n        y = y - curveLength + 6 * dotSize;\n      if (next && next.type === NodeTypes.CONVERGE)\n        y = y + curveLength - 6 * dotSize;\n      const dotString = getDotString(alignment === Branch.LEFT ? leftBranchX : rightBranchX, y);\n      const textString = addText(timelineNode, y, isDiverged);\n      return `${textString}${dotString}`;\n    }\n    function addText(timelineNode, y, isDiverged) {\n      const {\n        title,\n        subtitle,\n        size,\n        image\n      } = timelineNode;\n      const offset = isDiverged ? rightBranchX : 10;\n      const foreignObjectX = dotSize / 2 + 10 + offset;\n      const foreignObjectY = y - dotSize / 2;\n      const foreignObjectWidth = svgWidth.value - (dotSize / 2 + 10 + offset);\n      const titleSizeClass = size === ItemSize.LARGE ? \"text-6xl\" : \"text-2xl\";\n      const logoString = image ? `<img src='${image}' class='h-8 mb-2' loading='lazy' width='100' height='32' alt='${image}' />` : \"\";\n      const subtitleString = subtitle ? `<p class='text-xl mt-2 text-gray-200 font-medium tracking-wide'>${subtitle}</p>` : \"\";\n      return `<foreignObject x=${foreignObjectX} y=${foreignObjectY} width=${foreignObjectWidth} \n        height=${separation}>${logoString}<p class='${titleSizeClass}'>${title}</p>${subtitleString}</foreignObject>`;\n    }\n    function drawLine(timelineNode, y, i, isDiverged) {\n      const {\n        alignment,\n        prev,\n        next\n      } = timelineNode;\n      const isPrevDiverge = prev && prev.type === NodeTypes.DIVERGE;\n      const isNextConverge = next && next.type === NodeTypes.CONVERGE;\n      const lineY = Math.abs(y + separation);\n      if (isPrevDiverge)\n        return `<line class='str' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${animColor} />`;\n      if (isNextConverge)\n        return `<line class='str' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${animColor} />`;\n      const lineX = alignment === Branch.LEFT ? leftBranchX : rightBranchX;\n      let str = `<line class='str' x1=${lineX} y1=${y} x2=${lineX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${lineX} y1=${y} x2=${lineX} y2=${lineY} stroke=${animColor} />`;\n      if (isDiverged) {\n        const divergedLineX = alignment === Branch.LEFT ? rightBranchX : leftBranchX;\n        str = str.concat(\n          `<line class='str' x1=${divergedLineX} y1=${y} x2=${divergedLineX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${divergedLineX} y1=${y} x2=${divergedLineX} y2=${lineY} stroke=${animColor} />`\n        );\n      }\n      return str;\n    }\n    function drawBranch(timelineNode, y, i) {\n      const {\n        type\n      } = timelineNode;\n      switch (type) {\n        case NodeTypes.DIVERGE:\n          return `<path class='str' d='M ${leftBranchX} ${y} C ${leftBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y + curveLength} x2=${rightBranchX} y2=${y + separation} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${leftBranchX} ${y} C ${leftBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength}' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y + curveLength} x2=${rightBranchX} y2=${y + separation} stroke=${animColor} />`;\n        case NodeTypes.CONVERGE:\n          return `<path class='str' d='M ${rightBranchX} ${y + separation - curveLength} C ${rightBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${y + separation}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(\n            y + separation - curveLength\n          )} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${rightBranchX} ${y + separation - curveLength} C ${rightBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${y + separation}' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(\n            y + separation - curveLength\n          )} stroke=${animColor} />`;\n        default:\n          return \"\";\n      }\n    }\n    function addLineSvgAnimation(timeline, duration, index) {\n      const startTime = `start+=${duration * index}`;\n      timeline.from(svgContainer.value.querySelectorAll(`.line-${index + 1}`), {\n        scaleY: 0,\n        duration\n      }, startTime);\n      return timeline;\n    }\n    function addDivergingBranchLineAnimation(timeline, duration, index) {\n      timeline.from(svgContainer.value.querySelector(`.line-${index + 1}`), {\n        scaleY: 0,\n        duration\n      }, `start+=${duration * index}`).from(\n        svgContainer.value.querySelector(`.branch-${index + 1}`),\n        {\n          strokeDashoffset: 186,\n          duration: duration - 2\n        },\n        `start+=${duration * index}`\n      ).from(\n        svgContainer.value.querySelector(`.branch-line-${index + 1}`),\n        {\n          scaleY: 0,\n          duration: duration - 1\n        },\n        `start+=${duration * (index + 1) - 2}`\n      );\n      return timeline;\n    }\n    function addConvergingBranchLineAnimation(timeline, duration, index) {\n      timeline.from(svgContainer.value.querySelector(`.line-${index + 1}`), {\n        scaleY: 0,\n        duration\n      }, `start+=${duration * index}`).from(\n        svgContainer.value.querySelector(`.branch-line-${index + 1}`),\n        {\n          scaleY: 0,\n          duration: duration - 1\n        },\n        `start+=${duration * index}`\n      ).from(\n        svgContainer.value.querySelector(`.branch-${index + 1}`),\n        {\n          strokeDashoffset: 186,\n          duration: duration - 2\n        },\n        `start+=${duration * (index + 1) - 1}`\n      );\n      return timeline;\n    }\n    function animateTimeline(timeline, duration) {\n      let index = 0;\n      addNodeRefsToItems(TIMELINE).forEach((item) => {\n        const {\n          type\n        } = item;\n        if (type === NodeTypes.CHECKPOINT && item.shouldDrawLine) {\n          const {\n            next,\n            prev\n          } = item;\n          if (prev && prev.type === NodeTypes.DIVERGE)\n            addDivergingBranchLineAnimation(timeline, duration, index);\n          else if (next && next.type === NodeTypes.CONVERGE)\n            addConvergingBranchLineAnimation(timeline, duration, index);\n          else\n            addLineSvgAnimation(timeline, duration, index);\n          index++;\n        }\n      });\n    }\n    function setTimelineSvg(svgContainer2, timelineSvg2) {\n      const containerWidth = svgContainer2.value.clientWidth;\n      svgWidth.value = containerWidth;\n      const resultSvgString = generateTimelineSvg(TIMELINE);\n      timelineSvg2.value.innerHTML = resultSvgString;\n      if (isSmallScreen())\n        rightBranchX = 70;\n    }\n    function setSlidesAnimation(timeline) {\n      svgCheckpointItems.forEach((_, index) => {\n        if (index !== 0)\n          timeline.fromTo(screenContainer.value.querySelector(`.slide-${index + 1}`), {\n            opacity: 0\n          }, {\n            opacity: 1\n          });\n        if (index !== svgCheckpointItems.length - 1) {\n          timeline.to(screenContainer.value.querySelector(`.slide-${index + 1}`), {\n            opacity: 0,\n            delay: 2.35\n          });\n        }\n      });\n    }\n    function initScrollTrigger() {\n      const timeline = gsap.timeline({\n        defaults: {\n          ease: Linear.easeNone,\n          duration: 0.44\n        }\n      }).addLabel(\"start\");\n      let duration;\n      let trigger;\n      let start;\n      let end;\n      let additionalConfig = {};\n      if (props.isDesktop && !isSmallScreen()) {\n        setSlidesAnimation(timeline);\n        const platformHeight = screenContainer.value.getBoundingClientRect().height;\n        trigger = screenContainer.value;\n        start = `top ${(window.innerHeight - platformHeight) / 2}`;\n        end = `+=${svgLength - platformHeight}`;\n        additionalConfig = {\n          pin: true,\n          pinSpacing: true\n        };\n        duration = timeline.totalDuration() / 15;\n      } else {\n        screenContainer.value.innerHTML = \"\";\n        trigger = svgContainer.value;\n        start = \"top center\";\n        end = `+=${svgLength}`;\n        duration = 3;\n      }\n      ScrollTrigger.create({\n        ...additionalConfig,\n        trigger,\n        start,\n        end,\n        scrub: 0,\n        animation: timeline\n      });\n      return {\n        timeline,\n        duration\n      };\n    }\n    const svgCheckpointItems = TIMELINE.filter((item) => item.type === NodeTypes.CHECKPOINT && item.shouldDrawLine);\n    const svgLength = svgCheckpointItems && svgCheckpointItems.length * separation;\n    onMounted(() => {\n      setTimelineSvg(svgContainer, timelineSvg);\n      const {\n        timeline,\n        duration\n      } = initScrollTrigger();\n      animateTimeline(timeline, duration);\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<section${_ssrRenderAttrs(_mergeProps({\n        id: _unref(MENULINKS)[3].ref,\n        class: \"section-container relative min-h-screen w-full flex flex-col select-none justify-center py-8\"\n      }, _attrs))}><div class=\"flex flex-col\"><p class=\"section-title-sm seq\"> MILESTONES </p><h1 class=\"section-heading seq mt-2\"> 时间线 </h1><h2 class=\"seq mt-2 w-full text-2xl md:max-w-2xl\"> 隐藏着什么呢？ </h2></div><div class=\"grid grid-cols-12 mt-20 gap-4\"><div class=\"line-svg col-span-12 md:col-span-6\"><svg${_ssrRenderAttr(\"width\", _unref(svgWidth))}${_ssrRenderAttr(\"height\", _unref(svgLength))}${_ssrRenderAttr(\"viewBox\", `0 0 ${_unref(svgWidth)} ${_unref(svgLength)}`)} fill=\"none\"></svg></div><div class=\"col-span-12 hidden md:col-span-6 md:flex\"><div class=\"h-96 max-w-full overflow-hidden bg-transparent w-200\"><div class=\"relative h-full w-full\"><div class=\"absolute left-0 top-0 h-full w-full\"><!--[-->`);\n      _ssrRenderList(_unref(svgCheckpointItems), (item, idx) => {\n        _push(`<img alt=\"Timeline\" layout=\"fill\" class=\"${_ssrRenderClass(`w-full absolute top-0 object-cover slide-${idx + 1}`)}\"${_ssrRenderAttr(\"src\", `${item.slideImage}`)}>`);\n      });\n      _push(`<!--]--></div></div></div></div></div></section>`);\n    };\n  }\n});\n",
-      "start": 1715597155065,
-      "end": 1715597155070,
+      "start": 1715603891306,
+      "end": 1715603891311,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -273,8 +273,8 @@
     {
       "name": "nuxt:imports-transform",
       "result": "import { ref, onMounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderClass as _ssrRenderClass, ssrRenderAttrs as _ssrRenderAttrs, ssrRenderList as _ssrRenderList } from \"vue/server-renderer\";\nimport {\n  Linear,\n  gsap\n} from \"gsap\";\nimport {\n  ScrollTrigger\n} from \"gsap/dist/ScrollTrigger\";\nimport {\n  Branch,\n  ItemSize,\n  MENULINKS,\n  NodeTypes,\n  TIMELINE,\n  isSmallScreen\n} from \"~/store/constants\";\nconst svgColor = \"#9CA3AF\";\nconst animColor = \"#FCD34D\";\nconst separation = 450;\nconst strokeWidth = 2;\nconst leftBranchX = 13;\nconst curveLength = 150;\nconst dotSize = 26;\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"timeline\",\n  __ssrInlineRender: true,\n  props: {\n    isDesktop: { type: Boolean }\n  },\n  setup(__props) {\n    const props = __props;\n    const timelineSvg = ref(void 0);\n    const svgContainer = ref(void 0);\n    const screenContainer = ref(void 0);\n    const svgWidth = ref(400);\n    let rightBranchX = 109;\n    function addNodeRefsToItems(timeline) {\n      return timeline.map((node, idx) => ({\n        ...node,\n        next: timeline[idx + 1],\n        prev: timeline[idx - 1]\n      }));\n    }\n    function generateTimelineSvg(timeline) {\n      let index = 1;\n      let y = dotSize / 2;\n      const timelineStyle = `<style>.str, .dot{stroke-width: ${strokeWidth}px}.anim-branch{stroke-dasharray: 186}</style>`;\n      let isDiverged = false;\n      const timelineSvg2 = addNodeRefsToItems(timeline).reduce((svg, node) => {\n        const {\n          type,\n          next\n        } = node;\n        let lineY = y;\n        let dotY = y + separation / 2;\n        switch (type) {\n          case NodeTypes.CHECKPOINT:\n            {\n              const {\n                shouldDrawLine\n              } = node;\n              if (!next)\n                lineY = y - separation / 2;\n              if (!shouldDrawLine)\n                dotY = y;\n              if (shouldDrawLine) {\n                svg = shouldDrawLine ? `${drawLine(node, lineY, index, isDiverged)}${svg}` : svg;\n                y = y + separation;\n                index++;\n              }\n              svg = svg.concat(drawDot(node, dotY, isDiverged));\n            }\n            break;\n          case NodeTypes.DIVERGE:\n            isDiverged = true;\n            svg = `${drawBranch(node, y, index)}${svg}`;\n            break;\n          case NodeTypes.CONVERGE:\n            isDiverged = false;\n            svg = `${drawBranch(node, y - separation, index - 1)}${svg}`;\n            break;\n        }\n        return svg;\n      }, timelineStyle);\n      return timelineSvg2;\n    }\n    function getDotString(x, y) {\n      return `<rect class='dot' width=${dotSize} height=${dotSize} fill='#111827' x=${x - dotSize / 2} y=${y - dotSize / 2} ></rect><circle cx=${x} cy=${y} r='7' stroke=${svgColor} class='dot' ></circle>`;\n    }\n    function drawDot(timelineNode, y, isDiverged) {\n      const {\n        next,\n        alignment\n      } = timelineNode;\n      if (next && next.type === NodeTypes.DIVERGE)\n        y = y - curveLength + 6 * dotSize;\n      if (next && next.type === NodeTypes.CONVERGE)\n        y = y + curveLength - 6 * dotSize;\n      const dotString = getDotString(alignment === Branch.LEFT ? leftBranchX : rightBranchX, y);\n      const textString = addText(timelineNode, y, isDiverged);\n      return `${textString}${dotString}`;\n    }\n    function addText(timelineNode, y, isDiverged) {\n      const {\n        title,\n        subtitle,\n        size,\n        image\n      } = timelineNode;\n      const offset = isDiverged ? rightBranchX : 10;\n      const foreignObjectX = dotSize / 2 + 10 + offset;\n      const foreignObjectY = y - dotSize / 2;\n      const foreignObjectWidth = svgWidth.value - (dotSize / 2 + 10 + offset);\n      const titleSizeClass = size === ItemSize.LARGE ? \"text-6xl\" : \"text-2xl\";\n      const logoString = image ? `<img src='${image}' class='h-8 mb-2' loading='lazy' width='100' height='32' alt='${image}' />` : \"\";\n      const subtitleString = subtitle ? `<p class='text-xl mt-2 text-gray-200 font-medium tracking-wide'>${subtitle}</p>` : \"\";\n      return `<foreignObject x=${foreignObjectX} y=${foreignObjectY} width=${foreignObjectWidth} \n        height=${separation}>${logoString}<p class='${titleSizeClass}'>${title}</p>${subtitleString}</foreignObject>`;\n    }\n    function drawLine(timelineNode, y, i, isDiverged) {\n      const {\n        alignment,\n        prev,\n        next\n      } = timelineNode;\n      const isPrevDiverge = prev && prev.type === NodeTypes.DIVERGE;\n      const isNextConverge = next && next.type === NodeTypes.CONVERGE;\n      const lineY = Math.abs(y + separation);\n      if (isPrevDiverge)\n        return `<line class='str' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${animColor} />`;\n      if (isNextConverge)\n        return `<line class='str' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${animColor} />`;\n      const lineX = alignment === Branch.LEFT ? leftBranchX : rightBranchX;\n      let str = `<line class='str' x1=${lineX} y1=${y} x2=${lineX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${lineX} y1=${y} x2=${lineX} y2=${lineY} stroke=${animColor} />`;\n      if (isDiverged) {\n        const divergedLineX = alignment === Branch.LEFT ? rightBranchX : leftBranchX;\n        str = str.concat(\n          `<line class='str' x1=${divergedLineX} y1=${y} x2=${divergedLineX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${divergedLineX} y1=${y} x2=${divergedLineX} y2=${lineY} stroke=${animColor} />`\n        );\n      }\n      return str;\n    }\n    function drawBranch(timelineNode, y, i) {\n      const {\n        type\n      } = timelineNode;\n      switch (type) {\n        case NodeTypes.DIVERGE:\n          return `<path class='str' d='M ${leftBranchX} ${y} C ${leftBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y + curveLength} x2=${rightBranchX} y2=${y + separation} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${leftBranchX} ${y} C ${leftBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength}' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y + curveLength} x2=${rightBranchX} y2=${y + separation} stroke=${animColor} />`;\n        case NodeTypes.CONVERGE:\n          return `<path class='str' d='M ${rightBranchX} ${y + separation - curveLength} C ${rightBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${y + separation}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(\n            y + separation - curveLength\n          )} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${rightBranchX} ${y + separation - curveLength} C ${rightBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${y + separation}' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(\n            y + separation - curveLength\n          )} stroke=${animColor} />`;\n        default:\n          return \"\";\n      }\n    }\n    function addLineSvgAnimation(timeline, duration, index) {\n      const startTime = `start+=${duration * index}`;\n      timeline.from(svgContainer.value.querySelectorAll(`.line-${index + 1}`), {\n        scaleY: 0,\n        duration\n      }, startTime);\n      return timeline;\n    }\n    function addDivergingBranchLineAnimation(timeline, duration, index) {\n      timeline.from(svgContainer.value.querySelector(`.line-${index + 1}`), {\n        scaleY: 0,\n        duration\n      }, `start+=${duration * index}`).from(\n        svgContainer.value.querySelector(`.branch-${index + 1}`),\n        {\n          strokeDashoffset: 186,\n          duration: duration - 2\n        },\n        `start+=${duration * index}`\n      ).from(\n        svgContainer.value.querySelector(`.branch-line-${index + 1}`),\n        {\n          scaleY: 0,\n          duration: duration - 1\n        },\n        `start+=${duration * (index + 1) - 2}`\n      );\n      return timeline;\n    }\n    function addConvergingBranchLineAnimation(timeline, duration, index) {\n      timeline.from(svgContainer.value.querySelector(`.line-${index + 1}`), {\n        scaleY: 0,\n        duration\n      }, `start+=${duration * index}`).from(\n        svgContainer.value.querySelector(`.branch-line-${index + 1}`),\n        {\n          scaleY: 0,\n          duration: duration - 1\n        },\n        `start+=${duration * index}`\n      ).from(\n        svgContainer.value.querySelector(`.branch-${index + 1}`),\n        {\n          strokeDashoffset: 186,\n          duration: duration - 2\n        },\n        `start+=${duration * (index + 1) - 1}`\n      );\n      return timeline;\n    }\n    function animateTimeline(timeline, duration) {\n      let index = 0;\n      addNodeRefsToItems(TIMELINE).forEach((item) => {\n        const {\n          type\n        } = item;\n        if (type === NodeTypes.CHECKPOINT && item.shouldDrawLine) {\n          const {\n            next,\n            prev\n          } = item;\n          if (prev && prev.type === NodeTypes.DIVERGE)\n            addDivergingBranchLineAnimation(timeline, duration, index);\n          else if (next && next.type === NodeTypes.CONVERGE)\n            addConvergingBranchLineAnimation(timeline, duration, index);\n          else\n            addLineSvgAnimation(timeline, duration, index);\n          index++;\n        }\n      });\n    }\n    function setTimelineSvg(svgContainer2, timelineSvg2) {\n      const containerWidth = svgContainer2.value.clientWidth;\n      svgWidth.value = containerWidth;\n      const resultSvgString = generateTimelineSvg(TIMELINE);\n      timelineSvg2.value.innerHTML = resultSvgString;\n      if (isSmallScreen())\n        rightBranchX = 70;\n    }\n    function setSlidesAnimation(timeline) {\n      svgCheckpointItems.forEach((_, index) => {\n        if (index !== 0)\n          timeline.fromTo(screenContainer.value.querySelector(`.slide-${index + 1}`), {\n            opacity: 0\n          }, {\n            opacity: 1\n          });\n        if (index !== svgCheckpointItems.length - 1) {\n          timeline.to(screenContainer.value.querySelector(`.slide-${index + 1}`), {\n            opacity: 0,\n            delay: 2.35\n          });\n        }\n      });\n    }\n    function initScrollTrigger() {\n      const timeline = gsap.timeline({\n        defaults: {\n          ease: Linear.easeNone,\n          duration: 0.44\n        }\n      }).addLabel(\"start\");\n      let duration;\n      let trigger;\n      let start;\n      let end;\n      let additionalConfig = {};\n      if (props.isDesktop && !isSmallScreen()) {\n        setSlidesAnimation(timeline);\n        const platformHeight = screenContainer.value.getBoundingClientRect().height;\n        trigger = screenContainer.value;\n        start = `top ${(window.innerHeight - platformHeight) / 2}`;\n        end = `+=${svgLength - platformHeight}`;\n        additionalConfig = {\n          pin: true,\n          pinSpacing: true\n        };\n        duration = timeline.totalDuration() / 15;\n      } else {\n        screenContainer.value.innerHTML = \"\";\n        trigger = svgContainer.value;\n        start = \"top center\";\n        end = `+=${svgLength}`;\n        duration = 3;\n      }\n      ScrollTrigger.create({\n        ...additionalConfig,\n        trigger,\n        start,\n        end,\n        scrub: 0,\n        animation: timeline\n      });\n      return {\n        timeline,\n        duration\n      };\n    }\n    const svgCheckpointItems = TIMELINE.filter((item) => item.type === NodeTypes.CHECKPOINT && item.shouldDrawLine);\n    const svgLength = svgCheckpointItems && svgCheckpointItems.length * separation;\n    onMounted(() => {\n      setTimelineSvg(svgContainer, timelineSvg);\n      const {\n        timeline,\n        duration\n      } = initScrollTrigger();\n      animateTimeline(timeline, duration);\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<section${_ssrRenderAttrs(_mergeProps({\n        id: _unref(MENULINKS)[3].ref,\n        class: \"section-container relative min-h-screen w-full flex flex-col select-none justify-center py-8\"\n      }, _attrs))}><div class=\"flex flex-col\"><p class=\"section-title-sm seq\"> MILESTONES </p><h1 class=\"section-heading seq mt-2\"> 时间线 </h1><h2 class=\"seq mt-2 w-full text-2xl md:max-w-2xl\"> 隐藏着什么呢？ </h2></div><div class=\"grid grid-cols-12 mt-20 gap-4\"><div class=\"line-svg col-span-12 md:col-span-6\"><svg${_ssrRenderAttr(\"width\", _unref(svgWidth))}${_ssrRenderAttr(\"height\", _unref(svgLength))}${_ssrRenderAttr(\"viewBox\", `0 0 ${_unref(svgWidth)} ${_unref(svgLength)}`)} fill=\"none\"></svg></div><div class=\"col-span-12 hidden md:col-span-6 md:flex\"><div class=\"h-96 max-w-full overflow-hidden bg-transparent w-200\"><div class=\"relative h-full w-full\"><div class=\"absolute left-0 top-0 h-full w-full\"><!--[-->`);\n      _ssrRenderList(_unref(svgCheckpointItems), (item, idx) => {\n        _push(`<img alt=\"Timeline\" layout=\"fill\" class=\"${_ssrRenderClass(`w-full absolute top-0 object-cover slide-${idx + 1}`)}\"${_ssrRenderAttr(\"src\", `${item.slideImage}`)}>`);\n      });\n      _push(`<!--]--></div></div></div></div></div></section>`);\n    };\n  }\n});\n",
-      "start": 1715597155065,
-      "end": 1715597155070,
+      "start": 1715603891306,
+      "end": 1715603891311,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -287,51 +287,51 @@
     },
     {
       "name": "unctx:transform",
-      "start": 1715597155070,
-      "end": 1715597155070,
+      "start": 1715603891311,
+      "end": 1715603891311,
       "order": "post"
     },
     {
       "name": "unctx:transform",
-      "start": 1715597155070,
-      "end": 1715597155070,
+      "start": 1715603891311,
+      "end": 1715603891311,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597155070,
-      "end": 1715597155070,
+      "start": 1715603891311,
+      "end": 1715603891311,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597155070,
-      "end": 1715597155070,
+      "start": 1715603891311,
+      "end": 1715603891311,
       "order": "post"
     },
     {
       "name": "element-plus:transform",
-      "start": 1715597155070,
-      "end": 1715597155070,
+      "start": 1715603891312,
+      "end": 1715603891312,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-template",
-      "start": 1715597155071,
-      "end": 1715597155071,
+      "start": 1715603891312,
+      "end": 1715603891312,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
-      "start": 1715597155071,
-      "end": 1715597155071,
+      "start": 1715603891313,
+      "end": 1715603891313,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-composables:transform",
       "result": "import { ref, onMounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderAttr as _ssrRenderAttr, ssrRenderClass as _ssrRenderClass, ssrRenderAttrs as _ssrRenderAttrs, ssrRenderList as _ssrRenderList } from \"vue/server-renderer\";\nimport {\n  Linear,\n  gsap\n} from \"gsap\";\nimport {\n  ScrollTrigger\n} from \"gsap/dist/ScrollTrigger\";\nimport {\n  Branch,\n  ItemSize,\n  MENULINKS,\n  NodeTypes,\n  TIMELINE,\n  isSmallScreen\n} from \"~/store/constants\";\nconst svgColor = \"#9CA3AF\";\nconst animColor = \"#FCD34D\";\nconst separation = 450;\nconst strokeWidth = 2;\nconst leftBranchX = 13;\nconst curveLength = 150;\nconst dotSize = 26;\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"timeline\",\n  __ssrInlineRender: true,\n  props: {\n    isDesktop: { type: Boolean }\n  },\n  setup(__props) {\n    const props = __props;\n    const timelineSvg = ref(void 0);\n    const svgContainer = ref(void 0);\n    const screenContainer = ref(void 0);\n    const svgWidth = ref(400);\n    let rightBranchX = 109;\n    function addNodeRefsToItems(timeline) {\n      return timeline.map((node, idx) => ({\n        ...node,\n        next: timeline[idx + 1],\n        prev: timeline[idx - 1]\n      }));\n    }\n    function generateTimelineSvg(timeline) {\n      let index = 1;\n      let y = dotSize / 2;\n      const timelineStyle = `<style>.str, .dot{stroke-width: ${strokeWidth}px}.anim-branch{stroke-dasharray: 186}</style>`;\n      let isDiverged = false;\n      const timelineSvg2 = addNodeRefsToItems(timeline).reduce((svg, node) => {\n        const {\n          type,\n          next\n        } = node;\n        let lineY = y;\n        let dotY = y + separation / 2;\n        switch (type) {\n          case NodeTypes.CHECKPOINT:\n            {\n              const {\n                shouldDrawLine\n              } = node;\n              if (!next)\n                lineY = y - separation / 2;\n              if (!shouldDrawLine)\n                dotY = y;\n              if (shouldDrawLine) {\n                svg = shouldDrawLine ? `${drawLine(node, lineY, index, isDiverged)}${svg}` : svg;\n                y = y + separation;\n                index++;\n              }\n              svg = svg.concat(drawDot(node, dotY, isDiverged));\n            }\n            break;\n          case NodeTypes.DIVERGE:\n            isDiverged = true;\n            svg = `${drawBranch(node, y, index)}${svg}`;\n            break;\n          case NodeTypes.CONVERGE:\n            isDiverged = false;\n            svg = `${drawBranch(node, y - separation, index - 1)}${svg}`;\n            break;\n        }\n        return svg;\n      }, timelineStyle);\n      return timelineSvg2;\n    }\n    function getDotString(x, y) {\n      return `<rect class='dot' width=${dotSize} height=${dotSize} fill='#111827' x=${x - dotSize / 2} y=${y - dotSize / 2} ></rect><circle cx=${x} cy=${y} r='7' stroke=${svgColor} class='dot' ></circle>`;\n    }\n    function drawDot(timelineNode, y, isDiverged) {\n      const {\n        next,\n        alignment\n      } = timelineNode;\n      if (next && next.type === NodeTypes.DIVERGE)\n        y = y - curveLength + 6 * dotSize;\n      if (next && next.type === NodeTypes.CONVERGE)\n        y = y + curveLength - 6 * dotSize;\n      const dotString = getDotString(alignment === Branch.LEFT ? leftBranchX : rightBranchX, y);\n      const textString = addText(timelineNode, y, isDiverged);\n      return `${textString}${dotString}`;\n    }\n    function addText(timelineNode, y, isDiverged) {\n      const {\n        title,\n        subtitle,\n        size,\n        image\n      } = timelineNode;\n      const offset = isDiverged ? rightBranchX : 10;\n      const foreignObjectX = dotSize / 2 + 10 + offset;\n      const foreignObjectY = y - dotSize / 2;\n      const foreignObjectWidth = svgWidth.value - (dotSize / 2 + 10 + offset);\n      const titleSizeClass = size === ItemSize.LARGE ? \"text-6xl\" : \"text-2xl\";\n      const logoString = image ? `<img src='${image}' class='h-8 mb-2' loading='lazy' width='100' height='32' alt='${image}' />` : \"\";\n      const subtitleString = subtitle ? `<p class='text-xl mt-2 text-gray-200 font-medium tracking-wide'>${subtitle}</p>` : \"\";\n      return `<foreignObject x=${foreignObjectX} y=${foreignObjectY} width=${foreignObjectWidth} \n        height=${separation}>${logoString}<p class='${titleSizeClass}'>${title}</p>${subtitleString}</foreignObject>`;\n    }\n    function drawLine(timelineNode, y, i, isDiverged) {\n      const {\n        alignment,\n        prev,\n        next\n      } = timelineNode;\n      const isPrevDiverge = prev && prev.type === NodeTypes.DIVERGE;\n      const isNextConverge = next && next.type === NodeTypes.CONVERGE;\n      const lineY = Math.abs(y + separation);\n      if (isPrevDiverge)\n        return `<line class='str' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${animColor} />`;\n      if (isNextConverge)\n        return `<line class='str' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${animColor} />`;\n      const lineX = alignment === Branch.LEFT ? leftBranchX : rightBranchX;\n      let str = `<line class='str' x1=${lineX} y1=${y} x2=${lineX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${lineX} y1=${y} x2=${lineX} y2=${lineY} stroke=${animColor} />`;\n      if (isDiverged) {\n        const divergedLineX = alignment === Branch.LEFT ? rightBranchX : leftBranchX;\n        str = str.concat(\n          `<line class='str' x1=${divergedLineX} y1=${y} x2=${divergedLineX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${divergedLineX} y1=${y} x2=${divergedLineX} y2=${lineY} stroke=${animColor} />`\n        );\n      }\n      return str;\n    }\n    function drawBranch(timelineNode, y, i) {\n      const {\n        type\n      } = timelineNode;\n      switch (type) {\n        case NodeTypes.DIVERGE:\n          return `<path class='str' d='M ${leftBranchX} ${y} C ${leftBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y + curveLength} x2=${rightBranchX} y2=${y + separation} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${leftBranchX} ${y} C ${leftBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength}' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y + curveLength} x2=${rightBranchX} y2=${y + separation} stroke=${animColor} />`;\n        case NodeTypes.CONVERGE:\n          return `<path class='str' d='M ${rightBranchX} ${y + separation - curveLength} C ${rightBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${y + separation}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(\n            y + separation - curveLength\n          )} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${rightBranchX} ${y + separation - curveLength} C ${rightBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${y + separation - curveLength + curveLength / 2} ${leftBranchX} ${y + separation}' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(\n            y + separation - curveLength\n          )} stroke=${animColor} />`;\n        default:\n          return \"\";\n      }\n    }\n    function addLineSvgAnimation(timeline, duration, index) {\n      const startTime = `start+=${duration * index}`;\n      timeline.from(svgContainer.value.querySelectorAll(`.line-${index + 1}`), {\n        scaleY: 0,\n        duration\n      }, startTime);\n      return timeline;\n    }\n    function addDivergingBranchLineAnimation(timeline, duration, index) {\n      timeline.from(svgContainer.value.querySelector(`.line-${index + 1}`), {\n        scaleY: 0,\n        duration\n      }, `start+=${duration * index}`).from(\n        svgContainer.value.querySelector(`.branch-${index + 1}`),\n        {\n          strokeDashoffset: 186,\n          duration: duration - 2\n        },\n        `start+=${duration * index}`\n      ).from(\n        svgContainer.value.querySelector(`.branch-line-${index + 1}`),\n        {\n          scaleY: 0,\n          duration: duration - 1\n        },\n        `start+=${duration * (index + 1) - 2}`\n      );\n      return timeline;\n    }\n    function addConvergingBranchLineAnimation(timeline, duration, index) {\n      timeline.from(svgContainer.value.querySelector(`.line-${index + 1}`), {\n        scaleY: 0,\n        duration\n      }, `start+=${duration * index}`).from(\n        svgContainer.value.querySelector(`.branch-line-${index + 1}`),\n        {\n          scaleY: 0,\n          duration: duration - 1\n        },\n        `start+=${duration * index}`\n      ).from(\n        svgContainer.value.querySelector(`.branch-${index + 1}`),\n        {\n          strokeDashoffset: 186,\n          duration: duration - 2\n        },\n        `start+=${duration * (index + 1) - 1}`\n      );\n      return timeline;\n    }\n    function animateTimeline(timeline, duration) {\n      let index = 0;\n      addNodeRefsToItems(TIMELINE).forEach((item) => {\n        const {\n          type\n        } = item;\n        if (type === NodeTypes.CHECKPOINT && item.shouldDrawLine) {\n          const {\n            next,\n            prev\n          } = item;\n          if (prev && prev.type === NodeTypes.DIVERGE)\n            addDivergingBranchLineAnimation(timeline, duration, index);\n          else if (next && next.type === NodeTypes.CONVERGE)\n            addConvergingBranchLineAnimation(timeline, duration, index);\n          else\n            addLineSvgAnimation(timeline, duration, index);\n          index++;\n        }\n      });\n    }\n    function setTimelineSvg(svgContainer2, timelineSvg2) {\n      const containerWidth = svgContainer2.value.clientWidth;\n      svgWidth.value = containerWidth;\n      const resultSvgString = generateTimelineSvg(TIMELINE);\n      timelineSvg2.value.innerHTML = resultSvgString;\n      if (isSmallScreen())\n        rightBranchX = 70;\n    }\n    function setSlidesAnimation(timeline) {\n      svgCheckpointItems.forEach((_, index) => {\n        if (index !== 0)\n          timeline.fromTo(screenContainer.value.querySelector(`.slide-${index + 1}`), {\n            opacity: 0\n          }, {\n            opacity: 1\n          });\n        if (index !== svgCheckpointItems.length - 1) {\n          timeline.to(screenContainer.value.querySelector(`.slide-${index + 1}`), {\n            opacity: 0,\n            delay: 2.35\n          });\n        }\n      });\n    }\n    function initScrollTrigger() {\n      const timeline = gsap.timeline({\n        defaults: {\n          ease: Linear.easeNone,\n          duration: 0.44\n        }\n      }).addLabel(\"start\");\n      let duration;\n      let trigger;\n      let start;\n      let end;\n      let additionalConfig = {};\n      if (props.isDesktop && !isSmallScreen()) {\n        setSlidesAnimation(timeline);\n        const platformHeight = screenContainer.value.getBoundingClientRect().height;\n        trigger = screenContainer.value;\n        start = `top ${(window.innerHeight - platformHeight) / 2}`;\n        end = `+=${svgLength - platformHeight}`;\n        additionalConfig = {\n          pin: true,\n          pinSpacing: true\n        };\n        duration = timeline.totalDuration() / 15;\n      } else {\n        screenContainer.value.innerHTML = \"\";\n        trigger = svgContainer.value;\n        start = \"top center\";\n        end = `+=${svgLength}`;\n        duration = 3;\n      }\n      ScrollTrigger.create({\n        ...additionalConfig,\n        trigger,\n        start,\n        end,\n        scrub: 0,\n        animation: timeline\n      });\n      return {\n        timeline,\n        duration\n      };\n    }\n    const svgCheckpointItems = TIMELINE.filter((item) => item.type === NodeTypes.CHECKPOINT && item.shouldDrawLine);\n    const svgLength = svgCheckpointItems && svgCheckpointItems.length * separation;\n     /*#__PURE__*/ false && onMounted(() => {\n      setTimelineSvg(svgContainer, timelineSvg);\n      const {\n        timeline,\n        duration\n      } = initScrollTrigger();\n      animateTimeline(timeline, duration);\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<section${_ssrRenderAttrs(_mergeProps({\n        id: _unref(MENULINKS)[3].ref,\n        class: \"section-container relative min-h-screen w-full flex flex-col select-none justify-center py-8\"\n      }, _attrs))}><div class=\"flex flex-col\"><p class=\"section-title-sm seq\"> MILESTONES </p><h1 class=\"section-heading seq mt-2\"> 时间线 </h1><h2 class=\"seq mt-2 w-full text-2xl md:max-w-2xl\"> 隐藏着什么呢？ </h2></div><div class=\"grid grid-cols-12 mt-20 gap-4\"><div class=\"line-svg col-span-12 md:col-span-6\"><svg${_ssrRenderAttr(\"width\", _unref(svgWidth))}${_ssrRenderAttr(\"height\", _unref(svgLength))}${_ssrRenderAttr(\"viewBox\", `0 0 ${_unref(svgWidth)} ${_unref(svgLength)}`)} fill=\"none\"></svg></div><div class=\"col-span-12 hidden md:col-span-6 md:flex\"><div class=\"h-96 max-w-full overflow-hidden bg-transparent w-200\"><div class=\"relative h-full w-full\"><div class=\"absolute left-0 top-0 h-full w-full\"><!--[-->`);\n      _ssrRenderList(_unref(svgCheckpointItems), (item, idx) => {\n        _push(`<img alt=\"Timeline\" layout=\"fill\" class=\"${_ssrRenderClass(`w-full absolute top-0 object-cover slide-${idx + 1}`)}\"${_ssrRenderAttr(\"src\", `${item.slideImage}`)}>`);\n      });\n      _push(`<!--]--></div></div></div></div></div></section>`);\n    };\n  }\n});\n",
-      "start": 1715597155072,
-      "end": 1715597155073,
+      "start": 1715603891317,
+      "end": 1715603891318,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -344,14 +344,14 @@
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1715597155077,
-      "end": 1715597155078,
+      "start": 1715603891318,
+      "end": 1715603891318,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1715597155078,
-      "end": 1715597155078,
+      "start": 1715603891318,
+      "end": 1715603891318,
       "order": "normal"
     }
   ]

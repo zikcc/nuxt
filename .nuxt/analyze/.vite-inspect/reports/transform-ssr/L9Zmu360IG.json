@@ -4,8 +4,8 @@
     {
       "name": "vite:vue",
       "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { unref as _unref } from \"vue\"\nimport { ssrRenderStyle as _ssrRenderStyle, ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\"\n\nimport { NO_MOTION_PREFERENCE_QUERY } from '~/store/constants'\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'ProgressIndicator',\n  __ssrInlineRender: true,\n  setup(__props) {\n\r\nconst progress = ref(0)\r\n\r\nfunction calculateProgress() {\r\n  const winScroll = document.body.scrollTop || document.documentElement.scrollTop\r\n  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight\r\n  const scrolled = winScroll / height\r\n  progress.value = scrolled\r\n}\r\n\r\nonMounted(() => {\r\n  const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY)\r\n  matches && window.addEventListener('scroll', calculateProgress)\r\n})\r\n\r\nonUnmounted(() => {\r\n  window.removeEventListener('scroll', calculateProgress)\r\n})\r\n\nreturn (_ctx: any,_push: any,_parent: any,_attrs: any) => {\n  _push(`<div${\n    _ssrRenderAttrs(_attrs)\n  }><div class=\"progress fixed top-0 z-50 w-full\"><div class=\"progress-bar\" style=\"${\n    _ssrRenderStyle(`transform:scaleX(${_unref(progress)})`)\n  }\"></div></div></div>`)\n}\n}\n\n})",
-      "start": 1715597154923,
-      "end": 1715597154923,
+      "start": 1715603891210,
+      "end": 1715603891210,
       "sourcemaps": {
         "version": 3,
         "sources": [
@@ -20,69 +20,69 @@
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597154923,
-      "end": 1715597154923,
+      "start": 1715603891211,
+      "end": 1715603891211,
       "order": "pre"
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597154923,
-      "end": 1715597154923,
+      "start": 1715603891211,
+      "end": 1715603891211,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597154924,
-      "end": 1715597154924,
+      "start": 1715603891211,
+      "end": 1715603891211,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597154924,
-      "end": 1715597154924,
+      "start": 1715603891211,
+      "end": 1715603891211,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597154924,
-      "end": 1715597154924,
+      "start": 1715603891211,
+      "end": 1715603891211,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597154924,
-      "end": 1715597154924,
+      "start": 1715603891211,
+      "end": 1715603891211,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597154924,
-      "end": 1715597154924,
+      "start": 1715603891211,
+      "end": 1715603891211,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597154924,
-      "end": 1715597154924,
+      "start": 1715603891211,
+      "end": 1715603891211,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1715597154924,
-      "end": 1715597154924,
+      "start": 1715603891211,
+      "end": 1715603891211,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1715597154924,
-      "end": 1715597154924,
+      "start": 1715603891211,
+      "end": 1715603891211,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref } from \"vue\";\nimport { ssrRenderStyle as _ssrRenderStyle, ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\";\nimport { NO_MOTION_PREFERENCE_QUERY } from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"ProgressIndicator\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const progress = ref(0);\n    function calculateProgress() {\n      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;\n      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;\n      const scrolled = winScroll / height;\n      progress.value = scrolled;\n    }\n    onMounted(() => {\n      const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY);\n      matches && window.addEventListener(\"scroll\", calculateProgress);\n    });\n    onUnmounted(() => {\n      window.removeEventListener(\"scroll\", calculateProgress);\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<div${_ssrRenderAttrs(_attrs)}><div class=\"progress fixed top-0 z-50 w-full\"><div class=\"progress-bar\" style=\"${_ssrRenderStyle(`transform:scaleX(${_unref(progress)})`)}\"></div></div></div>`);\n    };\n  }\n});\n",
-      "start": 1715597154924,
-      "end": 1715597155011,
+      "start": 1715603891212,
+      "end": 1715603891352,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -98,165 +98,165 @@
     },
     {
       "name": "vite:json",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891352,
+      "end": 1715603891352,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891352,
+      "end": 1715603891352,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891352,
+      "end": 1715603891352,
       "order": "normal"
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891352,
+      "end": 1715603891352,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "ssr-styles",
-      "start": 1715597155012,
-      "end": 1715597155013,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891353,
+      "end": 1715603891353,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891353,
+      "end": 1715603891354,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891354,
+      "end": 1715603891354,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891354,
+      "end": 1715603891354,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891354,
+      "end": 1715603891354,
       "order": "post"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891354,
+      "end": 1715603891354,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891354,
+      "end": 1715603891354,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891354,
+      "end": 1715603891354,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
       "result": "import { ref, onMounted, onUnmounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref } from \"vue\";\nimport { ssrRenderStyle as _ssrRenderStyle, ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\";\nimport { NO_MOTION_PREFERENCE_QUERY } from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"ProgressIndicator\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const progress = ref(0);\n    function calculateProgress() {\n      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;\n      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;\n      const scrolled = winScroll / height;\n      progress.value = scrolled;\n    }\n    onMounted(() => {\n      const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY);\n      matches && window.addEventListener(\"scroll\", calculateProgress);\n    });\n    onUnmounted(() => {\n      window.removeEventListener(\"scroll\", calculateProgress);\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<div${_ssrRenderAttrs(_attrs)}><div class=\"progress fixed top-0 z-50 w-full\"><div class=\"progress-bar\" style=\"${_ssrRenderStyle(`transform:scaleX(${_unref(progress)})`)}\"></div></div></div>`);\n    };\n  }\n});\n",
-      "start": 1715597155013,
-      "end": 1715597155018,
+      "start": 1715603891354,
+      "end": 1715603891362,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -270,8 +270,8 @@
     {
       "name": "nuxt:imports-transform",
       "result": "import { ref, onMounted, onUnmounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref } from \"vue\";\nimport { ssrRenderStyle as _ssrRenderStyle, ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\";\nimport { NO_MOTION_PREFERENCE_QUERY } from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"ProgressIndicator\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const progress = ref(0);\n    function calculateProgress() {\n      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;\n      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;\n      const scrolled = winScroll / height;\n      progress.value = scrolled;\n    }\n    onMounted(() => {\n      const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY);\n      matches && window.addEventListener(\"scroll\", calculateProgress);\n    });\n    onUnmounted(() => {\n      window.removeEventListener(\"scroll\", calculateProgress);\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<div${_ssrRenderAttrs(_attrs)}><div class=\"progress fixed top-0 z-50 w-full\"><div class=\"progress-bar\" style=\"${_ssrRenderStyle(`transform:scaleX(${_unref(progress)})`)}\"></div></div></div>`);\n    };\n  }\n});\n",
-      "start": 1715597155013,
-      "end": 1715597155018,
+      "start": 1715603891354,
+      "end": 1715603891362,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -284,51 +284,51 @@
     },
     {
       "name": "unctx:transform",
-      "start": 1715597155018,
-      "end": 1715597155018,
+      "start": 1715603891363,
+      "end": 1715603891363,
       "order": "post"
     },
     {
       "name": "unctx:transform",
-      "start": 1715597155018,
-      "end": 1715597155018,
+      "start": 1715603891363,
+      "end": 1715603891363,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597155018,
-      "end": 1715597155019,
+      "start": 1715603891363,
+      "end": 1715603891363,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597155018,
-      "end": 1715597155019,
+      "start": 1715603891363,
+      "end": 1715603891363,
       "order": "post"
     },
     {
       "name": "element-plus:transform",
-      "start": 1715597155019,
-      "end": 1715597155020,
+      "start": 1715603891363,
+      "end": 1715603891363,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-template",
-      "start": 1715597155020,
-      "end": 1715597155020,
+      "start": 1715603891363,
+      "end": 1715603891363,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
-      "start": 1715597155020,
-      "end": 1715597155025,
+      "start": 1715603891364,
+      "end": 1715603891364,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-composables:transform",
       "result": "import { ref, onMounted, onUnmounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref } from \"vue\";\nimport { ssrRenderStyle as _ssrRenderStyle, ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\";\nimport { NO_MOTION_PREFERENCE_QUERY } from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"ProgressIndicator\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const progress = ref(0);\n    function calculateProgress() {\n      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;\n      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;\n      const scrolled = winScroll / height;\n      progress.value = scrolled;\n    }\n     /*#__PURE__*/ false && onMounted(() => {\n      const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY);\n      matches && window.addEventListener(\"scroll\", calculateProgress);\n    });\n    onUnmounted(() => {\n      window.removeEventListener(\"scroll\", calculateProgress);\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<div${_ssrRenderAttrs(_attrs)}><div class=\"progress fixed top-0 z-50 w-full\"><div class=\"progress-bar\" style=\"${_ssrRenderStyle(`transform:scaleX(${_unref(progress)})`)}\"></div></div></div>`);\n    };\n  }\n});\n",
-      "start": 1715597155025,
-      "end": 1715597155026,
+      "start": 1715603891365,
+      "end": 1715603891366,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -341,14 +341,14 @@
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1715597155026,
-      "end": 1715597155027,
+      "start": 1715603891367,
+      "end": 1715603891368,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1715597155027,
-      "end": 1715597155027,
+      "start": 1715603891368,
+      "end": 1715603891368,
       "order": "normal"
     }
   ]

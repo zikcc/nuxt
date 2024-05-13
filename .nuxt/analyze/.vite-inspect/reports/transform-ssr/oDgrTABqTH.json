@@ -4,8 +4,8 @@
     {
       "name": "vite:vue",
       "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { resolveComponent as _resolveComponent, unref as _unref } from \"vue\"\nimport { ssrRenderComponent as _ssrRenderComponent } from \"vue/server-renderer\"\n\nimport {\r\n    gsap\r\n  } from 'gsap'\r\n  import {\r\n    ScrollTrigger\r\n  } from 'gsap/dist/ScrollTrigger'\r\n\r\n  import QuoteSection from '~/components/home/quote.vue'\r\n  import MembersSection from '~/components/home/members.vue'\r\n  import AboutSection from '~/components/home/about.vue'\r\n  import HeroSection from '~/components/home/hero.vue'\r\n  import ProjectsSection from '~/components/home/projects.vue'\r\n  import TimelineSection from '~/components/home/timeline.vue'\r\n  import CollaborationSection from '~/components/home/collaboration.vue'\r\n  // import Footer from '~/components/footer.vue'\r\n\r\n  export interface IDesktop {\r\n    isDesktop: boolean\r\n  }\r\n\r\n  const DEBOUNCE_TIME = 100\r\n\r\n  \nexport default /*#__PURE__*/_defineComponent({\n  __name: 'index',\n  __ssrInlineRender: true,\n  setup(__props) {\n\r\n  useSeoMeta({\r\n    // 网站标题\r\n    title: '标题',\r\n    // 网站描述\r\n    description: '描述',\r\n    // 搜索关键词\r\n    keywords: '倪渊之,课题组,车联网'\r\n  })\r\n\r\n\r\n  gsap.registerPlugin(ScrollTrigger)\r\n  gsap.config({\r\n    nullTargetWarn: false\r\n  })\r\n\r\n  const isDesktop = ref(true)\r\n  let timer: NodeJS.Timeout | null = null\r\n  function debouncedDimensionCalculator() {\r\n    clearTimeout(timer!)\r\n    timer = setTimeout(() => {\r\n      const isDesktopResult = typeof window.matchMedia('(orientation: portrait)').matches === 'undefined' && !\r\n        navigator.userAgent.includes('IEMobile')\r\n\r\n      window.history.scrollRestoration = 'manual'\r\n      isDesktop.value = isDesktopResult\r\n    }, DEBOUNCE_TIME)\r\n  }\r\n\r\n  onMounted(() => {\r\n    debouncedDimensionCalculator()\r\n    window.addEventListener('resize', debouncedDimensionCalculator)\r\n    onUnmounted(() => {\r\n      window.removeEventListener('resize', debouncedDimensionCalculator)\r\n    })\r\n  })\r\n\nreturn (_ctx: any,_push: any,_parent: any,_attrs: any) => {\n  const _component_Layout = _resolveComponent(\"Layout\")!\n  const _component_Header = _resolveComponent(\"Header\")!\n  const _component_ProgressIndicator = _resolveComponent(\"ProgressIndicator\")!\n  const _component_Cursor = _resolveComponent(\"Cursor\")!\n  const _component_Footer = _resolveComponent(\"Footer\")!\n\n  _push(`<!--[-->`)\n  _push(_ssrRenderComponent(_component_Layout, null, null, _parent))\n  _push(_ssrRenderComponent(_component_Header, null, null, _parent))\n  _push(_ssrRenderComponent(_component_ProgressIndicator, null, null, _parent))\n  _push(_ssrRenderComponent(_component_Cursor, { \"is-desktop\": _unref(isDesktop) }, null, _parent))\n  _push(`<main class=\"flex flex-col\"><div class=\"fixed left-0 top-0 h-full w-full bg-gray-900 -z-1\"></div>`)\n  _push(_ssrRenderComponent(HeroSection, null, null, _parent))\n  _push(_ssrRenderComponent(AboutSection, null, null, _parent))\n  _push(_ssrRenderComponent(ProjectsSection, { \"is-desktop\": _unref(isDesktop) }, null, _parent))\n  _push(_ssrRenderComponent(QuoteSection, null, null, _parent))\n  _push(_ssrRenderComponent(MembersSection, null, null, _parent))\n  _push(_ssrRenderComponent(TimelineSection, { \"is-desktop\": _unref(isDesktop) }, null, _parent))\n  _push(_ssrRenderComponent(CollaborationSection, null, null, _parent))\n  _push(`</main>`)\n  _push(_ssrRenderComponent(_component_Footer, null, null, _parent))\n  _push(`<!--]-->`)\n}\n}\n\n})",
-      "start": 1715597151720,
-      "end": 1715597151720,
+      "start": 1715603888096,
+      "end": 1715603888096,
       "sourcemaps": {
         "version": 3,
         "sources": [
@@ -20,69 +20,69 @@
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597151722,
-      "end": 1715597151722,
+      "start": 1715603888097,
+      "end": 1715603888098,
       "order": "pre"
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597151722,
-      "end": 1715597151722,
+      "start": 1715603888097,
+      "end": 1715603888098,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597151723,
-      "end": 1715597151723,
+      "start": 1715603888098,
+      "end": 1715603888099,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597151723,
-      "end": 1715597151723,
+      "start": 1715603888098,
+      "end": 1715603888099,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597151726,
-      "end": 1715597151726,
+      "start": 1715603888099,
+      "end": 1715603888099,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597151726,
-      "end": 1715597151726,
+      "start": 1715603888099,
+      "end": 1715603888099,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597151726,
-      "end": 1715597151726,
+      "start": 1715603888099,
+      "end": 1715603888099,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597151726,
-      "end": 1715597151726,
+      "start": 1715603888099,
+      "end": 1715603888099,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1715597151726,
-      "end": 1715597151726,
+      "start": 1715603888099,
+      "end": 1715603888099,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1715597151726,
-      "end": 1715597151726,
+      "start": 1715603888099,
+      "end": 1715603888099,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, unref as _unref } from \"vue\";\nimport { ssrRenderComponent as _ssrRenderComponent } from \"vue/server-renderer\";\nimport {\n  gsap\n} from \"gsap\";\nimport {\n  ScrollTrigger\n} from \"gsap/dist/ScrollTrigger\";\nimport QuoteSection from \"~/components/home/quote.vue\";\nimport MembersSection from \"~/components/home/members.vue\";\nimport AboutSection from \"~/components/home/about.vue\";\nimport HeroSection from \"~/components/home/hero.vue\";\nimport ProjectsSection from \"~/components/home/projects.vue\";\nimport TimelineSection from \"~/components/home/timeline.vue\";\nimport CollaborationSection from \"~/components/home/collaboration.vue\";\nconst DEBOUNCE_TIME = 100;\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"index\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    useSeoMeta({\n      // 网站标题\n      title: \"标题\",\n      // 网站描述\n      description: \"描述\",\n      // 搜索关键词\n      keywords: \"倪渊之,课题组,车联网\"\n    });\n    gsap.registerPlugin(ScrollTrigger);\n    gsap.config({\n      nullTargetWarn: false\n    });\n    const isDesktop = ref(true);\n    let timer = null;\n    function debouncedDimensionCalculator() {\n      clearTimeout(timer);\n      timer = setTimeout(() => {\n        const isDesktopResult = typeof window.matchMedia(\"(orientation: portrait)\").matches === \"undefined\" && !navigator.userAgent.includes(\"IEMobile\");\n        window.history.scrollRestoration = \"manual\";\n        isDesktop.value = isDesktopResult;\n      }, DEBOUNCE_TIME);\n    }\n    onMounted(() => {\n      debouncedDimensionCalculator();\n      window.addEventListener(\"resize\", debouncedDimensionCalculator);\n      onUnmounted(() => {\n        window.removeEventListener(\"resize\", debouncedDimensionCalculator);\n      });\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      const _component_Layout = _resolveComponent(\"Layout\");\n      const _component_Header = _resolveComponent(\"Header\");\n      const _component_ProgressIndicator = _resolveComponent(\"ProgressIndicator\");\n      const _component_Cursor = _resolveComponent(\"Cursor\");\n      const _component_Footer = _resolveComponent(\"Footer\");\n      _push(`<!--[-->`);\n      _push(_ssrRenderComponent(_component_Layout, null, null, _parent));\n      _push(_ssrRenderComponent(_component_Header, null, null, _parent));\n      _push(_ssrRenderComponent(_component_ProgressIndicator, null, null, _parent));\n      _push(_ssrRenderComponent(_component_Cursor, { \"is-desktop\": _unref(isDesktop) }, null, _parent));\n      _push(`<main class=\"flex flex-col\"><div class=\"fixed left-0 top-0 h-full w-full bg-gray-900 -z-1\"></div>`);\n      _push(_ssrRenderComponent(HeroSection, null, null, _parent));\n      _push(_ssrRenderComponent(AboutSection, null, null, _parent));\n      _push(_ssrRenderComponent(ProjectsSection, { \"is-desktop\": _unref(isDesktop) }, null, _parent));\n      _push(_ssrRenderComponent(QuoteSection, null, null, _parent));\n      _push(_ssrRenderComponent(MembersSection, null, null, _parent));\n      _push(_ssrRenderComponent(TimelineSection, { \"is-desktop\": _unref(isDesktop) }, null, _parent));\n      _push(_ssrRenderComponent(CollaborationSection, null, null, _parent));\n      _push(`</main>`);\n      _push(_ssrRenderComponent(_component_Footer, null, null, _parent));\n      _push(`<!--]-->`);\n    };\n  }\n});\n",
-      "start": 1715597151726,
-      "end": 1715597151760,
+      "start": 1715603888099,
+      "end": 1715603888131,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -98,165 +98,165 @@
     },
     {
       "name": "vite:json",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "ssr-styles",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "post"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597151760,
-      "end": 1715597151760,
+      "start": 1715603888131,
+      "end": 1715603888131,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
       "result": "import { useSeoMeta } from '@unhead/vue';\nimport { ref, onMounted, onUnmounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, unref as _unref } from \"vue\";\nimport { ssrRenderComponent as _ssrRenderComponent } from \"vue/server-renderer\";\nimport {\n  gsap\n} from \"gsap\";\nimport {\n  ScrollTrigger\n} from \"gsap/dist/ScrollTrigger\";\nimport QuoteSection from \"~/components/home/quote.vue\";\nimport MembersSection from \"~/components/home/members.vue\";\nimport AboutSection from \"~/components/home/about.vue\";\nimport HeroSection from \"~/components/home/hero.vue\";\nimport ProjectsSection from \"~/components/home/projects.vue\";\nimport TimelineSection from \"~/components/home/timeline.vue\";\nimport CollaborationSection from \"~/components/home/collaboration.vue\";\nconst DEBOUNCE_TIME = 100;\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"index\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    useSeoMeta({\n      // 网站标题\n      title: \"标题\",\n      // 网站描述\n      description: \"描述\",\n      // 搜索关键词\n      keywords: \"倪渊之,课题组,车联网\"\n    });\n    gsap.registerPlugin(ScrollTrigger);\n    gsap.config({\n      nullTargetWarn: false\n    });\n    const isDesktop = ref(true);\n    let timer = null;\n    function debouncedDimensionCalculator() {\n      clearTimeout(timer);\n      timer = setTimeout(() => {\n        const isDesktopResult = typeof window.matchMedia(\"(orientation: portrait)\").matches === \"undefined\" && !navigator.userAgent.includes(\"IEMobile\");\n        window.history.scrollRestoration = \"manual\";\n        isDesktop.value = isDesktopResult;\n      }, DEBOUNCE_TIME);\n    }\n    onMounted(() => {\n      debouncedDimensionCalculator();\n      window.addEventListener(\"resize\", debouncedDimensionCalculator);\n      onUnmounted(() => {\n        window.removeEventListener(\"resize\", debouncedDimensionCalculator);\n      });\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      const _component_Layout = _resolveComponent(\"Layout\");\n      const _component_Header = _resolveComponent(\"Header\");\n      const _component_ProgressIndicator = _resolveComponent(\"ProgressIndicator\");\n      const _component_Cursor = _resolveComponent(\"Cursor\");\n      const _component_Footer = _resolveComponent(\"Footer\");\n      _push(`<!--[-->`);\n      _push(_ssrRenderComponent(_component_Layout, null, null, _parent));\n      _push(_ssrRenderComponent(_component_Header, null, null, _parent));\n      _push(_ssrRenderComponent(_component_ProgressIndicator, null, null, _parent));\n      _push(_ssrRenderComponent(_component_Cursor, { \"is-desktop\": _unref(isDesktop) }, null, _parent));\n      _push(`<main class=\"flex flex-col\"><div class=\"fixed left-0 top-0 h-full w-full bg-gray-900 -z-1\"></div>`);\n      _push(_ssrRenderComponent(HeroSection, null, null, _parent));\n      _push(_ssrRenderComponent(AboutSection, null, null, _parent));\n      _push(_ssrRenderComponent(ProjectsSection, { \"is-desktop\": _unref(isDesktop) }, null, _parent));\n      _push(_ssrRenderComponent(QuoteSection, null, null, _parent));\n      _push(_ssrRenderComponent(MembersSection, null, null, _parent));\n      _push(_ssrRenderComponent(TimelineSection, { \"is-desktop\": _unref(isDesktop) }, null, _parent));\n      _push(_ssrRenderComponent(CollaborationSection, null, null, _parent));\n      _push(`</main>`);\n      _push(_ssrRenderComponent(_component_Footer, null, null, _parent));\n      _push(`<!--]-->`);\n    };\n  }\n});\n",
-      "start": 1715597151760,
-      "end": 1715597151761,
+      "start": 1715603888132,
+      "end": 1715603888132,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -270,8 +270,8 @@
     {
       "name": "nuxt:imports-transform",
       "result": "import { useSeoMeta } from '@unhead/vue';\nimport { ref, onMounted, onUnmounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, unref as _unref } from \"vue\";\nimport { ssrRenderComponent as _ssrRenderComponent } from \"vue/server-renderer\";\nimport {\n  gsap\n} from \"gsap\";\nimport {\n  ScrollTrigger\n} from \"gsap/dist/ScrollTrigger\";\nimport QuoteSection from \"~/components/home/quote.vue\";\nimport MembersSection from \"~/components/home/members.vue\";\nimport AboutSection from \"~/components/home/about.vue\";\nimport HeroSection from \"~/components/home/hero.vue\";\nimport ProjectsSection from \"~/components/home/projects.vue\";\nimport TimelineSection from \"~/components/home/timeline.vue\";\nimport CollaborationSection from \"~/components/home/collaboration.vue\";\nconst DEBOUNCE_TIME = 100;\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"index\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    useSeoMeta({\n      // 网站标题\n      title: \"标题\",\n      // 网站描述\n      description: \"描述\",\n      // 搜索关键词\n      keywords: \"倪渊之,课题组,车联网\"\n    });\n    gsap.registerPlugin(ScrollTrigger);\n    gsap.config({\n      nullTargetWarn: false\n    });\n    const isDesktop = ref(true);\n    let timer = null;\n    function debouncedDimensionCalculator() {\n      clearTimeout(timer);\n      timer = setTimeout(() => {\n        const isDesktopResult = typeof window.matchMedia(\"(orientation: portrait)\").matches === \"undefined\" && !navigator.userAgent.includes(\"IEMobile\");\n        window.history.scrollRestoration = \"manual\";\n        isDesktop.value = isDesktopResult;\n      }, DEBOUNCE_TIME);\n    }\n    onMounted(() => {\n      debouncedDimensionCalculator();\n      window.addEventListener(\"resize\", debouncedDimensionCalculator);\n      onUnmounted(() => {\n        window.removeEventListener(\"resize\", debouncedDimensionCalculator);\n      });\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      const _component_Layout = _resolveComponent(\"Layout\");\n      const _component_Header = _resolveComponent(\"Header\");\n      const _component_ProgressIndicator = _resolveComponent(\"ProgressIndicator\");\n      const _component_Cursor = _resolveComponent(\"Cursor\");\n      const _component_Footer = _resolveComponent(\"Footer\");\n      _push(`<!--[-->`);\n      _push(_ssrRenderComponent(_component_Layout, null, null, _parent));\n      _push(_ssrRenderComponent(_component_Header, null, null, _parent));\n      _push(_ssrRenderComponent(_component_ProgressIndicator, null, null, _parent));\n      _push(_ssrRenderComponent(_component_Cursor, { \"is-desktop\": _unref(isDesktop) }, null, _parent));\n      _push(`<main class=\"flex flex-col\"><div class=\"fixed left-0 top-0 h-full w-full bg-gray-900 -z-1\"></div>`);\n      _push(_ssrRenderComponent(HeroSection, null, null, _parent));\n      _push(_ssrRenderComponent(AboutSection, null, null, _parent));\n      _push(_ssrRenderComponent(ProjectsSection, { \"is-desktop\": _unref(isDesktop) }, null, _parent));\n      _push(_ssrRenderComponent(QuoteSection, null, null, _parent));\n      _push(_ssrRenderComponent(MembersSection, null, null, _parent));\n      _push(_ssrRenderComponent(TimelineSection, { \"is-desktop\": _unref(isDesktop) }, null, _parent));\n      _push(_ssrRenderComponent(CollaborationSection, null, null, _parent));\n      _push(`</main>`);\n      _push(_ssrRenderComponent(_component_Footer, null, null, _parent));\n      _push(`<!--]-->`);\n    };\n  }\n});\n",
-      "start": 1715597151760,
-      "end": 1715597151761,
+      "start": 1715603888132,
+      "end": 1715603888132,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -284,45 +284,45 @@
     },
     {
       "name": "unctx:transform",
-      "start": 1715597151761,
-      "end": 1715597151761,
+      "start": 1715603888132,
+      "end": 1715603888132,
       "order": "post"
     },
     {
       "name": "unctx:transform",
-      "start": 1715597151761,
-      "end": 1715597151761,
+      "start": 1715603888132,
+      "end": 1715603888132,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597151761,
-      "end": 1715597151761,
+      "start": 1715603888132,
+      "end": 1715603888132,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597151761,
-      "end": 1715597151761,
+      "start": 1715603888132,
+      "end": 1715603888132,
       "order": "post"
     },
     {
       "name": "element-plus:transform",
-      "start": 1715597151761,
-      "end": 1715597151761,
+      "start": 1715603888132,
+      "end": 1715603888133,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-template",
-      "start": 1715597151761,
-      "end": 1715597151761,
+      "start": 1715603888133,
+      "end": 1715603888133,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
       "result": "import { default as __nuxt_component_0 } from \"D:/CODE/blog/myNuxt/resGro/components/Layout.vue\";\nimport { default as __nuxt_component_1 } from \"D:/CODE/blog/myNuxt/resGro/components/Header.vue\";\nimport { default as __nuxt_component_2 } from \"D:/CODE/blog/myNuxt/resGro/components/ProgressIndicator.vue\";\nimport { default as __nuxt_component_3 } from \"D:/CODE/blog/myNuxt/resGro/components/Cursor.vue\";\nimport { default as __nuxt_component_4 } from \"D:/CODE/blog/myNuxt/resGro/components/footer.vue\";\nimport { useSeoMeta } from '@unhead/vue';\nimport { ref, onMounted, onUnmounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, unref as _unref } from \"vue\";\nimport { ssrRenderComponent as _ssrRenderComponent } from \"vue/server-renderer\";\nimport {\n  gsap\n} from \"gsap\";\nimport {\n  ScrollTrigger\n} from \"gsap/dist/ScrollTrigger\";\nimport QuoteSection from \"~/components/home/quote.vue\";\nimport MembersSection from \"~/components/home/members.vue\";\nimport AboutSection from \"~/components/home/about.vue\";\nimport HeroSection from \"~/components/home/hero.vue\";\nimport ProjectsSection from \"~/components/home/projects.vue\";\nimport TimelineSection from \"~/components/home/timeline.vue\";\nimport CollaborationSection from \"~/components/home/collaboration.vue\";\nconst DEBOUNCE_TIME = 100;\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"index\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    useSeoMeta({\n      // 网站标题\n      title: \"标题\",\n      // 网站描述\n      description: \"描述\",\n      // 搜索关键词\n      keywords: \"倪渊之,课题组,车联网\"\n    });\n    gsap.registerPlugin(ScrollTrigger);\n    gsap.config({\n      nullTargetWarn: false\n    });\n    const isDesktop = ref(true);\n    let timer = null;\n    function debouncedDimensionCalculator() {\n      clearTimeout(timer);\n      timer = setTimeout(() => {\n        const isDesktopResult = typeof window.matchMedia(\"(orientation: portrait)\").matches === \"undefined\" && !navigator.userAgent.includes(\"IEMobile\");\n        window.history.scrollRestoration = \"manual\";\n        isDesktop.value = isDesktopResult;\n      }, DEBOUNCE_TIME);\n    }\n    onMounted(() => {\n      debouncedDimensionCalculator();\n      window.addEventListener(\"resize\", debouncedDimensionCalculator);\n      onUnmounted(() => {\n        window.removeEventListener(\"resize\", debouncedDimensionCalculator);\n      });\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      const _component_Layout = __nuxt_component_0;\n      const _component_Header = __nuxt_component_1;\n      const _component_ProgressIndicator = __nuxt_component_2;\n      const _component_Cursor = __nuxt_component_3;\n      const _component_Footer = __nuxt_component_4;\n      _push(`<!--[-->`);\n      _push(_ssrRenderComponent(_component_Layout, null, null, _parent));\n      _push(_ssrRenderComponent(_component_Header, null, null, _parent));\n      _push(_ssrRenderComponent(_component_ProgressIndicator, null, null, _parent));\n      _push(_ssrRenderComponent(_component_Cursor, { \"is-desktop\": _unref(isDesktop) }, null, _parent));\n      _push(`<main class=\"flex flex-col\"><div class=\"fixed left-0 top-0 h-full w-full bg-gray-900 -z-1\"></div>`);\n      _push(_ssrRenderComponent(HeroSection, null, null, _parent));\n      _push(_ssrRenderComponent(AboutSection, null, null, _parent));\n      _push(_ssrRenderComponent(ProjectsSection, { \"is-desktop\": _unref(isDesktop) }, null, _parent));\n      _push(_ssrRenderComponent(QuoteSection, null, null, _parent));\n      _push(_ssrRenderComponent(MembersSection, null, null, _parent));\n      _push(_ssrRenderComponent(TimelineSection, { \"is-desktop\": _unref(isDesktop) }, null, _parent));\n      _push(_ssrRenderComponent(CollaborationSection, null, null, _parent));\n      _push(`</main>`);\n      _push(_ssrRenderComponent(_component_Footer, null, null, _parent));\n      _push(`<!--]-->`);\n    };\n  }\n});\n",
-      "start": 1715597151761,
-      "end": 1715597151761,
+      "start": 1715603888133,
+      "end": 1715603888133,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -336,8 +336,8 @@
     {
       "name": "nuxt:tree-shake-composables:transform",
       "result": "import { default as __nuxt_component_0 } from \"D:/CODE/blog/myNuxt/resGro/components/Layout.vue\";\nimport { default as __nuxt_component_1 } from \"D:/CODE/blog/myNuxt/resGro/components/Header.vue\";\nimport { default as __nuxt_component_2 } from \"D:/CODE/blog/myNuxt/resGro/components/ProgressIndicator.vue\";\nimport { default as __nuxt_component_3 } from \"D:/CODE/blog/myNuxt/resGro/components/Cursor.vue\";\nimport { default as __nuxt_component_4 } from \"D:/CODE/blog/myNuxt/resGro/components/footer.vue\";\nimport { useSeoMeta } from '@unhead/vue';\nimport { ref, onMounted, onUnmounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, unref as _unref } from \"vue\";\nimport { ssrRenderComponent as _ssrRenderComponent } from \"vue/server-renderer\";\nimport {\n  gsap\n} from \"gsap\";\nimport {\n  ScrollTrigger\n} from \"gsap/dist/ScrollTrigger\";\nimport QuoteSection from \"~/components/home/quote.vue\";\nimport MembersSection from \"~/components/home/members.vue\";\nimport AboutSection from \"~/components/home/about.vue\";\nimport HeroSection from \"~/components/home/hero.vue\";\nimport ProjectsSection from \"~/components/home/projects.vue\";\nimport TimelineSection from \"~/components/home/timeline.vue\";\nimport CollaborationSection from \"~/components/home/collaboration.vue\";\nconst DEBOUNCE_TIME = 100;\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"index\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    useSeoMeta({\n      // 网站标题\n      title: \"标题\",\n      // 网站描述\n      description: \"描述\",\n      // 搜索关键词\n      keywords: \"倪渊之,课题组,车联网\"\n    });\n    gsap.registerPlugin(ScrollTrigger);\n    gsap.config({\n      nullTargetWarn: false\n    });\n    const isDesktop = ref(true);\n    let timer = null;\n    function debouncedDimensionCalculator() {\n      clearTimeout(timer);\n      timer = setTimeout(() => {\n        const isDesktopResult = typeof window.matchMedia(\"(orientation: portrait)\").matches === \"undefined\" && !navigator.userAgent.includes(\"IEMobile\");\n        window.history.scrollRestoration = \"manual\";\n        isDesktop.value = isDesktopResult;\n      }, DEBOUNCE_TIME);\n    }\n     /*#__PURE__*/ false && onMounted(() => {\n      debouncedDimensionCalculator();\n      window.addEventListener(\"resize\", debouncedDimensionCalculator);\n      onUnmounted(() => {\n        window.removeEventListener(\"resize\", debouncedDimensionCalculator);\n      });\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      const _component_Layout = __nuxt_component_0;\n      const _component_Header = __nuxt_component_1;\n      const _component_ProgressIndicator = __nuxt_component_2;\n      const _component_Cursor = __nuxt_component_3;\n      const _component_Footer = __nuxt_component_4;\n      _push(`<!--[-->`);\n      _push(_ssrRenderComponent(_component_Layout, null, null, _parent));\n      _push(_ssrRenderComponent(_component_Header, null, null, _parent));\n      _push(_ssrRenderComponent(_component_ProgressIndicator, null, null, _parent));\n      _push(_ssrRenderComponent(_component_Cursor, { \"is-desktop\": _unref(isDesktop) }, null, _parent));\n      _push(`<main class=\"flex flex-col\"><div class=\"fixed left-0 top-0 h-full w-full bg-gray-900 -z-1\"></div>`);\n      _push(_ssrRenderComponent(HeroSection, null, null, _parent));\n      _push(_ssrRenderComponent(AboutSection, null, null, _parent));\n      _push(_ssrRenderComponent(ProjectsSection, { \"is-desktop\": _unref(isDesktop) }, null, _parent));\n      _push(_ssrRenderComponent(QuoteSection, null, null, _parent));\n      _push(_ssrRenderComponent(MembersSection, null, null, _parent));\n      _push(_ssrRenderComponent(TimelineSection, { \"is-desktop\": _unref(isDesktop) }, null, _parent));\n      _push(_ssrRenderComponent(CollaborationSection, null, null, _parent));\n      _push(`</main>`);\n      _push(_ssrRenderComponent(_component_Footer, null, null, _parent));\n      _push(`<!--]-->`);\n    };\n  }\n});\n",
-      "start": 1715597151761,
-      "end": 1715597151762,
+      "start": 1715603888133,
+      "end": 1715603888133,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -350,14 +350,14 @@
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1715597151762,
-      "end": 1715597151762,
+      "start": 1715603888133,
+      "end": 1715603888134,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1715597151762,
-      "end": 1715597151762,
+      "start": 1715603888134,
+      "end": 1715603888134,
       "order": "normal"
     }
   ]

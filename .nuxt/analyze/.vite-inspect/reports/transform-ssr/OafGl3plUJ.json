@@ -4,8 +4,8 @@
     {
       "name": "vite:vue",
       "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\"\nimport { ssrRenderClass as _ssrRenderClass, ssrRenderAttrs as _ssrRenderAttrs, ssrInterpolate as _ssrInterpolate } from \"vue/server-renderer\"\n\nimport { Linear, gsap } from 'gsap'\r\nimport { ScrollTrigger } from 'gsap/dist/ScrollTrigger'\r\nimport { NO_MOTION_PREFERENCE_QUERY, isSmallScreen } from '~/store/constants'\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'collaboration',\n  __ssrInlineRender: true,\n  setup(__props) {\n\r\nconst COLLABORATION_STYLE = {\r\n  SLIDING_TEXT: 'opacity-20 text-4xl md:text-5xl font-bold whitespace-nowrap',\r\n  SECTION: 'w-full relative select-none tall:py-36 py-48 section-container flex flex-col',\r\n  TITLE: 'mt-6 md:mt-8 font-medium text-4xl md:text-5xl text-center',\r\n}\r\n\r\nconst quoteRef: Ref<HTMLElement | undefined> = ref(undefined)\r\nconst targetSection: Ref<HTMLElement | undefined> = ref(undefined)\r\n\r\nconst willChange = ref(false)\r\n\r\nfunction initTextGradientAnimation(targetSection: Ref<HTMLElement | undefined>): ScrollTrigger {\r\n  const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } })\r\n  timeline.from(quoteRef.value!, { opacity: 0, duration: 2 }).to(quoteRef.value!.querySelector('.text-strong'), {\r\n    backgroundPositionX: '100%',\r\n    duration: 1,\r\n  })\r\n\r\n  return ScrollTrigger.create({\r\n    trigger: targetSection.value!,\r\n    start: 'center bottom',\r\n    end: 'center center',\r\n    scrub: 0,\r\n    animation: timeline,\r\n    onToggle: self => willChange.value = self.isActive,\r\n  })\r\n}\r\n\r\nfunction initSlidingTextAnimation(targetSection: Ref<HTMLElement | undefined>) {\r\n  const slidingTl = gsap.timeline({ defaults: { ease: Linear.easeNone } })\r\n\r\n  slidingTl\r\n    .to(targetSection.value!.querySelector('.ui-left'), {\r\n      xPercent: isSmallScreen() ? -500 : -300,\r\n    })\r\n    .from(targetSection.value!.querySelector('.ui-right'), { xPercent: isSmallScreen() ? -500 : -300 }, '<')\r\n\r\n  return ScrollTrigger.create({\r\n    trigger: targetSection.value!,\r\n    start: 'top bottom',\r\n    end: 'bottom top',\r\n    scrub: 0,\r\n    animation: slidingTl,\r\n  })\r\n}\r\n\r\nonMounted(() => {\r\n  const textBgAnimation = initTextGradientAnimation(targetSection)\r\n  let slidingAnimation: ScrollTrigger | undefined\r\n\r\n  const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY)\r\n\r\n  if (matches)\r\n    slidingAnimation = initSlidingTextAnimation(targetSection)\r\n\r\n  return () => {\r\n    textBgAnimation.kill()\r\n    slidingAnimation?.kill()\r\n  }\r\n})\r\n\nreturn (_ctx: any,_push: any,_parent: any,_attrs: any) => {\n  _push(`<section${\n    _ssrRenderAttrs(_mergeProps({\n      ref_key: \"targetSection\",\n      ref: targetSection,\n      class: COLLABORATION_STYLE.SECTION\n    }, _attrs))\n  }><p class=\"${\n    _ssrRenderClass(`ui-left ${COLLABORATION_STYLE.SLIDING_TEXT}`)\n  }\">${\n    _ssrInterpolate(Array.from({ length: 15 })\r\n          .fill(' 学而不思则罔 ')\r\n          .reduce((str, el) => str.concat(el), ''))\n  }</p><h1 class=\"${\n    _ssrRenderClass(`${COLLABORATION_STYLE.TITLE} ${_unref(willChange) && 'will-change-opacity'}`)\n  }\"> 努力请从 <span class=\"text-strong font-bold\">今日</span> 始 </h1><p class=\"${\n    _ssrRenderClass(`mt-6 md:mt-8 ui-right ${COLLABORATION_STYLE.SLIDING_TEXT}`)\n  }\">${\n    _ssrInterpolate(Array.from({ length: 15 })\r\n          .fill(' 思而不学则殆')\r\n          .reduce((str, el) => str.concat(el), ''))\n  }</p></section>`)\n}\n}\n\n})",
-      "start": 1715597154931,
-      "end": 1715597154931,
+      "start": 1715603891208,
+      "end": 1715603891208,
       "sourcemaps": {
         "version": 3,
         "sources": [
@@ -20,69 +20,69 @@
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597154931,
-      "end": 1715597154931,
+      "start": 1715603891209,
+      "end": 1715603891209,
       "order": "pre"
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597154931,
-      "end": 1715597154931,
+      "start": 1715603891209,
+      "end": 1715603891209,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597154931,
-      "end": 1715597154931,
+      "start": 1715603891209,
+      "end": 1715603891210,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597154931,
-      "end": 1715597154931,
+      "start": 1715603891209,
+      "end": 1715603891210,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597154932,
-      "end": 1715597154932,
+      "start": 1715603891210,
+      "end": 1715603891210,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597154932,
-      "end": 1715597154932,
+      "start": 1715603891210,
+      "end": 1715603891210,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597154932,
-      "end": 1715597154932,
+      "start": 1715603891210,
+      "end": 1715603891210,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597154932,
-      "end": 1715597154932,
+      "start": 1715603891210,
+      "end": 1715603891210,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1715597154932,
-      "end": 1715597154932,
+      "start": 1715603891210,
+      "end": 1715603891210,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1715597154932,
-      "end": 1715597154932,
+      "start": 1715603891210,
+      "end": 1715603891210,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderClass as _ssrRenderClass, ssrRenderAttrs as _ssrRenderAttrs, ssrInterpolate as _ssrInterpolate } from \"vue/server-renderer\";\nimport { Linear, gsap } from \"gsap\";\nimport { ScrollTrigger } from \"gsap/dist/ScrollTrigger\";\nimport { NO_MOTION_PREFERENCE_QUERY, isSmallScreen } from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"collaboration\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const COLLABORATION_STYLE = {\n      SLIDING_TEXT: \"opacity-20 text-4xl md:text-5xl font-bold whitespace-nowrap\",\n      SECTION: \"w-full relative select-none tall:py-36 py-48 section-container flex flex-col\",\n      TITLE: \"mt-6 md:mt-8 font-medium text-4xl md:text-5xl text-center\"\n    };\n    const quoteRef = ref(void 0);\n    const targetSection = ref(void 0);\n    const willChange = ref(false);\n    function initTextGradientAnimation(targetSection2) {\n      const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });\n      timeline.from(quoteRef.value, { opacity: 0, duration: 2 }).to(quoteRef.value.querySelector(\".text-strong\"), {\n        backgroundPositionX: \"100%\",\n        duration: 1\n      });\n      return ScrollTrigger.create({\n        trigger: targetSection2.value,\n        start: \"center bottom\",\n        end: \"center center\",\n        scrub: 0,\n        animation: timeline,\n        onToggle: (self) => willChange.value = self.isActive\n      });\n    }\n    function initSlidingTextAnimation(targetSection2) {\n      const slidingTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });\n      slidingTl.to(targetSection2.value.querySelector(\".ui-left\"), {\n        xPercent: isSmallScreen() ? -500 : -300\n      }).from(targetSection2.value.querySelector(\".ui-right\"), { xPercent: isSmallScreen() ? -500 : -300 }, \"<\");\n      return ScrollTrigger.create({\n        trigger: targetSection2.value,\n        start: \"top bottom\",\n        end: \"bottom top\",\n        scrub: 0,\n        animation: slidingTl\n      });\n    }\n    onMounted(() => {\n      const textBgAnimation = initTextGradientAnimation(targetSection);\n      let slidingAnimation;\n      const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY);\n      if (matches)\n        slidingAnimation = initSlidingTextAnimation(targetSection);\n      return () => {\n        textBgAnimation.kill();\n        slidingAnimation?.kill();\n      };\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<section${_ssrRenderAttrs(_mergeProps({\n        ref_key: \"targetSection\",\n        ref: targetSection,\n        class: COLLABORATION_STYLE.SECTION\n      }, _attrs))}><p class=\"${_ssrRenderClass(`ui-left ${COLLABORATION_STYLE.SLIDING_TEXT}`)}\">${_ssrInterpolate(Array.from({ length: 15 }).fill(\" 学而不思则罔 \").reduce((str, el) => str.concat(el), \"\"))}</p><h1 class=\"${_ssrRenderClass(`${COLLABORATION_STYLE.TITLE} ${_unref(willChange) && \"will-change-opacity\"}`)}\"> 努力请从 <span class=\"text-strong font-bold\">今日</span> 始 </h1><p class=\"${_ssrRenderClass(`mt-6 md:mt-8 ui-right ${COLLABORATION_STYLE.SLIDING_TEXT}`)}\">${_ssrInterpolate(Array.from({ length: 15 }).fill(\" 思而不学则殆\").reduce((str, el) => str.concat(el), \"\"))}</p></section>`);\n    };\n  }\n});\n",
-      "start": 1715597154932,
-      "end": 1715597155011,
+      "start": 1715603891210,
+      "end": 1715603891305,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -100,165 +100,165 @@
     },
     {
       "name": "vite:json",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891305,
+      "end": 1715603891305,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597155012,
-      "end": 1715597155012,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "ssr-styles",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "post"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597155013,
-      "end": 1715597155013,
+      "start": 1715603891306,
+      "end": 1715603891306,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
       "result": "import { ref, onMounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderClass as _ssrRenderClass, ssrRenderAttrs as _ssrRenderAttrs, ssrInterpolate as _ssrInterpolate } from \"vue/server-renderer\";\nimport { Linear, gsap } from \"gsap\";\nimport { ScrollTrigger } from \"gsap/dist/ScrollTrigger\";\nimport { NO_MOTION_PREFERENCE_QUERY, isSmallScreen } from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"collaboration\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const COLLABORATION_STYLE = {\n      SLIDING_TEXT: \"opacity-20 text-4xl md:text-5xl font-bold whitespace-nowrap\",\n      SECTION: \"w-full relative select-none tall:py-36 py-48 section-container flex flex-col\",\n      TITLE: \"mt-6 md:mt-8 font-medium text-4xl md:text-5xl text-center\"\n    };\n    const quoteRef = ref(void 0);\n    const targetSection = ref(void 0);\n    const willChange = ref(false);\n    function initTextGradientAnimation(targetSection2) {\n      const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });\n      timeline.from(quoteRef.value, { opacity: 0, duration: 2 }).to(quoteRef.value.querySelector(\".text-strong\"), {\n        backgroundPositionX: \"100%\",\n        duration: 1\n      });\n      return ScrollTrigger.create({\n        trigger: targetSection2.value,\n        start: \"center bottom\",\n        end: \"center center\",\n        scrub: 0,\n        animation: timeline,\n        onToggle: (self) => willChange.value = self.isActive\n      });\n    }\n    function initSlidingTextAnimation(targetSection2) {\n      const slidingTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });\n      slidingTl.to(targetSection2.value.querySelector(\".ui-left\"), {\n        xPercent: isSmallScreen() ? -500 : -300\n      }).from(targetSection2.value.querySelector(\".ui-right\"), { xPercent: isSmallScreen() ? -500 : -300 }, \"<\");\n      return ScrollTrigger.create({\n        trigger: targetSection2.value,\n        start: \"top bottom\",\n        end: \"bottom top\",\n        scrub: 0,\n        animation: slidingTl\n      });\n    }\n    onMounted(() => {\n      const textBgAnimation = initTextGradientAnimation(targetSection);\n      let slidingAnimation;\n      const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY);\n      if (matches)\n        slidingAnimation = initSlidingTextAnimation(targetSection);\n      return () => {\n        textBgAnimation.kill();\n        slidingAnimation?.kill();\n      };\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<section${_ssrRenderAttrs(_mergeProps({\n        ref_key: \"targetSection\",\n        ref: targetSection,\n        class: COLLABORATION_STYLE.SECTION\n      }, _attrs))}><p class=\"${_ssrRenderClass(`ui-left ${COLLABORATION_STYLE.SLIDING_TEXT}`)}\">${_ssrInterpolate(Array.from({ length: 15 }).fill(\" 学而不思则罔 \").reduce((str, el) => str.concat(el), \"\"))}</p><h1 class=\"${_ssrRenderClass(`${COLLABORATION_STYLE.TITLE} ${_unref(willChange) && \"will-change-opacity\"}`)}\"> 努力请从 <span class=\"text-strong font-bold\">今日</span> 始 </h1><p class=\"${_ssrRenderClass(`mt-6 md:mt-8 ui-right ${COLLABORATION_STYLE.SLIDING_TEXT}`)}\">${_ssrInterpolate(Array.from({ length: 15 }).fill(\" 思而不学则殆\").reduce((str, el) => str.concat(el), \"\"))}</p></section>`);\n    };\n  }\n});\n",
-      "start": 1715597155014,
-      "end": 1715597155018,
+      "start": 1715603891306,
+      "end": 1715603891311,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -272,8 +272,8 @@
     {
       "name": "nuxt:imports-transform",
       "result": "import { ref, onMounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderClass as _ssrRenderClass, ssrRenderAttrs as _ssrRenderAttrs, ssrInterpolate as _ssrInterpolate } from \"vue/server-renderer\";\nimport { Linear, gsap } from \"gsap\";\nimport { ScrollTrigger } from \"gsap/dist/ScrollTrigger\";\nimport { NO_MOTION_PREFERENCE_QUERY, isSmallScreen } from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"collaboration\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const COLLABORATION_STYLE = {\n      SLIDING_TEXT: \"opacity-20 text-4xl md:text-5xl font-bold whitespace-nowrap\",\n      SECTION: \"w-full relative select-none tall:py-36 py-48 section-container flex flex-col\",\n      TITLE: \"mt-6 md:mt-8 font-medium text-4xl md:text-5xl text-center\"\n    };\n    const quoteRef = ref(void 0);\n    const targetSection = ref(void 0);\n    const willChange = ref(false);\n    function initTextGradientAnimation(targetSection2) {\n      const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });\n      timeline.from(quoteRef.value, { opacity: 0, duration: 2 }).to(quoteRef.value.querySelector(\".text-strong\"), {\n        backgroundPositionX: \"100%\",\n        duration: 1\n      });\n      return ScrollTrigger.create({\n        trigger: targetSection2.value,\n        start: \"center bottom\",\n        end: \"center center\",\n        scrub: 0,\n        animation: timeline,\n        onToggle: (self) => willChange.value = self.isActive\n      });\n    }\n    function initSlidingTextAnimation(targetSection2) {\n      const slidingTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });\n      slidingTl.to(targetSection2.value.querySelector(\".ui-left\"), {\n        xPercent: isSmallScreen() ? -500 : -300\n      }).from(targetSection2.value.querySelector(\".ui-right\"), { xPercent: isSmallScreen() ? -500 : -300 }, \"<\");\n      return ScrollTrigger.create({\n        trigger: targetSection2.value,\n        start: \"top bottom\",\n        end: \"bottom top\",\n        scrub: 0,\n        animation: slidingTl\n      });\n    }\n    onMounted(() => {\n      const textBgAnimation = initTextGradientAnimation(targetSection);\n      let slidingAnimation;\n      const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY);\n      if (matches)\n        slidingAnimation = initSlidingTextAnimation(targetSection);\n      return () => {\n        textBgAnimation.kill();\n        slidingAnimation?.kill();\n      };\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<section${_ssrRenderAttrs(_mergeProps({\n        ref_key: \"targetSection\",\n        ref: targetSection,\n        class: COLLABORATION_STYLE.SECTION\n      }, _attrs))}><p class=\"${_ssrRenderClass(`ui-left ${COLLABORATION_STYLE.SLIDING_TEXT}`)}\">${_ssrInterpolate(Array.from({ length: 15 }).fill(\" 学而不思则罔 \").reduce((str, el) => str.concat(el), \"\"))}</p><h1 class=\"${_ssrRenderClass(`${COLLABORATION_STYLE.TITLE} ${_unref(willChange) && \"will-change-opacity\"}`)}\"> 努力请从 <span class=\"text-strong font-bold\">今日</span> 始 </h1><p class=\"${_ssrRenderClass(`mt-6 md:mt-8 ui-right ${COLLABORATION_STYLE.SLIDING_TEXT}`)}\">${_ssrInterpolate(Array.from({ length: 15 }).fill(\" 思而不学则殆\").reduce((str, el) => str.concat(el), \"\"))}</p></section>`);\n    };\n  }\n});\n",
-      "start": 1715597155014,
-      "end": 1715597155018,
+      "start": 1715603891306,
+      "end": 1715603891311,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -286,51 +286,51 @@
     },
     {
       "name": "unctx:transform",
-      "start": 1715597155018,
-      "end": 1715597155018,
+      "start": 1715603891311,
+      "end": 1715603891311,
       "order": "post"
     },
     {
       "name": "unctx:transform",
-      "start": 1715597155018,
-      "end": 1715597155018,
+      "start": 1715603891311,
+      "end": 1715603891311,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597155019,
-      "end": 1715597155019,
+      "start": 1715603891311,
+      "end": 1715603891311,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597155019,
-      "end": 1715597155019,
+      "start": 1715603891311,
+      "end": 1715603891311,
       "order": "post"
     },
     {
       "name": "element-plus:transform",
-      "start": 1715597155020,
-      "end": 1715597155020,
+      "start": 1715603891311,
+      "end": 1715603891312,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-template",
-      "start": 1715597155020,
-      "end": 1715597155020,
+      "start": 1715603891312,
+      "end": 1715603891312,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
-      "start": 1715597155025,
-      "end": 1715597155025,
+      "start": 1715603891312,
+      "end": 1715603891313,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-composables:transform",
       "result": "import { ref, onMounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderClass as _ssrRenderClass, ssrRenderAttrs as _ssrRenderAttrs, ssrInterpolate as _ssrInterpolate } from \"vue/server-renderer\";\nimport { Linear, gsap } from \"gsap\";\nimport { ScrollTrigger } from \"gsap/dist/ScrollTrigger\";\nimport { NO_MOTION_PREFERENCE_QUERY, isSmallScreen } from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"collaboration\",\n  __ssrInlineRender: true,\n  setup(__props) {\n    const COLLABORATION_STYLE = {\n      SLIDING_TEXT: \"opacity-20 text-4xl md:text-5xl font-bold whitespace-nowrap\",\n      SECTION: \"w-full relative select-none tall:py-36 py-48 section-container flex flex-col\",\n      TITLE: \"mt-6 md:mt-8 font-medium text-4xl md:text-5xl text-center\"\n    };\n    const quoteRef = ref(void 0);\n    const targetSection = ref(void 0);\n    const willChange = ref(false);\n    function initTextGradientAnimation(targetSection2) {\n      const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });\n      timeline.from(quoteRef.value, { opacity: 0, duration: 2 }).to(quoteRef.value.querySelector(\".text-strong\"), {\n        backgroundPositionX: \"100%\",\n        duration: 1\n      });\n      return ScrollTrigger.create({\n        trigger: targetSection2.value,\n        start: \"center bottom\",\n        end: \"center center\",\n        scrub: 0,\n        animation: timeline,\n        onToggle: (self) => willChange.value = self.isActive\n      });\n    }\n    function initSlidingTextAnimation(targetSection2) {\n      const slidingTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });\n      slidingTl.to(targetSection2.value.querySelector(\".ui-left\"), {\n        xPercent: isSmallScreen() ? -500 : -300\n      }).from(targetSection2.value.querySelector(\".ui-right\"), { xPercent: isSmallScreen() ? -500 : -300 }, \"<\");\n      return ScrollTrigger.create({\n        trigger: targetSection2.value,\n        start: \"top bottom\",\n        end: \"bottom top\",\n        scrub: 0,\n        animation: slidingTl\n      });\n    }\n     /*#__PURE__*/ false && onMounted(() => {\n      const textBgAnimation = initTextGradientAnimation(targetSection);\n      let slidingAnimation;\n      const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY);\n      if (matches)\n        slidingAnimation = initSlidingTextAnimation(targetSection);\n      return () => {\n        textBgAnimation.kill();\n        slidingAnimation?.kill();\n      };\n    });\n    return (_ctx, _push, _parent, _attrs) => {\n      _push(`<section${_ssrRenderAttrs(_mergeProps({\n        ref_key: \"targetSection\",\n        ref: targetSection,\n        class: COLLABORATION_STYLE.SECTION\n      }, _attrs))}><p class=\"${_ssrRenderClass(`ui-left ${COLLABORATION_STYLE.SLIDING_TEXT}`)}\">${_ssrInterpolate(Array.from({ length: 15 }).fill(\" 学而不思则罔 \").reduce((str, el) => str.concat(el), \"\"))}</p><h1 class=\"${_ssrRenderClass(`${COLLABORATION_STYLE.TITLE} ${_unref(willChange) && \"will-change-opacity\"}`)}\"> 努力请从 <span class=\"text-strong font-bold\">今日</span> 始 </h1><p class=\"${_ssrRenderClass(`mt-6 md:mt-8 ui-right ${COLLABORATION_STYLE.SLIDING_TEXT}`)}\">${_ssrInterpolate(Array.from({ length: 15 }).fill(\" 思而不学则殆\").reduce((str, el) => str.concat(el), \"\"))}</p></section>`);\n    };\n  }\n});\n",
-      "start": 1715597155026,
-      "end": 1715597155026,
+      "start": 1715603891313,
+      "end": 1715603891318,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -343,14 +343,14 @@
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1715597155026,
-      "end": 1715597155027,
+      "start": 1715603891318,
+      "end": 1715603891318,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1715597155027,
-      "end": 1715597155027,
+      "start": 1715603891318,
+      "end": 1715603891318,
       "order": "normal"
     }
   ]

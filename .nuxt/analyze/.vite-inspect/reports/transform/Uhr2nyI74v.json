@@ -4,50 +4,50 @@
     {
       "name": "vite:vue",
       "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, resolveComponent as _resolveComponent, withCtx as _withCtx, createBlock as _createBlock, createVNode as _createVNode, normalizeClass as _normalizeClass, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\"\n\nconst _withScopeId = n => (_pushScopeId(\"data-v-82d2d436\"),n=n(),_popScopeId(),n)\nconst _hoisted_1 = { class: \"section-title-sm seq mb-4\" }\nconst _hoisted_2 = [\"href\"]\nconst _hoisted_3 = { class: \"grid-content\" }\n\nimport type {\r\n    MEMBER\r\n  } from '~/store/constants';\r\n  declare interface MyProp {\r\n    members: MEMBER[];\r\n    willChange: Boolean;\r\n    title: string;\r\n  }\r\n  \nexport default /*#__PURE__*/_defineComponent({\n  __name: 'render-member-column',\n  props: {\n    members: {},\n    willChange: {},\n    title: {}\n  },\n  setup(__props: any) {\n\r\n  \r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_el_col = _resolveComponent(\"el-col\")!\n  const _component_el_row = _resolveComponent(\"el-row\")!\n\n  return (_openBlock(), _createElementBlock(_Fragment, null, [\n    _createElementVNode(\"h2\", _hoisted_1, _toDisplayString(_ctx.title), 1),\n    _createElementVNode(\"div\", {\n      class: _normalizeClass(`${_ctx.willChange && 'will-change-opacity'} seq flex flex-wrap`)\n    }, [\n      _createVNode(_component_el_row, { style: {\"width\":\"100%\",\"padding-left\":\"2rem\"} }, {\n        default: _withCtx(() => [\n          (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(_ctx.members, (member, idx) => {\n            return (_openBlock(), _createBlock(_component_el_col, {\n              xs: 24,\n              sm: 12,\n              md: 8,\n              lg: 6,\n              xl: 6,\n              key: idx,\n              class: \"seq\"\n            }, {\n              default: _withCtx(() => [\n                _createElementVNode(\"a\", {\n                  href: member.url,\n                  title: \"点击查看详细信息\"\n                }, [\n                  _createElementVNode(\"div\", _hoisted_3, [\n                    _createElementVNode(\"h5\", null, \"姓名：\" + _toDisplayString(member.name), 1),\n                    _createElementVNode(\"h5\", null, \"籍贯：\" + _toDisplayString(member.city), 1),\n                    _createElementVNode(\"h5\", null, \"年级：\" + _toDisplayString(member.grade), 1),\n                    _createElementVNode(\"h5\", null, \"研究兴趣：\" + _toDisplayString(member.interest), 1),\n                    _createElementVNode(\"h5\", null, \"现状：\" + _toDisplayString(member.status), 1)\n                  ])\n                ], 8, _hoisted_2)\n              ]),\n              _: 2\n            }, 1024))\n          }), 128))\n        ]),\n        _: 1\n      })\n    ], 2)\n  ], 64))\n}\n}\n\n})",
-      "start": 1715597143930,
-      "end": 1715597143930
+      "start": 1715603880317,
+      "end": 1715603880317
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597143930,
-      "end": 1715597143930,
+      "start": 1715603880317,
+      "end": 1715603880317,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597143930,
-      "end": 1715597143930,
+      "start": 1715603880318,
+      "end": 1715603880318,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597143930,
-      "end": 1715597143930,
+      "start": 1715603880318,
+      "end": 1715603880318,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597143930,
-      "end": 1715597143930,
+      "start": 1715603880318,
+      "end": 1715603880318,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1715597143930,
-      "end": 1715597143930,
+      "start": 1715603880318,
+      "end": 1715603880318,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1715597143930,
-      "end": 1715597143930,
+      "start": 1715603880318,
+      "end": 1715603880318,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, resolveComponent as _resolveComponent, withCtx as _withCtx, createBlock as _createBlock, createVNode as _createVNode, normalizeClass as _normalizeClass, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\";\nconst _withScopeId = (n) => (_pushScopeId(\"data-v-82d2d436\"), n = n(), _popScopeId(), n);\nconst _hoisted_1 = { class: \"section-title-sm seq mb-4\" };\nconst _hoisted_2 = [\"href\"];\nconst _hoisted_3 = { class: \"grid-content\" };\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"render-member-column\",\n  props: {\n    members: {},\n    willChange: {},\n    title: {}\n  },\n  setup(__props) {\n    return (_ctx, _cache) => {\n      const _component_el_col = _resolveComponent(\"el-col\");\n      const _component_el_row = _resolveComponent(\"el-row\");\n      return _openBlock(), _createElementBlock(_Fragment, null, [\n        _createElementVNode(\"h2\", _hoisted_1, _toDisplayString(_ctx.title), 1),\n        _createElementVNode(\"div\", {\n          class: _normalizeClass(`${_ctx.willChange && \"will-change-opacity\"} seq flex flex-wrap`)\n        }, [\n          _createVNode(_component_el_row, { style: { \"width\": \"100%\", \"padding-left\": \"2rem\" } }, {\n            default: _withCtx(() => [\n              (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(_ctx.members, (member, idx) => {\n                return _openBlock(), _createBlock(_component_el_col, {\n                  xs: 24,\n                  sm: 12,\n                  md: 8,\n                  lg: 6,\n                  xl: 6,\n                  key: idx,\n                  class: \"seq\"\n                }, {\n                  default: _withCtx(() => [\n                    _createElementVNode(\"a\", {\n                      href: member.url,\n                      title: \"点击查看详细信息\"\n                    }, [\n                      _createElementVNode(\"div\", _hoisted_3, [\n                        _createElementVNode(\"h5\", null, \"姓名：\" + _toDisplayString(member.name), 1),\n                        _createElementVNode(\"h5\", null, \"籍贯：\" + _toDisplayString(member.city), 1),\n                        _createElementVNode(\"h5\", null, \"年级：\" + _toDisplayString(member.grade), 1),\n                        _createElementVNode(\"h5\", null, \"研究兴趣：\" + _toDisplayString(member.interest), 1),\n                        _createElementVNode(\"h5\", null, \"现状：\" + _toDisplayString(member.status), 1)\n                      ])\n                    ], 8, _hoisted_2)\n                  ]),\n                  _: 2\n                }, 1024);\n              }), 128))\n            ]),\n            _: 1\n          })\n        ], 2)\n      ], 64);\n    };\n  }\n});\n",
-      "start": 1715597143931,
-      "end": 1715597143971,
+      "start": 1715603880318,
+      "end": 1715603880325,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -63,190 +63,190 @@
     },
     {
       "name": "vite:json",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880325,
+      "end": 1715603880325,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880325,
+      "end": 1715603880325,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880325,
+      "end": 1715603880325,
       "order": "normal"
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880325,
+      "end": 1715603880325,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880325,
+      "end": 1715603880325,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880325,
+      "end": 1715603880325,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880325,
+      "end": 1715603880325,
       "order": "normal"
     },
     {
       "name": "nuxt:chunk-error",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880325,
+      "end": 1715603880325,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880325,
+      "end": 1715603880325,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880325,
+      "end": 1715603880325,
       "order": "normal"
     },
     {
       "name": "ssr-styles",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880325,
+      "end": 1715603880325,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880325,
+      "end": 1715603880326,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880326,
+      "end": 1715603880326,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880326,
+      "end": 1715603880326,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880326,
+      "end": 1715603880326,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880326,
+      "end": 1715603880326,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880326,
+      "end": 1715603880326,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880326,
+      "end": 1715603880326,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880326,
+      "end": 1715603880326,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880326,
+      "end": 1715603880326,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597143971,
-      "end": 1715597143971,
+      "start": 1715603880326,
+      "end": 1715603880326,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
-      "start": 1715597143971,
-      "end": 1715597143972,
+      "start": 1715603880326,
+      "end": 1715603880326,
       "order": "post"
     },
     {
       "name": "unctx:transform",
-      "start": 1715597143972,
-      "end": 1715597143972,
+      "start": 1715603880326,
+      "end": 1715603880326,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597143972,
-      "end": 1715597143972,
+      "start": 1715603880326,
+      "end": 1715603880326,
       "order": "post"
     },
     {
       "name": "nuxt:runtime-paths-dep",
-      "start": 1715597143972,
-      "end": 1715597143972,
+      "start": 1715603880326,
+      "end": 1715603880326,
       "order": "post"
     },
     {
       "name": "element-plus:transform",
       "result": "import 'element-plus/es/components/col/style/index';\nimport 'element-plus/es/components/row/style/index';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, resolveComponent as _resolveComponent, withCtx as _withCtx, createBlock as _createBlock, createVNode as _createVNode, normalizeClass as _normalizeClass, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\";\nconst _withScopeId = (n) => (_pushScopeId(\"data-v-82d2d436\"), n = n(), _popScopeId(), n);\nconst _hoisted_1 = { class: \"section-title-sm seq mb-4\" };\nconst _hoisted_2 = [\"href\"];\nconst _hoisted_3 = { class: \"grid-content\" };\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"render-member-column\",\n  props: {\n    members: {},\n    willChange: {},\n    title: {}\n  },\n  setup(__props) {\n    return (_ctx, _cache) => {\n      const _component_el_col = _resolveComponent(\"el-col\");\n      const _component_el_row = _resolveComponent(\"el-row\");\n      return _openBlock(), _createElementBlock(_Fragment, null, [\n        _createElementVNode(\"h2\", _hoisted_1, _toDisplayString(_ctx.title), 1),\n        _createElementVNode(\"div\", {\n          class: _normalizeClass(`${_ctx.willChange && \"will-change-opacity\"} seq flex flex-wrap`)\n        }, [\n          _createVNode(_component_el_row, { style: { \"width\": \"100%\", \"padding-left\": \"2rem\" } }, {\n            default: _withCtx(() => [\n              (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(_ctx.members, (member, idx) => {\n                return _openBlock(), _createBlock(_component_el_col, {\n                  xs: 24,\n                  sm: 12,\n                  md: 8,\n                  lg: 6,\n                  xl: 6,\n                  key: idx,\n                  class: \"seq\"\n                }, {\n                  default: _withCtx(() => [\n                    _createElementVNode(\"a\", {\n                      href: member.url,\n                      title: \"点击查看详细信息\"\n                    }, [\n                      _createElementVNode(\"div\", _hoisted_3, [\n                        _createElementVNode(\"h5\", null, \"姓名：\" + _toDisplayString(member.name), 1),\n                        _createElementVNode(\"h5\", null, \"籍贯：\" + _toDisplayString(member.city), 1),\n                        _createElementVNode(\"h5\", null, \"年级：\" + _toDisplayString(member.grade), 1),\n                        _createElementVNode(\"h5\", null, \"研究兴趣：\" + _toDisplayString(member.interest), 1),\n                        _createElementVNode(\"h5\", null, \"现状：\" + _toDisplayString(member.status), 1)\n                      ])\n                    ], 8, _hoisted_2)\n                  ]),\n                  _: 2\n                }, 1024);\n              }), 128))\n            ]),\n            _: 1\n          })\n        ], 2)\n      ], 64);\n    };\n  }\n});\n",
-      "start": 1715597143972,
-      "end": 1715597143972,
+      "start": 1715603880326,
+      "end": 1715603880327,
       "order": "post"
     },
     {
       "name": "nuxt:route-injection-plugin",
-      "start": 1715597143972,
-      "end": 1715597143972,
+      "start": 1715603880327,
+      "end": 1715603880327,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
       "result": "import { ElCol as __nuxt_component_0 } from \"element-plus/es/components/col/index\";\nimport { ElRow as __nuxt_component_1 } from \"element-plus/es/components/row/index\";\nimport 'element-plus/es/components/col/style/index';\nimport 'element-plus/es/components/row/style/index';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, resolveComponent as _resolveComponent, withCtx as _withCtx, createBlock as _createBlock, createVNode as _createVNode, normalizeClass as _normalizeClass, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\";\nconst _withScopeId = (n) => (_pushScopeId(\"data-v-82d2d436\"), n = n(), _popScopeId(), n);\nconst _hoisted_1 = { class: \"section-title-sm seq mb-4\" };\nconst _hoisted_2 = [\"href\"];\nconst _hoisted_3 = { class: \"grid-content\" };\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"render-member-column\",\n  props: {\n    members: {},\n    willChange: {},\n    title: {}\n  },\n  setup(__props) {\n    return (_ctx, _cache) => {\n      const _component_el_col = __nuxt_component_0;\n      const _component_el_row = __nuxt_component_1;\n      return _openBlock(), _createElementBlock(_Fragment, null, [\n        _createElementVNode(\"h2\", _hoisted_1, _toDisplayString(_ctx.title), 1),\n        _createElementVNode(\"div\", {\n          class: _normalizeClass(`${_ctx.willChange && \"will-change-opacity\"} seq flex flex-wrap`)\n        }, [\n          _createVNode(_component_el_row, { style: { \"width\": \"100%\", \"padding-left\": \"2rem\" } }, {\n            default: _withCtx(() => [\n              (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(_ctx.members, (member, idx) => {\n                return _openBlock(), _createBlock(_component_el_col, {\n                  xs: 24,\n                  sm: 12,\n                  md: 8,\n                  lg: 6,\n                  xl: 6,\n                  key: idx,\n                  class: \"seq\"\n                }, {\n                  default: _withCtx(() => [\n                    _createElementVNode(\"a\", {\n                      href: member.url,\n                      title: \"点击查看详细信息\"\n                    }, [\n                      _createElementVNode(\"div\", _hoisted_3, [\n                        _createElementVNode(\"h5\", null, \"姓名：\" + _toDisplayString(member.name), 1),\n                        _createElementVNode(\"h5\", null, \"籍贯：\" + _toDisplayString(member.city), 1),\n                        _createElementVNode(\"h5\", null, \"年级：\" + _toDisplayString(member.grade), 1),\n                        _createElementVNode(\"h5\", null, \"研究兴趣：\" + _toDisplayString(member.interest), 1),\n                        _createElementVNode(\"h5\", null, \"现状：\" + _toDisplayString(member.status), 1)\n                      ])\n                    ], 8, _hoisted_2)\n                  ]),\n                  _: 2\n                }, 1024);\n              }), 128))\n            ]),\n            _: 1\n          })\n        ], 2)\n      ], 64);\n    };\n  }\n});\n",
-      "start": 1715597143972,
-      "end": 1715597143973,
+      "start": 1715603880327,
+      "end": 1715603880327,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-composables:transform",
-      "start": 1715597143973,
-      "end": 1715597143973,
+      "start": 1715603880327,
+      "end": 1715603880327,
       "order": "post"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1715597143973,
-      "end": 1715597143973,
+      "start": 1715603880327,
+      "end": 1715603880327,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1715597143973,
-      "end": 1715597143973,
+      "start": 1715603880327,
+      "end": 1715603880327,
       "order": "normal"
     }
   ]

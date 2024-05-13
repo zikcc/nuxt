@@ -4,50 +4,50 @@
     {
       "name": "vite:vue",
       "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { unref as _unref, normalizeStyle as _normalizeStyle, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\"\n\nconst _hoisted_1 = { class: \"progress fixed top-0 z-50 w-full\" }\n\nimport { NO_MOTION_PREFERENCE_QUERY } from '~/store/constants'\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'ProgressIndicator',\n  setup(__props) {\n\r\nconst progress = ref(0)\r\n\r\nfunction calculateProgress() {\r\n  const winScroll = document.body.scrollTop || document.documentElement.scrollTop\r\n  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight\r\n  const scrolled = winScroll / height\r\n  progress.value = scrolled\r\n}\r\n\r\nonMounted(() => {\r\n  const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY)\r\n  matches && window.addEventListener('scroll', calculateProgress)\r\n})\r\n\r\nonUnmounted(() => {\r\n  window.removeEventListener('scroll', calculateProgress)\r\n})\r\n\nreturn (_ctx: any,_cache: any) => {\n  return (_openBlock(), _createElementBlock(\"div\", null, [\n    _createElementVNode(\"div\", _hoisted_1, [\n      _createElementVNode(\"div\", {\n        class: \"progress-bar\",\n        style: _normalizeStyle(`transform:scaleX(${_unref(progress)})`)\n      }, null, 4)\n    ])\n  ]))\n}\n}\n\n})",
-      "start": 1715597141689,
-      "end": 1715597141689
+      "start": 1715603879255,
+      "end": 1715603879255
     },
     {
       "name": "unocss:transformers:pre",
-      "start": 1715597141689,
-      "end": 1715597141689,
+      "start": 1715603879256,
+      "end": 1715603879256,
       "order": "pre"
     },
     {
       "name": "unocss:global:build:scan",
-      "start": 1715597141689,
-      "end": 1715597141689,
+      "start": 1715603879256,
+      "end": 1715603879256,
       "order": "pre"
     },
     {
       "name": "nuxt:layer-aliasing",
-      "start": 1715597141690,
-      "end": 1715597141690,
+      "start": 1715603879256,
+      "end": 1715603879256,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1715597141690,
-      "end": 1715597141690,
+      "start": 1715603879256,
+      "end": 1715603879256,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1715597141690,
-      "end": 1715597141690,
+      "start": 1715603879256,
+      "end": 1715603879256,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1715597141690,
-      "end": 1715597141690,
+      "start": 1715603879256,
+      "end": 1715603879256,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, normalizeStyle as _normalizeStyle, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\";\nconst _hoisted_1 = { class: \"progress fixed top-0 z-50 w-full\" };\nimport { NO_MOTION_PREFERENCE_QUERY } from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"ProgressIndicator\",\n  setup(__props) {\n    const progress = ref(0);\n    function calculateProgress() {\n      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;\n      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;\n      const scrolled = winScroll / height;\n      progress.value = scrolled;\n    }\n    onMounted(() => {\n      const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY);\n      matches && window.addEventListener(\"scroll\", calculateProgress);\n    });\n    onUnmounted(() => {\n      window.removeEventListener(\"scroll\", calculateProgress);\n    });\n    return (_ctx, _cache) => {\n      return _openBlock(), _createElementBlock(\"div\", null, [\n        _createElementVNode(\"div\", _hoisted_1, [\n          _createElementVNode(\"div\", {\n            class: \"progress-bar\",\n            style: _normalizeStyle(`transform:scaleX(${_unref(progress)})`)\n          }, null, 4)\n        ])\n      ]);\n    };\n  }\n});\n",
-      "start": 1715597141690,
-      "end": 1715597141787,
+      "start": 1715603879257,
+      "end": 1715603879356,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -63,135 +63,135 @@
     },
     {
       "name": "vite:json",
-      "start": 1715597141787,
-      "end": 1715597141787,
+      "start": 1715603879356,
+      "end": 1715603879356,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1715597141787,
-      "end": 1715597141787,
+      "start": 1715603879356,
+      "end": 1715603879356,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1715597141787,
-      "end": 1715597141787,
+      "start": 1715603879356,
+      "end": 1715603879356,
       "order": "normal"
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1715597141787,
-      "end": 1715597141787,
+      "start": 1715603879356,
+      "end": 1715603879356,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:undefined",
-      "start": 1715597141787,
-      "end": 1715597141787,
+      "start": 1715603879357,
+      "end": 1715603879357,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597141787,
-      "end": 1715597141787,
+      "start": 1715603879357,
+      "end": 1715603879357,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1715597141787,
-      "end": 1715597141787,
+      "start": 1715603879357,
+      "end": 1715603879357,
       "order": "normal"
     },
     {
       "name": "nuxt:chunk-error",
-      "start": 1715597141787,
-      "end": 1715597141787,
+      "start": 1715603879357,
+      "end": 1715603879357,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1715597141787,
-      "end": 1715597141787,
+      "start": 1715603879357,
+      "end": 1715603879357,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1715597141787,
-      "end": 1715597141787,
+      "start": 1715603879357,
+      "end": 1715603879357,
       "order": "normal"
     },
     {
       "name": "ssr-styles",
-      "start": 1715597141787,
-      "end": 1715597141787,
+      "start": 1715603879357,
+      "end": 1715603879357,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1715597141788,
-      "end": 1715597141788,
+      "start": 1715603879357,
+      "end": 1715603879357,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1715597141788,
-      "end": 1715597141788,
+      "start": 1715603879357,
+      "end": 1715603879357,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1715597141788,
-      "end": 1715597141788,
+      "start": 1715603879357,
+      "end": 1715603879357,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1715597141788,
-      "end": 1715597141788,
+      "start": 1715603879357,
+      "end": 1715603879357,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1715597141788,
-      "end": 1715597141788,
+      "start": 1715603879357,
+      "end": 1715603879358,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1715597141788,
-      "end": 1715597141788,
+      "start": 1715603879358,
+      "end": 1715603879358,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1715597141788,
-      "end": 1715597141788,
+      "start": 1715603879358,
+      "end": 1715603879358,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1715597141788,
-      "end": 1715597141788,
+      "start": 1715603879358,
+      "end": 1715603879358,
       "order": "normal"
     },
     {
       "name": "unocss:transformers:post",
-      "start": 1715597141788,
-      "end": 1715597141788,
+      "start": 1715603879358,
+      "end": 1715603879358,
       "order": "post"
     },
     {
       "name": "nuxt:composable-keys",
-      "start": 1715597141788,
-      "end": 1715597141788,
+      "start": 1715603879358,
+      "end": 1715603879358,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
       "result": "import { ref, onMounted, onUnmounted } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, normalizeStyle as _normalizeStyle, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\";\nconst _hoisted_1 = { class: \"progress fixed top-0 z-50 w-full\" };\nimport { NO_MOTION_PREFERENCE_QUERY } from \"~/store/constants\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"ProgressIndicator\",\n  setup(__props) {\n    const progress = ref(0);\n    function calculateProgress() {\n      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;\n      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;\n      const scrolled = winScroll / height;\n      progress.value = scrolled;\n    }\n    onMounted(() => {\n      const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY);\n      matches && window.addEventListener(\"scroll\", calculateProgress);\n    });\n    onUnmounted(() => {\n      window.removeEventListener(\"scroll\", calculateProgress);\n    });\n    return (_ctx, _cache) => {\n      return _openBlock(), _createElementBlock(\"div\", null, [\n        _createElementVNode(\"div\", _hoisted_1, [\n          _createElementVNode(\"div\", {\n            class: \"progress-bar\",\n            style: _normalizeStyle(`transform:scaleX(${_unref(progress)})`)\n          }, null, 4)\n        ])\n      ]);\n    };\n  }\n});\n",
-      "start": 1715597141788,
-      "end": 1715597141793,
+      "start": 1715603879358,
+      "end": 1715603879366,
       "order": "post",
       "sourcemaps": {
         "version": 3,
@@ -204,56 +204,56 @@
     },
     {
       "name": "unctx:transform",
-      "start": 1715597141793,
-      "end": 1715597141793,
+      "start": 1715603879366,
+      "end": 1715603879366,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1715597141793,
-      "end": 1715597141793,
+      "start": 1715603879366,
+      "end": 1715603879366,
       "order": "post"
     },
     {
       "name": "nuxt:runtime-paths-dep",
-      "start": 1715597141794,
-      "end": 1715597141794,
+      "start": 1715603879366,
+      "end": 1715603879366,
       "order": "post"
     },
     {
       "name": "element-plus:transform",
-      "start": 1715597141794,
-      "end": 1715597141794,
+      "start": 1715603879367,
+      "end": 1715603879367,
       "order": "post"
     },
     {
       "name": "nuxt:route-injection-plugin",
-      "start": 1715597141794,
-      "end": 1715597141794,
+      "start": 1715603879367,
+      "end": 1715603879367,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
-      "start": 1715597141794,
-      "end": 1715597141794,
+      "start": 1715603879367,
+      "end": 1715603879367,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-composables:transform",
-      "start": 1715597141794,
-      "end": 1715597141794,
+      "start": 1715603879367,
+      "end": 1715603879367,
       "order": "post"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1715597141794,
-      "end": 1715597141795,
+      "start": 1715603879367,
+      "end": 1715603879368,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1715597141795,
-      "end": 1715597141795,
+      "start": 1715603879368,
+      "end": 1715603879368,
       "order": "normal"
     }
   ]
