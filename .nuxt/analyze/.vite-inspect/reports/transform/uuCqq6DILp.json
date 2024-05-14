@@ -1,0 +1,248 @@
+{
+  "resolvedId": "D:/CODE/Blog/nuxt-main/node_modules/element-plus/theme-chalk/src/option.scss",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "@use 'sass:map';\n\n@use 'mixins/mixins' as *;\n@use 'common/var' as *;\n\n$checked-icon: \"data:image/svg+xml;utf8,%3Csvg class='icon' width='200' height='200' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='currentColor' d='M406.656 706.944L195.84 496.256a32 32 0 10-45.248 45.248l256 256 512-512a32 32 0 00-45.248-45.248L406.592 706.944z'%3E%3C/path%3E%3C/svg%3E\";\n\n@mixin checked-icon {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 20px;\n  border-top: none;\n  border-right: none;\n  background-repeat: no-repeat;\n  background-position: center;\n  background-color: map.get($select-option, 'selected-text-color');\n  mask: url('#{$checked-icon}') no-repeat;\n  mask-size: 100% 100%;\n  -webkit-mask: url('#{$checked-icon}') no-repeat;\n  -webkit-mask-size: 100% 100%;\n  transform: translateY(-50%);\n  width: 12px;\n  height: 12px;\n}\n\n@include b(select-dropdown) {\n  @include e(item) {\n    font-size: map.get($select, 'font-size');\n    // 20 as the padding of option item, 12 as the size of ✓ icon size\n    padding: 0 #{20 + 12}px 0 20px;\n    position: relative;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    color: map.get($select-option, 'text-color');\n    height: map.get($select-option, 'height');\n    line-height: map.get($select-option, 'height');\n    box-sizing: border-box;\n    cursor: pointer;\n\n    @include when(hovering) {\n      background-color: map.get($select-option, 'hover-background');\n    }\n\n    @include when(selected) {\n      color: map.get($select-option, 'selected-text-color');\n      font-weight: bold;\n    }\n\n    @include when(disabled) {\n      color: map.get($select-option, 'disabled-color');\n      cursor: not-allowed;\n      background-color: unset;\n    }\n  }\n\n  @include when(multiple) {\n    .#{$namespace}-select-dropdown__item.is-selected {\n      &::after {\n        @include checked-icon;\n      }\n    }\n\n    .#{$namespace}-select-dropdown__item.is-disabled {\n      &::after {\n        background-color: map.get($select-option, 'disabled-color');\n      }\n    }\n  }\n}\n",
+      "start": 1715670288041,
+      "end": 1715670288357,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1715670288357,
+      "end": 1715670288357,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1715670288357,
+      "end": 1715670288357,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1715670288357,
+      "end": 1715670288357,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1715670288357,
+      "end": 1715670288357,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1715670288357,
+      "end": 1715670288358,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": ":root {\n  --el-color-primary: #fff;\n  --el-bg-color-overlay:transparent;\n}\n\n/* Element Chalk Variables */\n.el-select-dropdown__item {\n  box-sizing: border-box;\n  color: var(--el-text-color-regular);\n  cursor: pointer;\n  font-size: var(--el-font-size-base);\n  height: 34px;\n  line-height: 34px;\n  overflow: hidden;\n  padding: 0 32px 0 20px;\n  position: relative;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.el-select-dropdown__item.is-hovering {\n  background-color: var(--el-fill-color-light);\n}\n\n.el-select-dropdown__item.is-selected {\n  color: var(--el-color-primary);\n  font-weight: 700;\n}\n\n.el-select-dropdown__item.is-disabled {\n  background-color: unset;\n  color: var(--el-text-color-placeholder);\n  cursor: not-allowed;\n}\n\n.el-select-dropdown.is-multiple .el-select-dropdown__item.is-selected:after {\n  background-color: var(--el-color-primary);\n  background-position: 50%;\n  background-repeat: no-repeat;\n  border-right: none;\n  border-top: none;\n  content: \"\";\n  height: 12px;\n          mask: url(\"data:image/svg+xml;utf8,%3Csvg class='icon' width='200' height='200' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='currentColor' d='M406.656 706.944L195.84 496.256a32 32 0 10-45.248 45.248l256 256 512-512a32 32 0 00-45.248-45.248L406.592 706.944z'%3E%3C/path%3E%3C/svg%3E\") no-repeat;\n  mask-size: 100% 100%;\n  -webkit-mask: url(\"data:image/svg+xml;utf8,%3Csvg class='icon' width='200' height='200' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='currentColor' d='M406.656 706.944L195.84 496.256a32 32 0 10-45.248 45.248l256 256 512-512a32 32 0 00-45.248-45.248L406.592 706.944z'%3E%3C/path%3E%3C/svg%3E\") no-repeat;\n  -webkit-mask-size: 100% 100%;\n  position: absolute;\n  right: 20px;\n  top: 50%;\n  transform: translateY(-50%);\n  width: 12px;\n}\n.el-select-dropdown.is-multiple .el-select-dropdown__item.is-disabled:after {\n  background-color: var(--el-text-color-placeholder);\n}",
+      "start": 1715670288358,
+      "end": 1715670288719,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:undefined",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "export default ''",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1715670288719,
+      "end": 1715670288719,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1715670288720,
+      "end": 1715670288720,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1715670288720,
+      "end": 1715670288720,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1715670288720,
+      "end": 1715670288720,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1715670288720,
+      "end": 1715670288720,
+      "order": "normal"
+    }
+  ]
+}

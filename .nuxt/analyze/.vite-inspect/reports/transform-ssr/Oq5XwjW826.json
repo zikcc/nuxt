@@ -1,0 +1,331 @@
+{
+  "resolvedId": "D:/CODE/Blog/nuxt-main/node_modules/element-plus/theme-chalk/src/scrollbar.scss",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "@use 'sass:map';\n\n@use 'mixins/mixins' as *;\n@use 'mixins/var' as *;\n@use 'common/var' as *;\n\n@include b(scrollbar) {\n  @include set-component-css-var('scrollbar', $scrollbar);\n}\n\n@include b(scrollbar) {\n  overflow: hidden;\n  position: relative;\n  height: 100%;\n\n  @include e(wrap) {\n    overflow: auto;\n    height: 100%;\n\n    @include m(hidden-default) {\n      scrollbar-width: none;\n      &::-webkit-scrollbar {\n        display: none;\n      }\n    }\n  }\n\n  @include e(thumb) {\n    position: relative;\n    display: block;\n    width: 0;\n    height: 0;\n    cursor: pointer;\n    border-radius: inherit;\n    background-color: var(\n      #{getCssVarName('scrollbar-bg-color')},\n      map.get($scrollbar, 'bg-color')\n    );\n    transition: getCssVar('transition-duration') background-color;\n    opacity: var(\n      #{getCssVarName('scrollbar-opacity')},\n      map.get($scrollbar, 'opacity')\n    );\n\n    &:hover {\n      background-color: var(\n        #{getCssVarName('scrollbar-hover-bg-color')},\n        map.get($scrollbar, 'hover-bg-color')\n      );\n      opacity: var(\n        #{getCssVarName('scrollbar-hover-opacity')},\n        map.get($scrollbar, 'hover-opacity')\n      );\n    }\n  }\n\n  @include e(bar) {\n    position: absolute;\n    right: 2px;\n    bottom: 2px;\n    z-index: 1;\n    border-radius: 4px;\n\n    @include when(vertical) {\n      width: 6px;\n      top: 2px;\n\n      > div {\n        width: 100%;\n      }\n    }\n\n    @include when(horizontal) {\n      height: 6px;\n      left: 2px;\n\n      > div {\n        height: 100%;\n      }\n    }\n  }\n}\n\n.#{$namespace}-scrollbar-fade {\n  &-enter-active {\n    transition: opacity 340ms ease-out;\n  }\n\n  &-leave-active {\n    transition: opacity 120ms ease-out;\n  }\n\n  &-enter-from,\n  &-leave-active {\n    opacity: 0;\n  }\n}\n",
+      "start": 1715670307283,
+      "end": 1715670307923,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1715670307923,
+      "end": 1715670307923,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1715670307923,
+      "end": 1715670307923,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1715670307923,
+      "end": 1715670307923,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1715670307923,
+      "end": 1715670307923,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1715670307923,
+      "end": 1715670307923,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1715670307923,
+      "end": 1715670307923,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1715670307923,
+      "end": 1715670307923,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1715670307923,
+      "end": 1715670307923,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1715670307923,
+      "end": 1715670307923,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": ":root {\n  --el-color-primary: #fff;\n  --el-bg-color-overlay:transparent;\n}\n\n/* Element Chalk Variables */\n.el-scrollbar {\n  --el-scrollbar-opacity: 0.3;\n  --el-scrollbar-bg-color: var(--el-text-color-secondary);\n  --el-scrollbar-hover-opacity: 0.5;\n  --el-scrollbar-hover-bg-color: var(--el-text-color-secondary);\n}\n\n.el-scrollbar {\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n}\n.el-scrollbar__wrap {\n  height: 100%;\n  overflow: auto;\n}\n.el-scrollbar__wrap--hidden-default {\n  scrollbar-width: none;\n}\n.el-scrollbar__wrap--hidden-default::-webkit-scrollbar {\n  display: none;\n}\n\n.el-scrollbar__thumb {\n  background-color: var(--el-scrollbar-bg-color, var(--el-text-color-secondary));\n  border-radius: inherit;\n  cursor: pointer;\n  display: block;\n  height: 0;\n  opacity: var(--el-scrollbar-opacity, .3);\n  position: relative;\n  transition: var(--el-transition-duration) background-color;\n  width: 0;\n}\n.el-scrollbar__thumb:hover {\n  background-color: var(--el-scrollbar-hover-bg-color, var(--el-text-color-secondary));\n  opacity: var(--el-scrollbar-hover-opacity, .5);\n}\n\n.el-scrollbar__bar {\n  border-radius: 4px;\n  bottom: 2px;\n  position: absolute;\n  right: 2px;\n  z-index: 1;\n}\n.el-scrollbar__bar.is-vertical {\n  top: 2px;\n  width: 6px;\n}\n.el-scrollbar__bar.is-vertical>div {\n  width: 100%;\n}\n\n.el-scrollbar__bar.is-horizontal {\n  height: 6px;\n  left: 2px;\n}\n.el-scrollbar__bar.is-horizontal>div {\n  height: 100%;\n}\n\n.el-scrollbar-fade-enter-active {\n  transition: opacity .34s ease-out;\n}\n.el-scrollbar-fade-leave-active {\n  transition: opacity .12s ease-out;\n}\n.el-scrollbar-fade-enter-from,.el-scrollbar-fade-leave-active {\n  opacity: 0;\n}",
+      "start": 1715670307923,
+      "end": 1715670309203,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": "D:/CODE/Blog/nuxt-main/node_modules/element-plus/theme-chalk/src/scrollbar.scss",
+        "mappings": "AAAA;EACE;EACA;;;ACFF;AC0DE;EChBI;EAAA;EAAA;EAAA;;;ADgBJ;EE7CA;EAFA;EACA;;AF0EI;EErEF;EADA;;AFyFA;EErFE;;AACA;EACE;;;AFgEF;EEpDF;EADA;EADA;EAHA;EAEA;EAQA;EAXA;EAUA;EARA;;AAcA;EACE;EAIA;;;AFqCA;EEzBF;EAFA;EAFA;EACA;EAEA;;AF6GA;EExGE;EADA;;AAGA;EACE;;;AFqGJ;EEhGE;EACA;;AAEA;EACE;;;AAON;EACE;;AAGF;EACE;;AAGF;EAEE",
+        "names": [],
+        "sources": [
+          "D:/CODE/Blog/nuxt-main/assets/styles/element-variables.scss",
+          "D:/CODE/Blog/nuxt-main/node_modules/element-plus/theme-chalk/src/common/var.scss",
+          "D:/CODE/Blog/nuxt-main/node_modules/element-plus/theme-chalk/src/mixins/mixins.scss",
+          "D:/CODE/Blog/nuxt-main/node_modules/element-plus/theme-chalk/src/mixins/_var.scss",
+          "D:/CODE/Blog/nuxt-main/node_modules/element-plus/theme-chalk/src/scrollbar.scss"
+        ],
+        "sourcesContent": [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1715670309204,
+      "end": 1715670309204,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1715670309204,
+      "end": 1715670309204,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1715670309204,
+      "end": 1715670309204,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1715670309204,
+      "end": 1715670309204,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1715670309204,
+      "end": 1715670309204,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:undefined",
+      "start": 1715670309204,
+      "end": 1715670309204,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:undefined",
+      "start": 1715670309204,
+      "end": 1715670309204,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715670309206,
+      "end": 1715670309206,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715670309206,
+      "end": 1715670309206,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1715670309207,
+      "end": 1715670309207,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1715670309207,
+      "end": 1715670309207,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715670309207,
+      "end": 1715670309207,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1715670309208,
+      "end": 1715670309208,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1715670309208,
+      "end": 1715670309208,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1715670309208,
+      "end": 1715670309208,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1715670309208,
+      "end": 1715670309208,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "export default ''",
+      "start": 1715670309208,
+      "end": 1715670309208,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1715670309208,
+      "end": 1715670309208,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1715670309209,
+      "end": 1715670309209,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1715670309209,
+      "end": 1715670309209,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1715670309209,
+      "end": 1715670309209,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1715670309209,
+      "end": 1715670309209,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1715670309209,
+      "end": 1715670309209,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1715670309209,
+      "end": 1715670309209,
+      "order": "post"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1715670309209,
+      "end": 1715670309209,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1715670309209,
+      "end": 1715670309209,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1715670309209,
+      "end": 1715670309209,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1715670309209,
+      "end": 1715670309209,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1715670309209,
+      "end": 1715670309209,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1715670309209,
+      "end": 1715670309209,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1715670309209,
+      "end": 1715670309209,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1715670309209,
+      "end": 1715670309209,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1715670309209,
+      "end": 1715670309209,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1715670309210,
+      "end": 1715670309210,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1715670309210,
+      "end": 1715670309210,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1715670309210,
+      "end": 1715670309210,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1715670309210,
+      "end": 1715670309210,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1715670309210,
+      "end": 1715670309210,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1715670309210,
+      "end": 1715670309210,
+      "order": "normal"
+    }
+  ]
+}
